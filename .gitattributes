@@ -1,0 +1,14 @@
+### .gitattributes
+
+### tell git these files are text to let it skip text detection process
+*.js text
+*.js.map text
+*.json text
+*.html text
+*.html.map text
+*.css text
+*.css.map text
+*.md text
+
+### set hunk-header used in diff text
+*.html diff=html
