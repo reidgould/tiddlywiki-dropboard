@@ -1,6 +1,6 @@
 created: 20170819235406161
 modified: 20170829225101853
-tags: 
+tags:
 title: blc/ui/BoardViewTemplate
 
 \define actionSameTiddler()
@@ -62,10 +62,10 @@ title: blc/ui/BoardViewTemplate
     <<action-ExtOrNew>>
   </$set>
 \end
-\define tiddlerStringFilter() 
+\define tiddlerStringFilter()
 $(currentTiddler)$-StringFilter
 \end
-\define tiddlerHeldCard() 
+\define tiddlerHeldCard()
 $(currentTiddler)$-HeldCard
 \end
 <!-- ################################ -->
@@ -172,7 +172,7 @@ $(currentTiddler)$-HeldCard
 </div>
 <$scrollable class="blc-scrollable" fallthrough="no">
   <div class="blc-ListContainer">
-    <$list filter="[tag{!!title}!has[draft.of]]" emptyMessage="No tiddlers with this tag.">
+    <$list filter="[<currentTiddler>tagging[]!has[draft.of]]" emptyMessage="No tiddlers with this tag.">
       <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
     </$list>
   </div>
