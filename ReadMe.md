@@ -1,4 +1,4 @@
-! BLC Plugin
+# BLC Plugin
 
 Source found at:
 https://github.com/reidgould/tiddlywiki-blc-plugin
