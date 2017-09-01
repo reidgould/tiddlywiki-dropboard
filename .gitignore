@@ -1,0 +1,6 @@
+### .gitignore
+
+# Ignore everything in this branch except for index.html
+*
+!.gitignore
+!index.html
