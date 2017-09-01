@@ -2,14 +2,14 @@ created: 20170826190606153
 list-before: $:/core/ui/EditTemplate/body
 modified: 20170829194457876
 tags: $:/tags/EditTemplate
-title: blc/ui/EditTemplate/titletext
+title: blc/ui/EditTemplate/shorttext
 
-<div class="blc-editTemplate-titleText-layFlex">
-  <div class="blc-editTemplate-titleText-layFlexChild-field">
-    <$edit-text field="titletext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="no" class="blc-textarea tc-edit-texteditor" />
+<div class="blc-editTemplate-shorttext-layFlex">
+  <div class="blc-editTemplate-shorttext-layFlexChild-field">
+    <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="no" class="blc-textarea tc-edit-texteditor" />
   </div>
-  <div class="blc-editTemplate-titleText-layFlexChild-button tc-tiddler-controls">
-    <$button actions="""<$action-deletefield titletext />""" tooltip="delete field titletext" class="tc-btn-invisible">
+  <div class="blc-editTemplate-shorttext-layFlexChild-button tc-tiddler-controls">
+    <$button actions="""<$action-deletefield shorttext />""" tooltip="delete field shorttext" class="tc-btn-invisible">
       {{$:/core/images/close-button}}
     </$button>
   </div>

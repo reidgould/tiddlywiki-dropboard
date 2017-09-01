@@ -2,7 +2,7 @@ created: 20170826190504847
 list: 
 modified: 20170829195610925
 tags: blc/tags/IncludedInPlugin
-title: $:/config/EditTemplateFields/Visibility/titletext
-titletext: 
+title: $:/config/EditTemplateFields/Visibility/shorttext
+shorttext: 
 
 hide

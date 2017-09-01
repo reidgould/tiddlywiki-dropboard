@@ -248,7 +248,7 @@ title: blc/ui/Stylesheet
   width: calc(100% - 2em );
 }
 
-.blc-editTemplate-titleText-layFlex {
+.blc-editTemplate-shorttext-layFlex {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -256,10 +256,10 @@ title: blc/ui/Stylesheet
   align-content: stretch;
   align-items: flex-start;
 }
-.blc-editTemplate-titleText-layFlexChild-field{
+.blc-editTemplate-shorttext-layFlexChild-field{
   flex: 1 0 auto;
 }
-.blc-editTemplate-titleText-layFlexChild-button{
+.blc-editTemplate-shorttext-layFlexChild-button{
   flex: 0 0 auto;
   margin: 0.25rem 0 0 0.25rem;
 }

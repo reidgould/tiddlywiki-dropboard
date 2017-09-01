@@ -40,7 +40,7 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
               {{$:/core/images/save-button}}
             </$button>
           </div>
-          <$edit-text field="titletext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" />
+          <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" />
           <$edit
             field="text"
             focus="no"

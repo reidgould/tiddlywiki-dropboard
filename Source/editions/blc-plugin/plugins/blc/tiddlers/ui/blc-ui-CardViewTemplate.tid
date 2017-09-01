@@ -40,7 +40,7 @@ fill:$(foregroundColor)$;
       </$list>
     </div>
     <div title={{!!title}} class="blc-CardText">
-      <$set name="titleDisplay" filter="[<currentTiddler>has[titletext]]" value="titletext" emptyValue="title">
+      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
         <$transclude field=<<titleDisplay>> mode="block" class="" />
       </$set>
       <$transclude field="text" mode="block" class="" />
