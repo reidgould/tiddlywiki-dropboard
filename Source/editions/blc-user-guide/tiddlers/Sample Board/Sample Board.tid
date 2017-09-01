@@ -1,0 +1,6 @@
+created: 20170901002559711
+modified: 20170901002605505
+tags: 
+title: Sample Board
+
+<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />

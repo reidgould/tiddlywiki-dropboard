@@ -1,0 +1,6 @@
+title: blc/download-blc-plugin-button
+
+<$button class="tc-btn-big-green">
+<$action-sendmessage $message="tm-download-file" $param="blc/download-empty-with-blc" filename="tiddlywiki-blc-plugin.tid"/>
+tiddlywiki-blc-plugin.tid {{$:/core/images/save-button}}
+</$button>

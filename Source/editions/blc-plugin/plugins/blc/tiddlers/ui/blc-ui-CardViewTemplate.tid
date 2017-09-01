@@ -1,0 +1,59 @@
+created: 20170818154745882
+modified: 20170828161244360
+tags: kPlugin
+title: blc/ui/CardViewTemplate
+
+\define blcTagStyles()
+background-color: $(tagColor)$;
+\end
+\define title-styles()
+fill:$(foregroundColor)$;
+\end
+\define macroCardViewTemplate(tagBackground)
+  <$set name="popupTagsState" value=<<qualify """blc/state/$(currentTiddler)$-tagPopup""">> >
+  <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
+  </div>
+  <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
+    <div class="blc-CardIconFloat">
+      <$set name="foregroundColor" value={{!!color}} >
+        <span class="tc-tiddler-title-icon" style=<<title-styles>>>
+          <$button class=<<tv-config-toolbar-class>>><$transclude tiddler={{!!icon}} /></$button>
+        </span>
+      </$set>
+    </div>
+    <div class="blc-CardFloats blc-Card-visDownsize">
+      <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
+        {{$:/core/images/tag-button}}
+      </$button>
+      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
+        {{$:/core/images/edit-button}}
+      </$button>
+    </div>
+    <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
+      <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
+    </$reveal>
+    <div class="blc-CardTagPreview">
+      <$list filter="[<currentTiddler>tags[]] +[remove<kList>]">
+        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <div class="blc-CardTagPreviewChild" style=<<blcTagStyles>> ></div>
+        </$set>
+      </$list>
+    </div>
+    <div title={{!!title}} class="blc-CardText">
+      <$set name="titleDisplay" filter="[<currentTiddler>has[titletext]]" value="titletext" emptyValue="title">
+        <$transclude field=<<titleDisplay>> mode="block" class="" />
+      </$set>
+      <$transclude field="text" mode="block" class="" />
+    </div>
+  </$draggable>
+  </$set>
+\end
+\define macroCardViewTemplateStep1(tagBackgroundPalette)
+<$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
+\end
+<!-- ################################ -->
+<$set name="currentCardTiddler" value=<<currentTiddler>> >
+  <$droppable actions=<<kListDroppableActions>> >
+    <$macrocall $name="macroCardViewTemplateStep1" tagBackgroundPalette={{$:/palette}} />
+  </$droppable>
+</$set>

@@ -1,0 +1,9 @@
+title: blc/download-blc-plugin
+
+\define saveTiddlerFilter()
+[<currentTiddler>]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/exporters/TidFile}}
