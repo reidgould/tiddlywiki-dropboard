@@ -44,7 +44,7 @@
     "tw-build-blc": "tiddlywiki ./editions/blc-plugin --output ../Build/Plugin --build blc-plugin --output ../Build/EmptyWithBlc --build empty-with-blc --output . --build meta",
     "tw-build-blc-plugin":     "tiddlywiki ./editions/blc-plugin     --output ../Build/Plugin       --build blc-plugin",
     "tw-build-empty-with-blc": "tiddlywiki ./editions/blc-plugin     --output ../Build/EmptyWithBlc --build empty-with-blc",
-    "tw-build-meta":           "tiddlywiki ./editions/blc-plugin     --output .                     --build meta",
+    "tw-build-meta":           "tiddlywiki ./editions/blc-plugin     --output ../                   --build meta",
     "tw-build-blc-user-guide": "tiddlywiki ./editions/blc-user-guide --output ../Build/UserGuide    --build blc-user-guide"
   },
   "dependencies": {
