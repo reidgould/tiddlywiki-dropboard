@@ -1,6 +1,3 @@
-created: 20170818164941062
-modified: 20170828151606173
-tags: 
 title: blc/ui/CardEditTemplate
 
 \define saveActions()
@@ -17,10 +14,9 @@ title: blc/ui/CardEditTemplate
 \define config-visibility-title()
 blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
 \end
-<!-- Do not indent the line inside config-visibility-title or clutter it with any other content. -->
-<!-- ################################ -->
+
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-<$droppable actions=<<kListDroppableActions>> >
+<$droppable actions=<<blcCardDroppableActions>> >
 <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
 </div>
 <div class=<<frame-classes>>>
@@ -47,7 +43,6 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
             class="tc-edit-texteditor"
             placeholder={{$:/language/EditTemplate/Body/Placeholder}}
           ><$set
-            name="targetTiddler"
             value=<<currentTiddler>>
           ><$list
             filter="[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]"

@@ -1,8 +1,6 @@
-created: 20170826190606153
-list-before: $:/core/ui/EditTemplate/body
-modified: 20170829194457876
-tags: $:/tags/EditTemplate
 title: blc/ui/EditTemplate/shorttext
+tags: $:/tags/EditTemplate
+list-before: $:/core/ui/EditTemplate/body
 
 <div class="blc-editTemplate-shorttext-layFlex">
   <div class="blc-editTemplate-shorttext-layFlexChild-field">

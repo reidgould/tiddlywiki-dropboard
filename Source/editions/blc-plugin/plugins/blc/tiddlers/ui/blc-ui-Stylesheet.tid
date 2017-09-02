@@ -1,9 +1,7 @@
-created: 20170819223104272
-modified: 20170829224043701
-tags: $:/tags/Stylesheet
 title: blc/ui/Stylesheet
+tags: $:/tags/Stylesheet
 
-\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock 
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
 <!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
@@ -13,7 +11,7 @@ title: blc/ui/Stylesheet
   color: <<color tiddler-title-foreground>>;
 }
 
-.blc-ListTitle { 
+.blc-ListTitle {
   flex: 0 0 auto;
   align-self: auto;
   border-style: solid solid none solid;
@@ -23,6 +21,7 @@ title: blc/ui/Stylesheet
   padding: 0.5rem;
 }
 .blc-titleTweak {
+  display: inline;
   margin: 0;
 }
 
@@ -61,8 +60,8 @@ title: blc/ui/Stylesheet
   align-items: stretch;
 }
 /*This is to maintain missing margin on right side,
- * due to browser's calcuation of visible area. 
- * This is not related to normal margin collapse or to flexbox display. 
+ * due to browser's calcuation of visible area.
+ * This is not related to normal margin collapse or to flexbox display.
  */
 .blc-List-layInner:last-child::after {
   content: ".";
@@ -264,6 +263,15 @@ title: blc/ui/Stylesheet
   margin: 0.25rem 0 0 0.25rem;
 }
 
+.blc-listDropArea.blc-listDropArea {
+  display: inline-block;
+  padding: 0.25rem;
+  position: relative;
+}
+.blc-listDropButton {
+  min-width: 1.5rem;
+}
+
 
 /* ################################ */
 
@@ -271,36 +279,51 @@ title: blc/ui/Stylesheet
   /* EXTENDS tc-droppable-placeholder */
   border-color: <<color primary>>;
   border-style: dashed none none none;
-  height: 0em;
-  margin-bottom: 0.25em;
+  height: 0rem;
+  margin-bottom: 0.25rem;
 }
 .tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom {
   /* EXTENDS tc-droppable-placeholder */
   border-color: <<color primary>>;
-  height: 4em;
+  height: 4rem;
+}
+.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea {
+  /* EXTENDS tc-droppable-placeholder */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-color: <<color primary>>;
 }
 
 .buttonLikeLink {
-    background: none;
-     border: none; 
-     padding: 0;
-    font-family: arial, sans-serif; /*input has OS specific font-family*/
-     color: <<color primary>>;
-     cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: arial, sans-serif; /*input has OS specific font-family*/
+  color: <<color primary>>;
+  cursor: pointer;
 }
 .buttonLikeLink:hover{
-         text-decoration:underline;
+  text-decoration:underline;
+}
+.buttonTWIcon {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
 }
 
 .blc-PosTR{
   position: absolute;
-  top: 0.125em;
-  right: 0.125em;
+  top: 0.125rem;
+  right: 0.125rem;
 }
 
 .p-verticalRule {
   display: inline;
-  margin: 0 0.5em;
+  margin: 0 0.5rem;
   border-style: none none none solid ;
   border-width: 0 0 0 1px ;
   border-color: black;
