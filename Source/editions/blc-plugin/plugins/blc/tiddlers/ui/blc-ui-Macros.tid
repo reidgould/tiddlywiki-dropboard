@@ -6,7 +6,7 @@ $strEmpty$
 \end
 
 \define alert(alertText:"")
-<$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
+  <$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
 \end
 
 \define actionDragSameTiddler()
@@ -27,6 +27,10 @@ $strEmpty$
 
 \define filterBoardL3_currentBoard()
 [<currentBoardTiddler>] [<currentBoardTiddler>tagging[]] [<currentBoardTiddler>tagging[]tagging[]]
+\end
+
+\define filterLists_currentBoard()
+[<currentBoardTiddler>tagging[]]
 \end
 
 
@@ -68,6 +72,16 @@ fill:$(foregroundColor)$;
   <$set name="newList" filter="[[$listTid$]tagging[]]">
     <$action-setfield $tiddler="""$listTid$""" $field="list" $value=<<newList>> />
   </$set>
+\end
+
+\define action-conditionalRemoveActionTidFromList()
+<$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
+  <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
+      value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
+      emptyValue="" >
+    <<action-doRemove>>
+  </$set>
+</$set>
 \end
 
 \define actionRemoveTwoWay_OneFromMany(removeTid, targetFilter_byDef)
@@ -136,7 +150,9 @@ fill:$(foregroundColor)$;
   <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
       value="""
         <$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" />
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterLists_currentBoard" />
+        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in exclusiveAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+        <<action-conditionalRemoveActionTidFromList>>
         """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
