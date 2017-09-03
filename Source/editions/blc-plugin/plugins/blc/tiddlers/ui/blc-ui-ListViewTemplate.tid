@@ -23,6 +23,13 @@ title: blc/ui/ListViewTemplate
           </$droppable>
         </$set>
       </span>
+      <div class="blc-CardTagPreview">
+        <$list filter="[<currentTiddler>]">
+          <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+            <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
+          </$set>
+        </$list>
+      </div>
       <$set name="foregroundColor" value={{!!color}}>
         <span style=<<styleIconColor>> >
           <$button class="buttonTWIcon blc-listDropButton" >
