@@ -1,8 +1,9 @@
-title: Sample Board
-created: 00000000000000000
-modified: 00000000000000000
-tags:
-list: tid-20170831194804 tid-20170831194915 tid-20170831194954
 boardheight: 40vh
+created: 18991130000000000
+displaytext: yes
+list: tid-20170831194954 tid-20170831194915 tid-20170831194804
+modified: 20170903204814114
+tags: 
+title: Sample Board
 
 <$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />
