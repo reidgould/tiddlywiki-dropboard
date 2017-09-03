@@ -60,6 +60,31 @@ background-color: $(tagColor)$;
 fill:$(foregroundColor)$;
 \end
 
+\define styleBoardHeightDefault()
+80vh
+\end
+\define styleBoardHeightOption()
+height: $(boardHeight)$;
+\end
+
+\define styleListWidthDefault()
+15.5rem
+\end
+\define styleListWidthOption()
+min-width: $(listWidth)$;
+\end
+
+\define styleListMaxDefault()
+9999rem
+\end
+\define styleListMaxOption()
+max-width: $(listWidthMax)$;
+\end
+
+\define styleListWidthCombo()
+$(styleListWidthOption)$ $(styleListMaxOption)$
+\end
+
 
 
 

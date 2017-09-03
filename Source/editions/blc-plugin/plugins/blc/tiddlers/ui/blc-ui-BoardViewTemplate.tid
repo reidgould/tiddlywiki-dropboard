@@ -72,7 +72,7 @@ title: blc/ui/BoardViewTemplate
       </div>
       <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">Board Height:</p>
+          <p class="blc-BoardControlLineOpLabel-p">Board Height (vh):</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
           <$radio tiddler=<<currentTiddler>> field="boardheight" value="50vh">50</$radio>
@@ -82,31 +82,34 @@ title: blc/ui/BoardViewTemplate
       </div>
       <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">List Width:</p>
+          <p class="blc-BoardControlLineOpLabel-p">List Width (rem):</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
           <$radio tiddler=<<currentTiddler>> field="listwidth" value="12rem">12</$radio>
           <$radio tiddler=<<currentTiddler>> field="listwidth" value="15.5rem">15.5</$radio>
           <$radio tiddler=<<currentTiddler>> field="listwidth" value="20rem">20</$radio>
-          <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p><input type="checkbox"><p class="blc-BoardControlLineOpLabel-p" style="display:inline;"> Is max width</p>
+          <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
+          <$checkbox field="widthismax" checked="yes" unchecked="no" default="no"> Is Max</$checkbox>
         </div>
       </div>
     </div>
   </div>
   <$scrollable class="blc-scrollable" fallthrough="no">
-    <div class="blc-ListContainer">
-      <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
-          emptyMessage="""
-            <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
-              <$droppable actions=<<blcListDroppableActions>> >
-                <div style="width:100%; height:100%;">
-                  Drag in the "New Card" above, or any existing tiddler, to use it as a list.
-                </div>
-              </$droppable>
-            </div>
-          """>
-        <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
-      </$list>
-    </div>
+    <$set name="boardHeight" filter="[<currentBoardTiddler>get[boardheight]]" value="" emptyValue=<<styleBoardHeightDefault>> >
+      <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
+        <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
+            emptyMessage="""
+              <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
+                <$droppable actions=<<blcListDroppableActions>> >
+                  <div style="width:100%; height:100%;">
+                    Drag in the "New Card" above, or any existing tiddler, to use it as a list.
+                  </div>
+                </$droppable>
+              </div>
+            """>
+          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+        </$list>
+      </div>
+    </$set>
   </$scrollable>
 </$set>
