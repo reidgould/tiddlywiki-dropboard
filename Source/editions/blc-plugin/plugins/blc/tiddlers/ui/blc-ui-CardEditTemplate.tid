@@ -36,6 +36,9 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
               {{$:/core/images/save-button}}
             </$button>
           </div>
+          <span class="blc-CardEditTitle">
+            <$transclude tiddler="$:/core/ui/EditTemplate/title" mode="block" />
+          </span>
           <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" placeholder={{blc/ui/shorttextPlaceholder}} />
           <$edit
             field="text"

@@ -168,6 +168,9 @@ tags: $:/tags/Stylesheet
 .blc-Card-visDownsize{
   font-size: 1.25rem;
 }
+.blc-CardEditTitle > .tc-titlebar{
+  font-size: 0.75rem;
+}
 
 .blc-CardTitle{
   /* EXTENDS tc-title */
@@ -269,7 +272,7 @@ tags: $:/tags/Stylesheet
   position: relative;
 }
 .blc-listDropButton {
-  min-width: 1.5rem;
+  /*min-width: 1.5rem;*/
 }
 
 
