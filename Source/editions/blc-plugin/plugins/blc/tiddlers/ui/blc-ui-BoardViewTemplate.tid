@@ -56,6 +56,22 @@ title: blc/ui/BoardViewTemplate
       </div>
       <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Display "Text" Field:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$checkbox field="displaytext" checked="yes" unchecked="no" default="no"></$checkbox>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <input type="checkbox">
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
           <p class="blc-BoardControlLineOpLabel-p">Board Height:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
@@ -86,14 +102,6 @@ title: blc/ui/BoardViewTemplate
       <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
           <p class="blc-BoardControlLineOpLabel-p">Skinny lists:</p>
-        </div>
-        <div class="blc-BoardControlLineOpInput">
-          <input type="checkbox">
-        </div>
-      </div>
-      <div class="blc-BoardControlLineOp">
-        <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
           <input type="checkbox">

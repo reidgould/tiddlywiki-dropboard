@@ -202,6 +202,13 @@ tags: $:/tags/Stylesheet
 .blc-CardIconFloat button {
   display: inline-block;
 }
+.blc-CardIcon-ContainsText {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  fill: <<color message-foreground>>;
+  font-size: 1rem;
+}
 .blc-CardTagPreview {
   position: absolute;
   top: -1px;
