@@ -144,9 +144,9 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   </$set>
 \end
 
-\define actionInsertTwoWay(insert, before, in, exclusiveAmong_byDef)
+\define actionInsertTwoWay(insert, before, in, uniqueAmong_byDef)
   <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
-  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$exclusiveAmong_byDef$""" />
+  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$uniqueAmong_byDef$""" />
   <$macrocall $name="actionAddTwoWay" addTid="""$insert$""" targetTid="""$in$""" beforeTid="""$before$""" />
 \end
 
@@ -164,7 +164,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
         <<action-deleteHeldCard>>
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" />
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
         """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
@@ -183,8 +183,8 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
       value="""
         <<action-deleteHeldCard>>
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterLists_currentBoard" />
-        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in exclusiveAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
+        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
         <<action-conditionalRemoveActionTidFromList>>
         """
       emptyValue=<<actionDragSameTiddler>> >
