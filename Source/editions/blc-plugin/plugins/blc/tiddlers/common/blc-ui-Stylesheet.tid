@@ -215,7 +215,7 @@ tags: $:/tags/Stylesheet
   left: 0;
   width: 100%;
   height: 4px;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -227,6 +227,25 @@ tags: $:/tags/Stylesheet
   flex: 1 1 auto;
   align-self: auto;
   margin-right: 2px;
+}
+.blc-CardColorPreview {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 1.75em;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
+.blc-CardColorPreviewChild {
+  flex: 1 1 auto;
+  align-self: auto;
+  margin-bottom: 2px;
 }
 .blc-popupTag-vis {
   background-color: white;

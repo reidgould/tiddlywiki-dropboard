@@ -26,7 +26,7 @@ title: blc/ui/ListViewTemplate
             </$set>
           </span>
           <div class="blc-CardTagPreview">
-            <$list filter="[<currentTiddler>]">
+            <$list filter="[<currentTiddler>has:field[color]]">
               <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
                 <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
               </$set>

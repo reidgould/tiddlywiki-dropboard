@@ -47,6 +47,13 @@ tags: $:/tags/Macro
           </$set>
         </$list>
       </div>
+      <div class="blc-CardColorPreview">
+        <$list filter="[<currentTiddler>has:field[color]]">
+          <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+            <div class="blc-CardColorPreviewChild" style=<<styleTagColor>> ></div>
+          </$set>
+        </$list>
+      </div>
       <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]]"
           value=<<iconHasText_pre>>
           emptyValue="" >
