@@ -41,7 +41,7 @@ $(EmptyString)$
 \end
 
 \define tiddlerStringFilter()
-$(currentTiddler)$-StringFilter
+$(currentBoardTiddler)$-StringFilter
 \end
 
 \define tiddlerHeldCard()
