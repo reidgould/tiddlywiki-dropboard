@@ -1,4 +1,4 @@
-title: blc/ui/Stylesheet
+title: blc/common/Stylesheet
 tags: $:/tags/Stylesheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock

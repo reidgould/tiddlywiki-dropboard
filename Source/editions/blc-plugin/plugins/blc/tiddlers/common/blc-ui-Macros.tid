@@ -1,4 +1,4 @@
-title: blc/ui/Macros
+title: blc/common/Macros
 tags: $:/tags/Macro
 
 \define EmptyString(strEmpty:"")
