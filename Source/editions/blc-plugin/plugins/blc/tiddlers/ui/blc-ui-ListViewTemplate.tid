@@ -11,6 +11,8 @@ title: blc/ui/ListViewTemplate
           <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
           </div>
         </$droppable>
+      </span>
+      <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea" style="float:right;">
         <$set name="currentListTiddler" filter="[<currentListTiddler>next<currentBoardTiddler>]" >
           <$droppable actions=<<blcListDroppableActions>> >
             <$button class="buttonTWIcon blc-listDropButton" >
