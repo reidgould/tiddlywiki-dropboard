@@ -24,8 +24,10 @@ title: blc/ui/ListViewTemplate
         </$set>
       </span>
       <$set name="foregroundColor" value={{!!color}}>
-        <span class="tc-tiddler-title-icon" style=<<title-styles>>>
-          <$transclude tiddler={{!!icon}}/>
+        <span style=<<styleIconColor>> >
+          <$button class="buttonTWIcon blc-listDropButton" >
+            <$transclude tiddler={{!!icon}}/>
+          </$button>
         </span>
       </$set>
       <$link>
