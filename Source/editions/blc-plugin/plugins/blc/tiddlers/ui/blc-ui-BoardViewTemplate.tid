@@ -108,7 +108,7 @@ title: blc/ui/BoardViewTemplate
             <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
               <$droppable actions=<<blcListDroppableActions>> >
                 <div style="width:100%; height:100%;">
-                  Drag in the "New Card" above, or any tiddler existing tiddler, to use it as a list.
+                  Drag in the "New Card" above, or any existing tiddler, to use it as a list.
                 </div>
               </$droppable>
             </div>
