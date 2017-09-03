@@ -41,9 +41,11 @@ tags: $:/tags/Macro
         <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
       </$reveal>
       <div class="blc-CardTagPreview">
-        <$list filter="[<currentTiddler>tags[]] +[remove<currentListTiddler>]">
+        <$list filter="[<currentTiddler>tags[]] +[remove<currentListTiddler>] +[sort[title]]">
           <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-            <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
+            <$set name="titleDisplay" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
+              <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> title=<<titleDisplay>> ></div>
+            </$set>
           </$set>
         </$list>
       </div>
@@ -76,3 +78,4 @@ tags: $:/tags/Macro
 \define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)
 <$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
 \end
+
