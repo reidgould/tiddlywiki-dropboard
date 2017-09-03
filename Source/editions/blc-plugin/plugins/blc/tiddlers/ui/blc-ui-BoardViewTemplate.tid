@@ -91,22 +91,6 @@ title: blc/ui/BoardViewTemplate
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p><input type="checkbox"><p class="blc-BoardControlLineOpLabel-p" style="display:inline;"> Is max width</p>
         </div>
       </div>
-      <div class="blc-BoardControlLineOp">
-        <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">Single line cards:</p>
-        </div>
-        <div class="blc-BoardControlLineOpInput">
-          <input type="checkbox">
-        </div>
-      </div>
-      <div class="blc-BoardControlLineOp">
-        <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">Skinny lists:</p>
-        </div>
-        <div class="blc-BoardControlLineOpInput">
-          <input type="checkbox">
-        </div>
-      </div>
     </div>
   </div>
   <$scrollable class="blc-scrollable" fallthrough="no">
