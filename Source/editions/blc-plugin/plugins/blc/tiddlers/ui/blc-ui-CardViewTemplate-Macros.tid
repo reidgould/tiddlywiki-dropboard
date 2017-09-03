@@ -2,8 +2,8 @@ title: blc/ui/CardViewTemplate-Macros
 tags: $:/tags/Macro
 
 \define iconHasText()
-  <div title="This tiddler contains text. Open in the Main Story to view." class="blc-CardIcon-ContainsText">
-    <$button class="buttonTWIcon">
+  <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
+    <$button class="buttonTWIcon buttonTWIcon-help">
       {{$:/core/images/import-button}}
     </$button>
   </div>

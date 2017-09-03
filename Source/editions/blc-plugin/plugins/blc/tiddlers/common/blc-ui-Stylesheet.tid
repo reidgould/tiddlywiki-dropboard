@@ -202,7 +202,7 @@ tags: $:/tags/Stylesheet
 .blc-CardIconFloat button {
   display: inline-block;
 }
-.blc-CardIcon-ContainsText {
+.blc-CardIcon-HasText {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -227,6 +227,7 @@ tags: $:/tags/Stylesheet
   flex: 1 1 auto;
   align-self: auto;
   margin-right: 2px;
+  cursor: help;
 }
 .blc-CardColorPreview {
   position: absolute;
@@ -342,6 +343,9 @@ tags: $:/tags/Stylesheet
   border: none;
   padding: 0;
   cursor: default;
+}
+.buttonTWIcon-help {
+  cursor: help;
 }
 
 .blc-PosTR{
