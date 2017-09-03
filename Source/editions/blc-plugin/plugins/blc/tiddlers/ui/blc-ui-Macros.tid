@@ -84,6 +84,14 @@ fill:$(foregroundColor)$;
 </$set>
 \end
 
+\define action-deleteHeldCard()
+  <$set name="action-dhc" filter="[<actionTiddler>] -[<tiddlerHeldCard>get[text]]"
+      value=""
+      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" >
+    <<action-dhc>>
+  </$set>
+\end
+
 \define actionRemoveTwoWay_OneFromMany(removeTid, targetFilter_byDef)
   <$set name="manyTids" filter=<<$targetFilter_byDef$>> >
     <!-- Remove tags from the one tiddler of all target Tiddlers. -->
@@ -130,7 +138,7 @@ fill:$(foregroundColor)$;
 \define actionExistingListTiddler()
   <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />
+        <<action-deleteHeldCard>>
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" />
         """
       emptyValue=<<actionDragSameTiddler>> >
@@ -149,7 +157,7 @@ fill:$(foregroundColor)$;
 \define actionExistingCardTiddler()
   <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />
+        <<action-deleteHeldCard>>
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterLists_currentBoard" />
         <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in exclusiveAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
         <<action-conditionalRemoveActionTidFromList>>
