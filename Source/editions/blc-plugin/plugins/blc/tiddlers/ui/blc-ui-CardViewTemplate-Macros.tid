@@ -41,7 +41,7 @@ tags: $:/tags/Macro
         <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
       </$reveal>
       <div class="blc-CardTagPreview">
-        <$list filter="[<currentTiddler>tags[]] +[remove<currentListTiddler>] +[sort[title]]">
+        <$list filter="[<currentTiddler>tags[]] +[encodeuri[]] +[remove<currentListTiddler_encoded>] +[decodeuri[]] +[sort[title]]">
           <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
             <$set name="titleDisplay" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
               <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> title=<<titleDisplay>> ></div>
