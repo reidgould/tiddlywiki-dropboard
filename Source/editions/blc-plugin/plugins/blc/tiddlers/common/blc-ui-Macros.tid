@@ -121,7 +121,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
     <$action-listops $tiddler="""$removeTid$""" $tags="+[remove<manyTids>]" />
     <!-- Remove the one tiddler from lists of all target Tiddlers. -->
     <$list filter=<<manyTids>> variable="eachList">
-      <$action-listops $tiddler=<<eachList>> $subfilter="+[remove[$removeTid$]]" />
+      <$action-listops $tiddler=<<eachList>> $subfilter="-[[$removeTid$]]" />
     </$list>
   </$set>
   </$set>
