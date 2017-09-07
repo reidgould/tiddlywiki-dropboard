@@ -362,4 +362,10 @@ tags: $:/tags/Stylesheet
   border-color: black;
 }
 
+/* Quick fix for issue that dragging a tiddler with an image creates a new tiddler with the content of the title being the data uri of the image. */
+.blc-CardText img {
+    pointer-events: none;
+}
+
+
 """
