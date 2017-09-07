@@ -92,7 +92,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 
 
 
-\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeldCard). Arguments which are titles are assumed to be URI encoded. -->
+\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeldCard). -->
 
 \define ResetListToTagging(listTid)
   <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
@@ -159,7 +159,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \end
 
 
-\define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. Must URI encode arguments which are titles when calling abstract macros above. -->
+\define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. -->
 
 \define blcListDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
