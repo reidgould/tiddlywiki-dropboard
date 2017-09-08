@@ -105,9 +105,9 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   </$set>
 \end
 
-\define action-deleteHeldCardIfMatches(matchTid_encoded)
-  <$set name="tiddlerHeldCardVal_encoded" filter="[<tiddlerHeldCard>get[text]] +[encodeuri[]]">
-  <$set name="action-dhc" filter="[[$matchTid_encoded$]] -[<tiddlerHeldCardVal_encoded>]"
+\define action-deleteHeldCardIfMatches(matchTid)
+  <$set name="tiddlerHeldCardVal" value={{{[<tiddlerHeldCard>get[text]] }}} >
+  <$set name="action-dhc" filter="[[$matchTid$]] -[<tiddlerHeldCardVal>]"
       value=""
       emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" >
     <<action-dhc>>
@@ -134,26 +134,26 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   <$action-listops $tiddler="""$removeTid$""" $tags="-[[$targetTid$]]"/>
 \end
 
-\define actionAddTwoWay(addTid, targetTid, beforeTid_encoded)
-  <$set name="beforeTid_encoded" value="$beforeTid_encoded$">
+\define actionAddTwoWay(addTid, targetTid, beforeTid)
+  <$set name="beforeTid" value="$beforeTid$">
     <!-- Add the addTid to this targetTid -->
-    <$action-listops $tiddler="""$targetTid$""" $subfilter="+[encodeuri[]] +[insertbefore:beforeTid_encoded[$addTid$]] +[decodeuri[]]" />
+    <$action-listops $tiddler="""$targetTid$""" $subfilter="+[insertbefore:beforeTid[$addTid$]]" />
     <!-- Add this tag to the addTid -->
     <$action-listops $tiddler="""$addTid$""" $tags="[[$targetTid$]]"/>
   </$set>
 \end
 
-\define actionInsertTwoWay(insert, before_encoded, in, uniqueAmong_byDef)
+\define actionInsertTwoWay(insert, before, in, uniqueAmong_byDef)
   <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
   <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$uniqueAmong_byDef$""" />
-  <$macrocall $name="actionAddTwoWay" addTid="""$insert$""" targetTid="""$in$""" beforeTid_encoded="""$before_encoded$""" />
+  <$macrocall $name="actionAddTwoWay" addTid="""$insert$""" targetTid="""$in$""" beforeTid="""$before$""" />
 \end
 
-\define actionInsertNewTwoWay(before_encoded, in)
+\define actionInsertNewTwoWay(before, in)
   <$set name="newTiddler" value=<<now "tid-YYYY0MM0DD0hh0mm0ss">> >
     <$action-createtiddler $basetitle=<<newTiddler>> />
     <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
-    <$macrocall $name="actionAddTwoWay" addTid=<<newTiddler>> targetTid="""$in$""" beforeTid_encoded="""$before_encoded$""" />
+    <$macrocall $name="actionAddTwoWay" addTid=<<newTiddler>> targetTid="""$in$""" beforeTid="""$before$""" />
     <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddler>> />
   </$set>
 \end
@@ -164,7 +164,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \define blcListDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
       value="""<$macrocall $name="actionExistingListTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before_encoded=<<currentListTiddler_encoded>> in=<<currentBoardTiddler>> />""" >
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
     <<action-ExtOrNew>>
   </$set>
 \end
@@ -172,10 +172,8 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   <!-- CALLED FROM blcListDroppableActions -->
   <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$set name="actionTiddler_encoded" filter="[<actionTiddler>] +[encodeuri[]]">
-          <$macrocall $name="action-deleteHeldCardIfMatches" matchTid_encoded=<<actionTiddler_encoded>> />
-          <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before_encoded=<<currentListTiddler_encoded>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
-        </$set>
+        <$macrocall $name="action-deleteHeldCardIfMatches" matchTid=<<actionTiddler>> />
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
         """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
@@ -185,7 +183,7 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \define blcCardDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
       value="""<$macrocall $name="actionExistingCardTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before_encoded=<<currentCardTiddler_encoded>> in=<<currentListTiddler>> />""" >
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
     <<action-ExtOrNew>>
   </$set>
 \end
@@ -193,12 +191,10 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   <!-- CALLED FROM blcCardDroppableActions -->
   <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$set name="actionTiddler_encoded" filter="[<actionTiddler>] +[encodeuri[]]">
-          <$macrocall $name="action-deleteHeldCardIfMatches" matchTid_encoded=<<actionTiddler_encoded>> />
-          <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before_encoded=<<currentCardTiddler_encoded>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
-          <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
-          <<action-conditionalRemoveActionTidFromList>>
-        </$set>
+        <$macrocall $name="action-deleteHeldCardIfMatches" matchTid=<<actionTiddler>> />
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
+        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+        <<action-conditionalRemoveActionTidFromList>>
         """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
@@ -207,20 +203,16 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \define action-conditionalRemoveActionTidFromList()
   <!-- CALLED FROM actionExistingCardTiddler -->
   <$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
-  <$set name="currentBoardTiddler_encoded" filter="[<currentBoardTiddler>] +[encodeuri[]]">
     <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
         value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
         emptyValue="" >
       <<action-doRemove>>
     </$set>
   </$set>
-  </$set>
 \end
 
 \define action-RemoveFromBoard()
-  <$set name="actionTiddler_encoded" filter="[<actionTiddler>] +[encodeuri[]]">
-    <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid=<<actionTiddler>> targetFilter_byDef="filterBoardL2_currentBoard" />
-  </$set>
+  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid=<<actionTiddler>> targetFilter_byDef="filterBoardL2_currentBoard" />
 \end
 
 

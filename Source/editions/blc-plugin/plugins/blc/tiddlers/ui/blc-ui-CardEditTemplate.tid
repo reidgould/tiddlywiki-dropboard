@@ -16,7 +16,6 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
 \end
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-<$set name="currentCardTiddler_encoded" filter="[<currentTiddler>] +[encodeuri[]] " >
 <$droppable actions=<<blcCardDroppableActions>> >
 <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
 </div>
@@ -65,5 +64,4 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
   </$fieldmangler>
 </div>
 </$droppable>
-</$set>
 </$set>

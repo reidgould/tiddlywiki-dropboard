@@ -1,9 +1,7 @@
 title: blc/ui/CardViewTemplate
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-  <$set name="currentCardTiddler_encoded" filter="[<currentTiddler>] +[encodeuri[]] " >
-    <$droppable actions=<<blcCardDroppableActions>> >
-      <$macrocall $name="macroCardViewTemplate_SetBackgroundByPalette" tagBackgroundPalette={{$:/palette}} />
-    </$droppable>
-  </$set>
+  <$droppable actions=<<blcCardDroppableActions>> >
+    <$macrocall $name="macroCardViewTemplate_SetBackgroundByPalette" tagBackgroundPalette={{$:/palette}} />
+  </$droppable>
 </$set>

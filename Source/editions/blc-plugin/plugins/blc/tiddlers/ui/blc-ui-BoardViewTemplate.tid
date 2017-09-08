@@ -1,117 +1,115 @@
 title: blc/ui/BoardViewTemplate
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
-  <$set name="currentBoardTiddler_encoded" filter="[<currentTiddler>] +[encodeuri[]] " >
-    <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
-      <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-        <$draggable tiddler="blc/action/newCard" class="blc-Card tc-tiddler-frame">
-          <p>{{$:/core/images/new-button}}<br>New Card</p>
-        </$draggable>
-      </div>
-      <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-        <$droppable actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>>/> <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> />""" >
-          <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
-        </$droppable>
-        <$tiddler tiddler=<<tiddlerHeldCard>> >
-          <$reveal state={{!!title}} type="nomatch" text="">
-            <$draggable tiddler={{!!text}} class="blc-Card tc-tiddler-frame">
-              <div title={{!!text}} >
-                <$button actions="""<$action-deletetiddler $tiddler=<<currentTiddler>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-                  {{$:/core/images/close-button}}
-                </$button>
-                <p>{{$:/core/images/file}}<br>Card:<br>
-                  <span class="blc-BoardControl-HeldCardTitle truncate">
-                    <$tiddler tiddler={{!!text}}>
-                      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                        <$transclude field=<<titleDisplay>> mode="inline" class="" />
-                      </$set>
-                    </$tiddler>
-                  </span>
-                </p>
-              </div>
-            </$draggable>
-          </$reveal>
-        </$tiddler>
-      </div>
-      <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-        <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-          <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
-        </$droppable>
-      </div>
-      <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-        <$droppable actions="""<<action-RemoveFromBoard>>""" >
-          <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
-        </$droppable>
-      </div>
-      <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
-        <div class="blc-BoardControlLineOp">
-            <div class="blc-BoardControlLineOpLabel">
-            <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
-          </div>
-          <div class="blc-BoardControlLineOpInput">
-            <$edit-text tiddler=<<tiddlerStringFilter>> type="search" tag="input" class="blc-BoardControlFilterTextArea" />
-            <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerStringFilter>> />""" class="tc-btn-invisible">
-              {{$:/core/images/close-button}}
-            </$button>
-          </div>
-        </div>
-        <div class="blc-BoardControlLineOp">
+  <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$draggable tiddler="blc/action/newCard" class="blc-Card tc-tiddler-frame">
+        <p>{{$:/core/images/new-button}}<br>New Card</p>
+      </$draggable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>>/> <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> />""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
+      </$droppable>
+      <$tiddler tiddler=<<tiddlerHeldCard>> >
+        <$reveal state={{!!title}} type="nomatch" text="">
+          <$draggable tiddler={{!!text}} class="blc-Card tc-tiddler-frame">
+            <div title={{!!text}} >
+              <$button actions="""<$action-deletetiddler $tiddler=<<currentTiddler>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                {{$:/core/images/close-button}}
+              </$button>
+              <p>{{$:/core/images/file}}<br>Card:<br>
+                <span class="blc-BoardControl-HeldCardTitle truncate">
+                  <$tiddler tiddler={{!!text}}>
+                    <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                      <$transclude field=<<titleDisplay>> mode="inline" class="" />
+                    </$set>
+                  </$tiddler>
+                </span>
+              </p>
+            </div>
+          </$draggable>
+        </$reveal>
+      </$tiddler>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
+      </$droppable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<<action-RemoveFromBoard>>""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
+      </$droppable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
+      <div class="blc-BoardControlLineOp">
           <div class="blc-BoardControlLineOpLabel">
-            <p class="blc-BoardControlLineOpLabel-p">Display "Text" Field:</p>
-          </div>
-          <div class="blc-BoardControlLineOpInput">
-            <$checkbox field="displaytext" checked="yes" unchecked="no" default="no"></$checkbox>
-          </div>
+          <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
         </div>
-        <div class="blc-BoardControlLineOp">
-          <div class="blc-BoardControlLineOpLabel">
-            <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
-          </div>
-          <div class="blc-BoardControlLineOpInput">
-            <input type="checkbox">
-          </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$edit-text tiddler=<<tiddlerStringFilter>> type="search" tag="input" class="blc-BoardControlFilterTextArea" />
+          <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerStringFilter>> />""" class="tc-btn-invisible">
+            {{$:/core/images/close-button}}
+          </$button>
         </div>
-        <div class="blc-BoardControlLineOp">
-          <div class="blc-BoardControlLineOpLabel">
-            <p class="blc-BoardControlLineOpLabel-p">Board Height (vh):</p>
-          </div>
-          <div class="blc-BoardControlLineOpInput">
-            <$radio tiddler=<<currentTiddler>> field="boardheight" value="50vh">50</$radio>
-            <$radio tiddler=<<currentTiddler>> field="boardheight" value="80vh">80</$radio>
-            <$radio tiddler=<<currentTiddler>> field="boardheight" value="100vh">100</$radio>
-          </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Display "Text" Field:</p>
         </div>
-        <div class="blc-BoardControlLineOp">
-          <div class="blc-BoardControlLineOpLabel">
-            <p class="blc-BoardControlLineOpLabel-p">List Width (rem):</p>
-          </div>
-          <div class="blc-BoardControlLineOpInput">
-            <$radio tiddler=<<currentTiddler>> field="listwidth" value="12rem">12</$radio>
-            <$radio tiddler=<<currentTiddler>> field="listwidth" value="15.5rem">15.5</$radio>
-            <$radio tiddler=<<currentTiddler>> field="listwidth" value="20rem">20</$radio>
-            <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-            <$checkbox field="widthismax" checked="yes" unchecked="no" default="no"> Is Max</$checkbox>
-          </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$checkbox field="displaytext" checked="yes" unchecked="no" default="no"></$checkbox>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <input type="checkbox">
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Board Height (vh):</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="50vh">50</$radio>
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="80vh">80</$radio>
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="100vh">100</$radio>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">List Width (rem):</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="12rem">12</$radio>
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="15.5rem">15.5</$radio>
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="20rem">20</$radio>
+          <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
+          <$checkbox field="widthismax" checked="yes" unchecked="no" default="no"> Is Max</$checkbox>
         </div>
       </div>
     </div>
-    <$scrollable class="blc-scrollable" fallthrough="no">
-      <$set name="boardHeight" filter="[<currentBoardTiddler>get[boardheight]]" value="" emptyValue=<<styleBoardHeightDefault>> >
-        <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
-          <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
-              emptyMessage="""
-                <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
-                  <$droppable actions=<<blcListDroppableActions>> >
-                    <div style="width:100%; height:100%;">
-                      Drag in the "New Card" above, or any existing tiddler, to use it as a list.
-                    </div>
-                  </$droppable>
-                </div>
-              """>
-            <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
-          </$list>
-        </div>
-      </$set>
-    </$scrollable>
-  </$set>
+  </div>
+  <$scrollable class="blc-scrollable" fallthrough="no">
+    <$set name="boardHeight" filter="[<currentBoardTiddler>get[boardheight]]" value="" emptyValue=<<styleBoardHeightDefault>> >
+      <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
+        <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
+            emptyMessage="""
+              <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
+                <$droppable actions=<<blcListDroppableActions>> >
+                  <div style="width:100%; height:100%;">
+                    Drag in the "New Card" above, or any existing tiddler, to use it as a list.
+                  </div>
+                </$droppable>
+              </div>
+            """>
+          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+        </$list>
+      </div>
+    </$set>
+  </$scrollable>
 </$set>
