@@ -146,7 +146,7 @@ tags: $:/tags/Stylesheet
 .blc-BoardControlLineOpInput {
 }
 .blc-BoardControlFilterTextArea {
-  width: calc(100% - 1.25rem);
+  width: calc(100% - 4rem);
 }
 
 .blc-CardContainer-flexItem {

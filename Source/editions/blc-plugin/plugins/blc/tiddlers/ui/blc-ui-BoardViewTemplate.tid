@@ -8,7 +8,9 @@ title: blc/ui/BoardViewTemplate
       </$draggable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-      <$droppable actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>>/> <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> />""" >
+      <$droppable actions="""
+          <$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />
+          <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> /> """ >
         <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
       </$droppable>
       <$tiddler tiddler=<<tiddlerHeldCard>> >
@@ -48,8 +50,16 @@ title: blc/ui/BoardViewTemplate
           <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <$edit-text tiddler=<<tiddlerStringFilter>> type="search" tag="input" class="blc-BoardControlFilterTextArea" />
-          <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerStringFilter>> />""" class="tc-btn-invisible">
+          <$edit-text tiddler=<<tiddlerUserFilter_Stage>> tag="input" type="text" default="" placeholder="Hide cards that match." class="blc-BoardControlFilterTextArea" />
+          <$button actions="""
+              <$action-deletetiddler $tiddler=<<tiddlerUserFilter_Live>> \>
+              <$action-createtiddler $basetitle=<<tiddlerUserFilter_Live>> text={{{ [<tiddlerUserFilter_Stage>get[text]] }}} />
+              """>
+            Set
+          </$button>
+          <$button class="tc-btn-invisible" actions="""
+              <$action-deletetiddler $tiddler=<<tiddlerUserFilter_Stage>> />
+              <$action-deletetiddler $tiddler=<<tiddlerUserFilter_Live>> /> """ >
             {{$:/core/images/close-button}}
           </$button>
         </div>

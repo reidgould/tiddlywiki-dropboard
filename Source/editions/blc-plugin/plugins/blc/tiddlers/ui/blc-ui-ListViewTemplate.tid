@@ -49,12 +49,14 @@ title: blc/ui/ListViewTemplate
           <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
             <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
               <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-                <$list filter="[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>]" history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
-                  emptyMessage="""
-                    <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
-                      Drag in the "New Card" above, or any existing tiddler, to include it in a list.
-                    </div>
-                  """ />
+                <$set name="UserFilter" filter={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
+                  <$list filter="[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>] +[remove<UserFilter>]" history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                    emptyMessage="""
+                      <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                        Drag in the "New Card" above, or any existing tiddler, to include it in a list.
+                      </div>
+                    """ />
+                </$set>
               </$set>
             </$set>
             <$tiddler tiddler="">

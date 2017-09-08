@@ -48,8 +48,12 @@ $(currentTiddler)$
 $(EmptyString)$
 \end
 
-\define tiddlerStringFilter()
-$(currentBoardTiddler)$-StringFilter
+\define tiddlerUserFilter_Stage()
+$(currentBoardTiddler)$-UserFilter_Stage
+\end
+
+\define tiddlerUserFilter_Live()
+$(currentBoardTiddler)$-UserFilter_Live
 \end
 
 \define tiddlerHeldCard()
