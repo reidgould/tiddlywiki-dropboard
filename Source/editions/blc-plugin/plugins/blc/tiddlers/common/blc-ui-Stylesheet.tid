@@ -298,8 +298,41 @@ tags: $:/tags/Stylesheet
   padding: 0.25rem;
   position: relative;
 }
+.blc-listDropArea-Collapsed.blc-listDropArea-Collapsed{
+  border-width: 1px 0px;
+  margin: 0;
+  padding: 0.25rem 0;
+  width: 0;
+}
 .blc-listDropButton {
   /*min-width: 1.5rem;*/
+}
+.blc-listCollapseButton.blc-listCollapseButton {
+  float: right;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  fill: <<color tiddler-controls-foreground>>;
+  transform-origin: center;
+  transform: translateX(-0.25rem) rotateZ(-90deg);
+}
+.blc-listCollapseCheckbox {
+  float: right;
+  padding-right: 0.5rem;
+}
+.blc-listCollapseCheckbox input[type="checkbox"] {
+  vertical-align: bottom;
+}
+.blc-TitleSpan-Collapsed {
+  position: absolute;
+  /* display: inline-block; Not needed while position is absolute. */
+  transform-origin: left top;
+  transform: translateX(1.5rem) rotateZ(90deg) translateX(3.5rem);
+  /* max-width: 9999vh; Apply this as element style using board height. */
+  /* height: 1.5rem; Not needed while white-space is nowrap. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 
@@ -336,7 +369,7 @@ tags: $:/tags/Stylesheet
   cursor: pointer;
 }
 .buttonLikeLink:hover{
-  text-decoration:underline;
+  text-decoration: underline;
 }
 .buttonTWIcon {
   background: none;

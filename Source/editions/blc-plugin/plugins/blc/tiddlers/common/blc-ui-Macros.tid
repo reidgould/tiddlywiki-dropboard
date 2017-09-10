@@ -74,23 +74,26 @@ fill:$(foregroundColor)$;
 \define styleBoardHeightOption()
 height: $(boardHeight)$;
 \end
+\define styleBoardHeight_TitleCollapsed()
+max-width: calc($(boardHeight)$ - 4rem);
+\end
 
-\define styleListWidthDefault()
+\define styleListWidthMinDefault()
 15.5rem
 \end
-\define styleListWidthOption()
-min-width: $(listWidth)$;
+\define styleListWidthMinOption()
+min-width: $(listWidthMin)$;
 \end
 
-\define styleListMaxDefault()
+\define styleListWidthMaxDefault()
 9999rem
 \end
-\define styleListMaxOption()
+\define styleListWidthMaxOption()
 max-width: $(listWidthMax)$;
 \end
 
-\define styleListWidthCombo()
-$(styleListWidthOption)$ $(styleListMaxOption)$
+\define styleBlcList()
+$(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 
 

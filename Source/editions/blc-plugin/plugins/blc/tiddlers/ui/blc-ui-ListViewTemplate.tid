@@ -1,37 +1,77 @@
 title: blc/ui/ListViewTemplate
 
+\define actionFDSA()
+  <$set name="actionDOIT" filter="{{{ [<currentListTiddler>get[mychk]field:title[blc/values/yes]] }}}"
+      value="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />"""
+      emptyValue="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
+    <<actionDOIT>>
+  <$/set>
+\end
+
 <$set name="currentListTiddler" value=<<currentTiddler>> >
-  <$set name="listWidth" filter="[<currentBoardTiddler>get[listwidth]]" emptyValue=<<styleListWidthDefault>> >
-    <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]]" value=<<listWidth>> emptyValue=<<styleListMaxDefault>> >
-      <div class="blc-List-layOuter blc-List-layInner" style=<<styleListWidthCombo>> >
-        <div class="blc-ListTitle ">
-          <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea">
+  <$set name="collapse_list" value={{{[<currentListTiddler>get[collapse_in]]}}} >
+  <$set name="is_collapsed" filter="[enlist<collapse_list>field:title<currentBoardTiddler>]"
+      value="blc/values/yes"
+      emptyValue="blc/values/no" >
+  <$set name="listWidthMin" filter="[<currentBoardTiddler>get[listwidth]]"
+      emptyValue=<<styleListWidthMinDefault>> >
+  <$set name="listWidthMin" filter="[<is_collapsed>field:title[blc/values/yes]]"
+      value="3rem"
+      emptyValue=<<listWidthMin>> >
+  <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[blc/values/yes]]"
+      value=<<listWidthMin>>
+      emptyValue=<<styleListWidthMaxDefault>> >
+  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]]"
+      value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
+      emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
+  <$set name="classListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
+      value="""blc-TitleSpan-Collapsed"""
+      emptyValue="" >
+  <$set name="styleListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
+      value=<<styleBoardHeight_TitleCollapsed>>
+      emptyValue="" >
+    <div class="blc-List-layOuter blc-List-layInner" style=<<styleBlcList>> >
+      <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
+        <span class=<<classListDropArea>> >
+          <$droppable actions=<<blcListDroppableActions>> >
+            <$button class="buttonTWIcon blc-listDropButton" >
+              {{$:/core/images/chevron-left}}
+            </$button>
+            <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+            </div>
+          </$droppable>
+        </span>
+        <span class=<<classListDropArea>> style="float:right;">
+          <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
             <$droppable actions=<<blcListDroppableActions>> >
               <$button class="buttonTWIcon blc-listDropButton" >
-                {{$:/core/images/chevron-left}}
+                {{$:/core/images/chevron-right}}
               </$button>
               <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
               </div>
             </$droppable>
-          </span>
-          <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea" style="float:right;">
-            <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
-              <$droppable actions=<<blcListDroppableActions>> >
-                <$button class="buttonTWIcon blc-listDropButton" >
-                  {{$:/core/images/chevron-right}}
-                </$button>
-                <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
-                </div>
-              </$droppable>
+          </$set>
+        </span>
+        <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
+          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
+              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
+            {{$:/core/images/fold-button}}
+          </$button>
+        </$list>
+        <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
+          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
+              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
+            {{$:/core/images/unfold-button}}
+          </$button>
+        </$list>
+        <div class="blc-CardTagPreview">
+          <$list filter="[<currentTiddler>has:field[color]]">
+            <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+              <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
             </$set>
-          </span>
-          <div class="blc-CardTagPreview">
-            <$list filter="[<currentTiddler>has:field[color]]">
-              <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-                <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
-              </$set>
-            </$list>
-          </div>
+          </$list>
+        </div>
+        <span class=<<classListTitle>> style=<<styleListTitle>> >
           <$set name="foregroundColor" value={{!!color}}>
             <span style=<<styleIconColor>> >
               <$button class="buttonTWIcon blc-listDropButton" >
@@ -44,9 +84,11 @@ title: blc/ui/ListViewTemplate
               <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
             </$set>
           </$link>
-        </div>
-        <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
-          <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+        </span>
+      </$draggable>
+      <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
+        <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+          <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
             <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
               <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                 <$set name="UserFilter" filter={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
@@ -59,17 +101,24 @@ title: blc/ui/ListViewTemplate
                 </$set>
               </$set>
             </$set>
-            <$tiddler tiddler="">
-              <$droppable actions=<<blcCardDroppableActions>> >
-                <div class="tc-droppable-placeholder tc-droppable-placeholder-bottom">
-                </div>
-                <div class="tc-droppable-placeholder-bottom">
-                </div>
-              </$droppable>
-            </$tiddler>
-          </$navigator>
-        </$scrollable>
-      </div>
-    </$set>
+          </$list>
+          <$tiddler tiddler="">
+            <$droppable actions=<<blcCardDroppableActions>> >
+              <div class="tc-droppable-placeholder tc-droppable-placeholder-bottom">
+              </div>
+              <div class="tc-droppable-placeholder-bottom">
+              </div>
+            </$droppable>
+          </$tiddler>
+        </$navigator>
+      </$scrollable>
+    </div>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
   </$set>
 </$set>
