@@ -7,7 +7,28 @@ In BLC boards, lists, and cards are defined by tags on normal tiddlers. BLC give
 
 Try dragging a few cards on this board:
 
-<$list filter="[[Sample Board]]" template="$:/core/ui/ViewTemplate" />
+<$tiddler tiddler="Sample Board" >
+<$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
+<$link>
+<$set name="foregroundColor" value={{!!color}}>
+<span class="tc-tiddler-title-icon" style=<<title-styles>>>
+<$transclude tiddler={{!!icon}}/>
+</span>
+</$set>
+<$list filter="[all[current]removeprefix[$:/]]">
+<h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>
+<span class="tc-system-title-prefix">$:/</span><$text text=<<currentTiddler>>/>
+</h2>
+</$list>
+<$list filter="[all[current]!prefix[$:/]]">
+<h2 class="tc-title">
+<$view field="title"/>
+</h2>
+</$list>
+</$link>
+</$set>
+<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />
+</$tiddler>
 
 As you drag cards, the tags are updated.
 
