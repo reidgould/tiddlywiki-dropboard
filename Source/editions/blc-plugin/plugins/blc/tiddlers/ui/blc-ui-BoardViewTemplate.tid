@@ -69,7 +69,15 @@ title: blc/ui/BoardViewTemplate
           <p class="blc-BoardControlLineOpLabel-p">Display "Text" Field:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <$checkbox field="displaytext" checked="yes" unchecked="no" default="no"></$checkbox>
+          <$checkbox field="displaytext" checked="yes" unchecked="no" default="yes"></$checkbox>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Display Image Tiddlers:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$checkbox field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
         </div>
       </div>
       <div class="blc-BoardControlLineOp">

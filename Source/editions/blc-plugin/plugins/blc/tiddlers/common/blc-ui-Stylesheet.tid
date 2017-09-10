@@ -177,13 +177,8 @@ tags: $:/tags/Stylesheet
   margin: 0 0 0.5rem 0;
   line-height: 1.2rem;
 }
-.blc-CardText > div {
+.blc-CardText > div, .blc-CardText > p, .blc-CardText > img {
   margin-top: 0.5rem;
-}
-.blc-CardText :first-child {
-  margin-top: 0.5rem;
-}
-.blc-CardText :last-child {
   margin-bottom: 0.5rem;
 }
 .blc-CardFloats {

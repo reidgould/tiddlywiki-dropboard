@@ -10,11 +10,25 @@ tags: $:/tags/Macro
 \end
 
 \define iconHasText_pre()
-  <$set name="iconHasText_pre-result" filter="[<currentBoardTiddler>field:displayText[yes]]"
-      value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
-      emptyValue=<<iconHasText>> >
+  <$set name="iconHasText_pre-result" filter="[<currentBoardTiddler>field:displayText[no]]"
+      value=<<iconHasText>>
+      emptyValue="""<span id="preventUnwantedContent" style="display:none;"></span>""" >
     <<iconHasText_pre-result>>
   </$set>
+\end
+
+\define displayText()
+  <$set name="display" filter="[<currentBoardTiddler>field:displaytext[no]]"
+      value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
+      emptyValue="""<$transclude field="text" mode="block" class="" />""" >
+    <<display>>
+\end
+
+\define displayImage()
+  <$set name="display" filter="[<currentBoardTiddler>field:displayimages[no]]"
+      value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
+      emptyValue="""<$transclude field="text" mode="block" class="" />""" >
+    <<display>>
 \end
 
 \define macroCardViewTemplate(tagBackground)
@@ -56,7 +70,7 @@ tags: $:/tags/Macro
           </$set>
         </$list>
       </div>
-      <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]]"
+      <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
           value=<<iconHasText_pre>>
           emptyValue="" >
         <<displayHasTextIcon>>
@@ -65,10 +79,10 @@ tags: $:/tags/Macro
         <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
           <$transclude field=<<titleDisplay>> mode="block" class="" />
         </$set>
-        <$set name="displayText" filter="[<currentBoardTiddler>field:displaytext[yes]]"
-            value="""<$transclude field="text" mode="block" class="" />"""
-            emptyValue="" >
-          <<displayText>>
+        <$set name="displayBody" filter="[<currentCardTiddler>is[image]]"
+            value=<<displayImage>>
+            emptyValue=<<displayText>> >
+          <<displayBody>>
         </$set>
       </div>
     </$draggable>
