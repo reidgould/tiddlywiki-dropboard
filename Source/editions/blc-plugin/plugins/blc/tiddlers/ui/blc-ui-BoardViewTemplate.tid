@@ -1,6 +1,27 @@
 title: blc/ui/BoardViewTemplate
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
+  <div class="blc-BoardTitle">
+    <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
+      <$link>
+        <$set name="foregroundColor" value={{!!color}} >
+          <div class="blc-CardIconFloat" style=<<styleIconColor>> >
+            <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
+          </div>
+        </$set>
+        <$list filter="[all[current]removeprefix[$:/]]">
+          <h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>
+            <span class="tc-system-title-prefix">$:/</span><$text text=<<currentTiddler>>/>
+          </h2>
+        </$list>
+        <$list filter="[all[current]!prefix[$:/]]">
+          <h2 class="tc-title">
+            <$view field="title"/>
+          </h2>
+        </$list>
+      </$link>
+    </$set>
+  </div>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
       <$draggable tiddler="blc/action/newTiddler" class="blc-Card tc-tiddler-frame">

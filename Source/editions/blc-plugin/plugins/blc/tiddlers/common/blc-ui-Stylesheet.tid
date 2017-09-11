@@ -5,6 +5,12 @@ tags: $:/tags/Stylesheet
 <!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
+.blc-BoardTitle{
+  display: none;
+}
+.tc-single-tiddler-window .blc-BoardTitle, .tc-tab-content .blc-BoardTitle {
+  display: block;
+}
 .tc-subtitle.blc-subtitle {
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
