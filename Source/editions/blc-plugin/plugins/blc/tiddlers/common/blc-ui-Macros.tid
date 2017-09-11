@@ -59,6 +59,9 @@ $(currentBoardTiddler)$-UserFilter_Live
 \define tiddlerHeldCard()
 $(currentBoardTiddler)$-HeldCard
 \end
+\define tiddlerHeldCard-ToolTip()
+$(currentTitle)$ -- $(current_shorttext)$
+\end
 
 \define styleTagColor()
 background-color: $(tagColor)$;

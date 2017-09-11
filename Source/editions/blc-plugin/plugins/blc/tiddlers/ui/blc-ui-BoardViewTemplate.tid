@@ -15,22 +15,26 @@ title: blc/ui/BoardViewTemplate
       </$droppable>
       <$tiddler tiddler=<<tiddlerHeldCard>> >
         <$reveal state={{!!title}} type="nomatch" text="">
-          <$draggable tiddler={{!!text}} class="blc-Card tc-tiddler-frame">
-            <div title={{!!text}} >
-              <$button actions="""<$action-deletetiddler $tiddler=<<currentTiddler>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-                {{$:/core/images/close-button}}
-              </$button>
-              <p>{{$:/core/images/file}}<br>Card:<br>
-                <span class="blc-BoardControl-HeldCardTitle truncate">
-                  <$tiddler tiddler={{!!text}}>
-                    <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                      <$transclude field=<<titleDisplay>> mode="inline" class="" />
-                    </$set>
-                  </$tiddler>
-                </span>
-              </p>
-            </div>
-          </$draggable>
+          <$tiddler tiddler={{!!text}}>
+            <$draggable tiddler=<<currentTiddler>> class="blc-Card tc-tiddler-frame">
+              <$vars currentTitle={{!!title}} current_shorttext={{!!shorttext}} >
+              <$set name="tiddlerHeldCard-ToolTip-Result" value=<<tiddlerHeldCard-ToolTip>> >
+                <div title=<<tiddlerHeldCard-ToolTip-Result>> >
+                  <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                    {{$:/core/images/close-button}}
+                  </$button>
+                  <p>{{$:/core/images/file}}<br>Card:<br>
+                    <span class="blc-BoardControl-HeldCardTitle truncate">
+                      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                        <$transclude field=<<titleDisplay>> mode="inline" class="" />
+                      </$set>
+                    </span>
+                  </p>
+                </div>
+              </$set>
+              </$vars>
+            </$draggable>
+          </$tiddler>
         </$reveal>
       </$tiddler>
     </div>
