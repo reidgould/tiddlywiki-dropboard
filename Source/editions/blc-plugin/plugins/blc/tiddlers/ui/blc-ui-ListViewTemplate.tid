@@ -95,7 +95,7 @@ title: blc/ui/ListViewTemplate
                   <$list filter="[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>] +[remove<UserFilter>]" history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
                     emptyMessage="""
                       <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
-                        Drag in the "New Card" above, or any existing tiddler, to include it in a list.
+                        Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
                       </div>
                     """ />
                 </$set>

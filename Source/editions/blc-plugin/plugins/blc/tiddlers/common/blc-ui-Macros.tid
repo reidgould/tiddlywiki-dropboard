@@ -56,10 +56,10 @@ $(currentBoardTiddler)$-UserFilter_Stage
 $(currentBoardTiddler)$-UserFilter_Live
 \end
 
-\define tiddlerHeldCard()
-$(currentBoardTiddler)$-HeldCard
+\define tiddlerHeld()
+$(currentBoardTiddler)$-Held
 \end
-\define tiddlerHeldCard-ToolTip()
+\define tiddlerHeld-ToolTip()
 $(currentTitle)$ -- $(current_shorttext)$
 \end
 
@@ -102,7 +102,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 
 
 
-\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeldCard). -->
+\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeld). -->
 
 \define ResetListToTagging(listTid)
   <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
@@ -115,11 +115,11 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
   </$set>
 \end
 
-\define action-deleteHeldCardIfMatches(matchTid)
-  <$set name="tiddlerHeldCardVal" value={{{[<tiddlerHeldCard>get[text]] }}} >
-  <$set name="action-dhc" filter="[[$matchTid$]] -[<tiddlerHeldCardVal>]"
+\define action-deleteHeldIfMatches(matchTid)
+  <$set name="tiddlerHeldVal" value={{{[<tiddlerHeld>get[text]] }}} >
+  <$set name="action-dhc" filter="[[$matchTid$]] -[<tiddlerHeldVal>]"
       value=""
-      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" >
+      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeld>> />""" >
     <<action-dhc>>
   </$set>
   </$set>
@@ -172,7 +172,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. -->
 
 \define blcListDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
+  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newTiddler]]"
       value="""<$macrocall $name="actionExistingListTiddler" />"""
       emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
     <<action-ExtOrNew>>
@@ -182,7 +182,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
   <!-- CALLED FROM blcListDroppableActions -->
   <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$macrocall $name="action-deleteHeldCardIfMatches" matchTid=<<actionTiddler>> />
+        <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
         """
       emptyValue=<<actionDragSameTiddler>> >
@@ -191,7 +191,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 
 \define blcCardDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
+  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newTiddler]]"
       value="""<$macrocall $name="actionExistingCardTiddler" />"""
       emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
     <<action-ExtOrNew>>
@@ -209,7 +209,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
   <!-- CALLED FROM blcCardDroppableActions -->
   <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
-        <$macrocall $name="action-deleteHeldCardIfMatches" matchTid=<<actionTiddler>> />
+        <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
         <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
         <<action-conditionalRemoveActionTidFromList>>

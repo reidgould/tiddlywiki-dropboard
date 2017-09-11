@@ -2,29 +2,29 @@ title: blc/ui/BoardViewTemplate
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
-    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-      <$draggable tiddler="blc/action/newCard" class="blc-Card tc-tiddler-frame">
-        <p>{{$:/core/images/new-button}}<br>New Card</p>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
+      <$draggable tiddler="blc/action/newTiddler" class="blc-Card tc-tiddler-frame">
+        <p>{{$:/core/images/new-button}}<br>New Tiddler</p>
       </$draggable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""
-          <$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />
-          <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> /> """ >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
+          <$action-deletetiddler $tiddler=<<tiddlerHeld>> />
+          <$action-createtiddler $basetitle=<<tiddlerHeld>> text=<<actionTiddler>> /> """ >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Tiddler</p></div>
       </$droppable>
-      <$tiddler tiddler=<<tiddlerHeldCard>> >
+      <$tiddler tiddler=<<tiddlerHeld>> >
         <$reveal state={{!!title}} type="nomatch" text="">
           <$tiddler tiddler={{!!text}}>
             <$draggable tiddler=<<currentTiddler>> class="blc-Card tc-tiddler-frame">
               <$vars currentTitle={{!!title}} current_shorttext={{!!shorttext}} >
-              <$set name="tiddlerHeldCard-ToolTip-Result" value=<<tiddlerHeldCard-ToolTip>> >
-                <div title=<<tiddlerHeldCard-ToolTip-Result>> >
-                  <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+              <$set name="tiddlerHeld-ToolTip-Result" value=<<tiddlerHeld-ToolTip>> >
+                <div title=<<tiddlerHeld-ToolTip-Result>> >
+                  <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerHeld>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
                     {{$:/core/images/close-button}}
                   </$button>
-                  <p>{{$:/core/images/file}}<br>Card:<br>
-                    <span class="blc-BoardControl-HeldCardTitle truncate">
+                  <p>{{$:/core/images/file}}<br>Tiddler:<br>
+                    <span class="blc-BoardControl-HeldTitle truncate">
                       <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
                         <$transclude field=<<titleDisplay>> mode="inline" class="" />
                       </$set>
@@ -116,7 +116,7 @@ title: blc/ui/BoardViewTemplate
               <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
                 <$droppable actions=<<blcListDroppableActions>> >
                   <div style="width:100%; height:100%;">
-                    Drag in the "New Card" above, or any existing tiddler, to use it as a list.
+                    Drag in the "New Tiddler" above, or any existing tiddler, to use it as a list.
                   </div>
                 </$droppable>
               </div>
