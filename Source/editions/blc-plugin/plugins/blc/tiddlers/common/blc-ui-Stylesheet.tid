@@ -298,6 +298,7 @@ tags: $:/tags/Stylesheet
   margin: 0;
   padding: 0.25rem 0;
   width: 0;
+  overflow: hidden;
 }
 .blc-listDropButton {
   /*min-width: 1.5rem;*/
