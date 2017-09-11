@@ -97,7 +97,7 @@ tags: $:/tags/Stylesheet
   flex: 0 0 auto;
   position: relative;
   text-align: center;
-  width: 6em;
+  width: 6rem;
   overflow: hidden;
 }
 .blc-BoardControlCardWidgetDroppable {
@@ -229,7 +229,7 @@ tags: $:/tags/Stylesheet
   top: 0;
   left: -1px;
   width: 4px;
-  height: 1.75em;
+  height: 1.75rem;
   padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
