@@ -32,7 +32,7 @@ title: blc/ui/ListViewTemplate
       emptyValue="" >
     <div class="blc-List-layOuter blc-List-layInner" style=<<styleBlcList>> >
       <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
-        <span class=<<classListDropArea>> >
+        <span class=<<classListDropArea>> title="Drop tiddler here to place in list position.">
           <$droppable actions=<<blcListDroppableActions>> >
             <$button class="buttonTWIcon blc-listDropButton" >
               {{$:/core/images/chevron-left}}
@@ -41,7 +41,7 @@ title: blc/ui/ListViewTemplate
             </div>
           </$droppable>
         </span>
-        <span class=<<classListDropArea>> style="float:right;">
+        <span class=<<classListDropArea>> title="Drop tiddler here to place in list position." style="float:right;">
           <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
             <$droppable actions=<<blcListDroppableActions>> >
               <$button class="buttonTWIcon blc-listDropButton" >
