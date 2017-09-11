@@ -197,6 +197,14 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \define actionExistingCardTiddler()
   <!-- CALLED FROM blcCardDroppableActions -->
   <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
+      value=<<actionCheckDragIntoSelf>>
+      emptyValue=<<actionDragSameTiddler>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+\define actionCheckDragIntoSelf()
+  <!-- CALLED FROM blcCardDroppableActions -->
+  <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
         <$macrocall $name="action-deleteHeldCardIfMatches" matchTid=<<actionTiddler>> />
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
@@ -204,7 +212,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
         <<action-conditionalRemoveActionTidFromList>>
         """
       emptyValue=<<actionDragSameTiddler>> >
-    <<action-DiffOrSame>>
+    <<action-DiffOrSelf>>
   </$set>
 \end
 \define action-conditionalRemoveActionTidFromList()
