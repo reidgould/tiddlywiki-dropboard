@@ -371,7 +371,7 @@ tags: $:/tags/Stylesheet
   background: none;
   border: none;
   padding: 0;
-  cursor: default;
+  cursor: inherit;
 }
 .buttonTWIcon-help {
   cursor: help;

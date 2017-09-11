@@ -36,13 +36,11 @@ tags: $:/tags/Macro
     <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
     </div>
     <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
-      <div class="blc-CardIconFloat">
-        <$set name="foregroundColor" value={{!!color}} >
-          <span class="tc-tiddler-title-icon" style=<<styleIconColor>>>
-            <$button class=<<tv-config-toolbar-class>>><$transclude tiddler={{!!icon}} /></$button>
-          </span>
-        </$set>
+      <$set name="foregroundColor" value={{!!color}} >
+      <div class="blc-CardIconFloat" style=<<styleIconColor>> >
+        <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
       </div>
+      </$set>
       <div class="blc-CardFloats blc-Card-visDownsize">
         <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
           {{$:/core/images/tag-button}}
