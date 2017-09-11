@@ -70,14 +70,14 @@ title: blc/ui/BoardViewTemplate
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
-      <div class="blc-BoardControlLineOp">
+      <div class="blc-BoardControlLineOp" title="Use only + or - runs.">
           <div class="blc-BoardControlLineOpLabel">
-          <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
+          <p class="blc-BoardControlLineOpLabel-p">Filter (append to each):</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <$edit-text tiddler=<<tiddlerUserFilter_Stage>> tag="input" type="text" default="" placeholder="Hide cards that match." class="blc-BoardControlFilterTextArea" />
+          <$edit-text tiddler=<<tiddlerUserFilter_Stage>> tag="input" type="text" default="" placeholder="Use only + or - runs." class="blc-BoardControlFilterTextArea" />
           <$button actions="""
-              <$action-deletetiddler $tiddler=<<tiddlerUserFilter_Live>> \>
+              <$action-deletetiddler $tiddler=<<tiddlerUserFilter_Live>> />
               <$action-createtiddler $basetitle=<<tiddlerUserFilter_Live>> text={{{ [<tiddlerUserFilter_Stage>get[text]] }}} />
               """>
             Set

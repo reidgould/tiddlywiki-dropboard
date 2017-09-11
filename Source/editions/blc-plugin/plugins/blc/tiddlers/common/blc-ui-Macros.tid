@@ -56,6 +56,10 @@ $(currentBoardTiddler)$-UserFilter_Stage
 $(currentBoardTiddler)$-UserFilter_Live
 \end
 
+\define filter-currentList()
+[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>] $(filter-userText)$
+\end
+
 \define tiddlerHeld()
 $(currentBoardTiddler)$-Held
 \end
