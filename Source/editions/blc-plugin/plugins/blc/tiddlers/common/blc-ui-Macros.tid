@@ -11,8 +11,12 @@ $strEmpty$
   <$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
 \end
 
-\define actionDragSameTiddler()
-  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/DraggedOntoSame" />
+\define action-notify-NoActionDraggedOntoSame()
+  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionDraggedOntoSame" />
+\end
+
+\define action-notify-NoActionSearchList()
+  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionSearchList" />
 \end
 
 \define filterBoardL2(board)
@@ -193,19 +197,28 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 
 \define blcListDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newTiddler]]"
-      value="""<$macrocall $name="actionExistingListTiddler" />"""
+      value="""<$macrocall $name="actionCheckDragOfSearchList_List" />"""
       emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
     <<action-ExtOrNew>>
   </$set>
 \end
-\define actionExistingListTiddler()
+\define actionCheckDragOfSearchList_List()
+  <!-- If actionTiddler is tiddlerSearchListFilter_List, notify with no action. -->
   <!-- CALLED FROM blcListDroppableActions -->
+  <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_List>]"
+      value=<<actionExistingListTiddler>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
+  </$set>
+\end
+\define actionExistingListTiddler()
+  <!-- CALLED FROM actionCheckDragOfSearchList_List -->
   <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
         <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
         <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
         """
-      emptyValue=<<actionDragSameTiddler>> >
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSame>>
   </$set>
 \end
@@ -220,13 +233,31 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \define actionExistingCardTiddler()
   <!-- CALLED FROM blcCardDroppableActions -->
   <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
-      value=<<actionCheckDragIntoSelf>>
-      emptyValue=<<actionDragSameTiddler>> >
+      value=<<actionCheckDragIntoSearchList>>
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSame>>
   </$set>
 \end
+\define actionCheckDragIntoSearchList()
+  <!-- If currentListTiddler is tiddlerSearchListFilter_List, notify with no action. -->
+  <!-- CALLED FROM actionExistingCardTiddler -->
+  <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddlerSearchListFilter_List>]"
+      value=<<actionCheckDragOfSearchList_Card>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
+  </$set>
+\end
+\define actionCheckDragOfSearchList_Card()
+  <!-- If actionTiddler is tiddlerSearchListFilter_List, notify with no action. -->
+  <!-- CALLED FROM actionCheckDragIntoSearchList -->
+  <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_List>]"
+      value=<<actionCheckDragIntoSelf>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchListIsAction>>
+  </$set>
+\end
 \define actionCheckDragIntoSelf()
-  <!-- CALLED FROM blcCardDroppableActions -->
+  <!-- CALLED FROM actionCheckDragOfSearchList_Card -->
   <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
       value="""
         <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
@@ -234,7 +265,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
         <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
         <<action-conditionalRemoveActionTidFromList>>
         """
-      emptyValue=<<actionDragSameTiddler>> >
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSelf>>
   </$set>
 \end
