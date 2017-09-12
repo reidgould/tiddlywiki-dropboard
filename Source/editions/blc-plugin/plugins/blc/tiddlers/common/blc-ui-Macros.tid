@@ -48,6 +48,22 @@ $(currentTiddler)$
 $(EmptyString)$
 \end
 
+\define tiddlerSearchListFilter_Stage()
+$(currentBoardTiddler)$-SearchListFilter_Stage
+\end
+
+\define tiddlerSearchListFilter_Live()
+$(currentBoardTiddler)$-SearchListFilter_Live
+\end
+
+\define tiddlerSearchListFilter_List()
+$(currentBoardTiddler)$-SearchListFilter_List
+\end
+
+\define filter-searchList()
+$(filter-searchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]]
+\end
+
 \define tiddlerUserFilter_Stage()
 $(currentBoardTiddler)$-UserFilter_Stage
 \end
