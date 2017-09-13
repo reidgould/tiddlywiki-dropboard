@@ -192,81 +192,93 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. -->
 
 \define blcListDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newTiddler]]"
-      value="""<$macrocall $name="actionCheckDragOfSearchList_List" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
-    <<action-ExtOrNew>>
-  </$set>
+  <<action-checkDragOfSearchList_List>>
 \end
-\define actionCheckDragOfSearchList_List()
+\define action-checkDragOfSearchList_List()
+  <!-- SEQUENCE AFTER blcListDroppableActions -->
   <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
-  <!-- CALLED FROM blcListDroppableActions -->
   <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
-      value=<<actionExistingListTiddler>>
+      value=<<action-checkNew_List>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchList>>
   </$set>
 \end
-\define actionExistingListTiddler()
-  <!-- CALLED FROM actionCheckDragOfSearchList_List -->
-  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
-      value="""
-        <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
-        """
+\define action-checkNew_List()
+  <!-- SEQUENCE AFTER action-checkDragOfSearchList_List -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+      value=<<action-checkSame_List>>
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-checkSame_List()
+  <!-- SEQUENCE AFTER action-checkNew_List -->
+  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-dropList>>
       emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSame>>
   </$set>
+\end
+\define action-dropList()
+  <!-- SEQUENCE AFTER action-checkSame_List -->
+  <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
+  <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
 \end
 
 \define blcCardDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newTiddler]]"
-      value="""<$macrocall $name="actionExistingCardTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
-    <<action-ExtOrNew>>
-  </$set>
+  <<action-checkDragIntoSearchList>>
 \end
-\define actionExistingCardTiddler()
-  <!-- CALLED FROM blcCardDroppableActions -->
-  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
-      value=<<actionCheckDragIntoSearchList>>
-      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
-    <<action-DiffOrSame>>
-  </$set>
-\end
-\define actionCheckDragIntoSearchList()
+\define action-checkDragIntoSearchList()
+  <!-- SEQUENCE AFTER blcCardDroppableActions -->
   <!-- If currentListTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
-  <!-- CALLED FROM actionExistingCardTiddler -->
   <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddlerSearchListFilter_Live>]"
-      value=<<actionCheckDragOfSearchList_Card>>
+      value=<<action-checkDragOfSearchList_Card>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchList>>
   </$set>
 \end
-\define actionCheckDragOfSearchList_Card()
+\define action-checkDragOfSearchList_Card()
+  <!-- SEQUENCE AFTER action-checkDragIntoSearchList -->
   <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
-  <!-- CALLED FROM actionCheckDragIntoSearchList -->
   <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
-      value=<<actionCheckDragIntoSelf>>
+      value=<<action-checkNew_Card>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchListIsAction>>
   </$set>
 \end
-\define actionCheckDragIntoSelf()
-  <!-- CALLED FROM actionCheckDragOfSearchList_Card -->
-  <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
-      value="""
-        <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
-        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
-        <<action-conditionalRemoveActionTidFromList>>
-        """
+\define action-checkNew_Card()
+  <!-- SEQUENCE AFTER action-checkDragOfSearchList_Card -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+      value="""<$macrocall $name="action-checkDragIntoSelf" />"""
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-checkDragIntoSelf()
+  <!-- SEQUENCE AFTER action-checkNew_Card -->
+  <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-checkSame_Card>>
       emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSelf>>
   </$set>
 \end
+\define action-checkSame_Card()
+  <!-- SEQUENCE AFTER action-checkDragIntoSelf -->
+  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] -[<actionTiddler>]"
+      value=<<action-dropCard>>
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+\define action-dropCard()
+  <!-- SEQUENCE AFTER action-checkSame_Card -->
+  <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
+  <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
+  <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+  <<action-conditionalRemoveActionTidFromList>>
+\end
 \define action-conditionalRemoveActionTidFromList()
-  <!-- CALLED FROM actionExistingCardTiddler -->
+  <!-- SEQUENCE AFTER action-dropCard -->
   <$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
     <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
         value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
