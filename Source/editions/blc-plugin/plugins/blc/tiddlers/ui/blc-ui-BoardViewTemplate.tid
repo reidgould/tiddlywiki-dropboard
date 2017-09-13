@@ -113,21 +113,12 @@ title: blc/ui/BoardViewTemplate
           <$edit-text tiddler=<<tiddlerSearchListFilter_Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-BoardControlFilterTextArea" />
           <$button actions="""
               <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Live>> />
-              <$action-createtiddler $basetitle=<<tiddlerSearchListFilter_Live>> text={{{ [<tiddlerSearchListFilter_Stage>get[text]] }}} />
-              <!-- ToDo: If using this solution, the "_Live" tiddler above is redundant. -->
-              <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Stage>get[text]] }}}>
-              <$set name="tiddlerSearchListFilter_List-Content" filter=<<filter-searchList>> >
-                <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_List>> />
-                <$action-createtiddler $basetitle=<<tiddlerSearchListFilter_List>> list=<<tiddlerSearchListFilter_List-Content>> />
-              </$set>
-              </$set>
-              """>
+              <$action-createtiddler $basetitle=<<tiddlerSearchListFilter_Live>> text={{{ [<tiddlerSearchListFilter_Stage>get[text]] }}} /> """>
             Set
           </$button>
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Stage>> />
-              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Live>> />
-              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_List>> /> """ >
+              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Live>> /> """ >
             {{$:/core/images/close-button}}
           </$button>
         </div>
@@ -160,9 +151,7 @@ title: blc/ui/BoardViewTemplate
     <$set name="boardHeight" filter="[<currentBoardTiddler>get[boardheight]]" value="" emptyValue=<<styleBoardHeightDefault>> >
       <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
         <$list filter="[field:title<tiddlerSearchListFilter_Live>]" >
-          <$tiddler tiddler=<<tiddlerSearchListFilter_List>> >
-            <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
-          </$tiddler>
+          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
         </$list>
         <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
             emptyMessage="""

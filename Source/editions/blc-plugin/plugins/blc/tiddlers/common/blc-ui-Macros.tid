@@ -60,12 +60,8 @@ $(currentBoardTiddler)$-SearchListFilter_Stage
 $(currentBoardTiddler)$-SearchListFilter_Live
 \end
 
-\define tiddlerSearchListFilter_List()
-$(currentBoardTiddler)$-SearchListFilter_List
-\end
-
 \define filter-searchList()
-$(filter-searchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]]
+$(filter-searchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>]
 \end
 
 \define tiddlerUserFilter_Stage()
@@ -203,9 +199,9 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
   </$set>
 \end
 \define actionCheckDragOfSearchList_List()
-  <!-- If actionTiddler is tiddlerSearchListFilter_List, notify with no action. -->
+  <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
   <!-- CALLED FROM blcListDroppableActions -->
-  <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_List>]"
+  <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
       value=<<actionExistingListTiddler>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchList>>
@@ -239,18 +235,18 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
   </$set>
 \end
 \define actionCheckDragIntoSearchList()
-  <!-- If currentListTiddler is tiddlerSearchListFilter_List, notify with no action. -->
+  <!-- If currentListTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
   <!-- CALLED FROM actionExistingCardTiddler -->
-  <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddlerSearchListFilter_List>]"
+  <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddlerSearchListFilter_Live>]"
       value=<<actionCheckDragOfSearchList_Card>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchList>>
   </$set>
 \end
 \define actionCheckDragOfSearchList_Card()
-  <!-- If actionTiddler is tiddlerSearchListFilter_List, notify with no action. -->
+  <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
   <!-- CALLED FROM actionCheckDragIntoSearchList -->
-  <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_List>]"
+  <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
       value=<<actionCheckDragIntoSelf>>
       emptyValue=<<action-notify-NoActionSearchList>> >
     <<action-DiffOrSearchListIsAction>>

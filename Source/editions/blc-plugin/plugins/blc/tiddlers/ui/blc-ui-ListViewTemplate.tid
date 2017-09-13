@@ -89,18 +89,34 @@ title: blc/ui/ListViewTemplate
       <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
         <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
-            <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
-              <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-                <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
-                  <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
-                    emptyMessage="""
-                      <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
-                        Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
-                      </div>
-                    """ />
+            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
+                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                      emptyMessage="""
+                        <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                          Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
+                        </div>
+                      """ />
+                  </$set>
                 </$set>
               </$set>
-            </$set>
+            </$list>
+            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Live>get[text]] }}}>
+                    <$list filter=<<filter-searchList>> history="" template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                      emptyMessage="""
+                        <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                          No tiddlers found by Search List filter.
+                        </div>
+                      """ />
+                  </$set>
+                </$set>
+              </$set>
+            </$list>
           </$list>
           <$tiddler tiddler="">
             <$droppable actions=<<blcCardDroppableActions>> >
