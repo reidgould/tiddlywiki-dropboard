@@ -52,17 +52,19 @@ title: blc/ui/ListViewTemplate
             </$droppable>
           </$set>
         </span>
-        <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
-          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
-              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
-            {{$:/core/images/fold-button}}
-          </$button>
-        </$list>
-        <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
-          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
-              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
-            {{$:/core/images/unfold-button}}
-          </$button>
+        <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+          <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
+            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
+                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
+              {{$:/core/images/fold-button}}
+            </$button>
+          </$list>
+          <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
+            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
+                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
+              {{$:/core/images/unfold-button}}
+            </$button>
+          </$list>
         </$list>
         <div class="blc-CardTagPreview">
           <$list filter="[<currentTiddler>has:field[color]]">
