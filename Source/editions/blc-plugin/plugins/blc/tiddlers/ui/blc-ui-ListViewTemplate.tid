@@ -21,7 +21,7 @@ title: blc/ui/ListViewTemplate
   <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[blc/values/yes]]"
       value=<<listWidthMin>>
       emptyValue=<<styleListWidthMaxDefault>> >
-  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]] [<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
       value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
   <$set name="classListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"

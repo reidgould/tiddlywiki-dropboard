@@ -305,6 +305,8 @@ tags: $:/tags/Stylesheet
   padding: 0.25rem 0;
   width: 0;
   overflow: hidden;
+  /* ToDo: bad solution. Fix this properly. */
+  max-height: 1.4rem;
 }
 .blc-listDropButton {
   /*min-width: 1.5rem;*/
