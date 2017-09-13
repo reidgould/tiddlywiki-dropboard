@@ -80,9 +80,14 @@ title: blc/ui/ListViewTemplate
             </span>
           </$set>
           <$link>
-            <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-              <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
-            </$set>
+            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
+              </$set>
+            </$list>
+            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
+              <h3 class="tc-title blc-titleTweak">Search List</h3>
+            </$list>
           </$link>
         </span>
       </$draggable>
