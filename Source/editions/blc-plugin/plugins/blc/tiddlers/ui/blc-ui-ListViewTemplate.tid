@@ -27,6 +27,9 @@ title: blc/ui/ListViewTemplate
   <$set name="classListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="" >
+  <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
+      value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
+      emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
   <$set name="styleListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
       value=<<styleBoardHeight_TitleCollapsed>>
       emptyValue="" >
@@ -93,7 +96,7 @@ title: blc/ui/ListViewTemplate
           </$link>
         </span>
       </$draggable>
-      <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
+      <$scrollable class=<<class-scrollableArea>> fallthrough="no">
         <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
             <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
@@ -136,6 +139,7 @@ title: blc/ui/ListViewTemplate
         </$navigator>
       </$scrollable>
     </div>
+  </$set>
   </$set>
   </$set>
   </$set>

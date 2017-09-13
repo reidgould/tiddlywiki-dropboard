@@ -165,6 +165,13 @@ tags: $:/tags/Stylesheet
   padding: 1rem 0.25rem 1rem 0.25rem;
   line-height: 1.25;
 }
+.blc-CardContainerSearchList-vis.blc-CardContainerSearchList-vis {
+  /* EXTENDS tc-edit-tags */
+  background: none;
+  box-shadow: none;
+  padding: 1rem 0.25rem 1rem 0.25rem;
+  line-height: 1.25;
+}
 .blc-Card.blc-Card {
   /* EXTENDS tc-tiddler-frame */
   min-height: 1rem;
