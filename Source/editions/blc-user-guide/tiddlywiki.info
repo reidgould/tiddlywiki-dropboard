@@ -1,7 +1,8 @@
 {
   "description": "User guide for \"blc\", a TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
   "plugins": [
-    "tiddlywiki/markdown"
+    "tiddlywiki/markdown",
+    "tiddlywiki/github-fork-ribbon"
   ],
   "includeWikis": [
     {
