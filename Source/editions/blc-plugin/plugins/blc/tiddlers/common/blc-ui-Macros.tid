@@ -180,11 +180,13 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 
 \define actionInsertNewTwoWay(before, in)
-  <$set name="newTiddler" value=<<now "tid-YYYY0MM0DD0hh0mm0ss">> >
-    <$action-createtiddler $basetitle=<<newTiddler>> />
+  <$set name="newTiddlerNameRaw" filter={{{ [[$(shortid)$]] [[New Tiddler]] -[[]] +[first[]] }}} >
+  <$set name="newTiddlerName" filter="[<newTiddlerNameRaw>] -[[New Tiddler]]" value={{{ [<newTiddlerNameRaw>addprefix[tid/]] }}} emptyValue=<<newTiddlerNameRaw>> >
+    <$action-createtiddler $basetitle=<<newTiddlerName>> />
     <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
-    <$macrocall $name="actionAddTwoWay" addTid=<<newTiddler>> targetTid="""$in$""" beforeTid="""$before$""" />
-    <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddler>> />
+    <$macrocall $name="actionAddTwoWay" addTid=<<newTiddlerName>> targetTid="""$in$""" beforeTid="""$before$""" />
+    <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddlerName>> />
+  </$set>
   </$set>
 \end
 
