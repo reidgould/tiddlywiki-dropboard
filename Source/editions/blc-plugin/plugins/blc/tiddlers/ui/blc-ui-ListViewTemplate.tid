@@ -13,7 +13,7 @@ title: blc/ui/ListViewTemplate
   <$set name="is_collapsed" filter="[enlist<collapse_list>field:title<currentBoardTiddler>]"
       value="blc/values/yes"
       emptyValue="blc/values/no" >
-  <$set name="listWidthMin" filter="[<currentBoardTiddler>get[listwidth]]"
+  <$set name="listWidthMin" filter={{{[<currentBoardTiddler>get[listwidth]]}}}
       emptyValue=<<styleListWidthMinDefault>> >
   <$set name="listWidthMin" filter="[<is_collapsed>field:title[blc/values/yes]]"
       value="3rem"

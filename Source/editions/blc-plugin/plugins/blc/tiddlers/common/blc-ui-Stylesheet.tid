@@ -136,6 +136,7 @@ tags: $:/tags/Stylesheet
 }
 .blc-BoardControlLineOp {
   min-width: 20em;
+  max-width: 20em;
   height: 3rem;
   flex: 0 0 auto;
   margin: 0;
@@ -152,7 +153,7 @@ tags: $:/tags/Stylesheet
 .blc-BoardControlLineOpInput {
 }
 .blc-BoardControlFilterTextArea {
-  width: calc(100% - 4rem);
+  width: 100%;
 }
 
 .blc-CardContainer-flexItem {

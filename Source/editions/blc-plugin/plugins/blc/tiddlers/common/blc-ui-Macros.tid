@@ -83,6 +83,14 @@ $(currentBoardTiddler)$-Held
 $(currentTitle)$ -- $(current_shorttext)$
 \end
 
+\define tiddlerListWidth_Stage()
+$(currentBoardTiddler)$-ListWidth_Stage
+\end
+
+\define tiddlerBoardHeight_Stage()
+$(currentBoardTiddler)$-BoardHeight_Stage
+\end
+
 \define styleTagColor()
 background-color: $(tagColor)$;
 \end
