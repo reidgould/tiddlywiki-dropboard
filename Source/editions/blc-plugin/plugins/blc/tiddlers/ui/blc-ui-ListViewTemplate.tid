@@ -1,13 +1,5 @@
 title: blc/ui/ListViewTemplate
 
-\define actionFDSA()
-  <$set name="actionDOIT" filter="{{{ [<currentListTiddler>get[mychk]field:title[blc/values/yes]] }}}"
-      value="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />"""
-      emptyValue="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
-    <<actionDOIT>>
-  <$/set>
-\end
-
 <$set name="currentListTiddler" value=<<currentTiddler>> >
   <$set name="collapse_list" value={{{[<currentListTiddler>get[collapse_in]]}}} >
   <$set name="is_collapsed" filter="[enlist<collapse_list>field:title<currentBoardTiddler>]"
