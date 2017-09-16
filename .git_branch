@@ -2,3 +2,4 @@ semver-major
 semver-minor
 semver-patch
 feat-beta
+feat-searchFilter
