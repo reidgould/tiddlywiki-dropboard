@@ -2,7 +2,7 @@ author: Reid Gould <reidgould@gmail.com>
 core-version: >=5.0.0
 created: 20170829220457648
 dependents: 
-description: A TiddlyWiki plugin that is a bundle of shortid for use as a macro.
+description: shortid Plugin - a bundle of shortid for use as a macro.
 list: ReadMe license
 name: shortid Plugin
 plugin-type: plugin
