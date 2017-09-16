@@ -3,7 +3,7 @@
   "source": "https://github.com/reidgould/tiddlywiki-blc-plugin",
   "created": "20170829220457648",
   "dependents": "",
-  "description": "A TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
+  "description": "BLC Plugin - kanban like organization in the style of Trello using boards, lists, and cards.",
   "name": "BLC Plugin",
   "plugin-type": "plugin",
   "tags": "",
