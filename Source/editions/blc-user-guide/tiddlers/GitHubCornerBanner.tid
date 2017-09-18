@@ -1,7 +1,5 @@
-created: 20170913223132230
-modified: 20170913224848816
-tags: $:/tags/PageControls
 title: GitHubCornerBanner
+tags: $:/tags/PageControls
 
 <div class="github-fork-ribbon-wrapper right">
 <div class="github-fork-ribbon">

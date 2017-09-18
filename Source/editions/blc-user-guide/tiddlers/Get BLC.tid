@@ -1,6 +1,3 @@
-created: 20170831232047033
-modified: 20170831235009533
-tags:
 title: Get BLC
 
 * Get a brand new empty TiddlyWiki with BLC Plugin installed:<br>{{$:/plugins/reidgould/blc/download-empty-with-blc-button}}<br>
