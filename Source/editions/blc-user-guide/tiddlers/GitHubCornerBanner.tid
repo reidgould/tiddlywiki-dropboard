@@ -5,6 +5,6 @@ title: GitHubCornerBanner
 
 <div class="github-fork-ribbon-wrapper right">
 <div class="github-fork-ribbon">
-<a href="https://github.com/reidgould/tiddlywiki-blc-plugin" target="_blank" rel="noopener noreferrer">Fork me on GitHub</a>
+<a href={{$:/plugins/reidgould/blc!!source}} target="_blank" rel="noopener noreferrer">Fork me on GitHub</a>
 </div>
 </div>
