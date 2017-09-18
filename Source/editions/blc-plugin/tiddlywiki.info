@@ -22,7 +22,7 @@
       "--rendertiddler","$:/plugins/reidgould/blc/download-empty-with-blc","TiddlyWiki With BLC.html","text/plain"
     ],
     "meta": [
-      "--savetiddler","$:/plugins/reidgould/blc/ReadMe","ReadMe.md",
+      "--savetiddler","$:/plugins/reidgould/blc/readme","ReadMe.md",
       "--savetiddler","$:/plugins/reidgould/blc/license","license.txt"
     ]
   },
