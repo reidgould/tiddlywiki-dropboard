@@ -1,12 +1,12 @@
-title: blc/ui/buttons/new-board
-tags: $:/tags/PageControls
-caption: {{blc/images/blc}} New Board
+caption: {{$:/plugins/reidgould/blc/images/blc}} New Board
 description: New Board
+tags: $:/tags/PageControls
+title: $:/plugins/reidgould/blc/ui/buttons/new-board
 
 <$button tooltip="New Board" class=<<tv-config-toolbar-class>>>
-<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />""" />
+<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="$:/plugins/reidgould/blc/ui/BoardViewTemplate" mode="block" />""" />
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
-{{blc/images/blc}}
+{{$:/plugins/reidgould/blc/images/blc}}
 </$list>
 <$list filter="[<tv-config-toolbar-text>prefix[yes]]">
 <span class="tc-btn-text">New Board</span>

@@ -5,4 +5,4 @@ modified: 20170903204814114
 tags:
 title: Sample Board
 
-<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />
+<$transclude tiddler="$:/plugins/reidgould/blc/ui/BoardViewTemplate" mode="block" />

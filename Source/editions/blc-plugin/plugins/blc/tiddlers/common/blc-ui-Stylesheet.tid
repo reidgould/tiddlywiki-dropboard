@@ -1,5 +1,5 @@
-title: blc/common/Stylesheet
 tags: $:/tags/Stylesheet
+title: $:/plugins/reidgould/blc/common/Stylesheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
 <!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->

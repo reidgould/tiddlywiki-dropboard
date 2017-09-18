@@ -3,10 +3,10 @@ modified: 20170831234207659
 tags:
 title: BLC Plugin for TiddlyWiki
 
-<!-- <span class="tc-titlebar"><h2 class="tc-title">{{$:/plugins/blc!!name}} </h2></span> -->
-Created by {{$:/plugins/blc!!author}}
-&ensp;&mdash;&ensp;version {{$:/plugins/blc/version}}
-&ensp;&mdash;&ensp;[[License|$:/plugins/blc/license]]
+<!-- <span class="tc-titlebar"><h2 class="tc-title">{{$:/plugins/reidgould/blc!!name}} </h2></span> -->
+Created by {{$:/plugins/reidgould/blc!!author}}
+&ensp;&mdash;&ensp;version {{$:/plugins/reidgould/blc/version}}
+&ensp;&mdash;&ensp;[[License|$:/plugins/reidgould/blc/license]]
 
 {{$:/ContributionBanner}}
 
@@ -14,4 +14,4 @@ Here are three ways to get BLC:
 
 {{Get BLC}}
 
-View the [[ReadMe|$:/plugins/blc/ReadMe]]
+View the [[ReadMe|$:/plugins/reidgould/blc/ReadMe]]

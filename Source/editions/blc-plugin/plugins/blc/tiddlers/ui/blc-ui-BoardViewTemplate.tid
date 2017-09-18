@@ -1,4 +1,4 @@
-title: blc/ui/BoardViewTemplate
+title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
   <div class="blc-BoardTitle">
@@ -24,7 +24,7 @@ title: blc/ui/BoardViewTemplate
   </div>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
-      <$draggable tiddler="blc/action/newTiddler" class="blc-Card tc-tiddler-frame">
+      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card tc-tiddler-frame">
         <p>{{$:/core/images/new-button}}<br>New Tiddler</p>
       </$draggable>
     </div>
@@ -201,7 +201,7 @@ title: blc/ui/BoardViewTemplate
     <$set name="boardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<styleBoardHeightDefault>> >
       <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
         <$list filter="[field:title<tiddlerSearchListFilter_Live>]" >
-          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+          <$transclude tiddler="$:/plugins/reidgould/blc/ui/ListViewTemplate" mode="inline" />
         </$list>
         <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
             emptyMessage="""
@@ -213,7 +213,7 @@ title: blc/ui/BoardViewTemplate
                 </$droppable>
               </div>
             """>
-          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+          <$transclude tiddler="$:/plugins/reidgould/blc/ui/ListViewTemplate" mode="inline" />
         </$list>
       </div>
     </$set>

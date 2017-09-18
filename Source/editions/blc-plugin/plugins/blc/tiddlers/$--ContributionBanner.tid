@@ -1,8 +1,8 @@
-title: $:/ContributionBanner
-tags: $:/tags/EditTemplate
 list-after: $:/core/ui/EditTemplate/title
+tags: $:/tags/EditTemplate
+title: $:/ContributionBanner
 
 <div class="tc-improvement-banner">
 <span style="display:inline-block;width:2.625rem;"></span>
-{{$:/core/images/star-filled}} Have an idea to improve BLC Plugin? Contribute on <<linkOut GitHub {{$:/plugins/blc!!source}}>>.
+{{$:/core/images/star-filled}} Have an idea to improve BLC Plugin? Contribute on <<linkOut GitHub {{$:/plugins/reidgould/blc!!source}}>>.
 </div>

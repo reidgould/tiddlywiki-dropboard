@@ -1,5 +1,5 @@
-title: blc/common/Macros
 tags: $:/tags/Macro
+title: $:/plugins/reidgould/blc/common/Macros
 
 \define comment() <!-- Section: For general use. -->
 
@@ -12,11 +12,11 @@ $strEmpty$
 \end
 
 \define action-notify-NoActionDraggedOntoSame()
-  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionDraggedOntoSame" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/NoActionDraggedOntoSame" />
 \end
 
 \define action-notify-NoActionSearchList()
-  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionSearchList" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/NoActionSearchList" />
 \end
 
 \define filterBoardL2(board)
@@ -215,7 +215,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 \define action-checkNew_List()
   <!-- SEQUENCE AFTER action-checkDragOfSearchList_List -->
-  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
       value=<<action-checkSame_List>>
       emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
     <<action-ExistingOrNew>>
@@ -258,7 +258,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 \define action-checkNew_Card()
   <!-- SEQUENCE AFTER action-checkDragOfSearchList_Card -->
-  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
       value="""<$macrocall $name="action-checkDragIntoSelf" />"""
       emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
     <<action-ExistingOrNew>>

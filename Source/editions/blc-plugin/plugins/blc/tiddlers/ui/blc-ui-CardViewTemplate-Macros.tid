@@ -1,5 +1,5 @@
-title: blc/ui/CardViewTemplate-Macros
 tags: $:/tags/Macro
+title: $:/plugins/reidgould/blc/ui/CardViewTemplate-Macros
 
 \define iconHasText()
   <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
@@ -32,7 +32,7 @@ tags: $:/tags/Macro
 \end
 
 \define macroCardViewTemplate(tagBackground)
-  <$set name="popupTagsState" value=<<qualify """blc/state/$(currentTiddler)$-tagPopup""">> >
+  <$set name="popupTagsState" value=<<qualify """$:/plugins/reidgould/blc/state/$(currentTiddler)$-tagPopup""">> >
     <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
     </div>
     <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">

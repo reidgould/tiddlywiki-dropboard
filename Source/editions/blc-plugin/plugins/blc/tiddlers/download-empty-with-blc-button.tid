@@ -1,6 +1,6 @@
-title: blc/download-empty-with-blc-button
+title: $:/plugins/reidgould/blc/download-empty-with-blc-button
 
 <$button class="tc-btn-big-green">
-<$action-sendmessage $message="tm-download-file" $param="blc/download-empty-with-blc" filename="TiddlyWiki With BLC.html"/>
+<$action-sendmessage $message="tm-download-file" $param="$:/plugins/reidgould/blc/download-empty-with-blc" filename="TiddlyWiki With BLC.html"/>
 TiddlyWiki With BLC.html {{$:/core/images/save-button}}
 </$button>

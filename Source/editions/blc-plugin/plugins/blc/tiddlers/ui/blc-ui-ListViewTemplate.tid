@@ -1,28 +1,28 @@
-title: blc/ui/ListViewTemplate
+title: $:/plugins/reidgould/blc/ui/ListViewTemplate
 
 <$set name="currentListTiddler" value=<<currentTiddler>> >
   <$set name="collapse_list" value={{{[<currentListTiddler>get[collapse_in]]}}} >
   <$set name="is_collapsed" filter="[enlist<collapse_list>field:title<currentBoardTiddler>]"
-      value="blc/values/yes"
-      emptyValue="blc/values/no" >
+      value="$:/plugins/reidgould/blc/values/yes"
+      emptyValue="$:/plugins/reidgould/blc/values/no" >
   <$set name="listWidthMin" filter={{{[<currentBoardTiddler>get[listwidth]]}}}
       emptyValue=<<styleListWidthMinDefault>> >
-  <$set name="listWidthMin" filter="[<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="3rem"
       emptyValue=<<listWidthMin>> >
-  <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<listWidthMin>>
       emptyValue=<<styleListWidthMaxDefault>> >
-  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]] [<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
+  <$set name="classListDropArea" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]] [<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
       value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
-  <$set name="classListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="classListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="" >
   <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
       value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
-  <$set name="styleListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="styleListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<styleBoardHeight_TitleCollapsed>>
       emptyValue="" >
     <div class="blc-List-layOuter blc-List-layInner" style=<<styleBlcList>> >
@@ -48,13 +48,13 @@ title: blc/ui/ListViewTemplate
           </$set>
         </span>
         <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
-          <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
+          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
             <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
               {{$:/core/images/fold-button}}
             </$button>
           </$list>
-          <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
+          <$list filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]" >
             <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
               {{$:/core/images/unfold-button}}
@@ -90,12 +90,12 @@ title: blc/ui/ListViewTemplate
       </$draggable>
       <$scrollable class=<<class-scrollableArea>> fallthrough="no">
         <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-          <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
+          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
             <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
               <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
-                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="$:/plugins/reidgould/blc/ui/CardViewTemplate" editTemplate="$:/plugins/reidgould/blc/ui/CardEditTemplate" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
@@ -109,7 +109,7 @@ title: blc/ui/ListViewTemplate
               <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Live>get[text]] }}}>
-                    <$list filter=<<filter-searchList>> history="" template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                    <$list filter=<<filter-searchList>> history="" template="$:/plugins/reidgould/blc/ui/CardViewTemplate" editTemplate="$:/plugins/reidgould/blc/ui/CardEditTemplate" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           No tiddlers found by Search List filter.

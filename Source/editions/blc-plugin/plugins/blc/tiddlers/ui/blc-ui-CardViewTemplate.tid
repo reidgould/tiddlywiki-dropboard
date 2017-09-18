@@ -1,4 +1,4 @@
-title: blc/ui/CardViewTemplate
+title: $:/plugins/reidgould/blc/ui/CardViewTemplate
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
   <$droppable actions=<<blcCardDroppableActions>> >

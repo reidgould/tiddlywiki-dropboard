@@ -1,4 +1,4 @@
-title: blc/ui/CardEditTemplate
+title: $:/plugins/reidgould/blc/ui/CardEditTemplate
 
 \define saveActions()
   <$action-sendmessage $message="tm-add-tag" $param={{$:/temp/NewTagName}}/>
@@ -12,7 +12,7 @@ title: blc/ui/CardEditTemplate
   tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-Card
 \end
 \define config-visibility-title()
-blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
+$:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
 \end
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
@@ -39,7 +39,7 @@ blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
           <span class="blc-CardEditTitle">
             <$transclude tiddler="$:/core/ui/EditTemplate/title" mode="block" />
           </span>
-          <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" placeholder={{blc/ui/shorttextPlaceholder}} />
+          <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/ui/shorttextPlaceholder}} />
           <$edit
             field="text"
             focus="no"

@@ -1,5 +1,5 @@
-title: $:/_tw5.com-styles
 tags: $:/tags/Stylesheet
+title: $:/_tw5.com-styles
 
 .tc-double-spaced-list li {
 	padding-bottom: .5em;
