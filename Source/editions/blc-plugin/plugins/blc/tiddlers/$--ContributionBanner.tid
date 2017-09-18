@@ -4,5 +4,5 @@ title: $:/ContributionBanner
 
 <div class="tc-improvement-banner">
 <span style="display:inline-block;width:2.625rem;"></span>
-{{$:/core/images/star-filled}} Have an idea to improve BLC Plugin? Contribute on <<linkOut GitHub {{$:/plugins/reidgould/blc!!source}}>>.
+{{$:/core/images/star-filled}} Have an idea to improve BLC Plugin? Contribute on <a href={{$:/plugins/reidgould/blc!!source}} class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">GitHub</a>.
 </div>

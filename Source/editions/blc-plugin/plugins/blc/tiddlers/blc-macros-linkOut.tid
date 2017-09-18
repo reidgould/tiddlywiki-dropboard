@@ -1,8 +1,0 @@
-created: 20170831224648735
-modified: 20170831225104769
-tags: $:/tags/Macro
-title: $:/plugins/reidgould/blc/macros/linkOut
-
-\define linkOut(content, to)
-<a href=$to$ class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">$content$</a>
-\end
