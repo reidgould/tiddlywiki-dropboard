@@ -4,7 +4,7 @@ caption: {{blc/images/blc}} New Board
 description: New Board
 
 <$button tooltip="New Board" class=<<tv-config-toolbar-class>>>
-<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="blc/tags/boards" text="""<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />""" />
+<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />""" />
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
 {{blc/images/blc}}
 </$list>
