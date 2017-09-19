@@ -1,14 +1,14 @@
 title: BLC Plugin for TiddlyWiki
 
+A TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.<br>
 <!-- <span class="tc-titlebar"><h2 class="tc-title">{{$:/plugins/reidgould/blc!!name}} </h2></span> -->
 Created by {{$:/plugins/reidgould/blc!!author}}
 &ensp;&mdash;&ensp;version {{$:/plugins/reidgould/blc/version}}
+&ensp;&mdash;&ensp;[[ReadMe|$:/plugins/reidgould/blc/readme]]
 &ensp;&mdash;&ensp;[[License|$:/plugins/reidgould/blc/license]]
 
 {{$:/ContributionBanner}}
 
-Here are three ways to get BLC:
+!!! Three ways to get BLC:
 
 {{Get BLC}}
-
-View the [[ReadMe|$:/plugins/reidgould/blc/readme]]
