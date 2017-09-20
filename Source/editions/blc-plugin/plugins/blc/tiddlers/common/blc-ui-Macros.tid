@@ -49,11 +49,11 @@ $(EmptyString)$
 \end
 
 \define tiddlerSearchListFilter_Stage()
-$(currentBoardTiddler)$-SearchListFilter_Stage
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/searchListFilter/Stage
 \end
 
 \define tiddlerSearchListFilter_Live()
-$(currentBoardTiddler)$-SearchListFilter_Live
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SearchListFilter/Live
 \end
 
 \define filter-searchList()
@@ -61,11 +61,11 @@ $(filter-searchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$ta
 \end
 
 \define tiddlerUserFilter_Stage()
-$(currentBoardTiddler)$-UserFilter_Stage
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Stage
 \end
 
 \define tiddlerUserFilter_Live()
-$(currentBoardTiddler)$-UserFilter_Live
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Live
 \end
 
 \define filter-currentList()
@@ -73,18 +73,18 @@ $(currentBoardTiddler)$-UserFilter_Live
 \end
 
 \define tiddlerHeld()
-$(currentBoardTiddler)$-Held
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/Held
 \end
 \define tiddlerHeld-ToolTip()
 $(currentTitle)$ -- $(current_shorttext)$
 \end
 
 \define tiddlerListWidth_Stage()
-$(currentBoardTiddler)$-ListWidth_Stage
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/ListWidth/Stage
 \end
 
 \define tiddlerBoardHeight_Stage()
-$(currentBoardTiddler)$-BoardHeight_Stage
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/BoardHeight/Stage
 \end
 
 \define popupTagsState()
