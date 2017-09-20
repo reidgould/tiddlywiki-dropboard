@@ -147,6 +147,7 @@ title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
           </$button>
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddlerBoardHeight_Stage>> />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="boardheight" />
               """ >
             {{$:/core/images/close-button}}
           </$button>
@@ -176,7 +177,7 @@ title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
           </$button>
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddlerListWidth_Stage>> />
-              <$action-dele
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth" />
               """ >
             {{$:/core/images/close-button}}
           </$button>
