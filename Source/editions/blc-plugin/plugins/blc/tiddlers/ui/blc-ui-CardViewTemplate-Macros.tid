@@ -32,59 +32,57 @@ title: $:/plugins/reidgould/blc/ui/CardViewTemplate-Macros
 \end
 
 \define macroCardViewTemplate(tagBackground)
-  <$set name="popupTagsState" value=<<qualify """$:/plugins/reidgould/blc/state/$(currentTiddler)$-tagPopup""">> >
-    <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
+  <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
+  </div>
+  <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
+    <$set name="foregroundColor" value={{!!color}} >
+      <div class="blc-CardIconFloat" style=<<styleIconColor>> >
+        <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
+      </div>
+    </$set>
+    <div class="blc-CardFloats blc-Card-visDownsize">
+      <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
+        {{$:/core/images/tag-button}}
+      </$button>
+      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
+        {{$:/core/images/edit-button}}
+      </$button>
     </div>
-    <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
-      <$set name="foregroundColor" value={{!!color}} >
-        <div class="blc-CardIconFloat" style=<<styleIconColor>> >
-          <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
-        </div>
-      </$set>
-      <div class="blc-CardFloats blc-Card-visDownsize">
-        <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
-          {{$:/core/images/tag-button}}
-        </$button>
-        <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
-          {{$:/core/images/edit-button}}
-        </$button>
-      </div>
-      <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
-        <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
-      </$reveal>
-      <div class="blc-CardTagPreview">
-        <$list filter="[<currentTiddler>tags[]] -[<currentListTiddler>] +[sort[title]]">
-          <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-            <$set name="titleDisplay" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
-              <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> title=<<titleDisplay>> ></div>
-            </$set>
+    <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
+      <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
+    </$reveal>
+    <div class="blc-CardTagPreview">
+      <$list filter="[<currentTiddler>tags[]] -[<currentListTiddler>] +[sort[title]]">
+        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <$set name="titleDisplay" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
+            <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> title=<<titleDisplay>> ></div>
           </$set>
-        </$list>
-      </div>
-      <div class="blc-CardColorPreview">
-        <$list filter="[<currentTiddler>has:field[color]]">
-          <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-            <div class="blc-CardColorPreviewChild" style=<<styleTagColor>> ></div>
-          </$set>
-        </$list>
-      </div>
-      <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
-          value=<<iconHasText_pre>>
-          emptyValue="" >
-        <<displayHasTextIcon>>
+        </$set>
+      </$list>
+    </div>
+    <div class="blc-CardColorPreview">
+      <$list filter="[<currentTiddler>has:field[color]]">
+        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <div class="blc-CardColorPreviewChild" style=<<styleTagColor>> ></div>
+        </$set>
+      </$list>
+    </div>
+    <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
+        value=<<iconHasText_pre>>
+        emptyValue="" >
+      <<displayHasTextIcon>>
+    </$set>
+    <div title={{!!title}} class="blc-CardText">
+      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+        <$transclude field=<<titleDisplay>> mode="block" class="" />
       </$set>
-      <div title={{!!title}} class="blc-CardText">
-        <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-          <$transclude field=<<titleDisplay>> mode="block" class="" />
-        </$set>
-        <$set name="displayBody" filter="[<currentCardTiddler>is[image]]"
-            value=<<displayImage>>
-            emptyValue=<<displayText>> >
-          <<displayBody>>
-        </$set>
-      </div>
-    </$draggable>
-  </$set>
+      <$set name="displayBody" filter="[<currentCardTiddler>is[image]]"
+          value=<<displayImage>>
+          emptyValue=<<displayText>> >
+        <<displayBody>>
+      </$set>
+    </div>
+  </$draggable>
 \end
 
 \define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)

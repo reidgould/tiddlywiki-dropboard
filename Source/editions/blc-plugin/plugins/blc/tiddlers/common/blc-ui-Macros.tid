@@ -87,6 +87,10 @@ $(currentBoardTiddler)$-ListWidth_Stage
 $(currentBoardTiddler)$-BoardHeight_Stage
 \end
 
+\define popupTagsState()
+$:/plugins/reidgould/blc/state/$(qualify)$/tagPopup
+\end
+
 \define styleTagColor()
 background-color: $(tagColor)$;
 \end
