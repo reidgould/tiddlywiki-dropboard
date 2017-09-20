@@ -1,0 +1,28 @@
+title: UserGuide/common/Stylesheet
+tags: $:/tags/Stylesheet
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
+<!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
+<!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
+"""
+
+.userguide_content {
+  min-width: 100%;
+  max-width: 100%;
+  color: <<color foreground>>;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  display: inline-block;
+  background-color: <<color tiddler-background>>;
+  border-color: <<colour tab-border>>;
+  border-width: 3px 1px 1px 1px;
+  border-style: double dashed dashed dashed;
+}
+.userguide_content a.tc-tiddlylink, .userguide_content a.tc-tiddlylink:hover {
+  color: <<color tiddler-link-foreground>>;
+}
+.userguide_select {
+  width: calc(100% - 1.5rem);
+}
+
+"""
