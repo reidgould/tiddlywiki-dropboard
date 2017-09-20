@@ -181,7 +181,8 @@ title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
             {{$:/core/images/close-button}}
           </$button>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-          <$select tiddler=<<currentBoardTiddler>> field="listwidth" >
+          <$select tiddler=<<currentBoardTiddler>> field="listwidth"
+              actions="""<$action-setfield $field="widthismax" $value="yes" />""" >
             <option value="calc(100% - 0.5rem)"  >1</option>
             <option value="calc(50% - 0.5rem)"   >2</option>
             <option value="calc(33.3% - 0.5rem)" >3</option>
