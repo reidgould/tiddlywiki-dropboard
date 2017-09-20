@@ -1,8 +1,6 @@
 tags: $:/tags/Macro
 title: $:/plugins/reidgould/blc/common/Macros
 
-\define comment() <!-- Section: For general use. -->
-
 \define EmptyString(strEmpty:"")
 $strEmpty$
 \end
@@ -41,8 +39,6 @@ $strEmpty$
 
 
 
-
-\define comment() <!-- Section: For use by this plugin. -->
 
 \define blcStoryList()
 $(currentTiddler)$
@@ -130,8 +126,6 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 
 
 
-\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeld). -->
-
 \define ResetListToTagging(listTid)
   <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
   <!-- The order returned by the tagging operator is determined by list field, list-before and list-after fields, and adds other tiddlers with the tag to the end. -->
@@ -199,7 +193,7 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 
 
-\define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. -->
+
 
 \define blcListDroppableActions()
   <<action-checkDragOfSearchList_List>>
@@ -300,12 +294,4 @@ $(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 
 \define action-RemoveFromBoard()
   <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid=<<actionTiddler>> targetFilter_byDef="filterBoardL2_currentBoard" />
-\end
-
-
-
-
-\define comment() <!-- Clear the value of "comment" in case it gets referenced. -->
-\define comment()
-$(EmptyString)$
 \end
