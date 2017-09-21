@@ -88,4 +88,3 @@ tags: $:/tags/Macro
 \define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)
 <$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
 \end
-
