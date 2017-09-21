@@ -36,24 +36,22 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       </$droppable>
       <$list filter="[<tiddler-Holding>get[title]]" >
         <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
-          <$set name="currentHeldTiddler" value=<<currentTiddler>> >
+          <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
             <$draggable tiddler=<<currentTiddler>> class="blc-Card tc-tiddler-frame">
-              <$set name="val-HeldShorttext" value={{!!shorttext}} >
-                <div title=<<HeldToolTip>> >
-                  <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-                    {{$:/core/images/close-button}}
-                  </$button>
-                  <p>{{$:/core/images/file}}<br>Tiddler:<br>
-                    <span class="blc-BoardControl-HeldTitle truncate">
-                      <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                        <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
-                      </$set>
-                    </span>
-                  </p>
-                </div>
-              </$set>
+              <div title=<<HeldToolTip>> >
+                <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                  {{$:/core/images/close-button}}
+                </$button>
+                <p>{{$:/core/images/file}}<br>Tiddler:<br>
+                  <span class="blc-BoardControl-HeldTitle truncate">
+                    <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                      <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
+                    </$set>
+                  </span>
+                </p>
+              </div>
             </$draggable>
-          </$set>
+          </$vars>
         </$tiddler>
       </$list>
     </div>
