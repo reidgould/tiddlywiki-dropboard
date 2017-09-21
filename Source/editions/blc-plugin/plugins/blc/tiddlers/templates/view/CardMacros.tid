@@ -1,21 +1,6 @@
 title: $:/plugins/reidgould/blc/templates/view/CardMacros
 tags: $:/tags/Macro
 
-\define wikitext-iconHasText-IfTextHidden()
-  <$set name="wikitext-iconHasText-IfTextHidden_Result" filter="[<currentBoardTiddler>field:displayText[no]]"
-      value=<<wikitext-iconHasText>>
-      emptyValue="""<span id="preventUnwantedContent" style="display:none;"></span>""" >
-    <<wikitext-wikitext-iconHasText-IfTextHidden_Result>>
-  </$set>
-\end
-\define wikitext-iconHasText()
-  <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
-    <$button class="buttonTWIcon buttonTWIcon-help">
-      {{$:/core/images/import-button}}
-    </$button>
-  </div>
-\end
-
 \define wikitext-Text-IfTextDisplay()
   <$list filter="[<currentBoardTiddler>!field:displaytext[no]]" variable="">
     <$transclude field="text" mode="block" class="" />
@@ -67,11 +52,15 @@ tags: $:/tags/Macro
         </$set>
       </$list>
     </div>
-    <$set name="wikitext-iconHasText-IfCurHasText" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
-        value=<<wikitext-iconHasText-IfTextHidden>>
-        emptyValue="" >
-      <<wikitext-iconHasText-IfCurHasText>>
-    </$set>
+    <$list filter="[<currentCardTiddler>has:value[text]!is[image]]" variable="">
+      <$list filter="[<currentBoardTiddler>field:displayText[no]]" variable="">
+        <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
+          <$button class="buttonTWIcon buttonTWIcon-help">
+            {{$:/core/images/import-button}}
+          </$button>
+        </div>
+      </$list>
+    </$list>
     <div title={{!!title}} class="blc-CardText">
       <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
         <$transclude field=<<field-shorttextOrTitle>> mode="block" class="" />
