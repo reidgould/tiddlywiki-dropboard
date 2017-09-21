@@ -47,14 +47,14 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </$droppable>
           </$set>
         </span>
-        <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
-          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
+        <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
+          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
             <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
               {{$:/core/images/fold-button}}
             </$button>
           </$list>
-          <$list filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]" >
+          <$list filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
             <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
               {{$:/core/images/unfold-button}}
@@ -62,7 +62,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
           </$list>
         </$list>
         <div class="blc-CardTagPreview">
-          <$list filter="[<currentTiddler>has:field[color]]">
+          <$list filter="[<currentTiddler>has:field[color]]" variable="">
             <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
               <div class="blc-CardTagPreviewChild" style=<<style-TagColor>> ></div>
             </$set>
@@ -77,12 +77,12 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </span>
           </$set>
           <$link>
-            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
+            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
               <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
                 <h3 class="tc-title blc-titleTweak"><$transclude field=<<field-shorttextOrTitle>> mode="inline"/></h3>
               </$set>
             </$list>
-            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]">
+            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]" variable="">
               <h3 class="tc-title blc-titleTweak">Search List</h3>
             </$list>
           </$link>
@@ -90,8 +90,8 @@ title: $:/plugins/reidgould/blc/templates/view/List
       </$draggable>
       <$scrollable class=<<class-scrollableArea>> fallthrough="no">
         <$navigator story=<<List-StoryList>> history=<<List-HistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
-            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
+          <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
+            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
               <$set name="list-TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="list-TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-userText" value={{{ [<tiddler-UserFilter-Live>get[text]] }}} >
@@ -105,7 +105,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
                 </$set>
               </$set>
             </$list>
-            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]">
+            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]" variable="">
               <$set name="list-TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="list-TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-SearchListText" value={{{ [<tiddler-SearchListFilter-Live>get[text]] }}}>
