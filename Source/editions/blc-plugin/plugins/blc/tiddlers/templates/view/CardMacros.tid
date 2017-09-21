@@ -17,17 +17,15 @@ tags: $:/tags/Macro
 \end
 
 \define wikitext-Text-IfTextDisplay()
-  <$set name="wikitext-Text" filter="[<currentBoardTiddler>field:displaytext[no]]"
-      value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
-      emptyValue="""<$transclude field="text" mode="block" class="" />""" >
-    <<wikitext-Text>>
+  <$list filter="[<currentBoardTiddler>!field:displaytext[no]]" variable="">
+    <$transclude field="text" mode="block" class="" />
+  </$list>
 \end
 
 \define wikitext-Image-IfImageDisplay()
-  <$set name="wikitext-Image" filter="[<currentBoardTiddler>field:displayimages[no]]"
-      value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
-      emptyValue="""<$transclude field="text" mode="block" class="" />""" >
-    <<wikitext-Image>>
+  <$list filter="[<currentBoardTiddler>!field:displayimages[no]]" variable="">
+    <$transclude field="text" mode="block" class="" />
+  </$list>
 \end
 
 \define wikitext-CardView(palette-tagBackground)
