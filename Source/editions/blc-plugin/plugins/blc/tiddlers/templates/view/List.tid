@@ -1,34 +1,34 @@
 title: $:/plugins/reidgould/blc/templates/view/List
 
 <$set name="currentListTiddler" value=<<currentTiddler>> >
-  <$set name="collapse_list" value={{{[<currentListTiddler>get[collapse_in]]}}} >
-  <$set name="is_collapsed" filter="[enlist<collapse_list>field:title<currentBoardTiddler>]"
+  <$set name="list-collapse_in" value={{{[<currentListTiddler>get[collapse_in]]}}} >
+  <$set name="is_collapsed" filter="[enlist<list-collapse_in>field:title<currentBoardTiddler>]"
       value="$:/plugins/reidgould/blc/values/yes"
       emptyValue="$:/plugins/reidgould/blc/values/no" >
-  <$set name="listWidthMin" filter={{{[<currentBoardTiddler>get[listwidth]]}}}
-      emptyValue=<<styleListWidthMinDefault>> >
-  <$set name="listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+  <$set name="val-listWidthMin" filter={{{[<currentBoardTiddler>get[listwidth]]}}}
+      emptyValue=<<val-ListWidthMinDefault>> >
+  <$set name="val-listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="3rem"
-      emptyValue=<<listWidthMin>> >
-  <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
-      value=<<listWidthMin>>
-      emptyValue=<<styleListWidthMaxDefault>> >
-  <$set name="classListDropArea" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]] [<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
+      emptyValue=<<val-listWidthMin>> >
+  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+      value=<<val-listWidthMin>>
+      emptyValue=<<val-ListWidthMaxDefault>> >
+  <$set name="class-ListDropArea" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]] [<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
       value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
-  <$set name="classListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+  <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="" >
-  <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
+  <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
       value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
-  <$set name="styleListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
-      value=<<styleBoardHeight_TitleCollapsed>>
+  <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+      value=<<style-BoardHeight_TitleCollapsed>>
       emptyValue="" >
-    <div class="blc-List-layOuter blc-List-layInner" style=<<styleBlcList>> >
+    <div class="blc-List-layOuter blc-List-layInner" style=<<style-ListWidth>> >
       <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
-        <span class=<<classListDropArea>> title="Drop tiddler here to place in list position.">
-          <$droppable actions=<<blcListDroppableActions>> >
+        <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position.">
+          <$droppable actions=<<action-Droppable-List>> >
             <$button class="buttonTWIcon blc-listDropButton" >
               {{$:/core/images/chevron-left}}
             </$button>
@@ -36,9 +36,9 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </div>
           </$droppable>
         </span>
-        <span class=<<classListDropArea>> title="Drop tiddler here to place in list position." style="float:right;">
+        <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position." style="float:right;">
           <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
-            <$droppable actions=<<blcListDroppableActions>> >
+            <$droppable actions=<<action-Droppable-List>> >
               <$button class="buttonTWIcon blc-listDropButton" >
                 {{$:/core/images/chevron-right}}
               </$button>
@@ -47,7 +47,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </$droppable>
           </$set>
         </span>
-        <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+        <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
           <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
             <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
@@ -63,39 +63,39 @@ title: $:/plugins/reidgould/blc/templates/view/List
         </$list>
         <div class="blc-CardTagPreview">
           <$list filter="[<currentTiddler>has:field[color]]">
-            <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-              <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
+            <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+              <div class="blc-CardTagPreviewChild" style=<<style-TagColor>> ></div>
             </$set>
           </$list>
         </div>
-        <span class=<<classListTitle>> style=<<styleListTitle>> >
+        <span class=<<class-ListTitle>> style=<<style-ListTitle>> >
           <$set name="foregroundColor" value={{!!color}}>
-            <span style=<<styleIconColor>> >
+            <span style=<<style-IconColor>> >
               <$button class="buttonTWIcon blc-listDropButton" >
                 <$transclude tiddler={{!!icon}}/>
               </$button>
             </span>
           </$set>
           <$link>
-            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
-              <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
+            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
+              <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                <h3 class="tc-title blc-titleTweak"><$transclude field=<<field-shorttextOrTitle>> mode="inline"/></h3>
               </$set>
             </$list>
-            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
+            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]">
               <h3 class="tc-title blc-titleTweak">Search List</h3>
             </$list>
           </$link>
         </span>
       </$draggable>
       <$scrollable class=<<class-scrollableArea>> fallthrough="no">
-        <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+        <$navigator story=<<List-StoryList>> history=<<List-HistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]">
-            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
-              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
-                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-                  <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
-                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
+            <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]">
+              <$set name="list-TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="list-TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-userText" value={{{ [<tiddler-UserFilter-Live>get[text]] }}} >
+                    <$list filter=<<filter-currentList>> history=<<List-HistoryList>> template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
@@ -105,11 +105,11 @@ title: $:/plugins/reidgould/blc/templates/view/List
                 </$set>
               </$set>
             </$list>
-            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
-              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
-                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-                  <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Live>get[text]] }}}>
-                    <$list filter=<<filter-searchList>> history="" template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
+            <$list filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]">
+              <$set name="list-TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="list-TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-SearchListText" value={{{ [<tiddler-SearchListFilter-Live>get[text]] }}}>
+                    <$list filter=<<filter-SearchList>> history="" template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           No tiddlers found by Search List filter.
@@ -121,7 +121,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </$list>
           </$list>
           <$tiddler tiddler="">
-            <$droppable actions=<<blcCardDroppableActions>> >
+            <$droppable actions=<<action-Droppable-Card>> >
               <div class="tc-droppable-placeholder tc-droppable-placeholder-bottom">
               </div>
               <div class="tc-droppable-placeholder-bottom">

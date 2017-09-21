@@ -1,7 +1,14 @@
 title: $:/plugins/reidgould/blc/templates/view/CardMacros
 tags: $:/tags/Macro
 
-\define iconHasText()
+\define wikitext-iconHasText-IfTextHidden()
+  <$set name="wikitext-iconHasText-IfTextHidden_Result" filter="[<currentBoardTiddler>field:displayText[no]]"
+      value=<<wikitext-iconHasText>>
+      emptyValue="""<span id="preventUnwantedContent" style="display:none;"></span>""" >
+    <<wikitext-wikitext-iconHasText-IfTextHidden_Result>>
+  </$set>
+\end
+\define wikitext-iconHasText()
   <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
     <$button class="buttonTWIcon buttonTWIcon-help">
       {{$:/core/images/import-button}}
@@ -9,82 +16,73 @@ tags: $:/tags/Macro
   </div>
 \end
 
-\define iconHasText_pre()
-  <$set name="iconHasText_pre-result" filter="[<currentBoardTiddler>field:displayText[no]]"
-      value=<<iconHasText>>
-      emptyValue="""<span id="preventUnwantedContent" style="display:none;"></span>""" >
-    <<iconHasText_pre-result>>
-  </$set>
-\end
-
-\define displayText()
-  <$set name="display" filter="[<currentBoardTiddler>field:displaytext[no]]"
+\define wikitext-Text-IfTextDisplay()
+  <$set name="wikitext-Text" filter="[<currentBoardTiddler>field:displaytext[no]]"
       value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
       emptyValue="""<$transclude field="text" mode="block" class="" />""" >
-    <<display>>
+    <<wikitext-Text>>
 \end
 
-\define displayImage()
-  <$set name="display" filter="[<currentBoardTiddler>field:displayimages[no]]"
+\define wikitext-Image-IfImageDisplay()
+  <$set name="wikitext-Image" filter="[<currentBoardTiddler>field:displayimages[no]]"
       value="""<span id="preventUnwantedContent" style="display:none;"></span>"""
       emptyValue="""<$transclude field="text" mode="block" class="" />""" >
-    <<display>>
+    <<wikitext-Image>>
 \end
 
-\define macroCardViewTemplate(tagBackground)
+\define wikitext-CardView(palette-tagBackground)
+  <$macrocall $name="wikitext-CardView_internal" tagBackground={{$palette-tagBackground$##tag-background}} />
+\end
+\define wikitext-CardView_internal(tagBackground)
   <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
   </div>
   <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
     <$set name="foregroundColor" value={{!!color}} >
-      <div class="blc-CardIconFloat" style=<<styleIconColor>> >
+      <div class="blc-CardIconFloat" style=<<style-IconColor>> >
         <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
       </div>
     </$set>
     <div class="blc-CardFloats blc-Card-visDownsize">
-      <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
+      <$button popup=<<tiddler-popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
         {{$:/core/images/tag-button}}
       </$button>
       <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
         {{$:/core/images/edit-button}}
       </$button>
     </div>
-    <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
+    <$reveal type="popup" state=<<tiddler-popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
       <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
     </$reveal>
     <div class="blc-CardTagPreview">
       <$list filter="[<currentTiddler>tags[]] -[<currentListTiddler>] +[sort[title]]">
-        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-          <$set name="titleDisplay" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
-            <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> title=<<titleDisplay>> ></div>
+        <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <$set name="field-shorttextOrTitle" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
+            <div class="blc-CardTagPreviewChild" style=<<style-TagColor>> title=<<field-shorttextOrTitle>> ></div>
           </$set>
         </$set>
       </$list>
     </div>
     <div class="blc-CardColorPreview">
       <$list filter="[<currentTiddler>has:field[color]]">
-        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-          <div class="blc-CardColorPreviewChild" style=<<styleTagColor>> ></div>
+        <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <div class="blc-CardColorPreviewChild" style=<<style-TagColor>> ></div>
         </$set>
       </$list>
     </div>
-    <$set name="displayHasTextIcon" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
-        value=<<iconHasText_pre>>
+    <$set name="wikitext-iconHasText-IfCurHasText" filter="[<currentCardTiddler>has:value[text]] +[!is[image]]"
+        value=<<wikitext-iconHasText-IfTextHidden>>
         emptyValue="" >
-      <<displayHasTextIcon>>
+      <<wikitext-iconHasText-IfCurHasText>>
     </$set>
     <div title={{!!title}} class="blc-CardText">
-      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-        <$transclude field=<<titleDisplay>> mode="block" class="" />
+      <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+        <$transclude field=<<field-shorttextOrTitle>> mode="block" class="" />
       </$set>
-      <$set name="displayBody" filter="[<currentCardTiddler>is[image]]"
-          value=<<displayImage>>
-          emptyValue=<<displayText>> >
-        <<displayBody>>
+      <$set name="wikitext-LargeContent" filter="[<currentCardTiddler>is[image]]"
+          value=<<wikitext-Image-IfImageDisplay>>
+          emptyValue=<<wikitext-Text-IfTextDisplay>> >
+        <<wikitext-LargeContent>>
       </$set>
     </div>
   </$draggable>
-\end
-
-\define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)
-<$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
 \end

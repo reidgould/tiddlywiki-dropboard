@@ -1,7 +1,7 @@
 title: $:/plugins/reidgould/blc/templates/view/Card
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-  <$droppable actions=<<blcCardDroppableActions>> >
-    <$macrocall $name="macroCardViewTemplate_SetBackgroundByPalette" tagBackgroundPalette={{$:/palette}} />
+  <$droppable actions=<<action-Droppable-Card>> >
+    <$macrocall $name="wikitext-CardView" palette-tagBackground={{$:/palette}} />
   </$droppable>
 </$set>

@@ -1,6 +1,6 @@
 title: $:/plugins/reidgould/blc/templates/edit/Card
 
-\define saveActions()
+\define action-Save()
   <$action-sendmessage $message="tm-add-tag" $param={{$:/temp/NewTagName}}/>
   <$action-deletetiddler $tiddler="$:/temp/NewTagName"/>
   <$action-sendmessage $message="tm-add-field" $name={{$:/temp/newfieldname}} $value={{$:/temp/newfieldvalue}}/>
@@ -8,7 +8,7 @@ title: $:/plugins/reidgould/blc/templates/edit/Card
   <$action-deletetiddler $tiddler="$:/temp/newfieldvalue"/>
   <$action-sendmessage $message="tm-save-tiddler"/>
 \end
-\define frame-classes()
+\define class-Card()
   tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-Card
 \end
 \define config-visibility-title()
@@ -16,15 +16,15 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
 \end
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-<$droppable actions=<<blcCardDroppableActions>> >
+<$droppable actions=<<action-Droppable-Card>> >
 <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
 </div>
-<div class=<<frame-classes>>>
+<div class=<<class-Card>>>
   <$fieldmangler>
     <!-- keeping this SetWidget for storyTiddler for internals from TW core -->
     <$set name="storyTiddler" value=<<currentTiddler>>>
       <$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
-        <$keyboard key="((save-tiddler))" actions=<<saveActions>>>
+        <$keyboard key="((save-tiddler))" actions=<<action-Save>>>
           <div class="blc-CardFloats blc-Card-visDownsize">
             <$button message="tm-delete-tiddler" tooltip={{$:/language/Buttons/Delete/Hint}} aria-label={{$:/language/Buttons/Delete/Caption}} class="tc-btn-invisible">
               {{$:/core/images/delete-button}}
@@ -32,7 +32,7 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
             <$button message="tm-cancel-tiddler" tooltip={{$:/language/Buttons/Cancel/Hint}} aria-label={{$:/language/Buttons/Cancel/Caption}} class="tc-btn-invisible">
               {{$:/core/images/cancel-button}}
             </$button>
-            <$button actions=<<saveActions>> tooltip={{$:/language/Buttons/Save/Hint}} aria-label={{$:/language/Buttons/Save/Caption}} class="tc-btn-invisible">
+            <$button actions=<<action-Save>> tooltip={{$:/language/Buttons/Save/Hint}} aria-label={{$:/language/Buttons/Save/Caption}} class="tc-btn-invisible">
               {{$:/core/images/save-button}}
             </$button>
           </div>
