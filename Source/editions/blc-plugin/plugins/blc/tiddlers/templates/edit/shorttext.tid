@@ -1,10 +1,10 @@
-list-before: $:/core/ui/EditTemplate/body
+title: $:/plugins/reidgould/blc/templates/edit/shorttext
 tags: $:/tags/EditTemplate
-title: $:/plugins/reidgould/blc/ui/EditTemplate/shorttext
+list-before: $:/core/ui/EditTemplate/body
 
 <div class="blc-editTemplate-shorttext-layFlex">
   <div class="blc-editTemplate-shorttext-layFlexChild-field">
-    <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="no" class="blc-textarea tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/ui/shorttextPlaceholder}} />
+    <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="no" class="blc-textarea tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/templates/shorttextPlaceholder}} />
   </div>
   <div class="blc-editTemplate-shorttext-layFlexChild-button tc-tiddler-controls">
     <$button actions="""<$action-deletefield shorttext />""" tooltip="delete field shorttext" class="tc-btn-invisible">

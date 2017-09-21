@@ -1,4 +1,4 @@
-title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
+title: $:/plugins/reidgould/blc/templates/view/Board
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
   <div class="blc-BoardTitle">
@@ -203,7 +203,7 @@ title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
     <$set name="boardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<styleBoardHeightDefault>> >
       <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
         <$list filter="[field:title<tiddlerSearchListFilter_Live>]" >
-          <$transclude tiddler="$:/plugins/reidgould/blc/ui/ListViewTemplate" mode="inline" />
+          <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
         </$list>
         <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
             emptyMessage="""
@@ -215,7 +215,7 @@ title: $:/plugins/reidgould/blc/ui/BoardViewTemplate
                 </$droppable>
               </div>
             """>
-          <$transclude tiddler="$:/plugins/reidgould/blc/ui/ListViewTemplate" mode="inline" />
+          <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
         </$list>
       </div>
     </$set>

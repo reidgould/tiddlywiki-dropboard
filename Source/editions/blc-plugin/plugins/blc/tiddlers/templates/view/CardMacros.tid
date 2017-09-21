@@ -1,5 +1,5 @@
+title: $:/plugins/reidgould/blc/templates/view/CardMacros
 tags: $:/tags/Macro
-title: $:/plugins/reidgould/blc/ui/CardViewTemplate-Macros
 
 \define iconHasText()
   <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">

@@ -1,6 +1,6 @@
-list-before: $:/core/ui/ViewTemplate/body
+title: $:/plugins/reidgould/blc/templates/view/shorttext
 tags: $:/tags/ViewTemplate
-title: $:/plugins/reidgould/blc/ui/ViewTemplate/shorttext
+list-before: $:/core/ui/ViewTemplate/body
 
 \define titleDisplayMacro()
 <h3 class="tc-subtitle blc-subtitle">

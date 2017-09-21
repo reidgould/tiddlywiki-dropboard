@@ -1,4 +1,4 @@
-title: $:/plugins/reidgould/blc/download-blc-plugin-button
+title: download-blc-plugin-button
 
 \define filename()
 tiddlywiki-blc-plugin-$(pluginVersion)$.tid

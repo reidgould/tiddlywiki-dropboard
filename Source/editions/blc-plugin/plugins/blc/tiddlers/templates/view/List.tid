@@ -1,4 +1,4 @@
-title: $:/plugins/reidgould/blc/ui/ListViewTemplate
+title: $:/plugins/reidgould/blc/templates/view/List
 
 <$set name="currentListTiddler" value=<<currentTiddler>> >
   <$set name="collapse_list" value={{{[<currentListTiddler>get[collapse_in]]}}} >
@@ -95,7 +95,7 @@ title: $:/plugins/reidgould/blc/ui/ListViewTemplate
               <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
-                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="$:/plugins/reidgould/blc/ui/CardViewTemplate" editTemplate="$:/plugins/reidgould/blc/ui/CardEditTemplate" storyview={{$:/view}}
+                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
@@ -109,7 +109,7 @@ title: $:/plugins/reidgould/blc/ui/ListViewTemplate
               <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
                 <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
                   <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Live>get[text]] }}}>
-                    <$list filter=<<filter-searchList>> history="" template="$:/plugins/reidgould/blc/ui/CardViewTemplate" editTemplate="$:/plugins/reidgould/blc/ui/CardEditTemplate" storyview={{$:/view}}
+                    <$list filter=<<filter-searchList>> history="" template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
                         <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
                           No tiddlers found by Search List filter.
