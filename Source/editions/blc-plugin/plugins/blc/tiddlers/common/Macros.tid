@@ -193,41 +193,29 @@ $(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
   <$macrocall $name="action-AddTwoWay" tiddler-Add="""$tiddler-Insert$""" tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
 \end
 
-\define action-InsertNewTwoWay(tiddler-Before, tiddler-In)
-  <$vars val-shortid=<<shortid>> tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" >
-    <$set name="action-IdOrDefault" filter="[<val-shortid>] -[[]]"
-        value=<<action-InsertNewTwoWay-WithID>>
-        emptyValue=<<action-InsertNewTwoWay-WithDefault>> >
-      <<action-IdOrDefault>>
-    </$set>
-  </$vars>
-\end
-\define action-InsertNewTwoWay(tiddler-Before, tiddler-In)
-  <$vars val-shortid=<<shortid>> tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" >
-    <$list filter="[<val-shortid>] -[[]]" >
-      <$macrocall $name="alert" alertText="ID" />
-    </$list>
-    <$list filter="[<val-shortid>] -[[]] +[count[]]" variable="val-count">
-      <$list filter="[<val-count>prefix[0]]">
-        <$macrocall $name="alert" alertText="default" />
+\define action-InsertTwoWay-New(tiddler-Before, tiddler-In)
+  <$vars val-shortid=<<shortid>> >
+    <$list filter="[<val-shortid>] -[[]] +[count[]]" variable="val-shortidInstalled">
+      <$list filter="[<val-shortidInstalled>prefix[0]]">
+        <$macrocall $name="action-InsertTwoWay-New-WithDefault" tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" />
       </$list>
-      <$list filter="[<val-count>prefix[1]]">
-        <$macrocall $name="alert" alertText="default" />
+      <$list filter="[<val-shortidInstalled>prefix[1]]">
+        <$macrocall $name="action-InsertTwoWay-New-WithID" tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" />
       </$list>
     </$list>
   </$vars>
 \end
-\define action-InsertNewTwoWay-WithID()
+\define action-InsertTwoWay-New-WithDefault(tiddler-Before, tiddler-In)
+  <$action-sendmessage $message="tm-new-tiddler" navigateFromTitle="""$tiddler-Before$""" tags="""$tiddler-In$""" />
+  <<action-Notify-shortidNotInstalled>>
+\end
+\define action-InsertTwoWay-New-WithID(tiddler-Before, tiddler-In)
   <$set name="tiddler-New" value={{{ [<val-shortid>addprefix[tid/]] }}} >
     <$action-createtiddler $basetitle=<<tiddler-New>> />
-    <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$(tiddler-In)$""" />
-    <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New>> tiddler-Target="""$(tiddler-In)$""" tiddler-Before="""$(tiddler-Before)$""" />
+    <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
+    <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New>> tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
     <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-New>> />
   </$set>
-\end
-\define action-InsertNewTwoWay-WithDefault()
-  <$action-sendmessage $message="tm-new-tiddler" navigateFromTitle="$(tiddler-Before)$" tags="$(tiddler-In)$" />
-  <<action-Notify-shortidNotInstalled>>
 \end
 
 
@@ -249,7 +237,7 @@ $(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
   <!-- SEQUENCE AFTER action-CheckDragOfSearchList_List -->
   <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
       value=<<action-CheckSame_List>>
-      emptyValue="""<$macrocall $name="action-InsertNewTwoWay" tiddler-Before=<<currentListTiddler>> tiddler-In=<<currentBoardTiddler>> />""" >
+      emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentListTiddler>> tiddler-In=<<currentBoardTiddler>> />""" >
     <<action-ExistingOrNew>>
   </$set>
 \end
@@ -292,7 +280,7 @@ $(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
   <!-- SEQUENCE AFTER action-CheckDragOfSearchList_Card -->
   <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
       value="""<$macrocall $name="action-CheckDragIntoSelf" />"""
-      emptyValue="""<$macrocall $name="action-InsertNewTwoWay" tiddler-Before=<<currentCardTiddler>> tiddler-In=<<currentListTiddler>> />""" >
+      emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentCardTiddler>> tiddler-In=<<currentListTiddler>> />""" >
     <<action-ExistingOrNew>>
   </$set>
 \end
