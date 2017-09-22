@@ -91,6 +91,10 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/BoardHeight/Stage
 $:/plugins/reidgould/blc/state/$(qualify)$/tagPopup
 \end
 
+\define tiddler-New-SaveTitle()
+$:/plugins/reidgould/blc/state/NewTiddler
+\end
+
 \define style-TagColor()
 background-color: $(val-TagColor)$;
 \end
@@ -188,13 +192,16 @@ $(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
 \define action-InsertNewTwoWay(tiddler-Before, tiddler-In)
   <!-- If shortid returns a value, use it. Otherwise, use "New Tiddler". -->
   <$set name="tiddler-NewNameRaw" filter={{{ [[$(shortid)$]] [[New Tiddler]] -[[]] +[first[]] }}} >
-  <!-- If value is not "New Tiddler", add the prefix. Otherwise, do not modify it. -->
-  <$set name="tiddler-NewNameBase" filter="[<tiddler-NewNameRaw>] -[[New Tiddler]]" value={{{ [<tiddler-NewNameRaw>addprefix[tid/]] }}} emptyValue=<<tiddler-NewNameRaw>> >
-    <$action-createtiddler $basetitle=<<tiddler-NewNameBase>> />
-    <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
-    <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-NewNameBase>> tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
-    <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-NewNameBase>> />
-  </$set>
+    <!-- If value is not "New Tiddler", add the prefix. Otherwise, do not modify it. -->
+    <$set name="tiddler-NewNameBase" filter="[<tiddler-NewNameRaw>] -[[New Tiddler]]" value={{{ [<tiddler-NewNameRaw>addprefix[tid/]] }}} emptyValue=<<tiddler-NewNameRaw>> >
+      <$action-createtiddler $basetitle=<<tiddler-NewNameBase>> $savetitle=<<tiddler-New-SaveTitle>> />
+      <$set name="tiddler-New-Actual" value= {{{ [<tiddler-New-SaveTitle>get[text]] }}} >
+        <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
+        <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New-Actual>> tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
+        <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-New-Actual>> />
+      </$set>
+      <$action-deletetiddler $tiddler=<<tiddler-New-SaveTitle>> />
+    </$set>
   </$set>
 \end
 
