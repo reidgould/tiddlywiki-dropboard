@@ -13,12 +13,9 @@ title: $:/plugins/reidgould/blc/templates/view/List
   <$set name="val-listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<val-listWidthMin>>
       emptyValue=<<val-ListWidthMaxDefault>> >
-  <$set name="class-ListDropArea" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]] [<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
-      value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
-      emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
   <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
-      emptyValue="" >
+      emptyValue="""blc-TitleSpan""" >
   <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
       value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
@@ -27,40 +24,44 @@ title: $:/plugins/reidgould/blc/templates/view/List
       emptyValue="" >
     <div class="blc-List-layOuter blc-List-layInner" style=<<style-ListWidth>> >
       <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
-        <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position.">
-          <$droppable actions=<<action-Droppable-List>> >
-            <span class="inlineImg">{{$:/core/images/chevron-left}}</span>
-            <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
-            </div>
-          </$droppable>
-        </span>
-        <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position." style="float:right;">
-          <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
-            <$droppable actions=<<action-Droppable-List>> >
-              <span class="inlineImg">{{$:/core/images/chevron-right}}</span>
-              <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
-              </div>
-            </$droppable>
-          </$set>
-        </span>
         <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
           <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
-            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
-                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
-              {{$:/core/images/fold-button}}
-            </$button>
+            <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea-Left" title="Drop tiddler here to place in list position.">
+              <$droppable actions=<<action-Droppable-List>> >
+                <span class="inlineImg">{{$:/core/images/chevron-left}}</span>
+                <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+                </div>
+              </$droppable>
+            </span>
+            <span class="blc-listDropArea-Right_container">
+              <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea-Right" title="Drop tiddler here to place in list position.">
+                <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
+                  <$droppable actions=<<action-Droppable-List>> >
+                    <span class="inlineImg">{{$:/core/images/chevron-right}}</span>
+                    <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+                    </div>
+                  </$droppable>
+                </$set>
+              </span>
+            </span>
+            <span class="blc-listCollapseButton_container">
+              <$button tag="span" class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
+                  actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
+                <span class="inlineImg blc-listCollapseButton_transform">{{$:/core/images/fold-button}}</span>
+              </$button>
+            </span>
           </$list>
           <$list filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
-            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
+            <$button tag="span" class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
                 actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
-              {{$:/core/images/unfold-button}}
+              <span class="inlineImg blc-listCollapseButton_transform">{{$:/core/images/unfold-button}}</span>
             </$button>
           </$list>
         </$list>
-        <div class="blc-CardTagPreview">
+        <div class="blc-ListColorPreview">
           <$list filter="[<currentTiddler>has:field[color]]" variable="">
-            <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-              <div class="blc-CardTagPreviewChild" style=<<style-TagColor>> ></div>
+            <$set name="val-TagColor" value={{{ [<currentTiddler>get[color]] }}} >
+              <div class="blc-ListColorPreviewChild" style=<<style-TagColor>> ></div>
             </$set>
           </$list>
         </div>
@@ -125,7 +126,6 @@ title: $:/plugins/reidgould/blc/templates/view/List
         </$navigator>
       </$scrollable>
     </div>
-  </$set>
   </$set>
   </$set>
   </$set>

@@ -2,7 +2,7 @@ tags: $:/tags/Stylesheet
 title: $:/plugins/reidgould/blc/common/Stylesheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
-<!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
+<!-- This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
 .blc-BoardTitle{
@@ -24,7 +24,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border-color: <<color tab-divider>>;
   border-width: 1px;
   background-color: <<color tab-background-selected>>;
-  padding: 0.5rem;
+  padding: 0.75em 0.5em 0.375em 0.5em;
 }
 .blc-titleTweak {
   display: inline;
@@ -184,6 +184,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
 }
+.blc-shorttext_container > img, .blc-shorttext_container > svg {
+  height: 1em;
+  width: auto;
+}
 .blc-Card-visDownsize{
   font-size: 1.25rem;
 }
@@ -252,19 +256,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   top: 0;
   left: -1px;
   width: 4px;
-  height: 1.75rem;
-  padding-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
+  height: 1.875em;
+  padding-top: 0.375em;
 }
 .blc-CardColorPreviewChild {
-  flex: 1 1 auto;
-  align-self: auto;
-  margin-bottom: 2px;
+  width: 100%;
+  height: 100%;
 }
 .blc-popupTag-vis {
   background-color: white;
@@ -311,43 +308,59 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0.25rem 0 0 0.25rem;
 }
 
-.blc-listDropArea.blc-listDropArea {
-  display: inline-block;
-  padding: 0.25rem;
+
+.blc-ListColorPreview {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  padding: 0 0.5rem;
+}
+.blc-ListColorPreviewChild {
+  width: 100%;
+  height: 100%;
+}
+.blc-listDropArea-Left.blc-listDropArea-Left {
   position: relative;
+  display: inline;
+  vertical-align: top;
+  padding: 0.25em 0em 0.25em 0.375em;
+  margin: 0em 0.25em 0em 0em;
 }
-.blc-listDropArea-Collapsed.blc-listDropArea-Collapsed{
-  border-width: 1px 0px;
-  margin: 0;
-  padding: 0.25rem 0;
-  width: 0;
-  overflow: hidden;
-  /* ToDo: bad solution. Fix this properly. */
-  max-height: 1.4rem;
+.blc-listDropArea-Right_container.blc-listDropArea-Right_container {
+  float: right;
 }
-.blc-listDropButton {
-  /*min-width: 1.5rem;*/
+.blc-listDropArea-Right.blc-listDropArea-Right {
+  position: relative;
+  display: inline;
+  vertical-align: top;
+  padding: 0.25em 0.375em 0.25em 0.375em;
+  margin: 0em 0em 0em 0.25em;
+}
+.blc-listCollapseButton_container.blc-listCollapseButton_container {
+  float: right;
 }
 .blc-listCollapseButton.blc-listCollapseButton {
-  float: right;
-  padding-right: 0.5rem;
-  padding-top: 0.25rem;
   fill: <<color tiddler-controls-foreground>>;
-  transform-origin: center;
-  transform: translateX(-0.25rem) rotateZ(-90deg);
+  display: inline;
+  vertical-align: top;
+  padding: 0.25em 0.375em 0.25em 0.375em;
+  margin: 0em 0em 0em 0.25em;
 }
-.blc-listCollapseCheckbox {
-  float: right;
-  padding-right: 0.5rem;
+.blc-listCollapseButton_transform.blc-listCollapseButton_transform {
+  display: inline-block;
+  transform-origin: top right;
+  transform: rotateZ(-90deg) translateY(-50%);
 }
-.blc-listCollapseCheckbox input[type="checkbox"] {
-  vertical-align: bottom;
+.blc-TitleSpan {
+  padding: 0.25em 0 0.25em 0;
 }
 .blc-TitleSpan-Collapsed {
   position: absolute;
   /* display: inline-block; Not needed while position is absolute. */
   transform-origin: left top;
-  transform: translateX(1.5rem) rotateZ(90deg) translateX(3.5rem);
+  transform: rotateZ(90deg) translateX(3rem);
   /* max-width: 9999vh; Apply this as element style using board height. */
   /* height: 1.5rem; Not needed while white-space is nowrap. */
   white-space: nowrap;
@@ -357,10 +370,6 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 
 
-.blc-shorttext_container > img, .blc-shorttext_container > svg {
-  height: 1em;
-  width: auto;
-}
 
 
 /* ################################ */
