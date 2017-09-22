@@ -356,6 +356,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 
 
+.blc-shorttext_container > img, .blc-shorttext_container > svg {
+  height: 1em;
+  width: auto;
+}
+
+
 /* ################################ */
 
 .tc-droppable-placeholder-thin.tc-droppable-placeholder-thin.tc-droppable-placeholder-thin.tc-droppable-placeholder-thin {

@@ -2,12 +2,8 @@ title: $:/plugins/reidgould/blc/templates/view/shorttext
 tags: $:/tags/ViewTemplate
 list-before: $:/core/ui/ViewTemplate/body
 
-\define wikitext-shorttextHeader()
-<h3 class="tc-subtitle blc-subtitle">
-<$view field="shorttext" />
-</h3>
-\end
-
-<$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value=<<wikitext-shorttextHeader>> emptyValue="">
-<<field-shorttextOrTitle>>
-</$set>
+<$list filter="[<currentTiddler>has[shorttext]]" >
+  <h3 class="tc-subtitle blc-subtitle blc-shorttext_container">
+    <$transclude field="shorttext" mode="inline" class="" />
+  </h3>
+</$list>

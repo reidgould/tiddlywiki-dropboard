@@ -63,7 +63,9 @@ tags: $:/tags/Macro
     </$list>
     <div title={{!!title}} class="blc-CardText">
       <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-        <$transclude field=<<field-shorttextOrTitle>> mode="block" class="" />
+        <p class="blc-shorttext_container">
+          <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
+        </p>
       </$set>
       <$set name="wikitext-LargeContent" filter="[<currentCardTiddler>is[image]]"
           value=<<wikitext-Image-IfImageDisplay>>
