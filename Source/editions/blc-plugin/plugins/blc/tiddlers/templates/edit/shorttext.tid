@@ -12,3 +12,8 @@ list-before: $:/core/ui/EditTemplate/body
     </$button>
   </div>
 </div>
+<$list filter="[<currentTiddler>regexp:shorttext[\n]]" variable="">
+  <div class="tc-message-box">
+    <p>{{$:/core/images/warning}} Warning: avoid using multiple lines in shorttext. Tiddlers with newline characters in shorttext create invalid ".tid" files.</p>
+  </div>
+</$list>

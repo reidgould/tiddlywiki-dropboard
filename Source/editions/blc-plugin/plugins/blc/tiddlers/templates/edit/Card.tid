@@ -41,6 +41,12 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
             <$transclude tiddler="$:/core/ui/EditTemplate/title" mode="block" />
           </span>
           <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25rem" focus="yes" class="blc-textarea tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/templates/shorttextPlaceholder}} />
+          <<currentTiddler>>
+          <$list filter="[<currentTiddler>regexp:shorttext[\n]]" variable="">
+            <div class="tc-message-box">
+              <p>{{$:/core/images/warning}} Warning: avoid using multiple lines in shorttext. Tiddlers with newline characters in shorttext create invalid ".tid" files.</p>
+            </div>
+          </$list>
           <$edit
             field="text"
             focus="no"
