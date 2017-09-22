@@ -29,9 +29,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
       <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
         <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position.">
           <$droppable actions=<<action-Droppable-List>> >
-            <$button class="buttonTWIcon blc-listDropButton" >
-              {{$:/core/images/chevron-left}}
-            </$button>
+            <span class="inlineImg">{{$:/core/images/chevron-left}}</span>
             <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
             </div>
           </$droppable>
@@ -39,9 +37,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
         <span class=<<class-ListDropArea>> title="Drop tiddler here to place in list position." style="float:right;">
           <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
             <$droppable actions=<<action-Droppable-List>> >
-              <$button class="buttonTWIcon blc-listDropButton" >
-                {{$:/core/images/chevron-right}}
-              </$button>
+              <span class="inlineImg">{{$:/core/images/chevron-right}}</span>
               <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
               </div>
             </$droppable>
@@ -71,9 +67,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
         <span class=<<class-ListTitle>> style=<<style-ListTitle>> >
           <$set name="foregroundColor" value={{!!color}}>
             <span style=<<style-IconColor>> >
-              <$button class="buttonTWIcon blc-listDropButton" >
-                <$transclude tiddler={{!!icon}}/>
-              </$button>
+              <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
             </span>
           </$set>
           <$link>

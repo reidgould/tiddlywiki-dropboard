@@ -6,7 +6,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       <$link>
         <$set name="foregroundColor" value={{!!color}} >
           <div class="blc-CardIconFloat" style=<<style-IconColor>> >
-            <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
+            <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
           </div>
         </$set>
         <$list filter="[all[current]removeprefix[$:/]]">

@@ -22,7 +22,7 @@ tags: $:/tags/Macro
   <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
     <$set name="foregroundColor" value={{!!color}} >
       <div class="blc-CardIconFloat" style=<<style-IconColor>> >
-        <$button class="buttonTWIcon" ><$transclude tiddler={{!!icon}} /></$button>
+        <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
       </div>
     </$set>
     <div class="blc-CardFloats blc-Card-visDownsize">
@@ -55,9 +55,7 @@ tags: $:/tags/Macro
     <$list filter="[<currentCardTiddler>has:value[text]!is[image]]" variable="">
       <$list filter="[<currentBoardTiddler>field:displayText[no]]" variable="">
         <div title="This tiddler contains text. Open in main story to view." class="blc-CardIcon-HasText">
-          <$button class="buttonTWIcon buttonTWIcon-help">
-            {{$:/core/images/import-button}}
-          </$button>
+        <span class="inlineImg inlineImg-help">{{$:/core/images/import-button}}</span>
         </div>
       </$list>
     </$list>

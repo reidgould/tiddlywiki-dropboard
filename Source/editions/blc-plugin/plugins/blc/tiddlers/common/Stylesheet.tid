@@ -211,7 +211,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   fill: <<color tiddler-controls-foreground>>;
 }
 .blc-CardIconFloat {
-  margin: 0.25rem 0.125rem 0 0;
+  max-height: 1rem;
+  margin: 0.5rem 0.125rem 0 0;
   padding: 0;
   float: left;
   clear: none;
@@ -397,13 +398,11 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .buttonLikeLink:hover{
   text-decoration: underline;
 }
-.buttonTWIcon {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: inherit;
+.inlineImg > img, .inlineImg > svg {
+  height: 1em;
+  width: auto;
 }
-.buttonTWIcon-help {
+.inlineImg-help {
   cursor: help;
 }
 
