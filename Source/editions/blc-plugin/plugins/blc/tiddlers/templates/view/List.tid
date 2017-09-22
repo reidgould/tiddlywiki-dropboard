@@ -17,8 +17,8 @@ title: $:/plugins/reidgould/blc/templates/view/List
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="""blc-TitleSpan""" >
   <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
-      value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
-      emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
+      value="tc-edit-tags blc-CardContainer-flexItem blc-CardContainer-layInner blc-CardContainerSearchList-vis"
+      emptyValue="tc-edit-tags blc-CardContainer-flexItem blc-CardContainer-vis blc-CardContainer-layInner" >
   <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<style-BoardHeight_TitleCollapsed>>
       emptyValue="" >
@@ -29,7 +29,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
             <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea-Left" title="Drop tiddler here to place in list position.">
               <$droppable actions=<<action-Droppable-List>> >
                 <span class="inlineImg">{{$:/core/images/chevron-left}}</span>
-                <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+                <div class="blc-droppable-placeholder-listDropArea">
                 </div>
               </$droppable>
             </span>
@@ -38,7 +38,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
                 <$set name="currentListTiddler" value={{{ [<currentListTiddler>next<currentBoardTiddler>] }}} >
                   <$droppable actions=<<action-Droppable-List>> >
                     <span class="inlineImg">{{$:/core/images/chevron-right}}</span>
-                    <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+                    <div class="blc-droppable-placeholder-listDropArea">
                     </div>
                   </$droppable>
                 </$set>
@@ -83,7 +83,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
           </$link>
         </span>
       </$draggable>
-      <$scrollable class=<<class-scrollableArea>> fallthrough="no">
+      <div class=<<class-scrollableArea>> fallthrough="no">
         <$navigator story=<<List-StoryList>> history=<<List-HistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
             <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
@@ -116,15 +116,13 @@ title: $:/plugins/reidgould/blc/templates/view/List
             </$list>
           </$list>
           <$tiddler tiddler="">
-            <$droppable actions=<<action-Droppable-Card>> >
-              <div class="tc-droppable-placeholder tc-droppable-placeholder-bottom">
-              </div>
-              <div class="tc-droppable-placeholder-bottom">
-              </div>
-            </$droppable>
+            <div class="blc-droppable-placeholder-bottom">
+              <$droppable actions=<<action-Droppable-Card>> >
+              </$droppable>
+            </div>
           </$tiddler>
         </$navigator>
-      </$scrollable>
+      </div>
     </div>
   </$set>
   </$set>

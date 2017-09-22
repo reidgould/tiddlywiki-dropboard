@@ -17,7 +17,8 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
 <$droppable actions=<<action-Droppable-Card>> >
-<div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
+<div class="blc-droppable-placeholder-thin">
+  <div class="blc-droppable-placeholder-thin-child"></div>
 </div>
 <div class=<<class-Card>>>
   <$fieldmangler>

@@ -370,31 +370,64 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 
 
+.blc-CardContainer-layInner {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
 
-
-/* ################################ */
-
-.tc-droppable-placeholder-thin.tc-droppable-placeholder-thin.tc-droppable-placeholder-thin.tc-droppable-placeholder-thin {
-  /* EXTENDS tc-droppable-placeholder */
-  border-color: <<color primary>>;
+.tc-droppable.tc-dragover > .blc-droppable-placeholder-thin {
+  display: block;
+  box-sizing: border-box;
+  height: 0;
+  border: 0;
+}
+.tc-droppable.tc-dragover .blc-droppable-placeholder-thin-child {
+  display: block;
+  box-sizing: content-box;
+  position: relative;
+  top: -4px;
+  left: -2px;
+  height: 0;
+  width: calc(100% + 4px);
+  border-width: 2px 0 0 0;
   border-style: dashed none none none;
-  height: 0rem;
-  margin-bottom: 0.25rem;
-}
-.tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom.tc-droppable-placeholder-bottom {
-  /* EXTENDS tc-droppable-placeholder */
   border-color: <<color primary>>;
-  height: 4rem;
 }
-.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea.tc-droppable-placeholder-listDropArea {
-  /* EXTENDS tc-droppable-placeholder */
+.blc-droppable-placeholder-bottom {
+  flex: 1 0 2.5rem;
+  position: relative;
+}
+.blc-droppable-placeholder-bottom > .tc-droppable {
+  display: block;
   position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.blc-droppable-placeholder-bottom > .tc-droppable.tc-dragover {
+  border: 2px dashed <<color primary>>;
+}
+.blc-droppable-placeholder-listDropArea {
+  display: none;
+}
+.tc-droppable.tc-dragover > .blc-droppable-placeholder-listDropArea {
+  position: absolute;
+  display: block;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  border-color: <<color primary>>;
+  border: 2px dashed <<color primary>>;
 }
+
+
+
+
+/* ################################ */
 
 .buttonLikeLink {
   background: none;
