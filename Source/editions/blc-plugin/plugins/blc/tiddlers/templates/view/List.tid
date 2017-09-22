@@ -83,7 +83,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
           </$link>
         </span>
       </$draggable>
-      <div class=<<class-scrollableArea>> fallthrough="no">
+      <div class=<<class-scrollableArea>> >
         <$navigator story=<<List-StoryList>> history=<<List-HistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
             <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">

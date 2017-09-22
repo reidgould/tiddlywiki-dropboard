@@ -195,7 +195,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       </div>
     </div>
   </div>
-  <$scrollable class="blc-scrollable" fallthrough="no">
+  <div class="blc-scrollable" >
     <$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeightDefault>> >
       <div class="blc-ListContainer" style=<<style-BoardHeightOption>> >
         <$list filter="[field:title<tiddler-SearchListFilter-Live>]" >
@@ -215,5 +215,5 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         </$list>
       </div>
     </$set>
-  </$scrollable>
+  </div>
 </$set>
