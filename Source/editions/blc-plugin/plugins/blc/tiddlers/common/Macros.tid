@@ -17,6 +17,10 @@ $strEmpty$
   <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/NoActionSearchList" />
 \end
 
+\define action-Notify-shortidNotInstalled()
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/shortidNotInstalled" />
+\end
+
 \define filter-BoardL2(board)
 [[$board$]] [[$board$]tagging[]]
 \end
@@ -190,19 +194,40 @@ $(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
 \end
 
 \define action-InsertNewTwoWay(tiddler-Before, tiddler-In)
-  <!-- If shortid returns a value, use it. Otherwise, use "New Tiddler". -->
-  <$set name="tiddler-NewNameRaw" filter={{{ [[$(shortid)$]] [[New Tiddler]] -[[]] +[first[]] }}} >
-    <!-- If value is not "New Tiddler", add the prefix. Otherwise, do not modify it. -->
-    <$set name="tiddler-NewNameBase" filter="[<tiddler-NewNameRaw>] -[[New Tiddler]]" value={{{ [<tiddler-NewNameRaw>addprefix[tid/]] }}} emptyValue=<<tiddler-NewNameRaw>> >
-      <$action-createtiddler $basetitle=<<tiddler-NewNameBase>> $savetitle=<<tiddler-New-SaveTitle>> />
-      <$set name="tiddler-New-Actual" value= {{{ [<tiddler-New-SaveTitle>get[text]] }}} >
-        <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
-        <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New-Actual>> tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
-        <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-New-Actual>> />
-      </$set>
-      <$action-deletetiddler $tiddler=<<tiddler-New-SaveTitle>> />
+  <$vars val-shortid=<<shortid>> tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" >
+    <$set name="action-IdOrDefault" filter="[<val-shortid>] -[[]]"
+        value=<<action-InsertNewTwoWay-WithID>>
+        emptyValue=<<action-InsertNewTwoWay-WithDefault>> >
+      <<action-IdOrDefault>>
     </$set>
+  </$vars>
+\end
+\define action-InsertNewTwoWay(tiddler-Before, tiddler-In)
+  <$vars val-shortid=<<shortid>> tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" >
+    <$list filter="[<val-shortid>] -[[]]" >
+      <$macrocall $name="alert" alertText="ID" />
+    </$list>
+    <$list filter="[<val-shortid>] -[[]] +[count[]]" variable="val-count">
+      <$list filter="[<val-count>prefix[0]]">
+        <$macrocall $name="alert" alertText="default" />
+      </$list>
+      <$list filter="[<val-count>prefix[1]]">
+        <$macrocall $name="alert" alertText="default" />
+      </$list>
+    </$list>
+  </$vars>
+\end
+\define action-InsertNewTwoWay-WithID()
+  <$set name="tiddler-New" value={{{ [<val-shortid>addprefix[tid/]] }}} >
+    <$action-createtiddler $basetitle=<<tiddler-New>> />
+    <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$(tiddler-In)$""" />
+    <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New>> tiddler-Target="""$(tiddler-In)$""" tiddler-Before="""$(tiddler-Before)$""" />
+    <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-New>> />
   </$set>
+\end
+\define action-InsertNewTwoWay-WithDefault()
+  <$action-sendmessage $message="tm-new-tiddler" navigateFromTitle="$(tiddler-Before)$" tags="$(tiddler-In)$" />
+  <<action-Notify-shortidNotInstalled>>
 \end
 
 
