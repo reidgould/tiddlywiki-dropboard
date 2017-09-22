@@ -180,7 +180,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 .blc-Card.blc-Card {
   /* EXTENDS tc-tiddler-frame */
-  min-height: 1rem;
+  min-height: 2.25rem;
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
 }
