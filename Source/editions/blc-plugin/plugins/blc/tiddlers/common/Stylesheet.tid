@@ -222,9 +222,6 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   float: left;
   clear: none;
 }
-.blc-CardIconFloat button {
-  display: inline-block;
-}
 .blc-CardIcon-Container {
   position: absolute;
   bottom: 0;
@@ -275,7 +272,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   background-color: white;
   max-width: 80%;
 }
-.blc-popupTag-vis > div {
+.blc-popupTag-vis > .tc-edit-tags {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

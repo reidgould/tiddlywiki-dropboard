@@ -3,13 +3,13 @@ tags: $:/tags/Macro
 
 \define wikitext-Text-IfTextDisplay()
   <$list filter="[<currentBoardTiddler>!field:displaytext[no]]" variable="">
-    <$transclude field="text" mode="block" class="" />
+    <$transclude field="text" mode="block" />
   </$list>
 \end
 
 \define wikitext-Image-IfImageDisplay()
   <$list filter="[<currentBoardTiddler>!field:displayimages[no]]" variable="">
-    <$transclude field="text" mode="block" class="" />
+    <$transclude field="text" mode="block" />
   </$list>
 \end
 
