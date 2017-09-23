@@ -225,12 +225,19 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-CardIconFloat button {
   display: inline-block;
 }
-.blc-CardIcon-HasText {
+.blc-CardIcon-Container {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 0.25rem;
+  /*font-size: 1rem;*/
+}
+.blc-CardIcon-HasText {
+  display: inline-block;
   fill: <<color message-foreground>>;
-  font-size: 1rem;
+}
+.blc-CardIcon-HasList {
+  display: inline-block;
+  fill: <<color message-foreground>>;
 }
 .blc-CardTagPreview {
   position: absolute;
