@@ -10,15 +10,15 @@ $strEmpty$
 \end
 
 \define action-Notify-NoActionDraggedOntoSame()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/NoActionDraggedOntoSame" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionDraggedOntoSame" />
 \end
 
 \define action-Notify-NoActionSearchList()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/NoActionSearchList" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionSearchList" />
 \end
 
 \define action-Notify-shortidNotInstalled()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/ui/notifications/shortidNotInstalled" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/shortidNotInstalled" />
 \end
 
 \define filter-BoardL2(board)
