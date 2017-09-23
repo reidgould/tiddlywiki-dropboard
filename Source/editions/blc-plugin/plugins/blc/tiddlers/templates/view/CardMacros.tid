@@ -17,10 +17,13 @@ tags: $:/tags/Macro
   <$macrocall $name="wikitext-CardView_internal" tagBackground={{$palette-tagBackground$##tag-background}} />
 \end
 \define wikitext-CardView_internal(tagBackground)
+  <$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
+      value="tc-tiddler-frame blc-Card blc-CardSearchList-vis"
+      emptyValue="tc-tiddler-frame blc-Card" >
   <div class="blc-droppable-placeholder-thin">
     <div class="blc-droppable-placeholder-thin-child"></div>
   </div>
-  <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
+  <$draggable tiddler=<<currentTiddler>> class=<<class-Card>> >
     <$set name="foregroundColor" value={{!!color}} >
       <div class="blc-CardIconFloat" style=<<style-IconColor>> >
         <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
@@ -80,4 +83,5 @@ tags: $:/tags/Macro
       </$set>
     </div>
   </$draggable>
+  </$set>
 \end

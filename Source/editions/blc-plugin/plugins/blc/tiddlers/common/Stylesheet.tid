@@ -176,7 +176,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   background: <<color tab-background-selected>>;
   border-style: dashed;
 }
-.blc-CardContainerSearchList-vis .blc-Card.blc-Card {
+.blc-CardSearchList-vis.blc-CardSearchList-vis {
   border: 1px dashed <<color tab-foreground>>;
 }
 .blc-Card.blc-Card {

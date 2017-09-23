@@ -8,14 +8,20 @@ title: $:/plugins/reidgould/blc/templates/edit/Card
   <$action-deletetiddler $tiddler="$:/temp/newfieldvalue"/>
   <$action-sendmessage $message="tm-save-tiddler"/>
 \end
-\define class-Card()
+\define class-Card-Norm()
   tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-Card
+\end
+\define class-Card-SearchList()
+  tc-tiddler-frame tc-tiddler-edit-frame $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-Card blc-CardSearchList-vis
 \end
 \define config-visibility-title()
 $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
 \end
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
+<$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
+    value=<<class-Card-SearchList>>
+    emptyValue=<<class-Card-Norm>> >
 <$droppable actions=<<action-Droppable-Card>> >
 <div class="blc-droppable-placeholder-thin">
   <div class="blc-droppable-placeholder-thin-child"></div>
@@ -71,4 +77,5 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
   </$fieldmangler>
 </div>
 </$droppable>
+</$set>
 </$set>
