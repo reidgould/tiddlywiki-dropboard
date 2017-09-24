@@ -24,32 +24,32 @@ title: $:/plugins/reidgould/blc/templates/view/Board
   </div>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
-      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card tc-tiddler-frame">
-        <p>{{$:/core/images/new-button}}<br>New Tiddler</p>
+      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card blc-CardWidget tc-tiddler-frame">
+        <p class="blc-BoardControlCardWidget-p">{{$:/core/images/new-button}}New Tiddler</p>
       </$draggable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""
           <$action-deletetiddler $tiddler=<<tiddler-Holding>> />
           <$action-createtiddler $basetitle=<<tiddler-Holding>> text=<<actionTiddler>> /> """ >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Tiddler</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/full-screen-button}}Hold&emsp;Tiddler&emsp;</p></div>
       </$droppable>
       <$list filter="[<tiddler-Holding>get[title]]" >
         <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
           <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
-            <$draggable tiddler=<<currentTiddler>> class="blc-Card tc-tiddler-frame">
-              <div title=<<HeldToolTip>> >
-                <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-                  {{$:/core/images/close-button}}
-                </$button>
-                <p>{{$:/core/images/file}}<br>Tiddler:<br>
-                  <span class="blc-BoardControl-HeldTitle truncate">
-                    <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                      <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
-                    </$set>
-                  </span>
-                </p>
-              </div>
+            <$draggable tiddler=<<currentTiddler>> class="blc-Card blc-CardWidget tc-tiddler-frame">
+              <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                {{$:/core/images/close-button}}
+              </$button>
+              <p class="blc-BoardControlCardWidget-p" title=<<HeldToolTip>>>
+              {{$:/core/images/file}}
+              Tiddler:&emsp;
+              <span class="truncate blc-BoardControl-HeldTitle blc-shorttext_container">
+                <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                  <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
+                </$set>
+              </span>
+              </p>
             </$draggable>
           </$vars>
         </$tiddler>
@@ -57,12 +57,12 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/open-window}}Open in Main Story</p></div>
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""<<action-RemoveFromBoard>>""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/close-button}}Remove from Board</p></div>
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
