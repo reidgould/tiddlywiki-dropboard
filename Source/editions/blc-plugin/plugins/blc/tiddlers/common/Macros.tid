@@ -114,18 +114,18 @@ fill:$(foregroundColor)$;
 height: $(val-BoardHeight)$;
 \end
 \define style-BoardHeight_TitleCollapsed()
-max-width: calc($(val-BoardHeight)$ - 4rem);
+max-width: calc($(val-BoardHeight)$ - 4em);
 \end
 
 \define val-ListWidthMinDefault()
-15.5rem
+15.5em
 \end
 \define style-ListWidthMinOption()
 min-width: $(val-listWidthMin)$;
 \end
 
 \define val-ListWidthMaxDefault()
-9999rem
+9999em
 \end
 \define style-ListWidthMaxOption()
 max-width: $(val-listWidthMax)$;

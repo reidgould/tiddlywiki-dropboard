@@ -5,11 +5,34 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 <!-- This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
-.blc-BoardTitle{
-  display: none;
+
+.blc-BoardContainer {
+  border-style: none dashed;
+  border-width: 0 0.25rem;
+  border-color: <<color tab-divider>>;
+  padding: 0.25em 0.5em 0em 0.5em;
+  /* . . . . . . . . . */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
 }
+
+.blc-BoardTitle{
+  flex: 0 0 auto;
+  padding: 0;
+  margin: 0;
+}
+/*
 .tc-single-tiddler-window .blc-BoardTitle, .tc-tab-content .blc-BoardTitle {
   display: block;
+}
+*/
+.blc-BoardTitle-h2 {
+  margin: 0 0 0.25em 0;
+  display: inline-block;
 }
 .tc-subtitle.blc-subtitle {
   font-size: 1rem;
@@ -32,16 +55,27 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 
 .blc-scrollable {
-  overflow: auto;
-  padding: 1.5rem 0;
-  border-style: none dashed;
-  border-width: 0 0.25rem;
-  border-color: <<color tab-divider>>;
+  flex: 1 1 0em;
+  overflow: hidden;
+  padding: 0;
+  margin: 0.5em -0.25em 0 -0.25em;
+  /* . . . . . . . . . */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+  /* . . . . . . . . . */
 }
 
 .blc-ListContainer {
-  height: 80vh;
-  padding: 0 0.25rem;
+  /* half pixel padding on each side eliminates a horizontal scroll when content should fit perfectly. */
+  padding: 0 0.5px;
+  margin: 1.5em 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  /* . . . . . . . . */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -53,8 +87,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-List-layOuter {
   position: relative;
   width: 0; /*value 0 for even flexbox widths*/
-  min-width: 15.5rem;
-  margin: 0 0.25rem; /*margin collapse does not happen in flexbox*/
+  min-width: 15.5em;
+  margin: 0 0.25em; /*margin collapse does not happen in flexbox*/
   flex: 1 1 auto;
   align-self: auto;
 }
@@ -70,18 +104,23 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
  * due to browser's calcuation of visible area.
  * This is not related to normal margin collapse or to flexbox display.
  */
+ /*
+  * TODO: Delete. Huh, it appears we don't need this after all. Not sure what the cause was.
 .blc-List-layInner:last-child::after {
   content: ".";
   color: <<color tiddler-background>>;
   position: absolute;
   left: 100%;
   bottom: 0px;
-  width: 0.5rem;
+  width: 0.5em;
 }
+*/
 
 .blc-BoardControlContainer-layOuter {
-  width: 100%;
-  margin: 1em 0;
+  flex: 0 0 auto;
+  margin: 0 -0.125em;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .blc-BoardControlContainer-layInner {
   display: flex;
@@ -91,9 +130,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-content: flex-start;
   align-items: flex-start;
   /* . . . . . . . . */
-  padding: 0 0.125em;
   overflow-x: hidden;
   overflow-y: hidden;
+  padding-left: 0;
+  padding-right: 0;
 }
 .blc-BoardControl-layOuter {
   height: 3em;
@@ -141,7 +181,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* I don't know what is happening to make the card longer, but here is a quick hack to fix it. */
+  /* TODO: Delete. I don't know what is happening to make the card longer, but here is a quick hack to fix it. */
   /*
   margin-top: -0.25em;
   position: relative;
@@ -163,7 +203,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-BoardControlLineOp {
   min-width: 20em;
   max-width: 20em;
-  height: 3rem;
+  height: 3em;
   flex: 0 0 auto;
   margin: 0;
   padding: 0 0.5rem;
@@ -203,6 +243,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 .blc-CardSearchList-vis.blc-CardSearchList-vis {
   border: 1px dashed <<color tab-foreground>>;
+}
+.blc-SearchList-Container {
+  flex: 0 0 calc(33.3% - 0.5rem);
+  padding: 1.5em 0.5em 1.5em 0;
+  border-right: 0.25em dashed #ddd;
+  /* . . . . . . . . */
+  display: flex;
+  flex-direction: column;
 }
 .blc-Card.blc-Card {
   /* EXTENDS tc-tiddler-frame */
@@ -390,7 +438,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   position: absolute;
   /* display: inline-block; Not needed while position is absolute. */
   transform-origin: left top;
-  transform: rotateZ(90deg) translateX(3rem);
+  transform: rotateZ(90deg) translateX(3em);
   /* max-width: 9999vh; Apply this as element style using board height. */
   /* height: 1.5rem; Not needed while white-space is nowrap. */
   white-space: nowrap;
