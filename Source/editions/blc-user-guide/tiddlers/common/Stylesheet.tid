@@ -10,8 +10,8 @@ tags: $:/tags/Stylesheet
   min-width: 100%;
   max-width: 100%;
   color: <<color foreground>>;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
+  padding: 0.5em;
+  margin-top: 0.5em;
   display: inline-block;
   background-color: <<color tiddler-background>>;
   border-color: <<colour tab-border>>;
@@ -22,7 +22,7 @@ tags: $:/tags/Stylesheet
   color: <<color tiddler-link-foreground>>;
 }
 .userguide_select {
-  width: calc(100% - 1.5rem);
+  width: calc(100% - 1.5em);
 }
 
 """
