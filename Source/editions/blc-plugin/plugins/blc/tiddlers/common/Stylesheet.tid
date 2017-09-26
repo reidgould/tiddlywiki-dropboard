@@ -162,6 +162,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0;
   line-height: 1em;
   max-height: 2.125em;
+  min-height: 2.125em;
   letter-spacing: -0.5px;
   overflow: hidden;
 }
