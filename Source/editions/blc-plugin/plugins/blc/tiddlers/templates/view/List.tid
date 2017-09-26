@@ -10,7 +10,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
   <$set name="val-listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="3em"
       emptyValue=<<val-listWidthMin>> >
-  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>!field:widthismax[no]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<val-listWidthMin>>
       emptyValue=<<val-ListWidthMaxDefault>> >
   <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"

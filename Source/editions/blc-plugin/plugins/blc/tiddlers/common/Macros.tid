@@ -108,7 +108,7 @@ fill:$(foregroundColor)$;
 \end
 
 \define val-BoardHeightDefault()
-80vh
+85vh
 \end
 \define style-BoardHeightOption()
 height: $(val-BoardHeight)$;
@@ -118,7 +118,7 @@ max-width: calc($(val-BoardHeight)$ - 4em);
 \end
 
 \define val-ListWidthMinDefault()
-15.5em
+calc(33.3% - 0.5em)
 \end
 \define style-ListWidthMinOption()
 min-width: $(val-listWidthMin)$;

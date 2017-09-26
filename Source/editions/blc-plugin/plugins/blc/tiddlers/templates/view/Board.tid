@@ -176,6 +176,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
               <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="widthismax" />
               """ >
             {{$:/core/images/close-button}}
           </$button>
@@ -192,7 +193,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
             <option value="calc(12.5% - 0.5em)" >8</option>
           </$select>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-          <$checkbox field="widthismax" checked="yes" unchecked="no" default="no"> Is Max</$checkbox>
+          <$checkbox field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
         </div>
       </div>
     </div>
