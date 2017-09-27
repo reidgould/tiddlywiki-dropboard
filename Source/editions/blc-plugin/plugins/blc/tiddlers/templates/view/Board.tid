@@ -7,9 +7,9 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
       <$link>
         <$set name="foregroundColor" value={{!!color}} >
-          <div class="blc-CardIconFloat" style=<<style-IconColor>> >
-            <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
-          </div>
+          <span class="inlineImg" style=<<style-IconColor>>>
+            <$transclude tiddler={{!!icon}} mode="inline" />
+          </span>
         </$set>
         <$list filter="[all[current]removeprefix[$:/]]">
           <h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>

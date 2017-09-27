@@ -72,8 +72,8 @@ title: $:/plugins/reidgould/blc/templates/view/List
         </div>
         <span class=<<class-ListTitle>> style=<<style-ListTitle>> >
           <$set name="foregroundColor" value={{!!color}}>
-            <span style=<<style-IconColor>> >
-              <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
+            <span class="inlineImg" style=<<style-IconColor>>>
+              <$transclude tiddler={{!!icon}} mode="inline" />
             </span>
           </$set>
           <$link>
