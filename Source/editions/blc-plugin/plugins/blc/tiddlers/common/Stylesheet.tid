@@ -7,6 +7,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 """
 
 .blc-BoardContainer {
+  /* "height" set in style property on element */
   border-style: none dashed;
   border-width: 0 0.25em;
   border-color: <<color tab-divider>>;
@@ -88,6 +89,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   position: relative;
   width: 0; /*value 0 for even flexbox widths*/
   min-width: 15.5em;
+  /* "min-width" set in style property on element */
+  /* "max-width" set in style property on element */
   margin: 0 0.25em; /*margin collapse does not happen in flexbox*/
   flex: 1 1 auto;
   align-self: auto;
@@ -246,7 +249,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border: 1px dashed <<color tab-foreground>>;
 }
 .blc-SearchList-Container {
-  /* flex assigned to element */
+  /* "flex" set in style property on element */
   padding: 1.5em 0.5em 1.5em 0;
   border-right: 0.25em dashed #ddd;
   /* . . . . . . . . */
@@ -285,6 +288,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   fill: <<color tiddler-controls-foreground>>;
 }
 .blc-CardIconFloat {
+  /* "fill" set in style property on element */
   max-height: 1em;
   margin: 0.5em 0.125em 0 0;
   padding: 0;
@@ -319,6 +323,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: stretch;
 }
 .blc-CardTagPreviewChild {
+  /* "background-color" set in style property on element */
   flex: 1 1 auto;
   align-self: auto;
   margin-right: 2px;
@@ -333,6 +338,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding-top: 0.375em;
 }
 .blc-CardColorPreviewChild {
+  /* "background-color" set in style property on element */
   width: 100%;
   height: 100%;
 }
@@ -382,6 +388,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0 0.5em;
 }
 .blc-ListColorPreviewChild {
+  /* "vackground-color" set in style property on element */
   width: 100%;
   height: 100%;
 }
@@ -425,7 +432,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /* display: inline-block; Not needed while position is absolute. */
   transform-origin: left top;
   transform: rotateZ(90deg) translateX(3em);
-  /* max-width: 9999vh; Apply this as element style using board height. */
+  /* "max-width" set in style property on element */
   /* height: 1.5em; Not needed while white-space is nowrap. */
   white-space: nowrap;
   overflow: hidden;
@@ -504,6 +511,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .buttonLikeLink:hover{
   text-decoration: underline;
 }
+/* .inlineImg {} "fill" set in style property on element */
 .inlineImg > img, .inlineImg > svg {
   height: 1em;
   width: auto;
