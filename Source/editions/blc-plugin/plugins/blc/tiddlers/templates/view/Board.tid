@@ -1,8 +1,8 @@
 title: $:/plugins/reidgould/blc/templates/view/Board
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
-<$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeightDefault>> >
-<div class="blc-BoardContainer" style=<<style-BoardHeightOption>> >
+<$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeight-Default>> >
+<div class="blc-BoardContainer" style=<<style-BoardHeight>> >
   <div class="blc-BoardTitle">
     <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
       <$link>
@@ -162,35 +162,31 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <p class="blc-BoardControlLineOpLabel-p">List Width:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth]] }}} >
+          <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth-em]] }}} >
             <span style="display:inline-block;width:calc(100% - 15.5em);">
               <$edit-text tiddler=<<tiddler-ListWidth-Stage>> tag="input" type="text" default="" placeholder=<<val-ListWidth-current>> class="blc-BoardControlFilterTextArea" />
             </span>
           </$set>
           <$button actions="""
-              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth" $value={{{ [<tiddler-ListWidth-Stage>get[text]addsuffix[em]] }}} />
+              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value={{{ [<tiddler-ListWidth-Stage>get[text]] }}} />
               <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
               """>
             Set (em)
           </$button>
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
-              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
               <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="widthismax" />
               """ >
             {{$:/core/images/close-button}}
           </$button>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-          <$select tiddler=<<currentBoardTiddler>> field="listwidth"
+          <$select tiddler=<<currentBoardTiddler>> field="listwidth-num"
               actions="""<$action-setfield $field="widthismax" $value="yes" />""" >
-            <option value="calc(100% - 0.5em)"  >1</option>
-            <option value="calc(50% - 0.5em)"   >2</option>
-            <option value="calc(33.3% - 0.5em)" >3</option>
-            <option value="calc(25% - 0.5em)"   >4</option>
-            <option value="calc(20% - 0.5em)"   >5</option>
-            <option value="calc(16.6% - 0.5em)" >6</option>
-            <option value="calc(14.2% - 0.5em)" >7</option>
-            <option value="calc(12.5% - 0.5em)" >8</option>
+            <$list filter="[enlist<table-ListWidth-Num>]" variable="val-ListWidth-Num-Current">
+              <option value=<<val-ListWidth-Num-Current>> ><<val-ListWidth-Num-Current>></option>
+            </$list>
           </$select>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
           <$checkbox field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
@@ -198,11 +194,38 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       </div>
     </div>
   </div>
+  <!-- Set values if board has fields. -->
+  <$set name="val-ListWidth-Em"  filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+      value={{{[<currentBoardTiddler>get[listwidth-em]]}}}
+      emptyValue=<<val-ListWidth-Em-Default>> >
+  <$set name="val-ListWidth-Num" filter="[<currentBoardTiddler>has:value[listwidth-num]]"
+      value={{{[<currentBoardTiddler>get[listwidth-num]]}}}
+      emptyValue=<<val-ListWidth-Num-Default>> >
+  <!-- Unshift table if necessary. Decimal part of new values are because listop disallows duplicates. -->
+  <$set name="list-ListWidth-Pct-SL" filter="[[100.001]] [enlist<table-ListWidth-Pct>]" >
+  <$set name="table-ListWidth-Pct" filter="[field:title<tiddler-SearchListFilter-Live>]"
+      value=<<list-ListWidth-Pct-SL>>
+      emptyValue=<<table-ListWidth-Pct>> >
+  <$set name="list-ListWidth-Dec-SL" filter="[[1.001]] [enlist<table-ListWidth-Dec>]" >
+  <$set name="table-ListWidth-Dec" filter="[field:title<tiddler-SearchListFilter-Live>]"
+      value=<<list-ListWidth-Dec-SL>>
+      emptyValue=<<table-ListWidth-Dec >
+  <!-- Set final values from table lookup. -->
+  <$set name="val-ListWidth-Pct" value={{{ [enlist<table-ListWidth-Pct>nth<val-ListWidth-Num>] }}} >
+  <$set name="val-ListWidth-Dec" value={{{ [enlist<table-ListWidth-Dec>nth<val-ListWidth-Num>] }}} >
+  <!-- Use Em value if set, otherwise use percent value. -->
+  <$set name="val-listWidthMin" filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+      value=<<val-WidthPropVal-Em>>
+      emptyValue=<<val-WidthPropVal-Pct>> >
   <div class="blc-scrollable" >
     <$list filter="[field:title<tiddler-SearchListFilter-Live>]" >
-      <div class="blc-SearchList-Container">
-        <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
-      </div>
+      <$set name="style-Width--SearchList-Container" filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+          value=<<style-Flex-Em>>
+          emptyValue=<<style-Flex-Dec>> >
+        <div class="blc-SearchList-Container" style=<<style-Width--SearchList-Container>> >
+          <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
+        </div>
+      </$set>
     </$list>
     <div class="blc-ListContainer" >
       <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
@@ -219,6 +242,15 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       </$list>
     </div>
   </div>
-</div>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </div>
 </$set>
 </$set>

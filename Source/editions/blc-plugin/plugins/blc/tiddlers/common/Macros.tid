@@ -107,32 +107,54 @@ background-color: $(val-TagColor)$;
 fill:$(foregroundColor)$;
 \end
 
-\define val-BoardHeightDefault()
+
+
+
+\define val-BoardHeight-Default()
 85vh
 \end
-\define style-BoardHeightOption()
+\define style-BoardHeight()
 height: $(val-BoardHeight)$;
 \end
-\define style-BoardHeight_TitleCollapsed()
+\define style-ListTitle-Collapsed()
 max-width: calc($(val-BoardHeight)$ - 4em);
 \end
 
-\define val-ListWidthMinDefault()
-calc(33.3% - 0.5em)
+\define val-ListWidth-Num-Default()
+3
 \end
-\define style-ListWidthMinOption()
-min-width: $(val-listWidthMin)$;
+\define val-ListWidth-Em-Default()
+%(EmptyString)%
 \end
-
-\define val-ListWidthMaxDefault()
+\define val-ListWidthMax-Default()
 9999em
 \end
-\define style-ListWidthMaxOption()
-max-width: $(val-listWidthMax)$;
+
+\define table-ListWidth-Num()
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+\end
+\define table-ListWidth-Pct()
+100 50 33.333 25 20 16.666 14.285 12.5 11.111 10 9.090 8.333 7.692 7.142 6.666 6.25
+\end
+\define table-ListWidth-Dec()
+1 0.5 0.333 0.25 0.2 0.166 0.142 0.125 0.111 0.1 0.090 0.083 0.076 0.071 0.066 0.062
+\end
+
+\define val-WidthPropVal-Pct()
+calc($(val-ListWidth-Pct)$% - 0.5em)
+\end
+\define val-WidthPropVal-Em()
+$(val-ListWidth-Em)$em
+\end
+\define style-Flex-Em()
+flex: 0 0 $(val-ListWidth-Em)$em;
+\end
+\define style-Flex-Dec()
+flex: $(val-ListWidth-Dec)$ 0 0em;
 \end
 
 \define style-ListWidth()
-$(style-ListWidthMinOption)$ $(style-ListWidthMaxOption)$
+min-width: $(val-listWidthMin)$; max-width: $(val-listWidthMax)$;
 \end
 
 

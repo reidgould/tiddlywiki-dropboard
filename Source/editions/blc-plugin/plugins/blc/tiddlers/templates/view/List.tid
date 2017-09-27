@@ -1,27 +1,32 @@
 title: $:/plugins/reidgould/blc/templates/view/List
 
 <$set name="currentListTiddler" value=<<currentTiddler>> >
-  <$set name="list-collapse_in" value={{{[<currentListTiddler>get[collapse_in]]}}} >
+  <!-- Setup for collapsed lists. -->
+  <$set name="list-collapse_in"
+      value={{{[<currentListTiddler>get[collapse_in]]}}} >
   <$set name="is_collapsed" filter="[enlist<list-collapse_in>field:title<currentBoardTiddler>]"
       value="$:/plugins/reidgould/blc/values/yes"
       emptyValue="$:/plugins/reidgould/blc/values/no" >
-  <$set name="val-listWidthMin" filter={{{[<currentBoardTiddler>get[listwidth]]}}}
-      emptyValue=<<val-ListWidthMinDefault>> >
-  <$set name="val-listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
-      value="3em"
-      emptyValue=<<val-listWidthMin>> >
-  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>!field:widthismax[no]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
-      value=<<val-listWidthMin>>
-      emptyValue=<<val-ListWidthMaxDefault>> >
   <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="""blc-TitleSpan""" >
+  <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+      value=<<style-ListTitle-Collapsed>>
+      emptyValue="" >
+  <!-- Set values for list width -->
+  <$set name="val-listWidthMin" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+      value="3em"
+      emptyValue=<<val-listWidthMin>> >
+  <$set name="val-listWidthMin" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
+      value="100%"
+      emptyValue=<<val-listWidthMin>> >
+  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>!field:widthismax[no]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+      value=<<val-listWidthMin>>
+      emptyValue=<<val-ListWidthMax-Default>> >
+  <!-- Set visual style for "Search List" -->
   <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
       value="tc-edit-tags blc-CardContainer-flexItem blc-CardContainer-layInner blc-CardContainerSearchList-vis"
-      emptyValue="tc-edit-tags blc-CardContainer-flexItem blc-CardContainer-vis blc-CardContainer-layInner" >
-  <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
-      value=<<style-BoardHeight_TitleCollapsed>>
-      emptyValue="" >
+      emptyValue="tc-edit-tags blc-CardContainer-flexItem blc-CardContainer-layInner blc-CardContainer-vis" >
     <div class="blc-List-layOuter blc-List-layInner" style=<<style-ListWidth>> >
       <$draggable tiddler=<<currentTiddler>> class="blc-ListTitle" >
         <$list filter="[<currentListTiddler>!field:title<tiddler-SearchListFilter-Live>]" variable="">
