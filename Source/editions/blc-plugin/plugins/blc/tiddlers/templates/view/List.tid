@@ -97,7 +97,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
                   <$set name="filter-userText" value={{{ [<tiddler-UserFilter-Live>get[text]] }}} >
                     <$list filter=<<filter-currentList>> history=<<List-HistoryList>> template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
-                        <div style="position:absolute;width:100%;padding:0.5em;pointer-events:none;">
+                        <div class="blc-EmptyMessage">
                           Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
                         </div>
                       """ />
@@ -111,7 +111,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
                   <$set name="filter-SearchListText" value={{{ [<tiddler-SearchListFilter-Live>get[text]] }}}>
                     <$list filter=<<filter-SearchList>> history="" template="$:/plugins/reidgould/blc/templates/view/Card" editTemplate="$:/plugins/reidgould/blc/templates/edit/Card" storyview={{$:/view}}
                       emptyMessage="""
-                        <div style="position:absolute;width:100%;padding:0.5em;pointer-events:none;">
+                        <div class="blc-EmptyMessage">
                           No tiddlers found by Search List filter.
                         </div>
                       """ />

@@ -496,6 +496,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 
 
+.blc-EmptyMessage {
+  position:absolute;
+  width:100%;
+  padding:0.5em;
+  pointer-events:none;
+}
 
 
 /* ################################ */
