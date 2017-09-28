@@ -19,6 +19,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
+  position: relative;
 }
 
 .blc-BoardTitle{
@@ -34,6 +35,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   font-size: 1em;
   margin: 0 0 0.5em 0;
   color: <<color tiddler-title-foreground>>;
+}
+.blc-Board-Footer {
+  position: absolute;
+  bottom: 0em;
+  right: 1em;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.75em;
 }
 
 .blc-ListTitle {
