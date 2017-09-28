@@ -254,6 +254,9 @@ title: $:/plugins/reidgould/blc/templates/view/Board
   </$set>
   </$set>
   </$set>
+  <div class="blc-Board-Footer">
+    <$link to="$:/plugins/reidgould/blc">{{$:/plugins/reidgould/blc!!name}}</$link> by <a href={{$:/plugins/reidgould/blc!!author-web}} target="_blank" rel="noopener noreferrer">{{$:/plugins/reidgould/blc!!author-name}}</a>
   </div>
+</div>
 </$set>
 </$set>
