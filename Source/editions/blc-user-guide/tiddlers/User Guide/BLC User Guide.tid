@@ -1,5 +1,6 @@
 title: BLC User Guide
 tags: $:/tags/SideBar
+list-after: $:/core/ui/SideBar/More
 list: [[How It Works]] [[Drop Areas]] [[More]]
 home: How It Works
 
