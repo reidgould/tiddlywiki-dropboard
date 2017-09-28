@@ -61,7 +61,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/open-window}}Open in Main Story</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/export-button}}Open in Main Story</p></div>
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
