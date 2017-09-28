@@ -11,7 +11,7 @@ home: How It Works
     </option>
   </$list>
 </$select>
-<$link to={{BLC User Guide!!home}} ><$button class="buttonLikeLink">{{$:/core/images/home-button}}</$button></$link>
+<$link to={{BLC User Guide!!home}} ><span class="inlineImg">{{$:/core/images/home-button}}</span></$link>
 <span class="userguide_content" >
 <$transclude tiddler={{BLC User Guide Current}} mode="block" />
 </span>
