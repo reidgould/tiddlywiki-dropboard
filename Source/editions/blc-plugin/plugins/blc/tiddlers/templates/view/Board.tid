@@ -183,7 +183,10 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           </$button>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
           <$select tiddler=<<currentBoardTiddler>> field="listwidth-num"
-              actions="""<$action-setfield $field="widthismax" $value="yes" />""" >
+              actions="""
+                <$action-setfield $field="widthismax" $value="yes" />
+                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+                """ >
             <$list filter="[enlist<table-ListWidth-Num>]" variable="val-ListWidth-Num-Current">
               <option value=<<val-ListWidth-Num-Current>> ><<val-ListWidth-Num-Current>></option>
             </$list>
