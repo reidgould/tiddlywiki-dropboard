@@ -3,27 +3,29 @@ title: $:/plugins/reidgould/blc/templates/view/Board
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
 <$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeight-Default>> >
 <div class="blc-BoardContainer" style=<<style-BoardHeight>> >
-  <div class="blc-BoardTitle">
-    <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
-      <$link>
-        <$set name="foregroundColor" value={{!!color}} >
-          <span class="inlineImg" style=<<style-IconColor>>>
-            <$transclude tiddler={{!!icon}} mode="inline" />
-          </span>
-        </$set>
-        <$list filter="[all[current]removeprefix[$:/]]">
-          <h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>
-            <span class="tc-system-title-prefix">$:/</span><$text text=<<currentTiddler>>/>
-          </h2>
-        </$list>
-        <$list filter="[all[current]!prefix[$:/]]">
-          <h2 class="tc-title blc-BoardTitle-h2">
-            <$view field="title"/>
-          </h2>
-        </$list>
-      </$link>
-    </$set>
-  </div>
+  <$list filter="[<currentBoardTiddler>] -[<storyTiddler>] +[count[]] -[[0]]" variable="">
+    <div class="blc-BoardTitle">
+      <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
+        <$link>
+          <$set name="foregroundColor" value={{!!color}} >
+            <span class="inlineImg" style=<<style-IconColor>>>
+              <$transclude tiddler={{!!icon}} mode="inline" />
+            </span>
+          </$set>
+          <$list filter="[all[current]removeprefix[$:/]]">
+            <h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>
+              <span class="tc-system-title-prefix">$:/</span><$text text=<<currentTiddler>>/>
+            </h2>
+          </$list>
+          <$list filter="[all[current]!prefix[$:/]]">
+            <h2 class="tc-title blc-BoardTitle-h2">
+              <$view field="title"/>
+            </h2>
+          </$list>
+        </$link>
+      </$set>
+    </div>
+  </$list>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
       <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card blc-CardWidget tc-tiddler-frame">
