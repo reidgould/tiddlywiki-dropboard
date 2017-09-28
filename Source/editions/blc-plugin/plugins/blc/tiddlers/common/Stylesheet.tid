@@ -266,6 +266,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0;
   clear: right;
   float: right;
+}
+.blc-CardFloats-button_fill.blc-CardFloats-button_fill {
   fill: <<color tiddler-controls-foreground>>;
 }
 .blc-CardIconFloat {
@@ -524,6 +526,23 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-CardText img {
   /* Dragging a tiddler with an image creates a new tiddler with the content of the title being the data uri of the image. */
   pointer-events: none;
+}
+
+.sidebar-ResetToBody {
+  min-width: 100%;
+  max-width: 100%;
+  color: <<color foreground>>;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  display: inline-block;
+  background-color: <<color tiddler-background>>;
+  border-color: <<colour tab-border>>;
+  border-width: 3px 1px 1px 1px;
+  border-style: double dashed dashed dashed;
+  fill: <<color foreground>>;
+}
+.sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink, .sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink:hover {
+  color: <<color tiddler-link-foreground>>;
 }
 
 """

@@ -42,7 +42,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
           <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
             <$draggable tiddler=<<currentTiddler>> class="blc-Card blc-CardWidget tc-tiddler-frame">
-              <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+              <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats-button_fill blc-PosTR">
                 {{$:/core/images/close-button}}
               </$button>
               <p class="blc-BoardControlCardWidget-p" title=<<HeldToolTip>>>
@@ -195,6 +195,18 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           </$select>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
           <$checkbox field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">SideBar Tiddler:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$set name="wikitext-SideBar-Button" filter="[<tiddler-SideBar>has:field[title]]"
+              value=<<wikitext-SideBar-Button-Delete>>
+              emptyValue=<<wikitext-SideBar-Button-Create>> >
+            <<wikitext-SideBar-Button>>
+          </$set>
         </div>
       </div>
     </div>

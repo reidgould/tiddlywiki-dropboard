@@ -1,5 +1,6 @@
 title: $:/plugins/reidgould/blc/buttons/new-board
 tags: $:/tags/PageControls
+list-after: $:/core/ui/Buttons/new-tiddler
 caption: {{$:/plugins/reidgould/blc/images/blc}} New Board
 description: New Board
 

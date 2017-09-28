@@ -33,13 +33,13 @@ $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler
       <$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
         <$keyboard key="((save-tiddler))" actions=<<action-Save>>>
           <div class="blc-CardFloats blc-Card-visDownsize">
-            <$button message="tm-delete-tiddler" tooltip={{$:/language/Buttons/Delete/Hint}} aria-label={{$:/language/Buttons/Delete/Caption}} class="tc-btn-invisible">
+            <$button message="tm-delete-tiddler" tooltip={{$:/language/Buttons/Delete/Hint}} aria-label={{$:/language/Buttons/Delete/Caption}} class="tc-btn-invisible blc-CardFloats-button_fill">
               {{$:/core/images/delete-button}}
             </$button>
-            <$button message="tm-cancel-tiddler" tooltip={{$:/language/Buttons/Cancel/Hint}} aria-label={{$:/language/Buttons/Cancel/Caption}} class="tc-btn-invisible">
+            <$button message="tm-cancel-tiddler" tooltip={{$:/language/Buttons/Cancel/Hint}} aria-label={{$:/language/Buttons/Cancel/Caption}} class="tc-btn-invisible blc-CardFloats-button_fill">
               {{$:/core/images/cancel-button}}
             </$button>
-            <$button actions=<<action-Save>> tooltip={{$:/language/Buttons/Save/Hint}} aria-label={{$:/language/Buttons/Save/Caption}} class="tc-btn-invisible">
+            <$button actions=<<action-Save>> tooltip={{$:/language/Buttons/Save/Hint}} aria-label={{$:/language/Buttons/Save/Caption}} class="tc-btn-invisible blc-CardFloats-button_fill">
               {{$:/core/images/save-button}}
             </$button>
           </div>

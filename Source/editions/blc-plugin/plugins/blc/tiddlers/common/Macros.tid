@@ -83,6 +83,27 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/Holding
 $(currentHeldTiddler)$ — $(val-HeldShorttext)$
 \end
 
+\define tiddler-SideBar()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
+\end
+\define wikitext-SideBar-Content()
+  <$tiddler tiddler="$(currentBoardTiddler)$">
+  <span class="sidebar-ResetToBody">
+  <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
+  </span>
+  </$tiddler>
+\end
+\define wikitext-SideBar-Button-Delete()
+  <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
+    <span class="inlineImg">{{$:/core/images/close-button}}</span>
+  </$button>
+\end
+\define wikitext-SideBar-Button-Create()
+  <$button actions="""<$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />""" >
+    <span class="inlineImg">{{$:/core/images/new-button}}</span>
+  </$button>
+\end
+
 \define tiddler-ListWidth-Stage()
 $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/ListWidth/Stage
 \end

@@ -12,7 +12,7 @@ home: How It Works
   </$list>
 </$select>
 <$link to={{BLC User Guide!!home}} ><span class="inlineImg">{{$:/core/images/home-button}}</span></$link>
-<span class="userguide_content" >
+<span class="sidebar-ResetToBody" >
 <$transclude tiddler={{BLC User Guide Current}} mode="block" />
 </span>
 </$linkcatcher>
