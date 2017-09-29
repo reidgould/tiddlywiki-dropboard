@@ -174,34 +174,63 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   text-overflow: ellipsis;
 }
 .blc-BoardControlLineOpContainer {
-  flex: 1 0 20em;
-  overflow-x: scroll;
+  flex: 1 0 auto;
+  min-width: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   /* . . . . . . . . */
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
   align-content: flex-start;
   align-items: flex-start;
 }
 .blc-BoardControlLineOp {
-  min-width: 20em;
-  max-width: 20em;
   height: 3em;
   flex: 0 0 auto;
-  margin: 0;
-  padding: 0 0.5em;
-  border-width: 1px;
-  border-style: dashed;
-  border-color: <<color tab-divider>>;
-}
-.blc-BoardControlLineOpLabel {
+  width: auto;
+  min-width: 1.5em;
+  margin: 0 0.375em;
+  padding: 0
 }
 .blc-BoardControlLineOpLabel-p {
+  display: block;
+  white-space: nowrap;
   margin: 0;
 }
 .blc-BoardControlLineOpInput {
+  display: block;
+  width: 100%;
+}
+.blc-BoardControlLineOpInput-button {
+  padding: 0;
+  min-height: 1.25em;
+  min-width: 1.25em;
+}
+.blc-BoardControl-Popup.blc-BoardControl-Popup {
+  display: flex;
+  align-items: baseline;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.blc-BoardControl-Popup-button.blc-BoardControl-Popup-button.blc-BoardControl-Popup-button {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+.blc-BoardControlLineOp-FlexC.blc-BoardControlLineOp-FlexC {
+  display: initial;
+  flex: 0 0 auto;
+  width: auto;
+  padding: 0;
+  margin: 0 0.25em;
+}
+.blc-BoardControlLineOp-FlexE.blc-BoardControlLineOp-FlexE {
+  display: initial;
+  flex: 1 0 4em;
+  width: auto;
+  padding: 0;
+  margin: 0 0.25em;
 }
 .blc-BoardControlFilterTextArea {
   width: 100%;
@@ -515,7 +544,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   right: 0.125em;
 }
 
-.p-verticalRule {
+.p-verticalRule.p-verticalRule {
   display: inline;
   margin: 0 0.5em;
   border-style: none none none solid ;
