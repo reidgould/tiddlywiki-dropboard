@@ -95,14 +95,14 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       </div>
       <div class="blc-BoardControlLineOp" title="Display Text Field">
         <p class="blc-BoardControlLineOpLabel-p">Text</p>
-        <div class="blc-BoardControlLineOpInput">
-          <$checkbox field="displaytext" checked="yes" unchecked="no" default="yes"></$checkbox>
+        <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
+          <$checkbox class="" field="displaytext" checked="yes" unchecked="no" default="yes"></$checkbox>
         </div>
       </div>
       <div class="blc-BoardControlLineOp" title="Display Image Tiddlers">
         <p class="blc-BoardControlLineOpLabel-p">Image</p>
-        <div class="blc-BoardControlLineOpInput">
-          <$checkbox field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
+        <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
+          <$checkbox class="" field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
         </div>
       </div>
       <div class="blc-BoardControlLineOp" title="Search List Filter.">

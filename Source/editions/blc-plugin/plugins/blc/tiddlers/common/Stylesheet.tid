@@ -203,6 +203,15 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   display: block;
   width: 100%;
 }
+.blc-BoardControlLineOpInput-checkboxContainer {
+  height: 1.5em;
+  text-align: center;
+  background: whitesmoke;
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+}
 .blc-BoardControlLineOpInput-button {
   padding: 0;
   min-height: 1.25em;
