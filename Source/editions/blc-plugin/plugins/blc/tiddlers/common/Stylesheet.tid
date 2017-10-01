@@ -426,6 +426,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-listDropArea-Right.blc-listDropArea-Right {
   position: relative;
   display: inline;
+  white-space: nowrap; /* Workaround for a display issue in Firefox. */
   vertical-align: top;
   padding: 0.25em 0.375em 0.25em 0.375em;
   margin: 0em 0em 0em 0.25em;
