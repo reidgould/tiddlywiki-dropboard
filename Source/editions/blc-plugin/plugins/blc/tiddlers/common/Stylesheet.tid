@@ -109,7 +109,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 .blc-BoardControlContainer-layOuter {
   flex: 0 0 auto;
-  margin: 0 -0.125em;
+  margin: -0.125em -0.25em;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -117,7 +117,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-content: flex-start;
   align-items: flex-start;
   /* . . . . . . . . */
@@ -128,12 +128,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 }
 .blc-BoardControl-layOuter {
   height: 3em;
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 0.125em;
+  margin: 0.125em 0.25em;
+  flex: 0 0 auto;
 }
 .blc-BoardControlCardWidget.blc-BoardControlCardWidget.blc-BoardControlCardWidget {
-  flex: 0 0 auto;
   position: relative;
   text-align: center;
   width: 8em;
@@ -172,6 +170,47 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.blc-BoardControl-CardWidget-Container {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.blc-BoardControl-InputWidget-Container {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.blc-BoardControl-CardWidget-Container-Sub {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.blc-BoardControl-InputWidget-Container-Sub {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.blc-BoardControlInputWidget {
+  width: auto;
+  min-width: 1.5em;
+  padding: 0
 }
 .blc-BoardControlLineOpContainer {
   flex: 1 0 auto;
@@ -292,7 +331,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   font-size: 0.75em;
 }
 
-.blc-CardText > div, .blc-CardText > p, .blc-CardText > img {
+.blc-CardText > div, .blc-CardText > img, .blc-CardText.blc-CardText.blc-CardText.blc-CardText > p {
+  /* Additional specificity for "p" needed in sidebar. */
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
@@ -583,5 +623,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink, .sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink:hover {
   color: <<color tiddler-link-foreground>>;
 }
+.tc-sidebar-header .tc-sidebar-lists .sidebar-ResetToBody p {
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
 
 """

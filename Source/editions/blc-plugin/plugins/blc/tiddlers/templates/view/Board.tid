@@ -27,192 +27,202 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     </div>
   </$list>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
-    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
-      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card blc-CardWidget tc-tiddler-frame">
-        <p class="blc-BoardControlCardWidget-p">{{$:/core/images/new-button}}New Tiddler</p>
-      </$draggable>
+    <div class="blc-BoardControl-CardWidget-Container">
+      <div class="blc-BoardControl-CardWidget-Container-Sub">
+        <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
+          <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card blc-CardWidget tc-tiddler-frame">
+            <p class="blc-BoardControlCardWidget-p">{{$:/core/images/new-button}}New Tiddler</p>
+          </$draggable>
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+          <$droppable actions="""
+              <$action-deletetiddler $tiddler=<<tiddler-Holding>> />
+              <$action-createtiddler $basetitle=<<tiddler-Holding>> text=<<actionTiddler>> /> """ >
+            <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/full-screen-button}}Hold&emsp;Tiddler&emsp;</p></div>
+          </$droppable>
+          <$list filter="[<tiddler-Holding>get[title]]" >
+            <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
+              <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
+                <$draggable tiddler=<<currentTiddler>> class="blc-Card blc-CardWidget tc-tiddler-frame">
+                  <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats-button_fill blc-PosTR">
+                    {{$:/core/images/close-button}}
+                  </$button>
+                  <p class="blc-BoardControlCardWidget-p" title=<<HeldToolTip>>>
+                  {{$:/core/images/file}}
+                  Tiddler:&emsp;
+                  <span class="truncate blc-BoardControl-HeldTitle blc-shorttext_container">
+                    <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                      <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
+                    </$set>
+                  </span>
+                  </p>
+                </$draggable>
+              </$vars>
+            </$tiddler>
+          </$list>
+        </div>
+      </div>
+      <div class="blc-BoardControl-CardWidget-Container-Sub">
+        <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+          <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
+            <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/export-button}}Open in Main Story</p></div>
+          </$droppable>
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+          <$droppable actions="""<<action-RemoveFromBoard>>""" >
+            <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/close-button}}Remove from Board</p></div>
+          </$droppable>
+        </div>
+      </div>
     </div>
-    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-      <$droppable actions="""
-          <$action-deletetiddler $tiddler=<<tiddler-Holding>> />
-          <$action-createtiddler $basetitle=<<tiddler-Holding>> text=<<actionTiddler>> /> """ >
-        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/full-screen-button}}Hold&emsp;Tiddler&emsp;</p></div>
-      </$droppable>
-      <$list filter="[<tiddler-Holding>get[title]]" >
-        <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
-          <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
-            <$draggable tiddler=<<currentTiddler>> class="blc-Card blc-CardWidget tc-tiddler-frame">
-              <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats-button_fill blc-PosTR">
+    <div class="blc-BoardControl-InputWidget-Container">
+      <div class="blc-BoardControl-InputWidget-Container-Sub">
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Filter (append to each)">
+          <p class="blc-BoardControlLineOpLabel-p">Filter</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupUserFilter>> >{{$:/core/images/unfold-button}}</$button>
+          <$reveal type="popup" state=<<tiddler-popupUserFilter>> position="below" class="tc-popup-keep">
+            <div class="tc-drop-down blc-BoardControl-Popup">
+              <span class="blc-BoardControlLineOp-FlexE">
+                <$edit-text tiddler=<<tiddler-UserFilter-Stage>> tag="input" type="text" default="" placeholder="Use only + or - runs." class="blc-BoardControlFilterTextArea" />
+              </span>
+              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Live>> />
+                  <$action-createtiddler $basetitle=<<tiddler-UserFilter-Live>> text={{{ [<tiddler-UserFilter-Stage>get[text]] }}} />
+                  """>
+                Set
+              </$button>
+              <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Stage>> />
+                  <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Live>> />
+                  """ >
                 {{$:/core/images/close-button}}
               </$button>
-              <p class="blc-BoardControlCardWidget-p" title=<<HeldToolTip>>>
-              {{$:/core/images/file}}
-              Tiddler:&emsp;
-              <span class="truncate blc-BoardControl-HeldTitle blc-shorttext_container">
-                <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                  <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
-                </$set>
-              </span>
-              </p>
-            </$draggable>
-          </$vars>
-        </$tiddler>
-      </$list>
-    </div>
-    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-      <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/export-button}}Open in Main Story</p></div>
-      </$droppable>
-    </div>
-    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-      <$droppable actions="""<<action-RemoveFromBoard>>""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/close-button}}Remove from Board</p></div>
-      </$droppable>
-    </div>
-    <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
-      <div class="blc-BoardControlLineOp" title="Filter (append to each)">
-        <p class="blc-BoardControlLineOpLabel-p">Filter</p>
-        <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupUserFilter>> >{{$:/core/images/unfold-button}}</$button>
-        <$reveal type="popup" state=<<tiddler-popupUserFilter>>  position="belowleft" class="tc-popup-keep">
-          <div class="tc-drop-down blc-BoardControl-Popup">
-            <span class="blc-BoardControlLineOp-FlexE">
-              <$edit-text tiddler=<<tiddler-UserFilter-Stage>> tag="input" type="text" default="" placeholder="Use only + or - runs." class="blc-BoardControlFilterTextArea" />
-            </span>
-            <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Live>> />
-                <$action-createtiddler $basetitle=<<tiddler-UserFilter-Live>> text={{{ [<tiddler-UserFilter-Stage>get[text]] }}} />
-                """>
-              Set
-            </$button>
-            <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Stage>> />
-                <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Live>> />
-                """ >
-              {{$:/core/images/close-button}}
-            </$button>
-          </div>
-        </$reveal>
-      </div>
-      <div class="blc-BoardControlLineOp" title="Display Text Field">
-        <p class="blc-BoardControlLineOpLabel-p">Text</p>
-        <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
-          <$checkbox class="" field="displaytext" checked="yes" unchecked="no" default="yes"></$checkbox>
+            </div>
+          </$reveal>
         </div>
-      </div>
-      <div class="blc-BoardControlLineOp" title="Display Image Tiddlers">
-        <p class="blc-BoardControlLineOpLabel-p">Image</p>
-        <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
-          <$checkbox class="" field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Display Text Field">
+          <p class="blc-BoardControlLineOpLabel-p">Text</p>
+          <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
+            <$checkbox class="" field="displaytext" checked="yes" unchecked="no" default="yes"></$checkbox>
+          </div>
         </div>
-      </div>
-      <div class="blc-BoardControlLineOp" title="Search List Filter.">
-        <p class="blc-BoardControlLineOpLabel-p">Search</p>
-        <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupSearchList>> >{{$:/core/images/unfold-button}}</$button>
-        <$reveal type="popup" state=<<tiddler-popupSearchList>>  position="belowleft" class="tc-popup-keep">
-          <div class="tc-drop-down blc-BoardControl-Popup">
-            <span class="blc-BoardControlLineOp-FlexE">
-              <$edit-text tiddler=<<tiddler-SearchListFilter-Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-BoardControlFilterTextArea" />
-            </span>
-            <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Live>> />
-                <$action-createtiddler $basetitle=<<tiddler-SearchListFilter-Live>> text={{{ [<tiddler-SearchListFilter-Stage>get[text]] }}} /> """>
-              Set
-            </$button>
-            <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Stage>> />
-                <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Live>> />
-                """ >
-              {{$:/core/images/close-button}}
-            </$button>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Display Image Tiddlers">
+          <p class="blc-BoardControlLineOpLabel-p">Image</p>
+          <div class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-checkboxContainer">
+            <$checkbox class="" field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
           </div>
-        </$reveal>
-      </div>
-      <div class="blc-BoardControlLineOp" title="Board Height">
-        <p class="blc-BoardControlLineOpLabel-p">Height</p>
-        <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupBoardHeight>> >{{$:/core/images/unfold-button}}</$button>
-        <$reveal type="popup" state=<<tiddler-popupBoardHeight>>  position="belowleft" class="tc-popup-keep">
-          <div class="tc-drop-down blc-BoardControl-Popup">
-            <$set name="val-BoardHeight-current" value={{{ [<currentBoardTiddler>get[boardheight]] }}} >
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Search List Filter.">
+          <p class="blc-BoardControlLineOpLabel-p">Search</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupSearchList>> >{{$:/core/images/unfold-button}}</$button>
+          <$reveal type="popup" state=<<tiddler-popupSearchList>> position="below" class="tc-popup-keep">
+            <div class="tc-drop-down blc-BoardControl-Popup">
               <span class="blc-BoardControlLineOp-FlexE">
-                <$edit-text tiddler=<<tiddler-BoardHeight-Stage>> tag="input" type="text" default="" placeholder=<<val-BoardHeight-current>> class="blc-BoardControlFilterTextArea" />
+                <$edit-text tiddler=<<tiddler-SearchListFilter-Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-BoardControlFilterTextArea" />
               </span>
-            </$set>
-            <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value={{{ [<tiddler-BoardHeight-Stage>get[text]addsuffix[vh]] }}} />
-                <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
-                """>
-              Set (vh)
-            </$button>
-            <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-            <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
-                """ >
-              100%
-            </$button>
-            <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-            <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
-                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="boardheight" />
-                """ >
-              {{$:/core/images/close-button}}
-            </$button>
-          </div>
-        </$reveal>
-      </div>
-      <div class="blc-BoardControlLineOp" title="List Width">
-        <p class="blc-BoardControlLineOpLabel-p">Width</p>
-        <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupListWidth>> >{{$:/core/images/unfold-button}}</$button>
-        <$reveal type="popup" state=<<tiddler-popupListWidth>>  position="belowleft" class="tc-popup-keep">
-          <div class="tc-drop-down blc-BoardControl-Popup">
-            <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth-em]] }}} >
-              <span class="blc-BoardControlLineOp-FlexE">
-                <$edit-text tiddler=<<tiddler-ListWidth-Stage>> tag="input" type="text" default="" placeholder=<<val-ListWidth-current>> class="blc-BoardControlFilterTextArea" />
-              </span>
-            </$set>
-            <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value={{{ [<tiddler-ListWidth-Stage>get[text]] }}} />
-                <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
-                """>
-              Set (em)
-            </$button>
-            <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-            <p class="blc-BoardControlLineOp-FlexC">Fit:</p>
-            <$select class="blc-BoardControlLineOp-FlexC" tiddler=<<currentBoardTiddler>> field="listwidth-num"
-                actions="""
-                  <$action-setfield $field="widthismax" $value="yes" />
-                  <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Live>> />
+                  <$action-createtiddler $basetitle=<<tiddler-SearchListFilter-Live>> text={{{ [<tiddler-SearchListFilter-Stage>get[text]] }}} /> """>
+                Set
+              </$button>
+              <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Stage>> />
+                  <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Live>> />
                   """ >
-              <$list filter="[enlist<table-ListWidth-Num>]" variable="val-ListWidth-Num-Current">
-                <option value=<<val-ListWidth-Num-Current>> ><<val-ListWidth-Num-Current>></option>
-              </$list>
-            </$select>
-            <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-            <$checkbox class="blc-BoardControlLineOp-FlexC" field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
-            <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-            <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
-                <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
-                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" />
-                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
-                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="widthismax" />
-                """ >
-              {{$:/core/images/close-button}}
-            </$button>
-          </div>
-        </$reveal>
+                {{$:/core/images/close-button}}
+              </$button>
+            </div>
+          </$reveal>
+        </div>
       </div>
-      <div class="blc-BoardControlLineOp" title="Open In New Window">
-        <p class="blc-BoardControlLineOpLabel-p">Full</p>
-        <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions=""" """ >
-          <span class="inlineImg">{{$:/core/images/open-window}}</span>
-        </$button>
-      </div>
-      <div class="blc-BoardControlLineOp" title="Show in SideBar">
-        <p class="blc-BoardControlLineOpLabel-p">SideBar</p>
-        <$set name="wikitext-SideBar-Button" filter="[<tiddler-SideBar>has:field[title]]"
-            value=<<wikitext-SideBar-Button-Delete>>
-            emptyValue=<<wikitext-SideBar-Button-Create>> >
-          <<wikitext-SideBar-Button>>
-        </$set>
+      <div class="blc-BoardControl-InputWidget-Container-Sub">
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Board Height">
+          <p class="blc-BoardControlLineOpLabel-p">Height</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupBoardHeight>> >{{$:/core/images/unfold-button}}</$button>
+          <$reveal type="popup" state=<<tiddler-popupBoardHeight>> position="below" class="tc-popup-keep">
+            <div class="tc-drop-down blc-BoardControl-Popup">
+              <$set name="val-BoardHeight-current" value={{{ [<currentBoardTiddler>get[boardheight]] }}} >
+                <span class="blc-BoardControlLineOp-FlexE">
+                  <$edit-text tiddler=<<tiddler-BoardHeight-Stage>> tag="input" type="text" default="" placeholder=<<val-BoardHeight-current>> class="blc-BoardControlFilterTextArea" />
+                </span>
+              </$set>
+              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
+                  <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value={{{ [<tiddler-BoardHeight-Stage>get[text]addsuffix[vh]] }}} />
+                  <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
+                  """>
+                Set (vh)
+              </$button>
+              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
+              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
+                  <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
+                  """ >
+                100%
+              </$button>
+              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
+              <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
+                  <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="boardheight" />
+                  """ >
+                {{$:/core/images/close-button}}
+              </$button>
+            </div>
+          </$reveal>
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="List Width">
+          <p class="blc-BoardControlLineOpLabel-p">Width</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" popup=<<tiddler-popupListWidth>> >{{$:/core/images/unfold-button}}</$button>
+          <$reveal type="popup" state=<<tiddler-popupListWidth>> position="below" class="tc-popup-keep">
+            <div class="tc-drop-down blc-BoardControl-Popup">
+              <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth-em]] }}} >
+                <span class="blc-BoardControlLineOp-FlexE">
+                  <$edit-text tiddler=<<tiddler-ListWidth-Stage>> tag="input" type="text" default="" placeholder=<<val-ListWidth-current>> class="blc-BoardControlFilterTextArea" />
+                </span>
+              </$set>
+              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
+                  <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value={{{ [<tiddler-ListWidth-Stage>get[text]] }}} />
+                  <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
+                  """>
+                Set (em)
+              </$button>
+              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
+              <p class="blc-BoardControlLineOp-FlexC">Fit:</p>
+              <$select class="blc-BoardControlLineOp-FlexC" tiddler=<<currentBoardTiddler>> field="listwidth-num"
+                  actions="""
+                    <$action-setfield $field="widthismax" $value="yes" />
+                    <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+                    """ >
+                <$list filter="[enlist<table-ListWidth-Num>]" variable="val-ListWidth-Num-Current">
+                  <option value=<<val-ListWidth-Num-Current>> ><<val-ListWidth-Num-Current>></option>
+                </$list>
+              </$select>
+              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
+              <$checkbox class="blc-BoardControlLineOp-FlexC" field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
+              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
+              <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
+                  <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
+                  <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" />
+                  <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+                  <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="widthismax" />
+                  """ >
+                {{$:/core/images/close-button}}
+              </$button>
+            </div>
+          </$reveal>
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Open In New Window">
+          <p class="blc-BoardControlLineOpLabel-p">Full</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions=""" """ >
+            <span class="inlineImg">{{$:/core/images/open-window}}</span>
+          </$button>
+        </div>
+        <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Show in SideBar">
+          <p class="blc-BoardControlLineOpLabel-p">SideBar</p>
+          <$set name="wikitext-SideBar-Button" filter="[<tiddler-SideBar>has:field[title]]"
+              value=<<wikitext-SideBar-Button-Delete>>
+              emptyValue=<<wikitext-SideBar-Button-Create>> >
+            <<wikitext-SideBar-Button>>
+          </$set>
+        </div>
       </div>
     </div>
   </div>
