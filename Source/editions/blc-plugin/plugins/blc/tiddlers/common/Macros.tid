@@ -99,7 +99,12 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
   </$button>
 \end
 \define wikitext-SideBar-Button-Create()
-  <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions="""<$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />""" >
+  <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions="""
+      <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
+      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" $value="1" />
+      <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
+      """ >
     <span class="inlineImg">{{$:/core/images/new-button}}</span>
   </$button>
 \end
