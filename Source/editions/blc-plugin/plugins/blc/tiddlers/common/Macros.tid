@@ -104,6 +104,7 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
       <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
       <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" $value="1" />
       <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
+      <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value=<<tiddler-SideBar>> />
       """ >
     <span class="inlineImg">{{$:/core/images/new-button}}</span>
   </$button>
