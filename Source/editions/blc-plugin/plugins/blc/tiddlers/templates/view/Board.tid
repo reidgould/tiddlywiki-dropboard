@@ -152,13 +152,6 @@ title: $:/plugins/reidgould/blc/templates/view/Board
                   """>
                 Set (vh)
               </$button>
-              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
-              <$button class="blc-BoardControlLineOp-FlexC blc-BoardControl-Popup-button" actions="""
-                  <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
-                  """ >
-                100%
-              </$button>
-              <p class="p-verticalRule blc-BoardControlLineOp-FlexC">&zwnj;</p>
               <$button class="blc-BoardControlLineOp-FlexC tc-btn-invisible" actions="""
                   <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
                   <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="boardheight" />
@@ -210,8 +203,13 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           </$reveal>
         </div>
         <div class="blc-BoardControl-layOuter blc-BoardControlInputWidget" title="Open In New Window">
-          <p class="blc-BoardControlLineOpLabel-p">Full</p>
-          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions=""" """ >
+          <p class="blc-BoardControlLineOpLabel-p">Window</p>
+          <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions="""
+              <$action-sendmessage $message="tm-open-window" param=<<currentBoardTiddler>> width="9999" height="9999"  />
+              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
+              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value="16" />
+              <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
+              """ >
             <span class="inlineImg">{{$:/core/images/open-window}}</span>
           </$button>
         </div>
@@ -283,6 +281,18 @@ title: $:/plugins/reidgould/blc/templates/view/Board
   </$set>
   </$set>
   </$set>
+  <$list filter="[<currentBoardTiddler>get[boardheight]suffix[%]]" variable="">
+    <$list filter="[<storyTiddler>] -[[]]" variable="">
+      <div style="text-align:center;margin:0.5em;">
+        Currently in "Window" mode.<br>
+        <$button actions="""
+            <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="boardheight" />
+            """>
+          Restore default height.
+        </$button>
+      </div>
+    </$list>
+  </$list>
   <div class="blc-Board-Footer">
     <$link to="$:/plugins/reidgould/blc">{{$:/plugins/reidgould/blc!!name}}</$link> by <a href={{$:/plugins/reidgould/blc!!author-web}} target="_blank" rel="noopener noreferrer">{{$:/plugins/reidgould/blc!!author-name}}</a>
   </div>
