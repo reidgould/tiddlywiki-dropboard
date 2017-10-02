@@ -105,6 +105,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
+  /* Last resort to avoid scrollbars caused by collapsed list titles in cases where height differs from assumed ideal value. (e.g. when control banner wraps.) */
+  overflow: hidden;
 }
 
 .blc-BoardControlContainer-layOuter {
@@ -479,7 +481,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   display: inline;
   vertical-align: top;
   padding: 0.25em 0.375em 0.25em 0.375em;
-  margin: 0em 0em 0em 0.25em;
+  margin: 0em;
 }
 .blc-listCollapseButton_transform.blc-listCollapseButton_transform {
   display: inline-block;

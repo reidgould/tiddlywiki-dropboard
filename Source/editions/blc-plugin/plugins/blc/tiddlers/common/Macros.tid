@@ -159,8 +159,11 @@ fill:$(foregroundColor)$;
 \define style-BoardHeight()
 height: $(val-BoardHeight)$;
 \end
+\define Val-ListTitle-Collapsed()
+calc($(val-BoardHeight)$ - 12em)
+\end
 \define style-ListTitle-Collapsed()
-max-width: calc($(val-BoardHeight)$ - 4em);
+max-width: $(value-ListTitle-Height)$;
 \end
 
 \define val-ListWidth-Num-Default()

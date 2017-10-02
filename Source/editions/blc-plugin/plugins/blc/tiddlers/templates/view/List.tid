@@ -10,6 +10,9 @@ title: $:/plugins/reidgould/blc/templates/view/List
   <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="""blc-TitleSpan""" >
+  <$set name="value-ListTitle-Height" filter="[<currentBoardTiddler>get[boardheight]suffix[%]]"
+      value="calc(100vh - 15em)"
+      emptyValue=<<Val-ListTitle-Collapsed>> >
   <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<style-ListTitle-Collapsed>>
       emptyValue="" >
