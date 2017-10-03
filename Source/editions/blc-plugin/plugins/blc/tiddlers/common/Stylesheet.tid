@@ -105,6 +105,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
+  margin-bottom: 0.25em;
   /* Last resort to avoid scrollbars caused by collapsed list titles in cases where height differs from assumed ideal value. (e.g. when control banner wraps.) */
   overflow: hidden;
 }

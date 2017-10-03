@@ -11,7 +11,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="""blc-TitleSpan""" >
   <$set name="value-ListTitle-Height" filter="[<currentBoardTiddler>get[boardheight]suffix[%]]"
-      value="calc(100vh - 15em)"
+      value="calc(100vh - 16em)"
       emptyValue=<<Val-ListTitle-Collapsed>> >
   <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<style-ListTitle-Collapsed>>
