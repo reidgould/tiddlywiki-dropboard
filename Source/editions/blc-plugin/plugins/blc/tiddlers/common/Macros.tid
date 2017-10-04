@@ -88,25 +88,25 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
 \end
 \define wikitext-SideBar-Content()
   <$tiddler tiddler="$(currentBoardTiddler)$">
-  <span class="sidebar-ResetToBody">
+  <span class="blc-SB-Container_Reset-OIV-_ blc-SB-Reset-VO-_">
   <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
   </span>
   </$tiddler>
 \end
 \define wikitext-SideBar-Button-Delete()
-  <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
-    <span class="inlineImg">{{$:/core/images/close-button}}</span>
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
+    <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span>
   </$button>
 \end
 \define wikitext-SideBar-Button-Create()
-  <$button class="blc-BoardControlLineOpInput blc-BoardControlLineOpInput-button" actions="""
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
       <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
       <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
       <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" $value="1" />
       <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
       <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value=<<tiddler-SideBar>> />
       """ >
-    <span class="inlineImg">{{$:/core/images/new-button}}</span>
+    <span class="_-_-img_inline-OV-_C">{{$:/core/images/new-button}}</span>
   </$button>
 \end
 

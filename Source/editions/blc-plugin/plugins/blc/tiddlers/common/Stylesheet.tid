@@ -6,90 +6,408 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
 
-.blc-BoardContainer {
+/* ================================================================
+ * ### class/id name format:
+ *     namespace-HINT_CONTEXT-class_or_id_name-HINT_RULE_TYPES-HINT_SELECTOR_OR_COMBINATOR
+ * ================================================================
+ * ### Hints for rule types.
+ * _ - Identifier        (No style properties.)
+ * ----------------------------------------------------------------
+ * ##  Usage hints.
+ * S - State             (e.g. menu open or closed.)
+ * P - Preference        (A rule to isolate values intended to be overwritten. e.g. for themes.)
+ * E - Extend            (A rule intended to be extended by others not used directly.)
+ * ----------------------------------------------------------------
+ * ##  Property hints.
+ * B - Base              (i.e. Global reset. May contain properties usually hinted at by other style types.)
+ * O - Layout Outer
+ * I - Layout Inner
+ * V - Visual Appearance
+ * T - Text
+ * D - Dynamic           (For pseudo selectors and media queries.)
+ * Z - Transforms        (And transitions.)
+ * M - Miscellaneous
+ * ================================================================
+ * ### Hints for selector or combinator use.
+ * ----------------------------------------------------------------
+ * _ - Simple            (There is a rule that applies to the element the class/id is used on.)
+ * ----------------------------------------------------------------
+ * ##  Selector hints.
+ * T - Type              (There is a rule that applies when this class/id is used on a particular element type.)
+ * S - Class or ID       (There is a rule that applies when this class/id is used with another class/id.)
+ * A - Attribute         (There is a rule that applies when this class/id is used with an attribute selector.)
+ * ----------------------------------------------------------------
+ * ##  Combinator hints. (Lower case hint indicates that this class/id is the descendant or sibling.)
+ * N - Adjacent sibling  (There is a rule that applies to an element that is the adjacent/next sibling after this class/id.)
+ * L - General sibling   (There is a rule that applies to an element that is a general/later sibling after this class/id.)
+ * C - Child             (There is a rule that applies to an element that is a child of this class/id.)
+ * D - Descendant        (There is a rule that applies to an element that is a descendant of this class/id.)
+ * ================================================================
+**/
+
+
+
+
+/* ==== Board
+** ================================================================ */
+
+.blc-_-Board-OI-_ {
+  /*-- Layout Outer --*/
   /* "height" set in style property on element */
   border-style: none dashed;
   border-width: 0 0.25em;
   border-color: <<color tab-divider>>;
   padding: 0.25em 0.5em 0em 0.5em;
-  /* . . . . . . . . . */
+  /*-- Layout Inner --*/
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
-  position: relative;
 }
 
-.blc-BoardTitle{
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-B-Row_Title-O-_ {
+  /*-- Layout Outer --*/
   flex: 0 0 auto;
   padding: 0;
   margin: 0;
 }
-.blc-BoardTitle-h2 {
+
+.blc-B-Row_Title_h2-O-_ {
+  /*-- Layout Outer --*/
   margin: 0 0 0.25em 0;
   display: inline-block;
 }
-.tc-subtitle.blc-subtitle {
-  font-size: 1em;
-  margin: 0 0 0.5em 0;
-  color: <<color tiddler-title-foreground>>;
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-B-Row_ControlBanner-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 0 0 auto;
+  padding: 0;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  margin: -0.125em -0.25em;
 }
-.blc-Board-Footer {
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-B-Row_List-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 1 1 0em;
+  overflow: hidden;
+  padding: 0;
+  margin: 0.75em -0.25em;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.blc-B_RL-Container_List-OI-_ {
+  /*-- Layout Outer --*/
+  /* TODO: Remove this unnecessary workaround. */
+  /* half pixel padding on each side eliminates a
+   * horizontal scroll when content should fit perfectly. */
+  padding: 0 0.5px;
+  margin: 0.75em 0;
+  flex: 1 1 0px;
+  overflow: auto;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-B-Footer-OT-_ {
+  /*-- Layout Outer --*/
   position: absolute;
   bottom: 0em;
   right: 1em;
   max-width: 100%;
   overflow: hidden;
+  /*-- text --*/
   font-size: 0.75em;
 }
 
-.blc-ListTitle {
+.blc-B-EmptyMessage-OM-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  width: 100%;
+  padding: 0.5em;
+  /*-- miscellaneous --*/
+  pointer-events: none;
+}
+
+
+/* ---- Control Banner
+** ---------------------------------------------------------------- */
+
+.blc-CB-Container_WidgetDrop-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 0 1 auto;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.blc-CB-ContainerSub_WidgetDrop-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 0 1 auto;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+/* .   .   .   .   .   .   .   .    */
+
+.blc-CB-Container_WidgetInput-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 0 1 auto;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.blc-CB-ContainerSub_WidgetInput-OI-_ {
+  /*-- Layout Outer --*/
+  flex: 0 1 auto;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-CB-Widget-O-_ {
+  /*-- Layout Outer --*/
   flex: 0 0 auto;
-  align-self: auto;
-  border-style: solid solid none solid;
-  border-color: <<color tab-divider>>;
-  border-width: 1px;
-  background-color: <<color tab-background-selected>>;
-  padding: 0.75em 0.5em 0.375em 0.5em;
-}
-.blc-titleTweak {
-  display: inline;
-  margin: 0;
+  height: 3em;
+  margin: 0.125em 0.25em;
 }
 
-.blc-scrollable {
-  flex: 1 1 0em;
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+
+/* ---- Control Banner - Drop Area Widget
+** ---------------------------------------------------------------- */
+
+.blc-CB-WidgetDrop-OI-_,
+.blc-CB-WidgetDrop-OI-_.blc-CB-WidgetDrop-OI-_.blc-CB-WidgetDrop-OI-_
+{
+  /*-- Layout Outer --*/
+  position: relative;
+  width: 8em;
+  padding: 0.5em 0.25em;
+  /*-- Layout Inner --*/
+  text-align: center;
   overflow: hidden;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-CB_WD-Droppable-OI-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  top: auto;
+  left: 0;
+  width: auto;
+  height: auto;
+  /*-- Layout Inner --*/
+  padding: 0 0.25em;
+}
+
+.blc-CB_WD-p-OIT-_C {
+  /*-- Layout Outer --*/
+  margin: 0;
+  max-height: 2.125em;
+  min-height: 2.125em;
+  /*-- Layout Inner --*/
+  overflow: hidden;
+  /*-- Text --*/
+  line-height: 1em;
+  letter-spacing: -0.5px;
+}
+
+.blc-CB_WD-p-OIT-_C > svg {
+  /*-- Layout Outer --*/
+  height: 2em;
+  width: auto;
+  float: left;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-CB_WD-Card-O-_,
+.blc-CB_WD-Card-O-_.blc-CB_WD-Card-O-_.blc-CB_WD-Card-O-_
+{
+  /*-- Layout Outer --*/
+  margin-top: -0.25em;
+  padding: 0.125em 0.25em;
+  min-height: 0;
+}
+
+.blc-CB_WD-HeldTitle-OT-_ {
+  /*-- Layout Outer --*/
+  display: inline-block;
+  width: calc(100% - 2em);
+  /*-- Text --*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+
+/* ---- Control Banner - Input Widget
+** ---------------------------------------------------------------- */
+
+.blc-CB-WidgetInput-O-_ {
+  /*-- Layout Outer --*/
+  width: auto;
+  min-width: 1.5em;
+  padding: 0
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-CB_WI-Label_p-OT-_ {
+  /*-- Layout Outer --*/
+  display: block;
+  min-height: 1.5em;
+  max-height: 1.5em;
+  margin: 0;
+  /*-- Text --*/
+  white-space: nowrap;
+  line-height: 1em;
+}
+
+.blc-CB_WI-Input-O-_ {
+  /*-- Layout Outer --*/
+  display: block;
+  width: 100%;
+}
+
+.blc-CB_WI-Input_Button-O-_ {
+  /*-- Layout Outer --*/
   padding: 0;
-  margin: 0.75em -0.25em;
-  /* . . . . . . . . . */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
-  /* . . . . . . . . . */
+  min-height: 1.5em;
+  max-height: 1.5em;
 }
 
-.blc-ListContainer {
-  /* half pixel padding on each side eliminates a horizontal scroll when content should fit perfectly. */
-  padding: 0 0.5px;
-  margin: 0.75em 0 0.75em 0;
-  flex: 1 1 0px;
-  overflow: auto;
-  /* . . . . . . . . */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
+.blc-CB_WI-Input_Container_Checkbox-OTV-_ {
+  /*-- Layout Outer --*/
+  height: 1.5em;
+  /*-- Text --*/
+  text-align: center;
+  line-height: 1.75em;
+  /*-- Visual --*/
+  background: whitesmoke;
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
 }
 
-.blc-List-layOuter {
+.blc-CB_WI-Input_Container_Checkbox-OTV-_ > label > input[type="checkbox"] {
+  height: 1em;
+  width: 1em;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-CB_WI-Popup-OI-_,
+.blc-CB_WI-Popup-OI-_.blc-CB_WI-Popup-OI-_
+{
+  /*-- Layout Outer --*/
+  display: flex;
+  /*-- Layout Inner --*/
+  align-items: baseline;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.blc-CB_WI_P-FlexC-O-_,
+.blc-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
+{
+  /*-- Layout Outer --*/
+  display: initial;
+  flex: 0 0 auto;
+  width: auto;
+  padding: 0;
+  margin: 0 0.25em;
+}
+
+.blc-CB_WI_P-FlexE-O-_ {
+  /*-- Layout Outer --*/
+  display: initial;
+  flex: 1 0 4em;
+  width: auto;
+  padding: 0;
+  margin: 0 0.25em;
+}
+
+.blc-CB_WI_P-Button-O-_,
+.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_
+{
+  /*-- Layout Outer --*/
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+.blc-CB_WI_P-Child_TextArea-O-_ {
+  /*-- Layout Outer --*/
+  width: 100%;
+}
+
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
+
+
+
+
+/* ==== List
+** ================================================================ */
+
+.blc-_-List-OI-_ {
+  /*-- Layout Outer --*/
   position: relative;
   min-width: 15.5em;
   /* "min-width" set in style property on element */
@@ -97,8 +415,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0 0.25em;
   flex: 1 0 0em;
   align-self: auto;
-}
-.blc-List-layInner {
+  /*-- Layout Inner --*/
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -106,407 +423,19 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-content: stretch;
   align-items: stretch;
   margin-bottom: 0.25em;
-  /* Last resort to avoid scrollbars caused by collapsed list titles in cases where height differs from assumed ideal value. (e.g. when control banner wraps.) */
+  /* Last resort to avoid scrollbars caused by collapsed list
+   * titles in cases where height differs from assumed ideal
+   * value. (e.g. when control banner wraps.) */
   overflow: hidden;
 }
 
-.blc-BoardControlContainer-layOuter {
-  flex: 0 0 auto;
-  margin: -0.125em -0.25em;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.blc-BoardControlContainer-layInner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
-  align-items: flex-start;
-  /* . . . . . . . . */
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-left: 0;
-  padding-right: 0;
-}
-.blc-BoardControl-layOuter {
-  height: 3em;
-  margin: 0.125em 0.25em;
-  flex: 0 0 auto;
-}
-.blc-BoardControlCardWidget.blc-BoardControlCardWidget.blc-BoardControlCardWidget {
-  position: relative;
-  text-align: center;
-  width: 8em;
-  overflow: hidden;
-  padding: 0.5em 0.25em;
-}
-.blc-BoardControlCardWidgetDroppable {
-  position: absolute;
-  top: auto;
-  left: 0;
-  width: auto;
-  height: auto;
-  padding: 0 0.25em;
-}
-.blc-BoardControlCardWidget-p {
-  margin: 0;
-  line-height: 1em;
-  max-height: 2.125em;
-  min-height: 2.125em;
-  letter-spacing: -0.5px;
-  overflow: hidden;
-}
-.blc-BoardControlCardWidget-p > svg {
-  height: 2em;
-  width: auto;
-  float: left;
-}
-.blc-CardWidget.blc-CardWidget.blc-CardWidget {
-  margin-top: -0.25em;
-  padding: 0.125em 0.25em;
-  min-height: 0;
-}
-.blc-BoardControl-HeldTitle{
-  display: inline-block;
-  width: calc(100% - 2em);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.blc-BoardControl-CardWidget-Container {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.blc-BoardControl-InputWidget-Container {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.blc-BoardControl-CardWidget-Container-Sub {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.blc-BoardControl-InputWidget-Container-Sub {
-  flex: 0 1 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.blc-BoardControlInputWidget {
-  width: auto;
-  min-width: 1.5em;
-  padding: 0
-}
-.blc-BoardControlLineOpContainer {
-  flex: 1 0 auto;
-  min-width: auto;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  /* . . . . . . . . */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-.blc-BoardControlLineOp {
-  height: 3em;
-  flex: 0 0 auto;
-  width: auto;
-  min-width: 1.5em;
-  margin: 0 0.375em;
-  padding: 0
-}
-.blc-BoardControlLineOpLabel-p {
-  display: block;
-  white-space: nowrap;
-  margin: 0;
-}
-.blc-BoardControlLineOpInput {
-  display: block;
-  width: 100%;
-}
-.blc-BoardControlLineOpInput-checkboxContainer {
-  height: 1.5em;
-  text-align: center;
-  background: whitesmoke;
-  border-color: darkgray;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 2px;
-}
-.blc-BoardControlLineOpInput-button {
-  padding: 0;
-  min-height: 1.25em;
-  min-width: 1.25em;
-}
-.blc-BoardControl-Popup.blc-BoardControl-Popup {
-  display: flex;
-  align-items: baseline;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-}
-.blc-BoardControl-Popup-button.blc-BoardControl-Popup-button.blc-BoardControl-Popup-button {
-  padding-left: 0.25em;
-  padding-right: 0.25em;
-}
-.blc-BoardControlLineOp-FlexC.blc-BoardControlLineOp-FlexC {
-  display: initial;
-  flex: 0 0 auto;
-  width: auto;
-  padding: 0;
-  margin: 0 0.25em;
-}
-.blc-BoardControlLineOp-FlexE.blc-BoardControlLineOp-FlexE {
-  display: initial;
-  flex: 1 0 4em;
-  width: auto;
-  padding: 0;
-  margin: 0 0.25em;
-}
-.blc-BoardControlFilterTextArea {
-  width: 100%;
-}
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CardContainer-flexItem {
+.blc-L-Container_Card-OI-_ {
+  /*-- Layout Outer --*/
   flex: 1 1 auto;
   align-self: auto;
-}
-.blc-CardContainer-vis.blc-CardContainer-vis {
-  /* EXTENDS tc-edit-tags */
-  background: <<color page-background>>;
-  padding: 1em 0.25em 1em 0.25em;
-  line-height: 1.25;
-}
-.blc-CardContainerSearchList-vis.blc-CardContainerSearchList-vis {
-  /* EXTENDS tc-edit-tags */
-  background: none;
-  box-shadow: none;
-  padding: 1em 0.25em 1em 0.25em;
-  line-height: 1.25;
-  background: <<color tab-background-selected>>;
-  border-style: dashed;
-}
-.blc-CardSearchList-vis.blc-CardSearchList-vis {
-  border: 1px dashed <<color tab-foreground>>;
-}
-.blc-SearchList-Container {
-  /* "flex" set in style property on element */
-  padding: 0.75em 0.5em 0.75em 0;
-  border-right: 0.25em dashed #ddd;
-  /* . . . . . . . . */
-  display: flex;
-  flex-direction: column;
-}
-.blc-Card.blc-Card {
-  /* EXTENDS tc-tiddler-frame */
-  min-height: 2.5em;
-  margin-bottom: 0.5em;
-  padding: 0 0.5em;
-}
-.blc-shorttext_container > img, .blc-shorttext_container > svg {
-  height: 1em;
-  width: auto;
-}
-.blc-Card-visDownsize{
-  font-size: 1.25em;
-}
-.blc-CardEditTitle > .tc-titlebar{
-  font-size: 0.75em;
-}
-
-.blc-CardText > div, .blc-CardText > img, .blc-CardText.blc-CardText.blc-CardText.blc-CardText > p {
-  /* Additional specificity for "p" needed in sidebar. */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-.blc-CardContainer-vis ul, .blc-CardContainer-vis ol {
-  padding-left: 1.25em;
-}
-.blc-CardFloats {
-  margin: 0;
-  padding: 0;
-  clear: right;
-  float: right;
-}
-.blc-CardFloats-button_fill.blc-CardFloats-button_fill {
-  fill: <<color tiddler-controls-foreground>>;
-}
-.blc-CardIconFloat {
-  /* "fill" set in style property on element */
-  max-height: 1em;
-  margin: 0.5em 0.125em 0 0;
-  padding: 0;
-  float: left;
-  clear: none;
-}
-.blc-CardIcon-Container {
-  position: absolute;
-  bottom: 0;
-  right: 0.25em;
-}
-.blc-CardIcon-HasText {
-  display: inline-block;
-  fill: <<color message-foreground>>;
-}
-.blc-CardIcon-HasList {
-  display: inline-block;
-  fill: <<color message-foreground>>;
-}
-.blc-CardTagPreview {
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 0.25em;
-  padding: 0 0.5em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: stretch;
-}
-.blc-CardTagPreviewChild {
-  /* "background-color" set in style property on element */
-  flex: 1 1 auto;
-  align-self: auto;
-  margin-right: 2px;
-  cursor: help;
-}
-.blc-CardColorPreview {
-  position: absolute;
-  top: 0;
-  left: -1px;
-  width: 0.25em;
-  height: 1.875em;
-  padding-top: 0.375em;
-}
-.blc-CardColorPreviewChild {
-  /* "background-color" set in style property on element */
-  width: 100%;
-  height: 100%;
-}
-.blc-popupTag-vis {
-  background-color: white;
-  max-width: 80%;
-}
-.blc-popupTag-vis > .tc-edit-tags {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.blc-popupTag-vis .tc-block-dropdown {
-  min-width: 0;
-  max-width: 120%;
-  max-height: 15em;
-  overflow-y: scroll;
-}
-.blc-Card .tc-editor-toolbar {
-  font-size: 0.75em;
-  margin-top: 0;
-}
-
-.blc-editTemplate-shorttext-layFlex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
-}
-.blc-editTemplate-shorttext-layFlexChild-field{
-  flex: 1 0 auto;
-}
-.blc-editTemplate-shorttext-layFlexChild-button{
-  flex: 0 0 auto;
-  margin: 0.25em 0 0 0.25em;
-}
-
-
-.blc-ListColorPreview {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 0.25em;
-  padding: 0 0.5em;
-}
-.blc-ListColorPreviewChild {
-  /* "background-color" set in style property on element */
-  width: 100%;
-  height: 100%;
-}
-.blc-listDropArea-Left.blc-listDropArea-Left {
-  position: relative;
-  display: inline;
-  vertical-align: top;
-  padding: 0.25em 0em 0.25em 0.375em;
-  margin: 0em 0.25em 0em 0em;
-}
-.blc-listDropArea-Right_container.blc-listDropArea-Right_container {
-  float: right;
-}
-.blc-listDropArea-Right.blc-listDropArea-Right {
-  position: relative;
-  display: inline;
-  white-space: nowrap; /* Workaround for a display issue in Firefox. */
-  vertical-align: top;
-  padding: 0.25em 0.375em 0.25em 0.375em;
-  margin: 0em 0em 0em 0.25em;
-}
-.blc-listCollapseButton_container.blc-listCollapseButton_container {
-  float: right;
-}
-.blc-listCollapseButton.blc-listCollapseButton {
-  fill: <<color tiddler-controls-foreground>>;
-  display: inline;
-  vertical-align: top;
-  padding: 0.25em 0.375em 0.25em 0.375em;
-  margin: 0em;
-}
-.blc-listCollapseButton_transform.blc-listCollapseButton_transform {
-  display: inline-block;
-  transform-origin: top right;
-  transform: rotateZ(-90deg) translateY(-50%);
-}
-.blc-TitleSpan {
-  padding: 0.25em 0 0.25em 0;
-}
-.blc-TitleSpan-Collapsed {
-  position: absolute;
-  /* display: inline-block; Not needed while position is absolute. */
-  transform-origin: left top;
-  transform: rotateZ(90deg) translateX(3em);
-  /* "max-width" set in style property on element */
-  /* height: 1.5em; Not needed while white-space is nowrap. */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  pointer-events: none;
-}
-
-
-.blc-CardContainer-layInner {
+  /*-- Layout Inner --*/
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -516,13 +445,411 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: stretch;
 }
 
-.tc-droppable.tc-dragover > .blc-droppable-placeholder-thin {
+
+/* ---- Title Bar
+** ---------------------------------------------------------------- */
+
+.blc-L-TitleBar-OIV-_ {
+  /*-- Layout Outer --*/
+  flex: 0 0 auto;
+  align-self: auto;
+  /*-- Layout Inner --*/
+  padding: 0.75em 0.5em 0.375em 0.5em;
+  /*-- Visual --*/
+  border-style: solid solid none solid;
+  border-color: <<color tab-divider>>;
+  border-width: 1px;
+  background-color: <<color tab-background-selected>>;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-L_TB-Title-I-_ {
+  /*-- Layout Inner --*/
+  padding: 0.25em 0 0.25em 0;
+}
+
+.blc-L_TB-Title_Collapsed-OZTM-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  /* "max-width" set in style property on element */
+  /*-- Transforms and Transitions --*/
+  transform-origin: left top;
+  transform: rotateZ(90deg) translateX(3em);
+  /*-- Text --*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*-- Miscellaneous --*/
+  pointer-events: none;
+}
+
+.blc-L_TB-Title_h3-O-_ {
+  /*-- Layout Outer --*/
+  display: inline;
+  margin: 0;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-L_TB-ColorPreview-OI-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 0.25em;
+  /*-- Layout Inner --*/
+  padding: 0 0.5em;
+}
+
+.blc-L_TB-ColorPreview_Child-OV-_ {
+  /*-- Layout Outer --*/
+  width: 100%;
+  height: 100%;
+  /*-- Visual --*/
+  /* "background-color" set in style property on element */
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-L_TB-DropArea_Left-OI-_,
+.blc-L_TB-DropArea_Left-OI-_.blc-L_TB-DropArea_Left-OI-_.blc-L_TB-DropArea_Left-OI-_
+{
+  /*-- Layout Outer --*/
+  position: relative;
+  display: inline;
+  vertical-align: text-top;
+  line-height: 1em;
+  margin: 0em 0.25em 0em 0em;
+  /*-- Layout Inner --*/
+  padding: 0.375em 0 0.125em 0.375em;
+}
+
+.blc-L_TB-Container_DropArea_Right-O-_,
+.blc-L_TB-Container_DropArea_Right-O-_.blc-L_TB-Container_DropArea_Right-O-_
+{
+  /*-- Layout Outer --*/
+  float: right;
+}
+
+.blc-L_TB-DropArea_Right-OIT-_,
+.blc-L_TB-DropArea_Right-OIT-_.blc-L_TB-DropArea_Right-OIT-_.blc-L_TB-DropArea_Right-OIT-_
+{
+  /*-- Layout Outer --*/
+  position: relative;
+  display: inline;
+  vertical-align: text-top;
+  line-height: 1em;
+  margin: 0em 0em 0em 0.25em;
+  /*-- Layout Inner --*/
+  padding: 0.375em 0.375em 0.125em 0.375em;
+  /*-- Text --*/
+  white-space: nowrap; /* Workaround for a display issue in Firefox. */
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-L_TB-Container_ButtonCollapse-O-_,
+.blc-L_TB-Container_ButtonCollapse-O-_.blc-L_TB-Container_ButtonCollapse-O-_
+{
+  /*-- Layout Outer --*/
+  float: right;
+}
+
+.blc-L_TB-ButtonCollapse-OIV_,
+.blc-L_TB-ButtonCollapse-OIV_.blc-L_TB-ButtonCollapse-OIV_
+{
+  /*-- Layout Outer --*/
+  display: inline;
+  vertical-align: top;
+  margin: 0em;
+  /*-- Layout Inner --*/
+  padding: 0.25em 0.375em 0.25em 0.375em;
+  /*-- Visual --*/
+  fill: <<color tiddler-controls-foreground>>;
+}
+
+.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_,
+.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_
+{
+  /*-- Layout Outer --*/
+  display: inline-block;
+  /*-- Transforms --*/
+  transform-origin: top right;
+  transform: rotateZ(-90deg) translateY(-50%);
+}
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
+
+
+
+
+/* ==== Card
+** ================================================================ */
+
+.blc-_-Card-O-_,
+.blc-_-Card-O-_.blc-_-Card-O-_
+{
+  /*-- Layout Outer --*/
+  /* EXTENDS tc-tiddler-frame */
+  min-height: 2.5em;
+  margin-bottom: 0.5em;
+  padding: 0 0.5em;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-TiddlerControls-OIT-_ {
+  /*-- Layout Outer --*/
+  margin: 0.15em 0 0 0;
+  clear: right;
+  float: right;
+  /*-- Layout Inner --*/
+  padding: 0;
+  /*-- Text --*/
+  line-height: 1em;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-TiddlerIcon-OIVT-_ {
+  /*-- Layout Outer --*/
+  max-height: 1em;
+  margin: 0.5em 0.125em 0 0;
+  float: left;
+  clear: none;
+  /*-- Layout Inner --*/
+  padding: 0;
+  /*-- Visual --*/
+  /* "fill" set in style property on element */
+  /*-- Text --*/
+  line-height: 1em;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-Container_IconInfo-O-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  bottom: 0;
+  right: 0.25em;
+}
+
+.blc-C-IconInfo-OV-_ {
+  /*-- Layout Outer --*/
+  display: inline-block;
+  /*-- Visual --*/
+  fill: <<color message-foreground>>;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-TagPreview-OI-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 0.25em;
+  /*-- Layout Inner --*/
+  padding: 0 0.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.blc-C-TagPreview_Child-OVM-_ {
+  /*-- Layout Outer --*/
+  flex: 1 1 auto;
+  align-self: auto;
+  margin-right: 2px;
+  /*-- Visual --*/
+  /* "background-color" set in style property on element */
+  /*-- Miscellaneous --*/
+  cursor: help;
+}
+
+/* .   .   .   .   .   .   .   .    */
+
+.blc-C-ColorPreview-OI-_ {
+  /*-- Layout Outer --*/
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 0.25em;
+  height: 1.875em;
+  /*-- Layout Inner --*/
+  padding-top: 0.375em;
+}
+
+.blc-C-ColorPreview_Child-OV-_ {
+  /*-- Layout Outer --*/
+  width: 100%;
+  height: 100%;
+  /*-- Visual --*/
+  /* "background-color" set in style property on element */
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-Popup_TagEditor-OIV-_CD {
+  /*-- Layout Outer --*/
+  max-width: 80%;
+  /*-- Visual --*/
+  background-color: white;
+}
+
+.blc-C-Popup_TagEditor-OIV-_CD > .tc-edit-tags {
+  /*-- Visual --*/
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.blc-C-Popup_TagEditor-OIV-_CD .tc-block-dropdown {
+  /*-- Layout Outer --*/
+  min-width: 0;
+  max-width: 120%;
+  max-height: 15em;
+  /*-- Layout Inner --*/
+  overflow-y: scroll;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-C-EditTitle-T-D > .tc-titlebar {
+  /*-- Text --*/
+  font-size: 0.75em;
+}
+
+.blc-C-TextEditorToolbar-OT-D .tc-editor-toolbar {
+  /*-- Layout Outer --*/
+  margin-top: 0;
+  /*-- Text --*/
+  font-size: 0.75em;
+}
+
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
+
+
+
+
+/* ==== Other - In Namespace
+** ================================================================ */
+
+
+/* ---- Card Content and shorttext - View and Edit
+** ---------------------------------------------------------------- */
+
+.blc-C-TextView-OIVM-_C {
+  /*-- Text --*/
+  line-height: inherit;
+}
+
+.blc-C-TextView-OIVM-_C > div,
+.blc-C-TextView-OIVM-_C > img,
+.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C > p
+{
+  /*-- Layout Outer --*/
+  /* Additional specificity for "p" needed in sidebar. */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.blc-C-TextView-OIVM-_C > ul,
+.blc-C-TextView-OIVM-_C > ol
+{
+  /*-- Layout Inner --*/
+  padding-left: 1.25em;
+}
+
+.blc-_-ShorttextView-OM-C > img,
+.blc-_-ShorttextView-OM-C > svg
+{
+  /*-- Layout Outer --*/
+  height: 1em;
+  width: auto;
+}
+
+.blc-C-TextView-OIVM-_C > img,
+.blc-_-ShorttextView-OM-C > img
+{
+  /*-- Miscellaneous --*/
+  /* Dragging a tiddler with an image creates a
+   * new tiddler with the content of the title
+   * being the data uri of the image. */
+  pointer-events: none;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-_-MainView_Shorttext-OTV-S.tc-subtitle {
+  /*-- Layout Outer --*/
+  margin: 0 0 0.5em 0;
+  /*-- Text --*/
+  font-size: 1em;
+  /*-- Visual --*/
+  color: <<color tiddler-title-foreground>>;
+}
+
+/* .   .   .   .   .   .   .   .    */
+
+.blc-_-MainEdit_Shorttext-I-_ {
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.blc-_-MainEdit_Shorttext_Textarea-O-_ {
+  /*-- Layout Outer --*/
+  flex: 1 0 auto;
+}
+
+.blc-_-MainEdit_Shorttext_Button-O-_ {
+  /*-- Layout Outer --*/
+  flex: 0 0 auto;
+  margin: 0.25em 0 0 0.25em;
+}
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+
+/* ---- Drop Area and Droppable Placeholders
+** ---------------------------------------------------------------- */
+
+.blc-_-DropArea-IV-_,
+.blc-_-DropArea-IV-_.blc-_-DropArea-IV-_
+{
+  /*-- Layout Inner --*/
+  /* EXTENDS tc-edit-tags */
+  padding: 1em 0.25em 1em 0.25em;
+  /*-- Visual --*/
+  background: <<color page-background>>;
+}
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.tc-droppable.tc-dragover > .blc-DA-IndicatorThin-OV-c {
+  /*-- Layout Outer --*/
   display: block;
   box-sizing: border-box;
   height: 0;
+  /*-- Visual --*/
   border: 0;
 }
-.tc-droppable.tc-dragover .blc-droppable-placeholder-thin-child {
+
+.tc-droppable.tc-dragover > .blc-DA-IndicatorThin-OV-c > .blc-DA-IndicatorThin_Child-OV-c {
+  /*-- Layout Outer --*/
   display: block;
   box-sizing: content-box;
   position: relative;
@@ -530,106 +857,218 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   left: -2px;
   height: 0;
   width: calc(100% + 4px);
+  /*-- Visual --*/
   border-width: 2px 0 0 0;
   border-style: dashed none none none;
   border-color: <<color primary>>;
 }
-.blc-droppable-placeholder-bottom {
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-DA-IndicatorBottom-OV-_D {
+  /*-- Layout Outer --*/
   flex: 1 0 2.5em;
   position: relative;
 }
-.blc-droppable-placeholder-bottom > .tc-droppable {
+
+.blc-DA-IndicatorBottom-OV-_D > .tc-droppable {
+  /*-- Layout Outer --*/
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.blc-droppable-placeholder-bottom > .tc-droppable.tc-dragover {
+
+.blc-DA-IndicatorBottom-OV-_D > .tc-droppable.tc-dragover {
+  /*-- Visual --*/
   border: 2px dashed <<color primary>>;
 }
-.blc-droppable-placeholder-listDropArea {
+
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+.blc-DA-IndicatorList-OV-_D {
+  /*-- Layout Outer --*/
   display: none;
 }
-.tc-droppable.tc-dragover > .blc-droppable-placeholder-listDropArea {
+
+.tc-droppable.tc-dragover > .blc-DA-IndicatorList-OV-_D {
+  /*-- Layout Outer --*/
   position: absolute;
   display: block;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  /*-- Visual --*/
   border: 2px dashed <<color primary>>;
 }
 
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
 
-.blc-EmptyMessage {
-  position:absolute;
-  width:100%;
-  padding:0.5em;
-  pointer-events:none;
+
+/* ---- Search List
+** ---------------------------------------------------------------- */
+
+.blc-SL-DropArea-IV-_,
+.blc-SL-DropArea-IV-_.blc-SL-DropArea-IV-_
+{
+  /*-- Layout Outer --*/
+  /* EXTENDS tc-edit-tags */
+  /*-- Layout Inner --*/
+  padding: 1em 0.25em 1em 0.25em;
+  /*-- Visual --*/
+  background: none;
+  box-shadow: none;
+  line-height: 1.25;
+  background: <<color tab-background-selected>>;
+  border-style: dashed;
 }
 
+.blc-SL-Card-V-_,
+.blc-SL-Card-V-_.blc-SL-Card-V-_
+{
+  /*-- Visual --*/
+  border: 1px dashed <<color tab-foreground>>;
+}
 
-/* ################################ */
+.blc-SL-Container_List-OI-_ {
+  /*-- Layout Outer --*/
+  /* "flex" set in style property on element */
+  border-right: 0.25em dashed #ddd;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-direction: column;
+  padding: 0.75em 0.5em 0.75em 0;
+}
 
-.buttonLikeLink {
-  background: none;
-  border: none;
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
+
+
+
+
+/* ==== Other - TiddlyWiki Overrides and Extensions
+** ================================================================ */
+
+/* ---- TW Helpers
+** ---------------------------------------------------------------- */
+
+.blc-_-FillColor_ControlsForeground-V-_,
+.blc-_-FillColor_ControlsForeground-V-_.blc-_-FillColor_ControlsForeground-V-_
+{
+  /*-- Visual --*/
+  fill: <<color tiddler-controls-foreground>>;
+}
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+/* ---- SideBar Reset
+** ---------------------------------------------------------------- */
+
+.blc-SB-Container_Reset-OIV-_ {
+  /*-- Layout Outer --*/
+  min-width: 100%;
+  max-width: 100%;
+  margin-top: 0.5em;
+  display: inline-block;
+  /*-- Layout Inner --*/
+  padding: 0.5em;
+  /*-- Visual --*/
+  border-color: <<colour tab-border>>;
+  border-width: 3px 1px 1px 1px;
+  border-style: double dashed dashed dashed;
+}
+
+.blc-SB-Reset-VO-_ {
+  /*-- Visual --*/
+  background-color: <<color tiddler-background>>;
+  color: <<color foreground>>;
+  fill: <<color foreground>>;
+}
+
+.blc-SB-Reset-VO-_.blc-SB-Reset-VO-_ a.tc-tiddlylink,
+.blc-SB-Reset-VO-_.blc-SB-Reset-VO-_ a.tc-tiddlylink:hover
+{
+  /*-- Visual --*/
+  color: <<color tiddler-link-foreground>>;
+}
+
+.tc-sidebar-header .tc-sidebar-lists .blc-SB-Reset-VO-_ p {
+  /*-- Layout Outer --*/
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
+/* -------/-------/-------/-------/-------/-------/-------/-------/ */
+
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
+
+
+
+
+/* ==== Other - General Use
+** ================================================================ */
+
+._-_-Button_StyleLink-OVTM-_ {
+  /*-- Layout Inner --*/
   padding: 0;
-  font-family: arial, sans-serif; /*input has OS specific font-family*/
+  /*-- Visual --*/
   color: <<color primary>>;
+  border: none;
+  background: none;
+  /*-- Text --*/
+  font-family: arial, sans-serif; /*input has OS specific font-family*/
+  /*-- Miscellaneous --*/
   cursor: pointer;
 }
-.buttonLikeLink:hover{
+
+._-_-Button_StyleLink-OVTM-_:hover {
+  /*-- Visual --*/
   text-decoration: underline;
 }
-/* .inlineImg {} "fill" set in style property on element */
-.inlineImg > img, .inlineImg > svg {
+
+/* .   .   .   .   .   .   .   .    */
+
+._-_-img_inline-OV-_C {
+  /*-- Visual --*/
+  /* "fill" set in style property on element */
+}
+
+._-_-img_inline-OV-_C > img,
+._-_-img_inline-OV-_C > svg
+{
+  /*-- Layout Outer --*/
   height: 1em;
   width: auto;
 }
-.inlineImg-help {
+
+._-_-img_inline_help-M-_ {
+  /*-- Miscellaneous --*/
   cursor: help;
 }
 
-.blc-PosTR{
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+._-_-Position_TR-O-_ {
+  /*-- Layout Outer --*/
   position: absolute;
   top: 0.125em;
   right: 0.125em;
 }
 
-.p-verticalRule.p-verticalRule {
+/* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
+
+._-_-VerticalRule-OV-_ {
+  /*-- Layout Outer --*/
   display: inline;
   margin: 0 0.5em;
+  /*-- Visual --*/
   border-style: none none none solid ;
   border-width: 0 0 0 1px ;
   border-color: black;
 }
 
-.blc-CardText img {
-  /* Dragging a tiddler with an image creates a new tiddler with the content of the title being the data uri of the image. */
-  pointer-events: none;
-}
-
-.sidebar-ResetToBody {
-  min-width: 100%;
-  max-width: 100%;
-  color: <<color foreground>>;
-  padding: 0.5em;
-  margin-top: 0.5em;
-  display: inline-block;
-  background-color: <<color tiddler-background>>;
-  border-color: <<colour tab-border>>;
-  border-width: 3px 1px 1px 1px;
-  border-style: double dashed dashed dashed;
-  fill: <<color foreground>>;
-}
-.sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink, .sidebar-ResetToBody.sidebar-ResetToBody a.tc-tiddlylink:hover {
-  color: <<color tiddler-link-foreground>>;
-}
-.tc-sidebar-header .tc-sidebar-lists .sidebar-ResetToBody p {
-  margin-top: unset;
-  margin-bottom: unset;
-}
-
+/* =======/=======/=======/=======/=======/=======/=======/=======/ */
 
 """
