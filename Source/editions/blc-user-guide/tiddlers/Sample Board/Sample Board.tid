@@ -1,6 +1,5 @@
-created: 20170901002559711
-modified: 20170901002605505
-tags: 
 title: Sample Board
+tags:
+list: tid-20170831194804 tid-20170831194915 tid-20170831194954
 
 <$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />

@@ -1,180 +1,120 @@
-created: 20170819235406161
-modified: 20170829225101853
-tags: 
 title: blc/ui/BoardViewTemplate
 
-\define actionSameTiddler()
-  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/DraggedOntoSame" />
-\end
-\define actionDifferentTiddler()
-  <!-- Assign the order as discovered by the tagging operator to the list field. -->
-  <!-- Order returned by the tagging operator is determined by list field, list-before and list-after fields, and adds other tiddlers with the tag to the end. -->
-  <!-- Without this step, the insertbefore listop cannot work when the action tiddler is dragged onto a tiddler that is not in the list. -->
-  <$set name="order" filter="[<kList>tagging[]]">
-    <$action-setfield $tiddler=<<kList>> $field="list" $value=<<order>> />
-  </$set>
-  <$set name="kListInKBoard" filter="[<kBoard>tagging[]]" >
-    <!-- Remove tags from the action tiddler of all list Tiddlers in this kBoard. -->
-    <$action-listops $tiddler=<<actionTiddler>> $tags="+[remove<kListInKBoard>]" />
-    <!-- Remove the action tiddler from lists of all list Tiddlers in this kBoard. -->
-    <$list filter=<<kListInKBoard>> variable="eachKList">
-      <$action-listops $tiddler=<<eachKList>> $subfilter="+[remove<actionTiddler>]" />
-    </$list>
-  </$set>
-  <!-- Add the action tiddler to this list -->
-  <$action-listops $tiddler=<<kList>> $subfilter="+[insertbefore:currentTiddler<actionTiddler>]" />
-  <!-- Add this tag to the action tiddler -->
-  <$action-listops $tiddler=<<actionTiddler>> $tags="[<kList>]"/>
-\end
-\define actionExtTiddler()
-  <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]" value=<<actionDifferentTiddler>> emptyValue=<<actionSameTiddler>> >
-    <<action-DiffOrSame>>
-  </$set>
-\end
-\define actionNewTiddler()
-  <$set name="newTiddler" value=<<now "tid-YYYY0MM0DD0hh0mm0ss">> >
-  <$action-createtiddler $basetitle=<<newTiddler>> />
-  <!-- Assign the order as discovered by the tagging operator to the list field. -->
-  <!-- Order returned by the tagging operator is determined by list field, list-before and list-after fields, and adds other tiddlers with the tag to the end. -->
-  <!-- Without this step, the insertbefore listop cannot work when the new tiddler is dragged onto a tiddler that is not in the list. -->
-  <$set name="order" filter="[<kList>tagging[]]">
-    <$action-setfield $tiddler=<<kList>> $field="list" $value=<<order>> />
-  </$set>
-  <!-- Add the new tiddler to this list -->
-  <$action-listops $tiddler=<<kList>> $subfilter="+[insertbefore:currentTiddler<newTiddler>]" />
-  <!-- Add this tag to the new tiddler -->
-  <$action-listops $tiddler=<<newTiddler>> $tags="[<kList>]"/>
-  <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddler>> />
-  </$set>
-\end
-\define actionRemoveFromBoard()
-  <$set name="kListInKBoard" filter="[<kBoard>tagging[]]" >
-    <!-- Remove tags from the action tiddler of all list Tiddlers in this kBoard. -->
-    <$action-listops $tiddler=<<actionTiddler>> $tags="+[remove<kListInKBoard>]" />
-    <!-- Remove the action tiddler from lists of all list Tiddlers in this kBoard. -->
-    <$list filter=<<kListInKBoard>> variable="eachKList">
-      <$action-listops $tiddler=<<eachKList>> $subfilter="+[remove<actionTiddler>]" />
-    </$list>
-  </$set>
-\end
-\define kListDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]" value=<<actionExtTiddler>> emptyValue=<<actionNewTiddler>> >
-    <<action-ExtOrNew>>
-  </$set>
-\end
-\define tiddlerStringFilter() 
-$(currentTiddler)$-StringFilter
-\end
-\define tiddlerHeldCard() 
-$(currentTiddler)$-HeldCard
-\end
-<!-- ################################ -->
-<$set name="kBoard" value=<<currentTiddler>> >
-<div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
-  <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-    <$draggable tiddler="blc/action/newCard" class="blc-Card tc-tiddler-frame">
-      <p>{{$:/core/images/new-button}}<br>New Card</p>
-    </$draggable>
-  </div>
-  <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-    <$droppable actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>>/> <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> />""" >
-      <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
-    </$droppable>
-    <$tiddler tiddler=<<tiddlerHeldCard>> >
-      <$reveal state={{!!title}} type="nomatch" text="">
-        <$draggable tiddler={{!!text}} class="blc-Card tc-tiddler-frame">
-          <div title={{!!text}} >
-            <$button actions="""<$action-deletetiddler $tiddler=<<currentTiddler>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-              {{$:/core/images/close-button}}
-            </$button>
-            <p>{{$:/core/images/file}}<br>Card:<br>
-              <span class="blc-BoardControl-HeldCardTitle truncate">
-                <$tiddler tiddler={{!!text}}>
-                  <$set name="titleDisplay" filter="[<currentTiddler>has[titletext]]" value="titletext" emptyValue="title">
-                    <$transclude field=<<titleDisplay>> mode="inline" class="" />
-                  </$set>
-                </$tiddler>
-              </span>
-            </p>
-          </div>
-        </$draggable>
-      </$reveal>
-    </$tiddler>
-  </div>
-  <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-    <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-      <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
-    </$droppable>
-  </div>
-  <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
-    <$droppable actions=<<actionRemoveFromBoard>> >
-      <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
-    </$droppable>
-  </div>
-  <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
-    <div class="blc-BoardControlLineOp">
+<$set name="currentBoardTiddler" value=<<currentTiddler>> >
+  <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$draggable tiddler="blc/action/newCard" class="blc-Card tc-tiddler-frame">
+        <p>{{$:/core/images/new-button}}<br>New Card</p>
+      </$draggable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>>/> <$action-createtiddler $basetitle=<<tiddlerHeldCard>> text=<<actionTiddler>> />""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Card</p></div>
+      </$droppable>
+      <$tiddler tiddler=<<tiddlerHeldCard>> >
+        <$reveal state={{!!title}} type="nomatch" text="">
+          <$draggable tiddler={{!!text}} class="blc-Card tc-tiddler-frame">
+            <div title={{!!text}} >
+              <$button actions="""<$action-deletetiddler $tiddler=<<currentTiddler>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                {{$:/core/images/close-button}}
+              </$button>
+              <p>{{$:/core/images/file}}<br>Card:<br>
+                <span class="blc-BoardControl-HeldCardTitle truncate">
+                  <$tiddler tiddler={{!!text}}>
+                    <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                      <$transclude field=<<titleDisplay>> mode="inline" class="" />
+                    </$set>
+                  </$tiddler>
+                </span>
+              </p>
+            </div>
+          </$draggable>
+        </$reveal>
+      </$tiddler>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
+      </$droppable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
+      <$droppable actions="""<$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid=<<actionTiddler>> targetFilter_byDef="filterBoardL2_currentBoard" />""" >
+        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
+      </$droppable>
+    </div>
+    <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
+      <div class="blc-BoardControlLineOp">
+          <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$edit-text tiddler=<<tiddlerStringFilter>> type="search" tag="input" class="blc-BoardControlFilterTextArea" />
+          <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerStringFilter>> />""" class="tc-btn-invisible">
+            {{$:/core/images/close-button}}
+          </$button>
+        </div>
+      </div>
+      <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">Filter:</p>
+          <p class="blc-BoardControlLineOpLabel-p">Board Height:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="50vh">50</$radio>
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="80vh">80</$radio>
+          <$radio tiddler=<<currentTiddler>> field="boardheight" value="100vh">100</$radio>
+        </div>
       </div>
-      <div class="blc-BoardControlLineOpInput">
-        <$edit-text tiddler=<<tiddlerStringFilter>> type="search" tag="input" class="blc-BoardControlFilterTextArea" />
-        <$button actions="""<$action-deletetiddler $tiddler=<<tiddlerStringFilter>> />""" class="tc-btn-invisible">
-          {{$:/core/images/close-button}}
-        </$button>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">List Width:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="12rem">12</$radio>
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="15.5rem">15.5</$radio>
+          <$radio tiddler=<<currentTiddler>> field="listwidth" value="20rem">20</$radio>
+          <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p><input type="checkbox"><p class="blc-BoardControlLineOpLabel-p" style="display:inline;"> Is max width</p>
+        </div>
       </div>
-    </div>
-    <div class="blc-BoardControlLineOp">
-      <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">Board Height:</p>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Single line cards:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <input type="checkbox">
+        </div>
       </div>
-      <div class="blc-BoardControlLineOpInput">
-        <$radio tiddler=<<currentTiddler>> field="boardheight" value="50vh">50</$radio>
-        <$radio tiddler=<<currentTiddler>> field="boardheight" value="80vh">80</$radio>
-        <$radio tiddler=<<currentTiddler>> field="boardheight" value="100vh">100</$radio>
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Skinny lists:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <input type="checkbox">
+        </div>
       </div>
-    </div>
-    <div class="blc-BoardControlLineOp">
-      <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">List Width:</p>
-      </div>
-      <div class="blc-BoardControlLineOpInput">
-        <$radio tiddler=<<currentTiddler>> field="listwidth" value="12rem">12</$radio>
-        <$radio tiddler=<<currentTiddler>> field="listwidth" value="15.5rem">15.5</$radio>
-        <$radio tiddler=<<currentTiddler>> field="listwidth" value="20rem">20</$radio>
-        <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p><input type="checkbox"><p class="blc-BoardControlLineOpLabel-p" style="display:inline;"> Is max width</p>
-      </div>
-    </div>
-    <div class="blc-BoardControlLineOp">
-      <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">Single line cards:</p>
-      </div>
-      <div class="blc-BoardControlLineOpInput">
-        <input type="checkbox">
-      </div>
-    </div>
-    <div class="blc-BoardControlLineOp">
-      <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">Skinny lists:</p>
-      </div>
-      <div class="blc-BoardControlLineOpInput">
-        <input type="checkbox">
-      </div>
-    </div>
-    <div class="blc-BoardControlLineOp">
-      <div class="blc-BoardControlLineOpLabel">
-        <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
-      </div>
-      <div class="blc-BoardControlLineOpInput">
-        <input type="checkbox">
+      <div class="blc-BoardControlLineOp">
+        <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Hide archive lists:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <input type="checkbox">
+        </div>
       </div>
     </div>
   </div>
-</div>
-<$scrollable class="blc-scrollable" fallthrough="no">
-  <div class="blc-ListContainer">
-    <$list filter="[tag{!!title}!has[draft.of]]" emptyMessage="No tiddlers with this tag.">
-      <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
-    </$list>
-  </div>
-</$scrollable>
+  <$scrollable class="blc-scrollable" fallthrough="no">
+    <div class="blc-ListContainer">
+      <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
+          emptyMessage="""
+            <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
+              <$droppable actions=<<blcListDroppableActions>> >
+                <div style="width:100%; height:100%;">
+                  Drag in the "New Card" above, or any tiddler existing tiddler, to use it as a list.
+                </div>
+              </$droppable>
+            </div>
+          """>
+        <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+      </$list>
+    </div>
+  </$scrollable>
 </$set>

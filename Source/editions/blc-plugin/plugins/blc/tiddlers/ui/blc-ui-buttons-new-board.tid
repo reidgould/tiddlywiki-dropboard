@@ -1,9 +1,7 @@
-caption: {{blc/images/blc}} New Board
-created: 20170831221941084
-description: New Board
-modified: 20170831222939280
-tags: $:/tags/PageControls
 title: blc/ui/buttons/new-board
+tags: $:/tags/PageControls
+caption: {{blc/images/blc}} New Board
+description: New Board
 
 <$button tooltip="New Board" class=<<tv-config-toolbar-class>>>
 <$action-sendmessage $message="tm-new-tiddler" title=<<now "New Board">> tags="blc/tags/boards" text="""<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />""" />

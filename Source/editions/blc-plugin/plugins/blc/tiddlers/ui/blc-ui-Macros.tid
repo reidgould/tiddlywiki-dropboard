@@ -1,0 +1,193 @@
+title: blc/ui/Macros
+tags: $:/tags/Macro
+
+\define EmptyString(strEmpty:"")
+$strEmpty$
+\end
+
+\define alert(alertText:"")
+<$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
+\end
+
+\define actionDragSameTiddler()
+  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/DraggedOntoSame" />
+\end
+
+\define filterBoardL2(board)
+[[$board$]] [[$board$]tagging[]]
+\end
+
+\define filterBoardL3(board)
+[[$board$]] [[$board$]tagging[]] [[$board$]tagging[]tagging[]]
+\end
+
+\define filterBoardL2_currentBoard()
+[<currentBoardTiddler>] [<currentBoardTiddler>tagging[]]
+\end
+
+\define filterBoardL3_currentBoard()
+[<currentBoardTiddler>] [<currentBoardTiddler>tagging[]] [<currentBoardTiddler>tagging[]tagging[]]
+\end
+
+
+
+
+\define blcStoryList()
+$(currentTiddler)$
+\end
+
+\define blcHistoryList()
+$(EmptyString)$
+\end
+
+\define tiddlerStringFilter()
+$(currentTiddler)$-StringFilter
+\end
+
+\define tiddlerHeldCard()
+$(currentTiddler)$-HeldCard
+\end
+
+\define styleTagColor()
+background-color: $(tagColor)$;
+\end
+
+\define styleIconColor()
+fill:$(foregroundColor)$;
+\end
+
+
+
+
+\define ResetListToTagging(listTid)
+  <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
+  <!-- The order returned by the tagging operator is determined by list field, list-before and list-after fields, and adds other tiddlers with the tag to the end. -->
+  <!-- Without this step, the insertbefore listop cannot work when the action tiddler is dragged onto a tiddler that is not in the list. -->
+  <!-- The drawback is that tiddlers added to the list which are not also tagged by the list are eliminated. -->
+  <!-- Also, when doing this operation frequently or on larger lists, we should watch to see if performance becomes a problem. -->
+  <$set name="newList" filter="[[$listTid$]tagging[]]">
+    <$action-setfield $tiddler="""$listTid$""" $field="list" $value=<<newList>> />
+  </$set>
+\end
+
+\define actionRemoveTwoWay_OneFromMany(removeTid, targetFilter_byDef)
+  <$set name="manyTids" filter=<<$targetFilter_byDef$>> >
+    <!-- Remove tags from the one tiddler of all target Tiddlers. -->
+    <$action-listops $tiddler="""$removeTid$""" $tags="+[remove<manyTids>]" />
+    <!-- Remove the one tiddler from lists of all target Tiddlers. -->
+    <$list filter=<<manyTids>> variable="eachList">
+      <$action-listops $tiddler=<<eachList>> $subfilter="+[remove[$removeTid$]]" />
+    </$list>
+  </$set>
+\end
+
+\define actionRemoveTwoWay(removeTid, targetTid)
+  <!-- Remove the removeTid from this targetTid -->
+  <$action-listops $tiddler="""$targetTid$""" $subfilter="-[[$removeTid$]]" />
+  <!-- Remove this tag from the removeTid -->
+  <$action-listops $tiddler="""$removeTid$""" $tags="-[[$targetTid$]]"/>
+\end
+
+\define actionAddTwoWay(addTid, targetTid, beforeTid)
+  <$set name="beforeTid_p" filter="[[$beforeTid$]]">
+    <!-- Add the addTid to this targetTid -->
+    <$action-listops $tiddler="""$targetTid$""" $subfilter="+[insertbefore:beforeTid_p[$addTid$]]" />
+    <!-- Add this tag to the addTid -->
+    <$action-listops $tiddler="""$addTid$""" $tags="[[$targetTid$]]"/>
+  </$set>
+\end
+
+\define actionInsertTwoWay(insert, before, in, exclusiveAmong_byDef)
+  <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
+  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$exclusiveAmong_byDef$""" />
+  <$macrocall $name="actionAddTwoWay" addTid="""$insert$""" targetTid="""$in$""" beforeTid="""$before$""" />
+\end
+
+\define actionInsertNewTwoWay(before, in)
+  <$set name="newTiddler" value=<<now "tid-YYYY0MM0DD0hh0mm0ss">> >
+    <$action-createtiddler $basetitle=<<newTiddler>> />
+    <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
+    <$macrocall $name="actionAddTwoWay"    addTid=<<newTiddler>> targetTid="""$in$""" beforeTid="""$before$""" />
+    <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddler>> />
+  </$set>
+\end
+
+
+\define actionExistingListTiddler()
+  <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
+      value="""<$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" /><$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />"""
+      emptyValue=<<actionDragSameTiddler>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+
+\define blcListDroppableActions()
+  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
+      value="""<$macrocall $name="actionExistingListTiddler" />"""
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentTiddler>> in=<<currentBoardTiddler>> />""" >
+    <<action-ExtOrNew>>
+  </$set>
+\end
+
+\define actionExistingCardTiddler()
+  <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
+      value="""<$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" /><$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />"""
+      emptyValue=<<actionDragSameTiddler>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+
+\define blcCardDroppableActions()
+  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
+      value="""<$macrocall $name="actionExistingCardTiddler" />"""
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentTiddler>> in=<<currentListTiddler>> />""" >
+    <<action-ExtOrNew>>
+  </$set>
+\end
+
+
+
+
+\define macroCardViewTemplate(tagBackground)
+  <$set name="popupTagsState" value=<<qualify """blc/state/$(currentTiddler)$-tagPopup""">> >
+  <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
+  </div>
+  <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
+    <div class="blc-CardIconFloat">
+      <$set name="foregroundColor" value={{!!color}} >
+        <span class="tc-tiddler-title-icon" style=<<styleIconColor>>>
+          <$button class=<<tv-config-toolbar-class>>><$transclude tiddler={{!!icon}} /></$button>
+        </span>
+      </$set>
+    </div>
+    <div class="blc-CardFloats blc-Card-visDownsize">
+      <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
+        {{$:/core/images/tag-button}}
+      </$button>
+      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
+        {{$:/core/images/edit-button}}
+      </$button>
+    </div>
+    <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
+      <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
+    </$reveal>
+    <div class="blc-CardTagPreview">
+      <$list filter="[<currentTiddler>tags[]] +[remove<currentListTiddler>]">
+        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
+          <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
+        </$set>
+      </$list>
+    </div>
+    <div title={{!!title}} class="blc-CardText">
+      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+        <$transclude field=<<titleDisplay>> mode="block" class="" />
+      </$set>
+      <$transclude field="text" mode="block" class="" />
+    </div>
+  </$draggable>
+  </$set>
+\end
+
+\define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)
+<$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
+\end

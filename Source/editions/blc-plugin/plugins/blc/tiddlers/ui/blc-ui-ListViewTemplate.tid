@@ -1,34 +1,51 @@
-created: 20170819235935606
-modified: 20170828141653666
-tags: 
 title: blc/ui/ListViewTemplate
 
-\define MacroStoryList()
-$(currentTiddler)$
-\end
-\define MacroHistoryList()
-<!-- MacroHistoryList intentionally left blank (This requires no "\end") -->
-<div class="blc-List-layOuter blc-List-layInner">
-  <$link class="blc-ListTitle ">
-    <$set name="foregroundColor" value={{!!color}}>
-      <span class="tc-tiddler-title-icon" style=<<title-styles>>>
-        <$transclude tiddler={{!!icon}}/>
-      </span>
-    </$set>
-    <$set name="titleDisplay" filter="[<currentTiddler>has[titletext]]" value="titletext" emptyValue="title">
-      <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
-    </$set>
-  </$link>
-  <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
-    <$set name="kList" value=<<currentTiddler>> >
-      <$navigator story=<<MacroStoryList>> history=<<MacroHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
-        <$set name="TiddlersWithDrafts" filter="[list<kList>get[draft.of]]">
-        <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-          <$list filter="[<kList>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>]" history=<<MacroHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}} emptyMessage="" />
+<$set name="currentListTiddler" value=<<currentTiddler>> >
+  <div class="blc-List-layOuter blc-List-layInner">
+    <div class="blc-ListTitle ">
+      <span class="tc-edit-tags blc-CardContainer-vis blc-listDropArea">
+        <$droppable actions=<<blcListDroppableActions>> >
+          <$button class="buttonTWIcon blc-listDropButton" >
+            {{$:/core/images/chevron-left}}
+          </$button>
+          <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+          </div>
+        </$droppable>
+        <$set name="currentListTiddler" filter="[<currentListTiddler>next<currentBoardTiddler>]" >
+          <$droppable actions=<<blcListDroppableActions>> >
+            <$button class="buttonTWIcon blc-listDropButton" >
+              {{$:/core/images/chevron-right}}
+            </$button>
+            <div class="tc-droppable-placeholder tc-droppable-placeholder-listDropArea">
+            </div>
+          </$droppable>
         </$set>
+      </span>
+      <$set name="foregroundColor" value={{!!color}}>
+        <span class="tc-tiddler-title-icon" style=<<title-styles>>>
+          <$transclude tiddler={{!!icon}}/>
+        </span>
+      </$set>
+      <$link>
+        <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+          <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
+        </$set>
+      </$link>
+    </div>
+    <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
+      <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
+        <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+          <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+            <$list filter="[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>]" history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+              emptyMessage="""
+                <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                  Drag in the "New Card" above, or any tiddler existing tiddler, to include it in a list.
+                </div>
+              """ />
+          </$set>
         </$set>
         <$tiddler tiddler="">
-          <$droppable actions=<<kListDroppableActions>> >
+          <$droppable actions=<<blcCardDroppableActions>> >
             <div class="tc-droppable-placeholder tc-droppable-placeholder-bottom">
             </div>
             <div class="tc-droppable-placeholder-bottom">
@@ -36,6 +53,6 @@ $(currentTiddler)$
           </$droppable>
         </$tiddler>
       </$navigator>
-    </$set>
-  </$scrollable>
-</div>
+    </$scrollable>
+  </div>
+</$set>
