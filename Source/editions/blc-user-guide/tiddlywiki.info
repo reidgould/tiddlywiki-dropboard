@@ -1,0 +1,34 @@
+{
+  "description": "User guide for \"blc\", a TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
+  "plugins": [
+    "tiddlywiki/markdown",
+    "tiddlywiki/github-fork-ribbon"
+  ],
+  "includeWikis": [
+    {
+      "path": "../blc-plugin",
+      "read-only": "true"
+    }
+  ],
+  "themes": [
+    "tiddlywiki/vanilla",
+    "tiddlywiki/snowwhite"
+  ],
+  "languages": [
+  ],
+  "build": {
+    "blc-user-guide": [
+      "--savetiddler","$:/favicon.ico","favicon.ico",
+      "--savetiddlers","[tag[external-image]]","images",
+      "--rendertiddlers","[tag[external-text]]","$:/core/templates/tid-tiddler","text","text/plain",".tid",
+      "--setfield","[tag[external-image]]","_canonical_uri","$:/core/templates/canonical-uri-external-image","text/plain",
+      "--setfield","[tag[external-text]]","_canonical_uri","$:/core/templates/canonical-uri-external-text","text/plain",
+      "--setfield","[tag[external-image]] [tag[external-text]]","text","","text/plain",
+      "--rendertiddler","$:/core/save/all","TiddlyWiki_BLC_User_Guide.html","text/plain"
+    ]
+  },
+  "config": {
+    "default-tiddler-location": "./newTiddlers",
+    "retain-original-tiddler-path": false
+  }
+}

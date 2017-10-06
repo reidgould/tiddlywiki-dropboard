@@ -1,0 +1,22 @@
+title: rd_gld/util/snippets/DownloadAsTid
+tags: rd_gld/prefs $:/tags/TextEditor/Snippet
+caption: Download as Tid
+
+\define currentFilter()
+[<currentTiddler>!has[draft.of]] +[sort[title]]
+\end
+\define currentTiddlerFilename()
+$(currentTiddler)$.tid
+\end
+\define makeExportFilter()
+[[$(currentTiddler)$]]
+\end
+\define actionDownload()
+<$list filter="$(currentFilter)$">
+<$action-sendmessage $message="tm-download-file" $param="$:/core/templates/exporters/TidFile" exportFilter=<<makeExportFilter>> filename=<<currentTiddlerFilename>> />
+</$list>
+\end
+
+<$button actions=<<actionDownload>> >
+download
+</$button>

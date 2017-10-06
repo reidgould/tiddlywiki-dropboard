@@ -1,0 +1,391 @@
+tags: $:/tags/Macro
+title: $:/plugins/reidgould/blc/common/Macros
+
+\define EmptyString(strEmpty:"")
+$strEmpty$
+\end
+
+\define alert(alertText:"")
+  <$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
+\end
+
+\define action-Notify-NoActionDraggedOntoSame()
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionDraggedOntoSame" />
+\end
+
+\define action-Notify-NoActionSearchList()
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionSearchList" />
+\end
+
+\define action-Notify-shortidNotInstalled()
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/shortidNotInstalled" />
+\end
+
+\define filter-BoardL2(board)
+[[$board$]] [[$board$]tagging[]]
+\end
+
+\define filter-BoardL3(board)
+[[$board$]] [[$board$]tagging[]] [[$board$]tagging[]tagging[]]
+\end
+
+\define filter-BoardL2_currentBoard()
+[<currentBoardTiddler>] [<currentBoardTiddler>tagging[]]
+\end
+
+\define filter-BoardL3_currentBoard()
+[<currentBoardTiddler>] [<currentBoardTiddler>tagging[]] [<currentBoardTiddler>tagging[]tagging[]]
+\end
+
+\define filter-Lists_currentBoard()
+[<currentBoardTiddler>tagging[]]
+\end
+
+
+
+
+\define List-StoryList()
+$(currentTiddler)$
+\end
+
+\define List-HistoryList()
+$(EmptyString)$
+\end
+
+\define tiddler-SearchListFilter-Stage()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/searchListFilter/Stage
+\end
+
+\define tiddler-SearchListFilter-Live()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SearchListFilter/Live
+\end
+
+\define filter-SearchList()
+$(filter-SearchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]] +[remove<list-TiddlersWithDrafts>] +[remove<list-TiddlersWithDraftsMain>] +[is[tiddler]]
+\end
+
+\define tiddler-UserFilter-Stage()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Stage
+\end
+
+\define tiddler-UserFilter-Live()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Live
+\end
+
+\define filter-currentList()
+[<currentListTiddler>tagging[]] +[remove<list-TiddlersWithDrafts>] +[remove<list-TiddlersWithDraftsMain>] $(filter-userText)$
+\end
+
+\define tiddler-Holding()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/Holding
+\end
+\define HeldToolTip()
+$(currentHeldTiddler)$ — $(val-HeldShorttext)$
+\end
+
+\define tiddler-SideBar()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
+\end
+\define wikitext-SideBar-Content()
+  <$tiddler tiddler="$(currentBoardTiddler)$">
+  <span class="blc-SB-Container_Reset-OIV-_ blc-SB-Reset-VO-_">
+  <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
+  </span>
+  </$tiddler>
+\end
+\define wikitext-SideBar-Button-Delete()
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
+    <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span>
+  </$button>
+\end
+\define wikitext-SideBar-Button-Create()
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
+      <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
+      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" $value="1" />
+      <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
+      <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value=<<tiddler-SideBar>> />
+      """ >
+    <span class="_-_-img_inline-OV-_C">{{$:/core/images/new-button}}</span>
+  </$button>
+\end
+
+\define tiddler-ListWidth-Stage()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/ListWidth/Stage
+\end
+
+\define tiddler-BoardHeight-Stage()
+$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/BoardHeight/Stage
+\end
+
+\define tiddler-popupTagsState()
+$:/plugins/reidgould/blc/state/$(qualify)$/tagPopup
+\end
+
+\define tiddler-popupUserFilter()
+$:/plugins/reidgould/blc/state/$(qualify)$/UserFilterPopup
+\end
+
+\define tiddler-popupSearchList()
+$:/plugins/reidgould/blc/state/$(qualify)$/SearchListPopup
+\end
+
+\define tiddler-popupBoardHeight()
+$:/plugins/reidgould/blc/state/$(qualify)$/BoardHeightPopup
+\end
+
+\define tiddler-popupListWidth()
+$:/plugins/reidgould/blc/state/$(qualify)$/ListWidthPopup
+\end
+
+\define tiddler-New-SaveTitle()
+$:/plugins/reidgould/blc/state/NewTiddler
+\end
+
+\define style-TagColor()
+background-color: $(val-TagColor)$;
+\end
+
+\define style-IconColor()
+fill:$(foregroundColor)$;
+\end
+
+
+
+
+\define val-BoardHeight-Default()
+85vh
+\end
+\define style-BoardHeight()
+height: $(val-BoardHeight)$;
+\end
+\define Val-ListTitle-Collapsed()
+calc($(val-BoardHeight)$ - 12em)
+\end
+\define style-ListTitle-Collapsed()
+max-width: $(value-ListTitle-Height)$;
+\end
+
+\define val-ListWidth-Num-Default()
+3
+\end
+\define val-ListWidth-Em-Default()
+%(EmptyString)%
+\end
+\define val-ListWidthMax-Default()
+9999em
+\end
+
+\define table-ListWidth-Num()
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+\end
+\define table-ListWidth-Pct()
+100 50 33.333 25 20 16.666 14.285 12.5 11.111 10 9.090 8.333 7.692 7.142 6.666 6.25
+\end
+\define table-ListWidth-Dec()
+1 0.5 0.333 0.25 0.2 0.166 0.142 0.125 0.111 0.1 0.090 0.083 0.076 0.071 0.066 0.062
+\end
+
+\define val-WidthPropVal-Pct()
+calc($(val-ListWidth-Pct)$% - 0.5em)
+\end
+\define val-WidthPropVal-Em()
+$(val-ListWidth-Em)$em
+\end
+\define style-Flex-Em()
+flex: 0 0 $(val-ListWidth-Em)$em;
+\end
+\define style-Flex-Dec()
+flex: $(val-ListWidth-Dec)$ 0 0em;
+\end
+
+\define style-ListWidth()
+min-width: $(val-listWidthMin)$; max-width: $(val-listWidthMax)$;
+\end
+
+
+
+
+\define action-ResetListToTagging(tiddler-ToReset)
+  <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
+  <!-- The order returned by the tagging operator is determined by list field, list-before and list-after fields, and adds other tiddlers with the tag to the end. -->
+  <!-- Without this step, the insertbefore listop cannot work when the action tiddler is dragged onto a tiddler that is not in the list. -->
+  <!-- The drawback is that tiddlers added to the list which are not also tagged by the list are eliminated. -->
+  <!-- Also, when doing this operation frequently or on larger lists, we should watch to see if performance becomes a problem. -->
+  <$set name="list-Tagging" filter="[[$tiddler-ToReset$]tagging[]]">
+    <$action-setfield $tiddler="""$tiddler-ToReset$""" $field="list" $value=<<list-Tagging>> />
+  </$set>
+\end
+
+\define action-DeleteHolding-IfHeldMatches(tiddler-Match)
+  <$set name="tiddler-Held" value={{{[<tiddler-Holding>get[text]] }}} >
+  <$set name="action-DeleteHolding" filter="[[$tiddler-Match$]] -[<tiddler-Held>]"
+      value=""
+      emptyValue="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" >
+    <<action-DeleteHolding>>
+  </$set>
+  </$set>
+\end
+
+\define action-RemoveTwoWay_OneFromMany(tiddler-ToRemove, filter-Target-ByDef)
+  <$set name="list-Targets" filter=<<$filter-Target-ByDef$>> >
+    <!-- Remove tags from the one tiddler of all target Tiddlers. -->
+    <$action-listops $tiddler="""$tiddler-ToRemove$""" $tags="+[remove<list-Targets>]" />
+    <!-- Remove the one tiddler from lists of all target Tiddlers. -->
+    <$list filter=<<list-Targets>> variable="eachList">
+      <$action-listops $tiddler=<<eachList>> $subfilter="-[[$tiddler-ToRemove$]]" />
+    </$list>
+  </$set>
+  </$set>
+\end
+
+\define action-RemoveTwoWay(tiddler-ToRemove, tiddler-Target)
+  <!-- Remove the tiddler-ToRemove from this tiddler-Target -->
+  <$action-listops $tiddler="""$tiddler-Target$""" $subfilter="-[[$tiddler-ToRemove$]]" />
+  <!-- Remove this tag from the tiddler-ToRemove -->
+  <$action-listops $tiddler="""$tiddler-ToRemove$""" $tags="-[[$tiddler-Target$]]"/>
+\end
+
+\define action-AddTwoWay(tiddler-Add, tiddler-Target, tiddler-Before)
+  <$set name="tiddler-Before" value="$tiddler-Before$">
+    <!-- Add the tiddler-Add to this tiddler-Target -->
+    <$action-listops $tiddler="""$tiddler-Target$""" $subfilter="+[insertbefore:tiddler-Before[$tiddler-Add$]]" />
+    <!-- Add this tag to the tiddler-Add -->
+    <$action-listops $tiddler="""$tiddler-Add$""" $tags="[[$tiddler-Target$]]"/>
+  </$set>
+\end
+
+\define action-InsertTwoWay(tiddler-Insert, tiddler-Before, tiddler-In, filter-UniqueAmong-byDef)
+  <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
+  <$macrocall $name="action-RemoveTwoWay_OneFromMany" tiddler-ToRemove="""$tiddler-Insert$""" filter-Target-ByDef="""$filter-UniqueAmong-byDef$""" />
+  <$macrocall $name="action-AddTwoWay" tiddler-Add="""$tiddler-Insert$""" tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
+\end
+
+\define action-InsertTwoWay-New(tiddler-Before, tiddler-In)
+  <$vars val-shortid=<<shortid>> >
+    <$list filter="[<val-shortid>] -[[]] +[count[]]" variable="val-shortidInstalled">
+      <$list filter="[<val-shortidInstalled>prefix[0]]">
+        <$macrocall $name="action-InsertTwoWay-New-WithDefault" tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" />
+      </$list>
+      <$list filter="[<val-shortidInstalled>prefix[1]]">
+        <$macrocall $name="action-InsertTwoWay-New-WithID" tiddler-Before="""$tiddler-Before$""" tiddler-In="""$tiddler-In$""" />
+      </$list>
+    </$list>
+  </$vars>
+\end
+\define action-InsertTwoWay-New-WithDefault(tiddler-Before, tiddler-In)
+  <$action-sendmessage $message="tm-new-tiddler" navigateFromTitle="""$tiddler-Before$""" tags="""$tiddler-In$""" />
+  <<action-Notify-shortidNotInstalled>>
+\end
+\define action-InsertTwoWay-New-WithID(tiddler-Before, tiddler-In)
+  <$set name="tiddler-New" value={{{ [<val-shortid>addprefix[tid/]] }}} >
+    <$action-createtiddler $basetitle=<<tiddler-New>> />
+    <$macrocall $name="action-ResetListToTagging" tiddler-ToReset="""$tiddler-In$""" />
+    <$macrocall $name="action-AddTwoWay" tiddler-Add=<<tiddler-New>> tiddler-Target="""$tiddler-In$""" tiddler-Before="""$tiddler-Before$""" />
+    <$action-sendmessage $message="tm-edit-tiddler" $param=<<tiddler-New>> />
+  </$set>
+\end
+
+
+
+
+\define action-Droppable-List()
+  <<action-CheckDragOfSearchList_List>>
+\end
+\define action-CheckDragOfSearchList_List()
+  <!-- SEQUENCE AFTER action-Droppable-List -->
+  <!-- If actionTiddler is tiddler-SearchListFilter-Live, notify with no action. -->
+  <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddler-SearchListFilter-Live>]"
+      value=<<action-CheckNew_List>>
+      emptyValue=<<action-Notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
+  </$set>
+\end
+\define action-CheckNew_List()
+  <!-- SEQUENCE AFTER action-CheckDragOfSearchList_List -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
+      value=<<action-CheckSame_List>>
+      emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentListTiddler>> tiddler-In=<<currentBoardTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-CheckSame_List()
+  <!-- SEQUENCE AFTER action-CheckNew_List -->
+  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-DropList>>
+      emptyValue=<<action-Notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+\define action-DropList()
+  <!-- SEQUENCE AFTER action-CheckSame_List -->
+  <$macrocall $name="action-DeleteHolding-IfHeldMatches" tiddler-Match=<<actionTiddler>> />
+  <$macrocall $name="action-InsertTwoWay" tiddler-Insert=<<actionTiddler>> tiddler-Before=<<currentListTiddler>> tiddler-In=<<currentBoardTiddler>> filter-UniqueAmong-byDef="filter-BoardL2_currentBoard" />
+\end
+
+\define action-Droppable-Card()
+  <<action-CheckDragIntoSearchList>>
+\end
+\define action-CheckDragIntoSearchList()
+  <!-- SEQUENCE AFTER action-Droppable-Card -->
+  <!-- If currentListTiddler is tiddler-SearchListFilter-Live, notify with no action. -->
+  <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddler-SearchListFilter-Live>]"
+      value=<<action-CheckDragOfSearchList_Card>>
+      emptyValue=<<action-Notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
+  </$set>
+\end
+\define action-CheckDragOfSearchList_Card()
+  <!-- SEQUENCE AFTER action-CheckDragIntoSearchList -->
+  <!-- If actionTiddler is tiddler-SearchListFilter-Live, notify with no action. -->
+  <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddler-SearchListFilter-Live>]"
+      value=<<action-CheckNew_Card>>
+      emptyValue=<<action-Notify-NoActionSearchList>> >
+    <<action-DiffOrSearchListIsAction>>
+  </$set>
+\end
+\define action-CheckNew_Card()
+  <!-- SEQUENCE AFTER action-CheckDragOfSearchList_Card -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
+      value="""<$macrocall $name="action-CheckDragIntoSelf" />"""
+      emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentCardTiddler>> tiddler-In=<<currentListTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-CheckDragIntoSelf()
+  <!-- SEQUENCE AFTER action-CheckNew_Card -->
+  <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-CheckSame_Card>>
+      emptyValue=<<action-Notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSelf>>
+  </$set>
+\end
+\define action-CheckSame_Card()
+  <!-- SEQUENCE AFTER action-CheckDragIntoSelf -->
+  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] -[<actionTiddler>]"
+      value=<<action-DropCard>>
+      emptyValue=<<action-Notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+\define action-DropCard()
+  <!-- SEQUENCE AFTER action-CheckSame_Card -->
+  <$macrocall $name="action-DeleteHolding-IfHeldMatches" tiddler-Match=<<actionTiddler>> />
+  <$macrocall $name="action-InsertTwoWay" tiddler-Insert=<<actionTiddler>>tiddler-Before=<<currentCardTiddler>> tiddler-In=<<currentListTiddler>> filter-UniqueAmong-byDef="filter-Lists_currentBoard" />
+  <!-- If action tiddler is in filter-Lists_currentBoard, remove it. Doing this instead of using filter-BoardL2_currentBoard in filter-UniqueAmong-byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+  <<action-ConditionalRemoveActionTidFromList>>
+\end
+\define action-ConditionalRemoveActionTidFromList()
+  <!-- SEQUENCE AFTER action-DropCard -->
+  <$set name="list-Tiddlers" filter="$(filter-Lists_currentBoard)$" >
+    <$set name="action-DoRemove" filter="[enlist<list-Tiddlers>] +[field:title<actionTiddler>]"
+        value="""<$macrocall $name="action-RemoveTwoWay" tiddler-ToRemove=<<actionTiddler>> tiddler-Target=<<currentBoardTiddler>> />"""
+        emptyValue="" >
+      <<action-DoRemove>>
+    </$set>
+  </$set>
+\end
+
+\define action-RemoveFromBoard()
+  <$macrocall $name="action-RemoveTwoWay_OneFromMany" tiddler-ToRemove=<<actionTiddler>> filter-Target-ByDef="filter-BoardL2_currentBoard" />
+\end

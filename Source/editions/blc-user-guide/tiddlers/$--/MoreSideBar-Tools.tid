@@ -1,0 +1,6 @@
+title: MoreSideBar/Tools
+caption: Tools
+tags: $:/tags/MoreSideBar
+list-before: $:/core/ui/MoreSideBar/Plugins
+
+<$transclude tiddler="$:/core" subtiddler="$:/core/ui/SideBar/Tools" />

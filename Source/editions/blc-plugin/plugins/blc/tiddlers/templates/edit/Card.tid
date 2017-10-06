@@ -1,0 +1,81 @@
+title: $:/plugins/reidgould/blc/templates/edit/Card
+
+\define action-Save()
+  <$action-sendmessage $message="tm-add-tag" $param={{$:/temp/NewTagName}}/>
+  <$action-deletetiddler $tiddler="$:/temp/NewTagName"/>
+  <$action-sendmessage $message="tm-add-field" $name={{$:/temp/newfieldname}} $value={{$:/temp/newfieldvalue}}/>
+  <$action-deletetiddler $tiddler="$:/temp/newfieldname"/>
+  <$action-deletetiddler $tiddler="$:/temp/newfieldvalue"/>
+  <$action-sendmessage $message="tm-save-tiddler"/>
+\end
+\define class-Card-Norm()
+  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-O-_
+\end
+\define class-Card-SearchList()
+  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-O-_ blc-SL-Card-V-_
+\end
+\define config-visibility-title()
+$:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$
+\end
+
+<$set name="currentCardTiddler" value=<<currentTiddler>> >
+<$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
+    value=<<class-Card-SearchList>>
+    emptyValue=<<class-Card-Norm>> >
+<$droppable actions=<<action-Droppable-Card>> >
+<div class="blc-DA-IndicatorThin-OV-c">
+  <div class="blc-DA-IndicatorThin_Child-OV-c"></div>
+</div>
+<div class=<<class-Card>>>
+  <$fieldmangler>
+    <!-- keeping this SetWidget for storyTiddler for internals from TW core -->
+    <$set name="storyTiddler" value=<<currentTiddler>>>
+      <$keyboard key="((cancel-edit-tiddler))" message="tm-cancel-tiddler">
+        <$keyboard key="((save-tiddler))" actions=<<action-Save>>>
+          <div class="blc-C-TiddlerControls-OI-_">
+            <$button message="tm-delete-tiddler" tooltip={{$:/language/Buttons/Delete/Hint}} aria-label={{$:/language/Buttons/Delete/Caption}} class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_">
+              {{$:/core/images/delete-button}}
+            </$button>
+            <$button message="tm-cancel-tiddler" tooltip={{$:/language/Buttons/Cancel/Hint}} aria-label={{$:/language/Buttons/Cancel/Caption}} class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_">
+              {{$:/core/images/cancel-button}}
+            </$button>
+            <$button actions=<<action-Save>> tooltip={{$:/language/Buttons/Save/Hint}} aria-label={{$:/language/Buttons/Save/Caption}} class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_">
+              {{$:/core/images/save-button}}
+            </$button>
+          </div>
+          <span class="blc-C-EditTitle-T-D">
+            <$transclude tiddler="$:/core/ui/EditTemplate/title" mode="inline" />
+          </span>
+          <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25em" focus="yes" class="tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/templates/shorttextPlaceholder}} />
+          <<currentTiddler>>
+          <$list filter="[<currentTiddler>regexp:shorttext[\n]]" variable="">
+            <div class="tc-message-box">
+              <p>{{$:/core/images/warning}} Warning: avoid using multiple lines in shorttext. Tiddlers with newline characters in shorttext create invalid ".tid" files.</p>
+            </div>
+          </$list>
+          <$edit
+            field="text"
+            focus="no"
+            class="tc-edit-texteditor"
+            placeholder={{$:/language/EditTemplate/Body/Placeholder}}
+          ><$set
+            value=<<currentTiddler>>
+          ><$list
+            filter="[all[shadows+tiddlers]tag[$:/tags/EditorToolbar]!has[draft.of]]"
+          ><$reveal
+            type="nomatch"
+            state=<<config-visibility-title>>
+            text="hide"
+            class="tc-text-editor-toolbar-item-wrapper"
+          ><$transclude
+            tiddler="$:/core/ui/EditTemplate/body/toolbar/button"
+            mode="inline"
+          /></$reveal></$list></$set></$edit>
+        </$keyboard>
+      </$keyboard>
+    </$set>
+  </$fieldmangler>
+</div>
+</$droppable>
+</$set>
+</$set>

@@ -1,0 +1,19 @@
+{
+  "author": "Reid Gould <reidgould@gmail.com>",
+  "author-name": "Reid Gould",
+  "author-email": "reidgould@gmail.com",
+  "author-web": "https://www.reidgould.com",
+  "source": "https://github.com/reidgould/tiddlywiki-blc-plugin",
+  "userguide": "http://reidgould.github.io/tiddlywiki-blc-plugin",
+  "created": "20170829220457648",
+  "dependents": "",
+  "description": "BLC Plugin - kanban like organization in the style of Trello using boards, lists, and cards.",
+  "name": "BLC Plugin",
+  "plugin-type": "plugin",
+  "tags": "",
+  "title": "$:/plugins/reidgould/blc",
+  "type": "application/json",
+  "version": "0.2.0",
+  "core-version": ">=5.0.0",
+  "list": "readme license"
+}

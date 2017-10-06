@@ -1,0 +1,15 @@
+title: BLC Plugin for TiddlyWiki
+
+\define mailto-address()
+mailto:$(address)$
+\end
+
+A TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.<br>
+<!-- <span class="tc-titlebar"><h2 class="tc-title">{{$:/plugins/reidgould/blc!!name}} </h2></span> -->
+Created by <a href={{$:/plugins/reidgould/blc!!author-web}} target="_blank" rel="noopener noreferrer">{{$:/plugins/reidgould/blc!!author-name}}</a>&nbsp;&lt;<$vars address={{$:/plugins/reidgould/blc!!author-email}} ><a href=<<mailto-address>> target="_blank" rel="noopener noreferrer">{{$:/plugins/reidgould/blc!!author-email}}</a></$vars>&gt;&ensp;&mdash;&ensp;version {{$:/plugins/reidgould/blc/version}}&ensp;&mdash;&ensp;[[ReadMe|$:/plugins/reidgould/blc/readme]]&ensp;&mdash;&ensp;[[License|$:/plugins/reidgould/blc/license]]
+
+{{$:/ContributionBanner}}
+
+!!! Four ways to get BLC:
+
+{{Get BLC}}

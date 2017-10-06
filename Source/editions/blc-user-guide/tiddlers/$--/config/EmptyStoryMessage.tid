@@ -1,0 +1,11 @@
+title: $:/config/EmptyStoryMessage
+
+<div class="tc-tiddler-frame">
+  <$set name="list-Home" filter="[list[$:/DefaultTiddlers]]" >
+    <$button tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} actions="""<$action-setfield $tiddler="$:/StoryList" $field="list" $value=<<list-Home>> />""" >
+      {{$:/core/images/home-button}}
+      <span class="tc-btn-text"><$text text={{$:/language/Buttons/Home/Caption}}/></span>
+    </$button>
+    <i class="tc-muted"><$text text={{$:/language/Buttons/Home/Hint}}/></i>
+  </$set>
+</div>

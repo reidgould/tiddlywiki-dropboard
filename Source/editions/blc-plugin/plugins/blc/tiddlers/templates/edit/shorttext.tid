@@ -1,0 +1,19 @@
+title: $:/plugins/reidgould/blc/templates/edit/shorttext
+tags: $:/tags/EditTemplate
+list-before: $:/core/ui/EditTemplate/body
+
+<div class="blc-_-MainEdit_Shorttext-I-_">
+  <div class="blc-_-MainEdit_Shorttext_Textarea-O-_">
+    <$edit-text field="shorttext" tag="textarea" autoHeight="yes" minHeight="1.25em" focus="no" class="tc-edit-texteditor" placeholder={{$:/plugins/reidgould/blc/templates/shorttextPlaceholder}} />
+  </div>
+  <div class="blc-_-MainEdit_Shorttext_Button-O-_ tc-tiddler-controls">
+    <$button actions="""<$action-deletefield shorttext />""" tooltip="delete field shorttext" class="tc-btn-invisible">
+      {{$:/core/images/close-button}}
+    </$button>
+  </div>
+</div>
+<$list filter="[<currentTiddler>regexp:shorttext[\n]]" variable="">
+  <div class="tc-message-box">
+    <p>{{$:/core/images/warning}} Warning: avoid using multiple lines in shorttext. Tiddlers with newline characters in shorttext create invalid ".tid" files.</p>
+  </div>
+</$list>
