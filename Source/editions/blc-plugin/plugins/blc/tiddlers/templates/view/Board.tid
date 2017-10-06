@@ -1,13 +1,15 @@
 title: $:/plugins/reidgould/blc/templates/view/Board
 
 <$set name="currentBoardTiddler" value=<<currentTiddler>> >
+<$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeight-Default>> >
+<div class="blc-BoardContainer" style=<<style-BoardHeight>> >
   <div class="blc-BoardTitle">
     <$set name="tv-wikilinks" value={{$:/config/Tiddlers/TitleLinks}}>
       <$link>
         <$set name="foregroundColor" value={{!!color}} >
-          <div class="blc-CardIconFloat" style=<<style-IconColor>> >
-            <span class="inlineImg"><$transclude tiddler={{!!icon}} mode="inline" /></span>
-          </div>
+          <span class="inlineImg" style=<<style-IconColor>>>
+            <$transclude tiddler={{!!icon}} mode="inline" />
+          </span>
         </$set>
         <$list filter="[all[current]removeprefix[$:/]]">
           <h2 class="tc-title" title={{$:/language/SystemTiddler/Tooltip}}>
@@ -15,7 +17,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           </h2>
         </$list>
         <$list filter="[all[current]!prefix[$:/]]">
-          <h2 class="tc-title">
+          <h2 class="tc-title blc-BoardTitle-h2">
             <$view field="title"/>
           </h2>
         </$list>
@@ -24,32 +26,32 @@ title: $:/plugins/reidgould/blc/templates/view/Board
   </div>
   <div class="blc-BoardControlContainer-layOuter blc-BoardControlContainer-layInner">
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" title="Drop into either card or list position.">
-      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card tc-tiddler-frame">
-        <p>{{$:/core/images/new-button}}<br>New Tiddler</p>
+      <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-Card blc-CardWidget tc-tiddler-frame">
+        <p class="blc-BoardControlCardWidget-p">{{$:/core/images/new-button}}New Tiddler</p>
       </$draggable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""
           <$action-deletetiddler $tiddler=<<tiddler-Holding>> />
           <$action-createtiddler $basetitle=<<tiddler-Holding>> text=<<actionTiddler>> /> """ >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/full-screen-button}}<br>Hold Tiddler</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/full-screen-button}}Hold&emsp;Tiddler&emsp;</p></div>
       </$droppable>
       <$list filter="[<tiddler-Holding>get[title]]" >
         <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
           <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
-            <$draggable tiddler=<<currentTiddler>> class="blc-Card tc-tiddler-frame">
-              <div title=<<HeldToolTip>> >
-                <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
-                  {{$:/core/images/close-button}}
-                </$button>
-                <p>{{$:/core/images/file}}<br>Tiddler:<br>
-                  <span class="blc-BoardControl-HeldTitle truncate">
-                    <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-                      <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
-                    </$set>
-                  </span>
-                </p>
-              </div>
+            <$draggable tiddler=<<currentTiddler>> class="blc-Card blc-CardWidget tc-tiddler-frame">
+              <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-CardFloats blc-PosTR">
+                {{$:/core/images/close-button}}
+              </$button>
+              <p class="blc-BoardControlCardWidget-p" title=<<HeldToolTip>>>
+              {{$:/core/images/file}}
+              Tiddler:&emsp;
+              <span class="truncate blc-BoardControl-HeldTitle blc-shorttext_container">
+                <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                  <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
+                </$set>
+              </span>
+              </p>
             </$draggable>
           </$vars>
         </$tiddler>
@@ -57,12 +59,12 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/open-window}}<br>Open in Main Story</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/open-window}}Open in Main Story</p></div>
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlCardWidget tc-edit-tags blc-CardContainer-vis" >
       <$droppable actions="""<<action-RemoveFromBoard>>""" >
-        <div class="blc-BoardControlCardWidgetDroppable"><p>{{$:/core/images/close-button}}<br>Remove from Board</p></div>
+        <div class="blc-BoardControlCardWidgetDroppable"><p class="blc-BoardControlCardWidget-p">{{$:/core/images/close-button}}Remove from Board</p></div>
       </$droppable>
     </div>
     <div class="blc-BoardControl-layOuter blc-BoardControlLineOpContainer">
@@ -71,7 +73,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <p class="blc-BoardControlLineOpLabel-p">Filter (append to each):</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <span style="display:inline-block;width:calc(100% - 4rem);">
+          <span style="display:inline-block;width:calc(100% - 4em);">
             <$edit-text tiddler=<<tiddler-UserFilter-Stage>> tag="input" type="text" default="" placeholder="Use only + or - runs." class="blc-BoardControlFilterTextArea" />
           </span>
           <$button actions="""
@@ -109,7 +111,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <p class="blc-BoardControlLineOpLabel-p">Search List Filter:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <span style="display:inline-block;width:calc(100% - 6rem);">
+          <span style="display:inline-block;width:calc(100% - 6em);">
             <$edit-text tiddler=<<tiddler-SearchListFilter-Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-BoardControlFilterTextArea" />
           </span>
           <$button actions="""
@@ -131,7 +133,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         </div>
         <div class="blc-BoardControlLineOpInput">
           <$set name="val-BoardHeight-current" value={{{ [<currentBoardTiddler>get[boardheight]] }}} >
-            <span style="display:inline-block;width:calc(100% - 11.5rem);">
+            <span style="display:inline-block;width:calc(100% - 11.5em);">
               <$edit-text tiddler=<<tiddler-BoardHeight-Stage>> tag="input" type="text" default="" placeholder=<<val-BoardHeight-current>> class="blc-BoardControlFilterTextArea" />
             </span>
           </$set>
@@ -149,7 +151,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           </$button>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
           <$button class="" actions="""
-              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="calc(100% - 18rem)" />
+              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
               """ >
             100%
           </$button>
@@ -160,60 +162,98 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <p class="blc-BoardControlLineOpLabel-p">List Width:</p>
         </div>
         <div class="blc-BoardControlLineOpInput">
-          <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth]] }}} >
-            <span style="display:inline-block;width:calc(100% - 15.5rem);">
+          <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[listwidth-em]] }}} >
+            <span style="display:inline-block;width:calc(100% - 15.5em);">
               <$edit-text tiddler=<<tiddler-ListWidth-Stage>> tag="input" type="text" default="" placeholder=<<val-ListWidth-current>> class="blc-BoardControlFilterTextArea" />
             </span>
           </$set>
           <$button actions="""
-              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth" $value={{{ [<tiddler-ListWidth-Stage>get[text]addsuffix[rem]] }}} />
+              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value={{{ [<tiddler-ListWidth-Stage>get[text]] }}} />
               <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
               """>
-            Set (rem)
+            Set (em)
           </$button>
           <$button class="tc-btn-invisible" actions="""
               <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
-              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+              <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="widthismax" />
               """ >
             {{$:/core/images/close-button}}
           </$button>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-          <$select tiddler=<<currentBoardTiddler>> field="listwidth"
-              actions="""<$action-setfield $field="widthismax" $value="yes" />""" >
-            <option value="calc(100% - 0.5rem)"  >1</option>
-            <option value="calc(50% - 0.5rem)"   >2</option>
-            <option value="calc(33.3% - 0.5rem)" >3</option>
-            <option value="calc(25% - 0.5rem)"   >4</option>
-            <option value="calc(20% - 0.5rem)"   >5</option>
-            <option value="calc(16.6% - 0.5rem)" >6</option>
-            <option value="calc(14.2% - 0.5rem)" >7</option>
-            <option value="calc(12.5% - 0.5rem)" >8</option>
+          <$select tiddler=<<currentBoardTiddler>> field="listwidth-num"
+              actions="""
+                <$action-setfield $field="widthismax" $value="yes" />
+                <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
+                """ >
+            <$list filter="[enlist<table-ListWidth-Num>]" variable="val-ListWidth-Num-Current">
+              <option value=<<val-ListWidth-Num-Current>> ><<val-ListWidth-Num-Current>></option>
+            </$list>
           </$select>
           <p class="blc-BoardControlLineOpLabel-p p-verticalRule"></p>
-          <$checkbox field="widthismax" checked="yes" unchecked="no" default="no"> Is Max</$checkbox>
+          <$checkbox field="widthismax" checked="yes" unchecked="no" default="yes"> Is Max</$checkbox>
         </div>
       </div>
     </div>
   </div>
+  <!-- Set values if board has fields. -->
+  <$set name="val-ListWidth-Em"  filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+      value={{{[<currentBoardTiddler>get[listwidth-em]]}}}
+      emptyValue=<<val-ListWidth-Em-Default>> >
+  <$set name="val-ListWidth-Num" filter="[<currentBoardTiddler>has:value[listwidth-num]]"
+      value={{{[<currentBoardTiddler>get[listwidth-num]]}}}
+      emptyValue=<<val-ListWidth-Num-Default>> >
+  <!-- Unshift table if necessary. Decimal part of new values are because listop disallows duplicates. -->
+  <$set name="list-ListWidth-Pct-SL" filter="[[100.001]] [enlist<table-ListWidth-Pct>]" >
+  <$set name="table-ListWidth-Pct" filter="[field:title<tiddler-SearchListFilter-Live>]"
+      value=<<list-ListWidth-Pct-SL>>
+      emptyValue=<<table-ListWidth-Pct>> >
+  <$set name="list-ListWidth-Dec-SL" filter="[[1.001]] [enlist<table-ListWidth-Dec>]" >
+  <$set name="table-ListWidth-Dec" filter="[field:title<tiddler-SearchListFilter-Live>]"
+      value=<<list-ListWidth-Dec-SL>>
+      emptyValue=<<table-ListWidth-Dec >
+  <!-- Set final values from table lookup. -->
+  <$set name="val-ListWidth-Pct" value={{{ [enlist<table-ListWidth-Pct>nth<val-ListWidth-Num>] }}} >
+  <$set name="val-ListWidth-Dec" value={{{ [enlist<table-ListWidth-Dec>nth<val-ListWidth-Num>] }}} >
+  <!-- Use Em value if set, otherwise use percent value. -->
+  <$set name="val-listWidthMin" filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+      value=<<val-WidthPropVal-Em>>
+      emptyValue=<<val-WidthPropVal-Pct>> >
   <div class="blc-scrollable" >
-    <$set name="val-BoardHeight" filter={{{[<currentBoardTiddler>get[boardheight]]}}} value="" emptyValue=<<val-BoardHeightDefault>> >
-      <div class="blc-ListContainer" style=<<style-BoardHeightOption>> >
-        <$list filter="[field:title<tiddler-SearchListFilter-Live>]" >
+    <$list filter="[field:title<tiddler-SearchListFilter-Live>]" >
+      <$set name="style-Width--SearchList-Container" filter="[<currentBoardTiddler>has:value[listwidth-em]]"
+          value=<<style-Flex-Em>>
+          emptyValue=<<style-Flex-Dec>> >
+        <div class="blc-SearchList-Container" style=<<style-Width--SearchList-Container>> >
           <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
-        </$list>
-        <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
-            emptyMessage="""
-              <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
-                <$droppable actions=<<action-Droppable-List>> >
-                  <div style="width:100%; height:100%;">
-                    Drag in the "New Tiddler" above, or any existing tiddler, to use it as a list.
-                  </div>
-                </$droppable>
-              </div>
-            """>
-          <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
-        </$list>
-      </div>
-    </$set>
+        </div>
+      </$set>
+    </$list>
+    <div class="blc-ListContainer" >
+      <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
+          emptyMessage="""
+            <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
+              <$droppable actions=<<action-Droppable-List>> >
+                <div class="blc-EmptyMessage">
+                  Drag in the "New Tiddler" above, or any existing tiddler, to use it as a list.
+                </div>
+              </$droppable>
+            </div>
+          """>
+        <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/List" mode="inline" />
+      </$list>
+    </div>
   </div>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </$set>
+  </div>
+</$set>
 </$set>

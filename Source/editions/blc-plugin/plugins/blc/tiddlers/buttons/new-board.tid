@@ -4,7 +4,7 @@ caption: {{$:/plugins/reidgould/blc/images/blc}} New Board
 description: New Board
 
 <$button tooltip="New Board" class=<<tv-config-toolbar-class>>>
-<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="block" />""" />
+<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />""" />
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
 {{$:/plugins/reidgould/blc/images/blc}}
 </$list>

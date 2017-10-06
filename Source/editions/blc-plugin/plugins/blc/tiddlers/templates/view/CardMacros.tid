@@ -60,13 +60,13 @@ tags: $:/tags/Macro
       <$list filter="[<currentCardTiddler>has:value[text]!is[image]]" variable="">
         <$list filter="[<currentBoardTiddler>field:displayText[no]]" variable="">
           <div class="blc-CardIcon-HasText" title="This tiddler contains text. Open in main story to view.">
-          <span class="inlineImg inlineImg-help">{{$:/core/images/import-button}}</span>
+            <span class="inlineImg inlineImg-help">{{$:/core/images/import-button}}</span>
           </div>
         </$list>
       </$list>
       <$list filter="[<currentCardTiddler>has[list]]" variable="">
         <div class="blc-CardIcon-HasList" title="This tiddler contains a list.">
-        <span class="inlineImg inlineImg-help">{{$:/core/images/storyview-classic}}</span>
+          <span class="inlineImg inlineImg-help">{{$:/core/images/storyview-classic}}</span>
         </div>
       </$list>
     </div>
