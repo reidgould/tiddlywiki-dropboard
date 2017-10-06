@@ -1,9 +1,0 @@
-title: blc/download-empty-with-blc
-
-\define saveTiddlerFilter()
-[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/blc]] [[$:/plugins/reidgould/shortid]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
-\end
-\define savingEmpty()
-yes
-\end
-{{$:/core/templates/tiddlywiki5.html}}

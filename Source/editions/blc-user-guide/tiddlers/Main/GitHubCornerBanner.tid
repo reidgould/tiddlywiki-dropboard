@@ -1,0 +1,8 @@
+title: GitHubCornerBanner
+tags: $:/tags/PageControls
+
+<div class="github-fork-ribbon-wrapper right">
+<div class="github-fork-ribbon">
+<a href={{$:/plugins/reidgould/blc!!source}} target="_blank" rel="noopener noreferrer">Fork me on GitHub</a>
+</div>
+</div>

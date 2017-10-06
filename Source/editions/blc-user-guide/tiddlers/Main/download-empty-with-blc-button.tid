@@ -1,0 +1,6 @@
+title: download-empty-with-blc-button
+
+<$button class="tc-btn-big-green">
+<$action-sendmessage $message="tm-download-file" $param="download-empty-with-blc" filename="TiddlyWiki_With_BLC.html"/>
+TiddlyWiki_With_BLC.html {{$:/core/images/save-button}}
+</$button>

@@ -13,17 +13,17 @@
   ],
   "build": {
     "blc-plugin": [
-      "--rendertiddler", "$:/plugins/blc", "tiddlywiki-blc-plugin.tid", "text/plain", "$:/core/templates/exporters/TidFile", "exportFilter", "[<currentTiddler>]"
+      "--rendertiddler", "$:/plugins/reidgould/blc", "tiddlywiki-blc-plugin.tid", "text/plain", "$:/core/templates/exporters/TidFile", "exportFilter", "[<currentTiddler>]"
     ],
     "empty-with-blc": [
-      "--rendertiddler","$:/core/save/all","TiddlyWiki With BLC.html","text/plain"
+      "--rendertiddler","$:/core/save/all","TiddlyWiki_With_BLC.html","text/plain"
     ],
     "empty-with-blc-downloadButton": [
-      "--rendertiddler","blc/download-empty-with-blc","TiddlyWiki With BLC.html","text/plain"
+      "--rendertiddler","download-empty-with-blc","TiddlyWiki_With_BLC.html","text/plain"
     ],
     "meta": [
-      "--savetiddler","$:/plugins/blc/ReadMe","ReadMe.md",
-      "--savetiddler","$:/plugins/blc/license","license.txt"
+      "--savetiddler","$:/plugins/reidgould/blc/readme","ReadMe.md",
+      "--savetiddler","$:/plugins/reidgould/blc/license","license.txt"
     ]
   },
   "config": {

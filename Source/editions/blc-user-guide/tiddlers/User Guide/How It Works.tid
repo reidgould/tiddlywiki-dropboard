@@ -1,0 +1,11 @@
+title: How It Works
+tags: [[BLC User Guide]]
+
+!! User Guide
+
+In BLC boards, lists, and cards are defined by tags on normal tiddlers. BLC gives you a view into your data to help make it meaningful, but you can still manage existing data the way you already do.
+
+As you drag cards, the tags are updated.
+
+* [[Drop Areas]]
+* [[More]]

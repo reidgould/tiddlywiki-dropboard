@@ -1,0 +1,3 @@
+title: $:/plugins/reidgould/blc/templates/shorttextPlaceholder
+
+"shorttext" for plain text up to a paragraph. Use "title" as ID, "text" for large content.

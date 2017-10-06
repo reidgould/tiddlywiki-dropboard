@@ -1,8 +1,7 @@
-boardheight: 40vh
-created: 18991130000000000
-list: tid-20170831194954 tid-20170831194915 tid-20170831194804
-modified: 20170903204814114
-tags:
 title: Sample Board
+tags:
+created:  30000101120000000
+modified: 30000101120000000
+list: tid-20170831194954 tid-20170831194915 tid-20170831194804
 
-<$transclude tiddler="blc/ui/BoardViewTemplate" mode="block" />
+<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />

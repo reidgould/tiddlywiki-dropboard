@@ -3,7 +3,7 @@ core-version: >=5.0.0
 created: 20170829220457648
 dependents: 
 description: shortid Plugin - a bundle of shortid for use as a macro.
-list: ReadMe license
+list: readme license
 name: shortid Plugin
 plugin-type: plugin
 source: https://github.com/reidgould/tiddlywiki-shortid-plugin
@@ -26,8 +26,8 @@ version: 0.0.1
             "type": "application/javascript",
             "module-type": "utils"
         },
-        "$:/plugins/reidgould/shortid/ReadMe": {
-            "title": "$:/plugins/reidgould/shortid/ReadMe",
+        "$:/plugins/reidgould/shortid/readme": {
+            "title": "$:/plugins/reidgould/shortid/readme",
             "type": "text/x-markdown",
             "text": "# shortid Plugin\n\nThe [shortid](https://github.com/dylang/shortid) package bundled as a macro for TiddlyWiki.\n\nSource found at:\nhttps://github.com/reidgould/tiddlywiki-shortid-plugin\n\nWiki found at:\nhttp://reidgould.github.io/tiddlywiki-shortid-plugin\n\n## Usage:\n\nIn wikitext:\n\n`<<shortid>>`\n\nReturns a short id.\n\nUsing parameter \"prefix\":\n\n`<<shortid \"prefix/text/\">>`\n\n`<$macrocall $name=\"shortid\" prefix=\"prefix/text/\" />`\n\nReturns a short id prefixed with the passed value.\n\n## Attribution:\n\n### shortid copyright:\n> Copyright (c) 2016 Dylan Greene, contributors.\n\n### shortid license:\n> Copyright (c) Dylan Greene\n> All rights reserved.\n>\n> MIT +no-false-attribs License\n>\n> Permission is hereby granted, free of charge, to any person\n> obtaining a copy of this software and associated documentation\n> files (the \"Software\"), to deal in the Software without\n> restriction, including without limitation the rights to use,\n> copy, modify, merge, publish, distribute, sublicense, and/or sell\n> copies of the Software, and to permit persons to whom the\n> Software is furnished to do so, subject to the following\n> conditions:\n>\n> The above copyright notice and this permission notice shall be\n> included in all copies or substantial portions of the Software.\n>\n> Distributions of all or part of the Software intended to be used\n> by the recipients as they would use the unmodified Software,\n> containing modifications that substantially alter, remove, or\n> disable functionality of the Software, outside of the documented\n> configuration mechanisms provided by the Software, shall be\n> modified such that the Original Author's bug reporting email\n> addresses and urls are either replaced with the contact information\n> of the parties responsible for the changes, or removed entirely.\n>\n> THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n> OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n> HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n> WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n> FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n> OTHER DEALINGS IN THE SOFTWARE.\n"
         },

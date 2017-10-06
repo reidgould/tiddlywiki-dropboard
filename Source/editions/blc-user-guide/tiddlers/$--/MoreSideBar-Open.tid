@@ -1,0 +1,6 @@
+title: MoreSideBar/Open
+caption: Open
+tags: $:/tags/MoreSideBar
+list-before: $:/core/ui/MoreSideBar/All
+
+<$transclude tiddler="$:/core" subtiddler="$:/core/ui/SideBar/Open" />
