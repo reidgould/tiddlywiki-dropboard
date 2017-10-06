@@ -4,5 +4,5 @@ tags:
 title: Get BLC
 
 * Get a brand new empty TiddlyWiki with BLC Plugin installed:<br>{{blc/download-empty-with-blc-button}}<br>
-* Get a Tid file that you can import into your wiki:<br>{{blc/download-blc-plugin-button}}<br>
-* Drag this link into your wiki: [[$:/plugins/blc]]
+* Get Tid files that you can save. Import both into your wiki:<br>{{blc/download-blc-plugin-button}} &amp; {{blc/download-shortid-plugin-button}}<br>
+* Drag both these links into your wiki: [[$:/plugins/blc]] &amp; [[$:/plugins/reidgould/shortid]]

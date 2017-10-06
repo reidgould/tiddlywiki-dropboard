@@ -5,6 +5,12 @@ tags: $:/tags/Stylesheet
 <!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
+.blc-BoardTitle{
+  display: none;
+}
+.tc-single-tiddler-window .blc-BoardTitle, .tc-tab-content .blc-BoardTitle {
+  display: block;
+}
 .tc-subtitle.blc-subtitle {
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
@@ -97,7 +103,7 @@ tags: $:/tags/Stylesheet
   flex: 0 0 auto;
   position: relative;
   text-align: center;
-  width: 6em;
+  width: 6rem;
   overflow: hidden;
 }
 .blc-BoardControlCardWidgetDroppable {
@@ -107,7 +113,7 @@ tags: $:/tags/Stylesheet
   width: 100%;
   height: 100%;
 }
-.blc-BoardControl-HeldCardTitle{
+.blc-BoardControl-HeldTitle{
   display: inline-block;
   width: 100%;
   white-space: nowrap;
@@ -130,6 +136,7 @@ tags: $:/tags/Stylesheet
 }
 .blc-BoardControlLineOp {
   min-width: 20em;
+  max-width: 20em;
   height: 3rem;
   flex: 0 0 auto;
   margin: 0;
@@ -146,7 +153,7 @@ tags: $:/tags/Stylesheet
 .blc-BoardControlLineOpInput {
 }
 .blc-BoardControlFilterTextArea {
-  width: calc(100% - 1.25rem);
+  width: 100%;
 }
 
 .blc-CardContainer-flexItem {
@@ -158,6 +165,18 @@ tags: $:/tags/Stylesheet
   background: <<color page-background>>;
   padding: 1rem 0.25rem 1rem 0.25rem;
   line-height: 1.25;
+}
+.blc-CardContainerSearchList-vis.blc-CardContainerSearchList-vis {
+  /* EXTENDS tc-edit-tags */
+  background: none;
+  box-shadow: none;
+  padding: 1rem 0.25rem 1rem 0.25rem;
+  line-height: 1.25;
+  background: <<color tab-background-selected>>;
+  border-style: dashed;
+}
+.blc-CardContainerSearchList-vis .blc-Card.blc-Card {
+  border: 1px dashed <<color tab-foreground>>;
 }
 .blc-Card.blc-Card {
   /* EXTENDS tc-tiddler-frame */
@@ -177,14 +196,12 @@ tags: $:/tags/Stylesheet
   margin: 0 0 0.5rem 0;
   line-height: 1.2rem;
 }
-.blc-CardText > div {
+.blc-CardText > div, .blc-CardText > p, .blc-CardText > img {
   margin-top: 0.5rem;
-}
-.blc-CardText :first-child {
-  margin-top: 0.5rem;
-}
-.blc-CardText :last-child {
   margin-bottom: 0.5rem;
+}
+.blc-CardContainer-vis ul, .blc-CardContainer-vis ol {
+  padding-left: 1.25em;
 }
 .blc-CardFloats {
   margin: 0;
@@ -234,7 +251,7 @@ tags: $:/tags/Stylesheet
   top: 0;
   left: -1px;
   width: 4px;
-  height: 1.75em;
+  height: 1.75rem;
   padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -298,8 +315,44 @@ tags: $:/tags/Stylesheet
   padding: 0.25rem;
   position: relative;
 }
+.blc-listDropArea-Collapsed.blc-listDropArea-Collapsed{
+  border-width: 1px 0px;
+  margin: 0;
+  padding: 0.25rem 0;
+  width: 0;
+  overflow: hidden;
+  /* ToDo: bad solution. Fix this properly. */
+  max-height: 1.4rem;
+}
 .blc-listDropButton {
   /*min-width: 1.5rem;*/
+}
+.blc-listCollapseButton.blc-listCollapseButton {
+  float: right;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  fill: <<color tiddler-controls-foreground>>;
+  transform-origin: center;
+  transform: translateX(-0.25rem) rotateZ(-90deg);
+}
+.blc-listCollapseCheckbox {
+  float: right;
+  padding-right: 0.5rem;
+}
+.blc-listCollapseCheckbox input[type="checkbox"] {
+  vertical-align: bottom;
+}
+.blc-TitleSpan-Collapsed {
+  position: absolute;
+  /* display: inline-block; Not needed while position is absolute. */
+  transform-origin: left top;
+  transform: translateX(1.5rem) rotateZ(90deg) translateX(3.5rem);
+  /* max-width: 9999vh; Apply this as element style using board height. */
+  /* height: 1.5rem; Not needed while white-space is nowrap. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
 }
 
 
@@ -336,13 +389,13 @@ tags: $:/tags/Stylesheet
   cursor: pointer;
 }
 .buttonLikeLink:hover{
-  text-decoration:underline;
+  text-decoration: underline;
 }
 .buttonTWIcon {
   background: none;
   border: none;
   padding: 0;
-  cursor: default;
+  cursor: inherit;
 }
 .buttonTWIcon-help {
   cursor: help;
@@ -361,5 +414,11 @@ tags: $:/tags/Stylesheet
   border-width: 0 0 0 1px ;
   border-color: black;
 }
+
+/* Quick fix for issue that dragging a tiddler with an image creates a new tiddler with the content of the title being the data uri of the image. */
+.blc-CardText img {
+    pointer-events: none;
+}
+
 
 """

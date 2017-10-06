@@ -1,6 +1,8 @@
 title: blc/common/Macros
 tags: $:/tags/Macro
 
+\define comment() <!-- Section: For general use. -->
+
 \define EmptyString(strEmpty:"")
 $strEmpty$
 \end
@@ -9,8 +11,12 @@ $strEmpty$
   <$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
 \end
 
-\define actionDragSameTiddler()
-  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/DraggedOntoSame" />
+\define action-notify-NoActionDraggedOntoSame()
+  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionDraggedOntoSame" />
+\end
+
+\define action-notify-NoActionSearchList()
+  <$action-sendmessage $message="tm-notify" $param="blc/ui/notifications/NoActionSearchList" />
 \end
 
 \define filterBoardL2(board)
@@ -36,6 +42,8 @@ $strEmpty$
 
 
 
+\define comment() <!-- Section: For use by this plugin. -->
+
 \define blcStoryList()
 $(currentTiddler)$
 \end
@@ -44,12 +52,43 @@ $(currentTiddler)$
 $(EmptyString)$
 \end
 
-\define tiddlerStringFilter()
-$(currentBoardTiddler)$-StringFilter
+\define tiddlerSearchListFilter_Stage()
+$(currentBoardTiddler)$-SearchListFilter_Stage
 \end
 
-\define tiddlerHeldCard()
-$(currentBoardTiddler)$-HeldCard
+\define tiddlerSearchListFilter_Live()
+$(currentBoardTiddler)$-SearchListFilter_Live
+\end
+
+\define filter-searchList()
+$(filter-searchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>]
+\end
+
+\define tiddlerUserFilter_Stage()
+$(currentBoardTiddler)$-UserFilter_Stage
+\end
+
+\define tiddlerUserFilter_Live()
+$(currentBoardTiddler)$-UserFilter_Live
+\end
+
+\define filter-currentList()
+[<currentListTiddler>tagging[]] +[remove<TiddlersWithDrafts>] +[remove<TiddlersWithDraftsMain>] $(filter-userText)$
+\end
+
+\define tiddlerHeld()
+$(currentBoardTiddler)$-Held
+\end
+\define tiddlerHeld-ToolTip()
+$(currentTitle)$ -- $(current_shorttext)$
+\end
+
+\define tiddlerListWidth_Stage()
+$(currentBoardTiddler)$-ListWidth_Stage
+\end
+
+\define tiddlerBoardHeight_Stage()
+$(currentBoardTiddler)$-BoardHeight_Stage
 \end
 
 \define styleTagColor()
@@ -66,27 +105,32 @@ fill:$(foregroundColor)$;
 \define styleBoardHeightOption()
 height: $(boardHeight)$;
 \end
+\define styleBoardHeight_TitleCollapsed()
+max-width: calc($(boardHeight)$ - 4rem);
+\end
 
-\define styleListWidthDefault()
+\define styleListWidthMinDefault()
 15.5rem
 \end
-\define styleListWidthOption()
-min-width: $(listWidth)$;
+\define styleListWidthMinOption()
+min-width: $(listWidthMin)$;
 \end
 
-\define styleListMaxDefault()
+\define styleListWidthMaxDefault()
 9999rem
 \end
-\define styleListMaxOption()
+\define styleListWidthMaxOption()
 max-width: $(listWidthMax)$;
 \end
 
-\define styleListWidthCombo()
-$(styleListWidthOption)$ $(styleListMaxOption)$
+\define styleBlcList()
+$(styleListWidthMinOption)$ $(styleListWidthMaxOption)$
 \end
 
 
 
+
+\define comment() <!-- Section: Macros to perform abstracted operations. May NOT reference plain titles from context (ex: tiddlerHeld). -->
 
 \define ResetListToTagging(listTid)
   <!-- Assign a new list in which tiddler order is as discovered by the tagging operator. -->
@@ -99,21 +143,13 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
   </$set>
 \end
 
-\define action-conditionalRemoveActionTidFromList()
-<$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
-  <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
-      value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
-      emptyValue="" >
-    <<action-doRemove>>
-  </$set>
-</$set>
-\end
-
-\define action-deleteHeldCard()
-  <$set name="action-dhc" filter="[<actionTiddler>] -[<tiddlerHeldCard>get[text]]"
+\define action-deleteHeldIfMatches(matchTid)
+  <$set name="tiddlerHeldVal" value={{{[<tiddlerHeld>get[text]] }}} >
+  <$set name="action-dhc" filter="[[$matchTid$]] -[<tiddlerHeldVal>]"
       value=""
-      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" >
+      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeld>> />""" >
     <<action-dhc>>
+  </$set>
   </$set>
 \end
 
@@ -123,8 +159,9 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
     <$action-listops $tiddler="""$removeTid$""" $tags="+[remove<manyTids>]" />
     <!-- Remove the one tiddler from lists of all target Tiddlers. -->
     <$list filter=<<manyTids>> variable="eachList">
-      <$action-listops $tiddler=<<eachList>> $subfilter="+[remove[$removeTid$]]" />
+      <$action-listops $tiddler=<<eachList>> $subfilter="-[[$removeTid$]]" />
     </$list>
+  </$set>
   </$set>
 \end
 
@@ -136,9 +173,9 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \end
 
 \define actionAddTwoWay(addTid, targetTid, beforeTid)
-  <$set name="beforeTid_p" filter="[[$beforeTid$]]">
+  <$set name="beforeTid" value="$beforeTid$">
     <!-- Add the addTid to this targetTid -->
-    <$action-listops $tiddler="""$targetTid$""" $subfilter="+[insertbefore:beforeTid_p[$addTid$]]" />
+    <$action-listops $tiddler="""$targetTid$""" $subfilter="+[insertbefore:beforeTid[$addTid$]]" />
     <!-- Add this tag to the addTid -->
     <$action-listops $tiddler="""$addTid$""" $tags="[[$targetTid$]]"/>
   </$set>
@@ -151,51 +188,124 @@ $(styleListWidthOption)$ $(styleListMaxOption)$
 \end
 
 \define actionInsertNewTwoWay(before, in)
-  <$set name="newTiddler" value=<<now "tid-YYYY0MM0DD0hh0mm0ss">> >
-    <$action-createtiddler $basetitle=<<newTiddler>> />
+  <$set name="newTiddlerNameRaw" filter={{{ [[$(shortid)$]] [[New Tiddler]] -[[]] +[first[]] }}} >
+  <$set name="newTiddlerName" filter="[<newTiddlerNameRaw>] -[[New Tiddler]]" value={{{ [<newTiddlerNameRaw>addprefix[tid/]] }}} emptyValue=<<newTiddlerNameRaw>> >
+    <$action-createtiddler $basetitle=<<newTiddlerName>> />
     <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
-    <$macrocall $name="actionAddTwoWay"    addTid=<<newTiddler>> targetTid="""$in$""" beforeTid="""$before$""" />
-    <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddler>> />
+    <$macrocall $name="actionAddTwoWay" addTid=<<newTiddlerName>> targetTid="""$in$""" beforeTid="""$before$""" />
+    <$action-sendmessage $message="tm-edit-tiddler" $param=<<newTiddlerName>> />
+  </$set>
   </$set>
 \end
 
 
-\define actionExistingListTiddler()
-  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
-      value="""
-        <<action-deleteHeldCard>>
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
-        """
-      emptyValue=<<actionDragSameTiddler>> >
-    <<action-DiffOrSame>>
-  </$set>
-\end
+\define comment() <!-- Section: Macros used in tiddlers. May reference plain titles from context. -->
 
 \define blcListDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
-      value="""<$macrocall $name="actionExistingListTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
-    <<action-ExtOrNew>>
+  <<action-checkDragOfSearchList_List>>
+\end
+\define action-checkDragOfSearchList_List()
+  <!-- SEQUENCE AFTER blcListDroppableActions -->
+  <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
+  <$set name="action-DiffOrSearchList" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
+      value=<<action-checkNew_List>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
   </$set>
 \end
-
-\define actionExistingCardTiddler()
-  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
-      value="""
-        <<action-deleteHeldCard>>
-        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
-        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
-        <<action-conditionalRemoveActionTidFromList>>
-        """
-      emptyValue=<<actionDragSameTiddler>> >
+\define action-checkNew_List()
+  <!-- SEQUENCE AFTER action-checkDragOfSearchList_List -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+      value=<<action-checkSame_List>>
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-checkSame_List()
+  <!-- SEQUENCE AFTER action-checkNew_List -->
+  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-dropList>>
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
     <<action-DiffOrSame>>
   </$set>
+\end
+\define action-dropList()
+  <!-- SEQUENCE AFTER action-checkSame_List -->
+  <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
+  <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
 \end
 
 \define blcCardDroppableActions()
-  <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
-      value="""<$macrocall $name="actionExistingCardTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
-    <<action-ExtOrNew>>
+  <<action-checkDragIntoSearchList>>
+\end
+\define action-checkDragIntoSearchList()
+  <!-- SEQUENCE AFTER blcCardDroppableActions -->
+  <!-- If currentListTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
+  <$set name="action-DiffOrSearchList" filter="[<currentListTiddler>] -[<tiddlerSearchListFilter_Live>]"
+      value=<<action-checkDragOfSearchList_Card>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchList>>
   </$set>
+\end
+\define action-checkDragOfSearchList_Card()
+  <!-- SEQUENCE AFTER action-checkDragIntoSearchList -->
+  <!-- If actionTiddler is tiddlerSearchListFilter_Live, notify with no action. -->
+  <$set name="action-DiffOrSearchListIsAction" filter="[<actionTiddler>] -[<tiddlerSearchListFilter_Live>]"
+      value=<<action-checkNew_Card>>
+      emptyValue=<<action-notify-NoActionSearchList>> >
+    <<action-DiffOrSearchListIsAction>>
+  </$set>
+\end
+\define action-checkNew_Card()
+  <!-- SEQUENCE AFTER action-checkDragOfSearchList_Card -->
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[blc/action/newTiddler]]"
+      value="""<$macrocall $name="action-checkDragIntoSelf" />"""
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
+    <<action-ExistingOrNew>>
+  </$set>
+\end
+\define action-checkDragIntoSelf()
+  <!-- SEQUENCE AFTER action-checkNew_Card -->
+  <$set name="action-DiffOrSelf" filter="[<currentListTiddler>] -[<actionTiddler>]"
+      value=<<action-checkSame_Card>>
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSelf>>
+  </$set>
+\end
+\define action-checkSame_Card()
+  <!-- SEQUENCE AFTER action-checkDragIntoSelf -->
+  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] -[<actionTiddler>]"
+      value=<<action-dropCard>>
+      emptyValue=<<action-notify-NoActionDraggedOntoSame>> >
+    <<action-DiffOrSame>>
+  </$set>
+\end
+\define action-dropCard()
+  <!-- SEQUENCE AFTER action-checkSame_Card -->
+  <$macrocall $name="action-deleteHeldIfMatches" matchTid=<<actionTiddler>> />
+  <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
+  <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+  <<action-conditionalRemoveActionTidFromList>>
+\end
+\define action-conditionalRemoveActionTidFromList()
+  <!-- SEQUENCE AFTER action-dropCard -->
+  <$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
+    <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
+        value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
+        emptyValue="" >
+      <<action-doRemove>>
+    </$set>
+  </$set>
+\end
+
+\define action-RemoveFromBoard()
+  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid=<<actionTiddler>> targetFilter_byDef="filterBoardL2_currentBoard" />
+\end
+
+
+
+
+\define comment() <!-- Clear the value of "comment" in case it gets referenced. -->
+\define comment()
+$(EmptyString)$
 \end
