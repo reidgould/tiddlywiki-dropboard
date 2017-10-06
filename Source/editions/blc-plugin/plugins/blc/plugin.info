@@ -9,7 +9,7 @@
   "tags": "",
   "title": "$:/plugins/blc",
   "type": "application/json",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "core-version": ">=5.0.0",
   "list": "ReadMe license"
 }
