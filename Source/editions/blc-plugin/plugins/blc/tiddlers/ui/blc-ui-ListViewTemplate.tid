@@ -21,12 +21,15 @@ title: blc/ui/ListViewTemplate
   <$set name="listWidthMax" filter="[<currentBoardTiddler>field:widthismax[yes]] [<is_collapsed>field:title[blc/values/yes]]"
       value=<<listWidthMin>>
       emptyValue=<<styleListWidthMaxDefault>> >
-  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]]"
+  <$set name="classListDropArea" filter="[<is_collapsed>field:title[blc/values/yes]] [<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
       value="tc-edit-tags blc-CardContainer-vis blc-listDropArea blc-listDropArea-Collapsed"
       emptyValue="tc-edit-tags blc-CardContainer-vis blc-listDropArea" >
   <$set name="classListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
       value="""blc-TitleSpan-Collapsed"""
       emptyValue="" >
+  <$set name="class-scrollableArea" filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]"
+      value="tc-edit-tags blc-CardContainerSearchList-vis blc-CardContainer-flexItem"
+      emptyValue="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" >
   <$set name="styleListTitle" filter="[<is_collapsed>field:title[blc/values/yes]]"
       value=<<styleBoardHeight_TitleCollapsed>>
       emptyValue="" >
@@ -52,17 +55,19 @@ title: blc/ui/ListViewTemplate
             </$droppable>
           </$set>
         </span>
-        <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
-          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
-              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
-            {{$:/core/images/fold-button}}
-          </$button>
-        </$list>
-        <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
-          <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
-              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
-            {{$:/core/images/unfold-button}}
-          </$button>
+        <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+          <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
+            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Collapse list."
+                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
+              {{$:/core/images/fold-button}}
+            </$button>
+          </$list>
+          <$list filter="[<is_collapsed>field:title[blc/values/yes]]" >
+            <$button class="tc-btn-invisible blc-listCollapseButton" tooltip="Expand list."
+                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
+              {{$:/core/images/unfold-button}}
+            </$button>
+          </$list>
         </$list>
         <div class="blc-CardTagPreview">
           <$list filter="[<currentTiddler>has:field[color]]">
@@ -80,27 +85,48 @@ title: blc/ui/ListViewTemplate
             </span>
           </$set>
           <$link>
-            <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-              <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
-            </$set>
+            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
+                <h3 class="tc-title blc-titleTweak"><$transclude field=<<titleDisplay>> mode="inline"/></h3>
+              </$set>
+            </$list>
+            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
+              <h3 class="tc-title blc-titleTweak">Search List</h3>
+            </$list>
           </$link>
         </span>
       </$draggable>
-      <$scrollable class="tc-edit-tags blc-CardContainer-vis blc-CardContainer-flexItem" fallthrough="no">
+      <$scrollable class=<<class-scrollableArea>> fallthrough="no">
         <$navigator story=<<blcStoryList>> history=<<blcHistoryList>> openLinkFromInsideRiver={{$:/config/Navigation/openLinkFromInsideRiver}} openLinkFromOutsideRiver={{$:/config/Navigation/openLinkFromOutsideRiver}} relinkOnRename={{$:/config/RelinkOnRename}}>
           <$list filter="[<is_collapsed>!field:title[blc/values/yes]]">
-            <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
-              <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
-                <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
-                  <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
-                    emptyMessage="""
-                      <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
-                        Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
-                      </div>
-                    """ />
+            <$list filter="[<currentListTiddler>!field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-userText" value={{{ [<tiddlerUserFilter_Live>get[text]] }}} >
+                    <$list filter=<<filter-currentList>> history=<<blcHistoryList>> template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                      emptyMessage="""
+                        <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                          Drag in the "New Tiddler" above, or any existing tiddler, to include it in a list.
+                        </div>
+                      """ />
+                  </$set>
                 </$set>
               </$set>
-            </$set>
+            </$list>
+            <$list filter="[<currentListTiddler>field:title<tiddlerSearchListFilter_Live>]">
+              <$set name="TiddlersWithDrafts" filter="[list<currentListTiddler>get[draft.of]]">
+                <$set name="TiddlersWithDraftsMain" filter="[list[$:/StoryList]has[draft.of]]">
+                  <$set name="filter-searchListText" value={{{ [<tiddlerSearchListFilter_Live>get[text]] }}}>
+                    <$list filter=<<filter-searchList>> history="" template="blc/ui/CardViewTemplate" editTemplate="blc/ui/CardEditTemplate" storyview={{$:/view}}
+                      emptyMessage="""
+                        <div style="position:absolute;width:100%;padding:0.5rem;pointer-events:none;">
+                          No tiddlers found by Search List filter.
+                        </div>
+                      """ />
+                  </$set>
+                </$set>
+              </$set>
+            </$list>
           </$list>
           <$tiddler tiddler="">
             <$droppable actions=<<blcCardDroppableActions>> >
@@ -113,6 +139,7 @@ title: blc/ui/ListViewTemplate
         </$navigator>
       </$scrollable>
     </div>
+  </$set>
   </$set>
   </$set>
   </$set>

@@ -105,6 +105,24 @@ title: blc/ui/BoardViewTemplate
           <$checkbox field="displayimages" checked="yes" unchecked="no" default="yes"></$checkbox>
         </div>
       </div>
+      <div class="blc-BoardControlLineOp" title="Automatically excludes tiddlers on board.">
+          <div class="blc-BoardControlLineOpLabel">
+          <p class="blc-BoardControlLineOpLabel-p">Search List Filter:</p>
+        </div>
+        <div class="blc-BoardControlLineOpInput">
+          <$edit-text tiddler=<<tiddlerSearchListFilter_Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-BoardControlFilterTextArea" />
+          <$button actions="""
+              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Live>> />
+              <$action-createtiddler $basetitle=<<tiddlerSearchListFilter_Live>> text={{{ [<tiddlerSearchListFilter_Stage>get[text]] }}} /> """>
+            Set
+          </$button>
+          <$button class="tc-btn-invisible" actions="""
+              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Stage>> />
+              <$action-deletetiddler $tiddler=<<tiddlerSearchListFilter_Live>> /> """ >
+            {{$:/core/images/close-button}}
+          </$button>
+        </div>
+      </div>
       <div class="blc-BoardControlLineOp">
         <div class="blc-BoardControlLineOpLabel">
           <p class="blc-BoardControlLineOpLabel-p">Board Height (vh):</p>
@@ -132,6 +150,9 @@ title: blc/ui/BoardViewTemplate
   <$scrollable class="blc-scrollable" fallthrough="no">
     <$set name="boardHeight" filter="[<currentBoardTiddler>get[boardheight]]" value="" emptyValue=<<styleBoardHeightDefault>> >
       <div class="blc-ListContainer" style=<<styleBoardHeightOption>> >
+        <$list filter="[field:title<tiddlerSearchListFilter_Live>]" >
+          <$transclude tiddler="blc/ui/ListViewTemplate" mode="inline" />
+        </$list>
         <$list filter="[<currentTiddler>tagging[]!has[draft.of]]"
             emptyMessage="""
               <div class="tc-edit-tags blc-CardContainer-vis" style="flex:1 1 auto;">
