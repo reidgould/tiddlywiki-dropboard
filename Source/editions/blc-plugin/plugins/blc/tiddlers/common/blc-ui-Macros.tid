@@ -1,4 +1,4 @@
-title: blc/ui/Macros
+title: blc/common/Macros
 tags: $:/tags/Macro
 
 \define EmptyString(strEmpty:"")
@@ -6,7 +6,7 @@ $strEmpty$
 \end
 
 \define alert(alertText:"")
-<$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
+  <$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
 \end
 
 \define actionDragSameTiddler()
@@ -29,6 +29,10 @@ $strEmpty$
 [<currentBoardTiddler>] [<currentBoardTiddler>tagging[]] [<currentBoardTiddler>tagging[]tagging[]]
 \end
 
+\define filterLists_currentBoard()
+[<currentBoardTiddler>tagging[]]
+\end
+
 
 
 
@@ -41,11 +45,11 @@ $(EmptyString)$
 \end
 
 \define tiddlerStringFilter()
-$(currentTiddler)$-StringFilter
+$(currentBoardTiddler)$-StringFilter
 \end
 
 \define tiddlerHeldCard()
-$(currentTiddler)$-HeldCard
+$(currentBoardTiddler)$-HeldCard
 \end
 
 \define styleTagColor()
@@ -54,6 +58,31 @@ background-color: $(tagColor)$;
 
 \define styleIconColor()
 fill:$(foregroundColor)$;
+\end
+
+\define styleBoardHeightDefault()
+80vh
+\end
+\define styleBoardHeightOption()
+height: $(boardHeight)$;
+\end
+
+\define styleListWidthDefault()
+15.5rem
+\end
+\define styleListWidthOption()
+min-width: $(listWidth)$;
+\end
+
+\define styleListMaxDefault()
+9999rem
+\end
+\define styleListMaxOption()
+max-width: $(listWidthMax)$;
+\end
+
+\define styleListWidthCombo()
+$(styleListWidthOption)$ $(styleListMaxOption)$
 \end
 
 
@@ -67,6 +96,24 @@ fill:$(foregroundColor)$;
   <!-- Also, when doing this operation frequently or on larger lists, we should watch to see if performance becomes a problem. -->
   <$set name="newList" filter="[[$listTid$]tagging[]]">
     <$action-setfield $tiddler="""$listTid$""" $field="list" $value=<<newList>> />
+  </$set>
+\end
+
+\define action-conditionalRemoveActionTidFromList()
+<$set name="listTiddlers" filter="$(filterLists_currentBoard)$" >
+  <$set name="action-doRemove" filter="[enlist<listTiddlers>] +[field:title<actionTiddler>]"
+      value="""<$macrocall $name="actionRemoveTwoWay" removeTid=<<actionTiddler>> targetTid=<<currentBoardTiddler>> />"""
+      emptyValue="" >
+    <<action-doRemove>>
+  </$set>
+</$set>
+\end
+
+\define action-deleteHeldCard()
+  <$set name="action-dhc" filter="[<actionTiddler>] -[<tiddlerHeldCard>get[text]]"
+      value=""
+      emptyValue="""<$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />""" >
+    <<action-dhc>>
   </$set>
 \end
 
@@ -97,9 +144,9 @@ fill:$(foregroundColor)$;
   </$set>
 \end
 
-\define actionInsertTwoWay(insert, before, in, exclusiveAmong_byDef)
+\define actionInsertTwoWay(insert, before, in, uniqueAmong_byDef)
   <$macrocall $name="ResetListToTagging" listTid="""$in$""" />
-  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$exclusiveAmong_byDef$""" />
+  <$macrocall $name="actionRemoveTwoWay_OneFromMany" removeTid="""$insert$""" targetFilter_byDef="""$uniqueAmong_byDef$""" />
   <$macrocall $name="actionAddTwoWay" addTid="""$insert$""" targetTid="""$in$""" beforeTid="""$before$""" />
 \end
 
@@ -114,8 +161,11 @@ fill:$(foregroundColor)$;
 
 
 \define actionExistingListTiddler()
-  <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
-      value="""<$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" /><$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />"""
+  <$set name="action-DiffOrSame" filter="[<currentListTiddler>] +[remove<actionTiddler>]"
+      value="""
+        <<action-deleteHeldCard>>
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentListTiddler>> in=<<currentBoardTiddler>> uniqueAmong_byDef="filterBoardL2_currentBoard" />
+        """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
   </$set>
@@ -124,14 +174,19 @@ fill:$(foregroundColor)$;
 \define blcListDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
       value="""<$macrocall $name="actionExistingListTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentTiddler>> in=<<currentBoardTiddler>> />""" >
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentListTiddler>> in=<<currentBoardTiddler>> />""" >
     <<action-ExtOrNew>>
   </$set>
 \end
 
 \define actionExistingCardTiddler()
-  <$set name="action-DiffOrSame" filter="[<currentTiddler>] +[remove<actionTiddler>]"
-      value="""<$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> exclusiveAmong_byDef="filterBoardL2_currentBoard" /><$action-deletetiddler $tiddler=<<tiddlerHeldCard>> />"""
+  <$set name="action-DiffOrSame" filter="[<currentCardTiddler>] +[remove<actionTiddler>]"
+      value="""
+        <<action-deleteHeldCard>>
+        <$macrocall $name="actionInsertTwoWay" insert=<<actionTiddler>> before=<<currentCardTiddler>> in=<<currentListTiddler>> uniqueAmong_byDef="filterLists_currentBoard" />
+        <!-- If action tiddler is in filterLists_currentBoard, remove it. Doing this instead of using filterBoardL2_currentBoard in uniqueAmong_byDef above avoids unnecessary rerendering of the board which causes loss of scroll position. -->
+        <<action-conditionalRemoveActionTidFromList>>
+        """
       emptyValue=<<actionDragSameTiddler>> >
     <<action-DiffOrSame>>
   </$set>
@@ -140,54 +195,7 @@ fill:$(foregroundColor)$;
 \define blcCardDroppableActions()
   <$set name="action-ExtOrNew" filter="[<actionTiddler>] +[remove[blc/action/newCard]]"
       value="""<$macrocall $name="actionExistingCardTiddler" />"""
-      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentTiddler>> in=<<currentListTiddler>> />""" >
+      emptyValue="""<$macrocall $name="actionInsertNewTwoWay" before=<<currentCardTiddler>> in=<<currentListTiddler>> />""" >
     <<action-ExtOrNew>>
   </$set>
-\end
-
-
-
-
-\define macroCardViewTemplate(tagBackground)
-  <$set name="popupTagsState" value=<<qualify """blc/state/$(currentTiddler)$-tagPopup""">> >
-  <div class="tc-droppable-placeholder tc-droppable-placeholder-thin">
-  </div>
-  <$draggable tiddler=<<currentTiddler>> class="tc-tiddler-frame blc-Card ">
-    <div class="blc-CardIconFloat">
-      <$set name="foregroundColor" value={{!!color}} >
-        <span class="tc-tiddler-title-icon" style=<<styleIconColor>>>
-          <$button class=<<tv-config-toolbar-class>>><$transclude tiddler={{!!icon}} /></$button>
-        </span>
-      </$set>
-    </div>
-    <div class="blc-CardFloats blc-Card-visDownsize">
-      <$button popup=<<popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible">
-        {{$:/core/images/tag-button}}
-      </$button>
-      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible" >
-        {{$:/core/images/edit-button}}
-      </$button>
-    </div>
-    <$reveal type="popup" state=<<popupTagsState>> position="belowleft" class="tc-popup-keep blc-popupTag-vis">
-      <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
-    </$reveal>
-    <div class="blc-CardTagPreview">
-      <$list filter="[<currentTiddler>tags[]] +[remove<currentListTiddler>]">
-        <$set name="tagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-          <div class="blc-CardTagPreviewChild" style=<<styleTagColor>> ></div>
-        </$set>
-      </$list>
-    </div>
-    <div title={{!!title}} class="blc-CardText">
-      <$set name="titleDisplay" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-        <$transclude field=<<titleDisplay>> mode="block" class="" />
-      </$set>
-      <$transclude field="text" mode="block" class="" />
-    </div>
-  </$draggable>
-  </$set>
-\end
-
-\define macroCardViewTemplate_SetBackgroundByPalette(tagBackgroundPalette)
-<$macrocall $name="macroCardViewTemplate" tagBackground={{$tagBackgroundPalette$##tag-background}} />
 \end
