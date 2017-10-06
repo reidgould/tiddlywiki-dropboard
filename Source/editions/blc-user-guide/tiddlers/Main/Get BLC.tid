@@ -1,6 +1,6 @@
 title: Get BLC
 
-* Get a brand new empty TiddlyWiki with BLC Plugin installed:<br>{{$:/plugins/reidgould/blc/download-empty-with-blc-button}}<br>
-* Get Tid files that you can save. Import both into your wiki:<br>{{$:/plugins/reidgould/blc/download-blc-plugin-button}} &amp; {{$:/plugins/reidgould/blc/download-shortid-plugin-button}}<br>
+* Get a brand new empty TiddlyWiki with BLC Plugin installed:<br>{{download-empty-with-blc-button}}<br>
+* Get Tid files that you can save. Import both into your wiki:<br>{{download-blc-plugin-button}} &amp; {{download-shortid-plugin-button}}<br>
 * Drag both these links into your wiki: [[$:/plugins/reidgould/blc]] &amp; [[$:/plugins/reidgould/shortid]]
 * Clone the <a href={{$:/plugins/reidgould/blc!!source}} target="_blank" rel="noopener noreferrer">repository</a>, `npm install` dependencies, and use `npm run` to execute the build scripts listed in "package.json".

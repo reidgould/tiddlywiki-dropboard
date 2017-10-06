@@ -1,4 +1,4 @@
-title: $:/plugins/reidgould/blc/download-shortid-plugin-button
+title: download-shortid-plugin-button
 
 \define filename()
 tiddlywiki-shortid-plugin-$(pluginVersion)$.tid
