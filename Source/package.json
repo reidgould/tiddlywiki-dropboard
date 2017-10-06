@@ -1,6 +1,6 @@
 {
   "name": "tiddlywiki-blc-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
   "keywords": [
     "tiddlywiki",
