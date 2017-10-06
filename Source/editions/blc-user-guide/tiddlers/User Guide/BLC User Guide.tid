@@ -12,8 +12,8 @@ home: How It Works
     </option>
   </$list>
 </$select>
-<$link to={{BLC User Guide!!home}} ><span class="inlineImg">{{$:/core/images/home-button}}</span></$link>
-<span class="sidebar-ResetToBody" >
+<$link to={{BLC User Guide!!home}} ><span class="_-_-img_inline-OV-_C">{{$:/core/images/home-button}}</span></$link>
+<span class="blc-SB-Container_Reset-OIV-_ blc-SB-Reset-VO-_" >
 <$transclude tiddler={{BLC User Guide Current}} mode="block" />
 </span>
 </$linkcatcher>
