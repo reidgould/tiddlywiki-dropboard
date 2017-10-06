@@ -1,0 +1,9 @@
+title: $:/plugins/reidgould/blc/state/Sample Board/SideBar
+caption: Sample Board
+tags: $:/tags/SideBar
+
+  <$tiddler tiddler="Sample Board">
+  <span class="sidebar-ResetToBody">
+  <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
+  </span>
+  </$tiddler>

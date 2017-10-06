@@ -1,7 +1,0 @@
-! BLC Plugin
-
-Source found at:
-https://github.com/reidgould/tiddlywiki-blc-plugin
-
-User guide found at:
-http://reidgould.github.io/tiddlywiki-blc-plugin

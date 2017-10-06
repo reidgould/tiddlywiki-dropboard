@@ -1,8 +1,0 @@
-created: 20170829204746459
-modified: 20170829213724993
-tags: $:/tags/Macro
-title: blc/util/AlertMacro
-
-\define alert(alertText:"")
-<$action-createtiddler $basetitle="Alert" component="Alert from $(currentTiddler)$" tags="$:/tags/Alert" text="$alertText$" />
-\end

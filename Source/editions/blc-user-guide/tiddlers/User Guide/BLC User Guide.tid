@@ -1,0 +1,19 @@
+title: BLC User Guide
+tags: $:/tags/SideBar
+list-after: $:/core/ui/SideBar/More
+list: [[How It Works]] [[Drop Areas]] [[More]]
+home: How It Works
+
+<$linkcatcher to="BLC User Guide Current">
+<$select tiddler="BLC User Guide Current" class="userguide_select">
+  <$list filter='[tag[BLC User Guide]]'>
+    <option>
+      <$view field='title'/>
+    </option>
+  </$list>
+</$select>
+<$link to={{BLC User Guide!!home}} ><span class="inlineImg">{{$:/core/images/home-button}}</span></$link>
+<span class="sidebar-ResetToBody" >
+<$transclude tiddler={{BLC User Guide Current}} mode="block" />
+</span>
+</$linkcatcher>

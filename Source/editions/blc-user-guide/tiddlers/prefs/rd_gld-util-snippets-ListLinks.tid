@@ -1,8 +1,6 @@
-caption: List Links
-created: 20170829235635618
-modified: 20170830025938260
-tags: rd_gld/prefs $:/tags/TextEditor/Snippet
 title: rd_gld/util/snippets/ListLinks
+tags: rd_gld/prefs $:/tags/TextEditor/Snippet
+caption: List Links
 
 \define currentFilter()
 [<currentTiddler>!has[draft.of]] +[sort[title]]
@@ -10,20 +8,20 @@ title: rd_gld/util/snippets/ListLinks
 \define currentCaption()
 (<$transclude field="caption" mode="inline" class="" />)
 \end
-\define currentTitleText()
-<br><$transclude field="titletext" mode="inline" class="" />
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
 \end
 
 <ul>
 <$list filter=<<currentFilter>> >
   <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
-  <$set name="titleTextDisplay" filter="[<currentTiddler>has[titletext]]" value=<<currentTitleText>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
   <li>
     <$link to=<<currentTiddler>> >
       <$transclude field="title" mode="inline" class="" />
     </$link>
     <<captionDisplay>>
-    <<titleTextDisplay>>
+    <<shorttextDisplay>>
   </li>
   </$set>
   </$set>
