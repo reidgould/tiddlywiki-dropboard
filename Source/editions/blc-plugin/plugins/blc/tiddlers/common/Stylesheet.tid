@@ -152,6 +152,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /*-- Layout Outer --*/
   position: absolute;
   width: 100%;
+  height: 100%;
   padding: 0.5em;
   /*-- miscellaneous --*/
   pointer-events: none;
@@ -260,7 +261,6 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   overflow: hidden;
   /*-- Text --*/
   line-height: 1em;
-  letter-spacing: -0.5px;
 }
 
 .blc-CB_WD-p-OIT-_C > svg {
@@ -472,10 +472,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-L_TB-Title_Collapsed-OZTM-_ {
   /*-- Layout Outer --*/
   position: absolute;
+  top: 0;
+  left: 0;
   /* "max-width" set in style property on element */
   /*-- Transforms and Transitions --*/
   transform-origin: left top;
-  transform: rotateZ(90deg) translateX(3em);
+  transform: rotateZ(90deg) translateX(4em) translateY(-2.25em);
   /*-- Text --*/
   white-space: nowrap;
   overflow: hidden;
@@ -531,6 +533,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 {
   /*-- Layout Outer --*/
   float: right;
+  white-space: nowrap; /* Workaround for a display issue in Firefox. */
 }
 
 .blc-L_TB-DropArea_Right-OIT-_,
@@ -618,7 +621,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-C-TiddlerIcon-OIVT-_ {
   /*-- Layout Outer --*/
   max-height: 1em;
-  margin: 0.5em 0.125em 0 0;
+  margin: 0.625em 0.125em 0 0;
   float: left;
   clear: none;
   /*-- Layout Inner --*/
@@ -1010,11 +1013,13 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Other - General Use
 ** ================================================================ */
 
-._-_-Button_StyleLink-OVTM-_ {
+._-_-Button_StyleLink-OVTM-_,
+._-_-Button_StyleLink-OVTM-_._-_-Button_StyleLink-OVTM-_ {
   /*-- Layout Inner --*/
   padding: 0;
   /*-- Visual --*/
   color: <<color primary>>;
+  fill: <<color primary>>;
   border: none;
   background: none;
   /*-- Text --*/

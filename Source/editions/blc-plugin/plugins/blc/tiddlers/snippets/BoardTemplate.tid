@@ -1,0 +1,5 @@
+title: $:/plugins/reidgould/blc/snippets/BoardTemplate
+tags: $:/tags/TextEditor/Snippet
+caption: BLC Plugin - Board Template
+
+<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />

@@ -3,14 +3,14 @@ title: $:/plugins/reidgould/blc/templates/view/List
 <$set name="currentListTiddler" value=<<currentTiddler>> >
   <!-- Setup for collapsed lists. -->
   <$set name="list-collapse_in"
-      value={{{[<currentListTiddler>get[collapse_in]]}}} >
+      value={{{[<currentListTiddler>get[blc-collapse_in]]}}} >
   <$set name="is_collapsed" filter="[enlist<list-collapse_in>field:title<currentBoardTiddler>]"
       value="$:/plugins/reidgould/blc/values/yes"
       emptyValue="$:/plugins/reidgould/blc/values/no" >
   <$set name="class-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value="""blc-L_TB-Title_Collapsed-OZTM-_"""
       emptyValue="""blc-L_TB-Title-I-_""" >
-  <$set name="value-ListTitle-Height" filter="[<currentBoardTiddler>get[boardheight]suffix[%]]"
+  <$set name="value-ListTitle-Height" filter="[<currentBoardTiddler>get[blc-boardheight]suffix[%]]"
       value="calc(100vh - 16em)"
       emptyValue=<<Val-ListTitle-Collapsed>> >
   <$set name="style-ListTitle" filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
@@ -23,7 +23,7 @@ title: $:/plugins/reidgould/blc/templates/view/List
   <$set name="val-listWidthMin" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
       value="100%"
       emptyValue=<<val-listWidthMin>> >
-  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>!field:widthismax[no]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
+  <$set name="val-listWidthMax" filter="[<currentBoardTiddler>!field:blc-widthismax[no]] [<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]"
       value=<<val-listWidthMin>>
       emptyValue=<<val-ListWidthMax-Default>> >
   <!-- Set visual style for "Search List" -->
@@ -54,14 +54,14 @@ title: $:/plugins/reidgould/blc/templates/view/List
           </span>
           <span class="blc-L_TB-Container_ButtonCollapse-O-_">
             <$button tag="span" class="tc-btn-invisible blc-L_TB-ButtonCollapse-OIV_" tooltip="Collapse list."
-                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
+                actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="blc-collapse_in" $subfilter="[<currentBoardTiddler>]" />""" >
               <span class="_-_-img_inline-OV-_C blc-L_TB-ButtonCollapse_ImgTransform-OZ-_">{{$:/core/images/fold-button}}</span>
             </$button>
           </span>
         </$list>
         <$list filter="[<is_collapsed>field:title[$:/plugins/reidgould/blc/values/yes]]" variable="">
           <$button tag="span" class="tc-btn-invisible blc-L_TB-ButtonCollapse-OIV_" tooltip="Expand list."
-              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
+              actions="""<$action-listops $tiddler=<<currentListTiddler>> $field="blc-collapse_in" $subfilter="-[<currentBoardTiddler>]" />""" >
             <span class="_-_-img_inline-OV-_C blc-L_TB-ButtonCollapse_ImgTransform-OZ-_">{{$:/core/images/unfold-button}}</span>
           </$button>
         </$list>

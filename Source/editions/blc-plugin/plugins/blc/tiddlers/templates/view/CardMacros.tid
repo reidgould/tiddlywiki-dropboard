@@ -2,13 +2,13 @@ title: $:/plugins/reidgould/blc/templates/view/CardMacros
 tags: $:/tags/Macro
 
 \define wikitext-Text-IfTextDisplay()
-  <$list filter="[<currentBoardTiddler>!field:displaytext[no]]" variable="">
+  <$list filter="[<currentBoardTiddler>!field:blc-displaytext[no]]" variable="">
     <$transclude field="text" mode="block" />
   </$list>
 \end
 
 \define wikitext-Image-IfImageDisplay()
-  <$list filter="[<currentBoardTiddler>!field:displayimages[no]]" variable="">
+  <$list filter="[<currentBoardTiddler>!field:blc-displayimages[no]]" variable="">
     <$transclude field="text" mode="block" />
   </$list>
 \end
