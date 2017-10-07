@@ -260,7 +260,6 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   overflow: hidden;
   /*-- Text --*/
   line-height: 1em;
-  letter-spacing: -0.5px;
 }
 
 .blc-CB_WD-p-OIT-_C > svg {
