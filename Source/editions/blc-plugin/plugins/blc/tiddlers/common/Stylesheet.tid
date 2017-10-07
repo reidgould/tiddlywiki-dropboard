@@ -472,10 +472,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-L_TB-Title_Collapsed-OZTM-_ {
   /*-- Layout Outer --*/
   position: absolute;
+  top: 0;
+  left: 0;
   /* "max-width" set in style property on element */
   /*-- Transforms and Transitions --*/
   transform-origin: left top;
-  transform: rotateZ(90deg) translateX(3em);
+  transform: rotateZ(90deg) translateX(4em) translateY(-2.25em);
   /*-- Text --*/
   white-space: nowrap;
   overflow: hidden;
@@ -531,6 +533,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 {
   /*-- Layout Outer --*/
   float: right;
+  white-space: nowrap; /* Workaround for a display issue in Firefox. */
 }
 
 .blc-L_TB-DropArea_Right-OIT-_,
