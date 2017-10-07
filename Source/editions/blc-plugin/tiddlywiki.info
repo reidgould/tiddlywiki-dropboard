@@ -1,7 +1,7 @@
 {
-  "description": "An empty TiddlyWiki containing \"blc\", a TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
+  "description": "An empty TiddlyWiki containing \"Dropboard\", a TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
   "plugins": [
-    "blc"
+    "dropboard"
   ],
   "includeWikis": [
   ],
@@ -12,18 +12,18 @@
   "languages": [
   ],
   "build": {
-    "blc-plugin": [
-      "--rendertiddler", "$:/plugins/reidgould/blc", "tiddlywiki-blc-plugin.tid", "text/plain", "$:/core/templates/exporters/TidFile", "exportFilter", "[<currentTiddler>]"
+    "dpbd-plugin": [
+      "--rendertiddler", "$:/plugins/reidgould/dpbd", "tiddlywiki-dropboard.tid", "text/plain", "$:/core/templates/exporters/TidFile", "exportFilter", "[<currentTiddler>]"
     ],
-    "empty-with-blc": [
-      "--rendertiddler","$:/core/save/all","TiddlyWiki_With_BLC.html","text/plain"
+    "empty-with-dpbd": [
+      "--rendertiddler","$:/core/save/all","TiddlyWiki_With_Dropboard.html","text/plain"
     ],
-    "empty-with-blc-downloadButton": [
-      "--rendertiddler","download-empty-with-blc","TiddlyWiki_With_BLC.html","text/plain"
+    "empty-with-dpbd-downloadButton": [
+      "--rendertiddler","download-empty-with-dpbd","TiddlyWiki_With_Dropboard.html","text/plain"
     ],
     "meta": [
-      "--savetiddler","$:/plugins/reidgould/blc/readme","ReadMe.md",
-      "--savetiddler","$:/plugins/reidgould/blc/license","license.txt"
+      "--savetiddler","$:/plugins/reidgould/dpbd/readme","ReadMe.md",
+      "--savetiddler","$:/plugins/reidgould/dpbd/license","license.txt"
     ]
   },
   "config": {

@@ -1,7 +1,7 @@
-title: download-empty-with-blc
+title: download-empty-with-dpbd
 
 \define saveTiddlerFilter()
-[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/reidgould/blc]] [[$:/plugins/reidgould/shortid]] [[$:/config/Tiddlers/TitleLinks]] [[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/tiddlywiki/tight]] [[$:/themes/tiddlywiki/seamless]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/reidgould/dpbd]] [[$:/plugins/reidgould/shortid]] [[$:/config/Tiddlers/TitleLinks]] [[$:/themes/tiddlywiki/vanilla/options/sidebarlayout]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/tiddlywiki/tight]] [[$:/themes/tiddlywiki/seamless]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
 \define savingEmpty()
 yes

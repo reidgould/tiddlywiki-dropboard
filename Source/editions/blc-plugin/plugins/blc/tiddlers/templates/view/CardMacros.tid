@@ -1,77 +1,77 @@
-title: $:/plugins/reidgould/blc/templates/view/CardMacros
+title: $:/plugins/reidgould/dpbd/templates/view/CardMacros
 tags: $:/tags/Macro
 
 \define wikitext-Text-IfTextDisplay()
-  <$list filter="[<currentBoardTiddler>!field:blc-displaytext[no]]" variable="">
+  <$list filter="[<currentBoardTiddler>!field:dpbd-displaytext[no]]" variable="">
     <$transclude field="text" mode="block" />
   </$list>
 \end
 
 \define wikitext-Image-IfImageDisplay()
-  <$list filter="[<currentBoardTiddler>!field:blc-displayimages[no]]" variable="">
+  <$list filter="[<currentBoardTiddler>!field:dpbd-displayimages[no]]" variable="">
     <$transclude field="text" mode="block" />
   </$list>
 \end
 
 \define wikitext-CardView(palette-tagBackground)
   <$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
-      value="tc-tiddler-frame blc-_-Card-OV-_ blc-SL-Card-V-_"
-      emptyValue="tc-tiddler-frame blc-_-Card-OV-_" >
-  <div class="blc-DA-IndicatorThin-OV-c">
-    <div class="blc-DA-IndicatorThin_Child-OV-c"></div>
+      value="tc-tiddler-frame dpbd-_-Card-OV-_ dpbd-SL-Card-V-_"
+      emptyValue="tc-tiddler-frame dpbd-_-Card-OV-_" >
+  <div class="dpbd-DA-IndicatorThin-OV-c">
+    <div class="dpbd-DA-IndicatorThin_Child-OV-c"></div>
   </div>
   <$draggable tiddler=<<currentTiddler>> class=<<class-Card>> >
     <$set name="foregroundColor" value={{!!color}} >
-      <div class="blc-C-TiddlerIcon-OIVT-_" style=<<style-IconColor>> >
+      <div class="dpbd-C-TiddlerIcon-OIVT-_" style=<<style-IconColor>> >
         <span class="_-_-img_inline-OV-_C"><$transclude tiddler={{!!icon}} mode="inline" /></span>
       </div>
     </$set>
-    <div class="blc-C-TiddlerControls-OIT-_">
-      <$button popup=<<tiddler-popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_">
+    <div class="dpbd-C-TiddlerControls-OIT-_">
+      <$button popup=<<tiddler-popupTagsState>> tooltip={{$:/language/Buttons/Tag/Hint}} aria-label={{$:/language/Buttons/Tag/Caption}} class="tc-btn-invisible dpbd-_-FillColor_ControlsForeground-V-_">
         {{$:/core/images/tag-button}}
       </$button>
-      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_" >
+      <$button message="tm-edit-tiddler" tooltip={{$:/language/Buttons/Edit/Hint}} aria-label={{$:/language/Buttons/Edit/Caption}} class="tc-btn-invisible dpbd-_-FillColor_ControlsForeground-V-_" >
         {{$:/core/images/edit-button}}
       </$button>
     </div>
-    <$reveal type="popup" state=<<tiddler-popupTagsState>> position="belowleft" class="tc-popup-keep blc-C-Popup_TagEditor-OIV-_CD">
+    <$reveal type="popup" state=<<tiddler-popupTagsState>> position="belowleft" class="tc-popup-keep dpbd-C-Popup_TagEditor-OIV-_CD">
       <$transclude tiddler="$:/core/ui/EditTemplate/tags" />
     </$reveal>
-    <div class="blc-C-TagPreview-OI-_">
+    <div class="dpbd-C-TagPreview-OI-_">
       <$list filter="[<currentTiddler>tags[]] -[<currentListTiddler>] +[sort[title]]">
         <$wikify name="val-TagColor-Default" text={{$palette-tagBackground$##tag-background}} mode="inline" output="html">
           <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue=<<val-TagColor-Default>> >
-            <$set name="field-shorttextOrTitle" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
-              <div class="blc-C-TagPreview_Child-OVM-_" style=<<style-TagColor>> title=<<field-shorttextOrTitle>> ></div>
-            </$set>
+          <$set name="field-shorttextOrTitle" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
+            <div class="dpbd-C-TagPreview_Child-OVM-_" style=<<style-TagColor>> title=<<field-shorttextOrTitle>> ></div>
           </$set>
+        </$set>
         </$wikify>
       </$list>
     </div>
-    <div class="blc-C-ColorPreview-OI-_">
+    <div class="dpbd-C-ColorPreview-OI-_">
       <$list filter="[<currentTiddler>has:field[color]]">
         <$set name="val-TagColor" value={{{ [<currentTiddler>get[color]] }}} >
-          <div class="blc-C-ColorPreview_Child-OV-_" style=<<style-TagColor>> ></div>
+          <div class="dpbd-C-ColorPreview_Child-OV-_" style=<<style-TagColor>> ></div>
         </$set>
       </$list>
     </div>
-    <div class="blc-C-Container_IconInfo-O-_">
+    <div class="dpbd-C-Container_IconInfo-O-_">
       <$list filter="[<currentCardTiddler>has:value[text]!is[image]]" variable="">
         <$list filter="[<currentBoardTiddler>field:displayText[no]]" variable="">
-          <div class="blc-C-IconInfo-OV-_" title="This tiddler contains text. Open in main story to view.">
+          <div class="dpbd-C-IconInfo-OV-_" title="This tiddler contains text. Open in main story to view.">
             <span class="_-_-img_inline-OV-_C _-_-img_inline_help-M-_">{{$:/core/images/import-button}}</span>
           </div>
         </$list>
       </$list>
       <$list filter="[<currentCardTiddler>has[list]]" variable="">
-        <div class="blc-C-IconInfo-OV-_" title="This tiddler contains a list.">
+        <div class="dpbd-C-IconInfo-OV-_" title="This tiddler contains a list.">
           <span class="_-_-img_inline-OV-_C _-_-img_inline_help-M-_">{{$:/core/images/storyview-classic}}</span>
         </div>
       </$list>
     </div>
-    <div title={{!!title}} class="blc-C-TextView-OIVM-_C">
+    <div title={{!!title}} class="dpbd-C-TextView-OIVM-_C">
       <$set name="field-shorttextOrTitle" filter="[<currentTiddler>has[shorttext]]" value="shorttext" emptyValue="title">
-        <p class="blc-_-ShorttextView-OM-C">
+        <p class="dpbd-_-ShorttextView-OM-C">
           <$transclude field=<<field-shorttextOrTitle>> mode="inline" class="" />
         </p>
       </$set>

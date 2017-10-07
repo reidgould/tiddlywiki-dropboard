@@ -1,4 +1,4 @@
-title: $:/plugins/reidgould/blc/templates/view/Card
+title: $:/plugins/reidgould/dpbd/templates/view/Card
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
   <$droppable actions=<<action-Droppable-Card>> >

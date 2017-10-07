@@ -1,13 +1,13 @@
-title: $:/plugins/reidgould/blc/buttons/new-board
+title: $:/plugins/reidgould/dpbd/buttons/new-board
 tags: $:/tags/PageControls
 list-after: $:/core/ui/Buttons/new-tiddler
-caption: {{$:/plugins/reidgould/blc/images/blc}} New Board
+caption: {{$:/plugins/reidgould/dpbd/images/Dropboard}} New Board
 description: New Board
 
 <$button tooltip="New Board" class=<<tv-config-toolbar-class>>>
-<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />""" />
+<$action-sendmessage $message="tm-new-tiddler" title="New Board" tags="" text="""<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />""" />
 <$list filter="[<tv-config-toolbar-icons>prefix[yes]]">
-{{$:/plugins/reidgould/blc/images/blc}}
+{{$:/plugins/reidgould/dpbd/images/Dropboard}}
 </$list>
 <$list filter="[<tv-config-toolbar-text>prefix[yes]]">
 <span class="tc-btn-text">New Board</span>

@@ -1,5 +1,5 @@
 tags: $:/tags/Macro
-title: $:/plugins/reidgould/blc/common/Macros
+title: $:/plugins/reidgould/dpbd/common/Macros
 
 \define EmptyString(strEmpty:"")
 $strEmpty$
@@ -10,15 +10,15 @@ $strEmpty$
 \end
 
 \define action-Notify-NoActionDraggedOntoSame()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionDraggedOntoSame" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/dpbd/notifications/NoActionDraggedOntoSame" />
 \end
 
 \define action-Notify-NoActionSearchList()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/NoActionSearchList" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/dpbd/notifications/NoActionSearchList" />
 \end
 
 \define action-Notify-shortidNotInstalled()
-  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/blc/notifications/shortidNotInstalled" />
+  <$action-sendmessage $message="tm-notify" $param="$:/plugins/reidgould/dpbd/notifications/shortidNotInstalled" />
 \end
 
 \define filter-BoardL2(board)
@@ -53,11 +53,11 @@ $(EmptyString)$
 \end
 
 \define tiddler-SearchListFilter-Stage()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/searchListFilter/Stage
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/searchListFilter/Stage
 \end
 
 \define tiddler-SearchListFilter-Live()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SearchListFilter/Live
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/SearchListFilter/Live
 \end
 
 \define filter-SearchList()
@@ -65,11 +65,11 @@ $(filter-SearchListText)$ -[[$(currentBoardTiddler)$]] -[[$(currentBoardTiddler)
 \end
 
 \define tiddler-UserFilter-Stage()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Stage
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/UserFilter/Stage
 \end
 
 \define tiddler-UserFilter-Live()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Live
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/UserFilter/Live
 \end
 
 \define filter-currentList()
@@ -77,32 +77,32 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/UserFilter/Live
 \end
 
 \define tiddler-Holding()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/Holding
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/Holding
 \end
 \define HeldToolTip()
 $(currentHeldTiddler)$ — $(val-HeldShorttext)$
 \end
 
 \define tiddler-SideBar()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/SideBar
 \end
 \define wikitext-SideBar-Content()
   <$tiddler tiddler="$(currentBoardTiddler)$">
-  <span class="blc-SB-Container_Reset-OIV-_ blc-SB-Reset-VO-_">
-  <$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
+  <span class="dpbd-SB-Container_Reset-OIV-_ dpbd-SB-Reset-VO-_">
+  <$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
   </span>
   </$tiddler>
 \end
 \define wikitext-SideBar-Button-Delete()
-  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
+  <$button class="dpbd-CB_WI-Input-O-_ dpbd-CB_WI-Input_Button-OV-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
     <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span>
   </$button>
 \end
 \define wikitext-SideBar-Button-Create()
-  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" actions="""
+  <$button class="dpbd-CB_WI-Input-O-_ dpbd-CB_WI-Input_Button-OV-_" actions="""
       <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
-      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-em" />
-      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-num" $value="1" />
+      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="dpbd-listwidth-em" />
+      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="dpbd-listwidth-num" $value="1" />
       <$action-sendmessage $message="tm-close-tiddler" $param=<<currentBoardTiddler>> />
       <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value=<<tiddler-SideBar>> />
       """ >
@@ -111,35 +111,35 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
 \end
 
 \define tiddler-ListWidth-Stage()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/ListWidth/Stage
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/ListWidth/Stage
 \end
 
 \define tiddler-BoardHeight-Stage()
-$:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/BoardHeight/Stage
+$:/plugins/reidgould/dpbd/state/$(currentBoardTiddler)$/BoardHeight/Stage
 \end
 
 \define tiddler-popupTagsState()
-$:/plugins/reidgould/blc/state/$(qualify)$/tagPopup
+$:/plugins/reidgould/dpbd/state/$(qualify)$/tagPopup
 \end
 
 \define tiddler-popupUserFilter()
-$:/plugins/reidgould/blc/state/$(qualify)$/UserFilterPopup
+$:/plugins/reidgould/dpbd/state/$(qualify)$/UserFilterPopup
 \end
 
 \define tiddler-popupSearchList()
-$:/plugins/reidgould/blc/state/$(qualify)$/SearchListPopup
+$:/plugins/reidgould/dpbd/state/$(qualify)$/SearchListPopup
 \end
 
 \define tiddler-popupBoardHeight()
-$:/plugins/reidgould/blc/state/$(qualify)$/BoardHeightPopup
+$:/plugins/reidgould/dpbd/state/$(qualify)$/BoardHeightPopup
 \end
 
 \define tiddler-popupListWidth()
-$:/plugins/reidgould/blc/state/$(qualify)$/ListWidthPopup
+$:/plugins/reidgould/dpbd/state/$(qualify)$/ListWidthPopup
 \end
 
 \define tiddler-New-SaveTitle()
-$:/plugins/reidgould/blc/state/NewTiddler
+$:/plugins/reidgould/dpbd/state/NewTiddler
 \end
 
 \define style-TagColor()
@@ -303,7 +303,7 @@ min-width: $(val-listWidthMin)$; max-width: $(val-listWidthMax)$;
 \end
 \define action-CheckNew_List()
   <!-- SEQUENCE AFTER action-CheckDragOfSearchList_List -->
-  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/dpbd/action/newTiddler]]"
       value=<<action-CheckSame_List>>
       emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentListTiddler>> tiddler-In=<<currentBoardTiddler>> />""" >
     <<action-ExistingOrNew>>
@@ -346,7 +346,7 @@ min-width: $(val-listWidthMin)$; max-width: $(val-listWidthMax)$;
 \end
 \define action-CheckNew_Card()
   <!-- SEQUENCE AFTER action-CheckDragOfSearchList_Card -->
-  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/blc/action/newTiddler]]"
+  <$set name="action-ExistingOrNew" filter="[<actionTiddler>] -[[$:/plugins/reidgould/dpbd/action/newTiddler]]"
       value="""<$macrocall $name="action-CheckDragIntoSelf" />"""
       emptyValue="""<$macrocall $name="action-InsertTwoWay-New" tiddler-Before=<<currentCardTiddler>> tiddler-In=<<currentListTiddler>> />""" >
     <<action-ExistingOrNew>>

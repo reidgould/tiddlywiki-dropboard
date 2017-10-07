@@ -1,5 +1,5 @@
-title: $:/plugins/reidgould/blc/snippets/BoardTemplate
+title: $:/plugins/reidgould/dpbd/snippets/BoardTemplate
 tags: $:/tags/TextEditor/Snippet
-caption: BLC Plugin - Board Template
+caption: Dropboard - Board Template
 
-<$transclude tiddler="$:/plugins/reidgould/blc/templates/view/Board" mode="inline" />
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />

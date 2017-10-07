@@ -1,4 +1,4 @@
-BLC created by Reid Gould, (reidgould [at] gmail [dot] com)
+Dropboard created by Reid Gould, (reidgould [at] gmail [dot] com)
 
 Copyright (c) 2017, Reid Gould
 All rights reserved.

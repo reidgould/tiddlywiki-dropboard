@@ -1,5 +1,5 @@
-tags: $:/tags/Stylesheet
-title: $:/plugins/reidgould/blc/common/Stylesheet
+ tags: $:/tags/Stylesheet
+title: $:/plugins/reidgould/dpbd/common/Stylesheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
 <!-- This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
@@ -51,7 +51,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Board
 ** ================================================================ */
 
-.blc-_-Board-OI-_ {
+.dpbd-_-Board-OI-_ {
   /*-- Layout Outer --*/
   /* "height" set in style property on element */
   border-style: none dashed;
@@ -70,14 +70,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-B-Row_Title-O-_ {
+.dpbd-B-Row_Title-O-_ {
   /*-- Layout Outer --*/
   flex: 0 0 auto;
   padding: 0;
   margin: 0;
 }
 
-.blc-B-Row_Title_h2-O-_ {
+.dpbd-B-Row_Title_h2-O-_ {
   /*-- Layout Outer --*/
   margin: 0 0 0.25em 0;
   display: inline-block;
@@ -85,7 +85,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-B-Row_ControlBanner-OI-_ {
+.dpbd-B-Row_ControlBanner-OI-_ {
   /*-- Layout Outer --*/
   flex: 0 0 auto;
   padding: 0;
@@ -102,7 +102,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-B-Row_List-OI-_ {
+.dpbd-B-Row_List-OI-_ {
   /*-- Layout Outer --*/
   flex: 1 1 0em;
   overflow: hidden;
@@ -117,7 +117,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: stretch;
 }
 
-.blc-B_RL-Container_List-OI-_ {
+.dpbd-B_RL-Container_List-OI-_ {
   /*-- Layout Outer --*/
   /* TODO: Remove this unnecessary workaround. */
   /* half pixel padding on each side eliminates a
@@ -137,7 +137,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-B-Footer-OT-_ {
+.dpbd-B-Footer-OT-_ {
   /*-- Layout Outer --*/
   position: absolute;
   bottom: 0em;
@@ -148,7 +148,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   font-size: 0.75em;
 }
 
-.blc-B-EmptyMessage-OM-_ {
+.dpbd-B-EmptyMessage-OM-_ {
   /*-- Layout Outer --*/
   position: absolute;
   width: 100%;
@@ -162,7 +162,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Control Banner
 ** ---------------------------------------------------------------- */
 
-.blc-CB-Container_WidgetDrop-OI-_ {
+.dpbd-CB-Container_WidgetDrop-OI-_ {
   /*-- Layout Outer --*/
   flex: 0 1 auto;
   /*-- Layout Inner --*/
@@ -174,7 +174,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: flex-start;
 }
 
-.blc-CB-ContainerSub_WidgetDrop-OI-_ {
+.dpbd-CB-ContainerSub_WidgetDrop-OI-_ {
   /*-- Layout Outer --*/
   flex: 0 1 auto;
   /*-- Layout Inner --*/
@@ -188,7 +188,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* .   .   .   .   .   .   .   .    */
 
-.blc-CB-Container_WidgetInput-OI-_ {
+.dpbd-CB-Container_WidgetInput-OI-_ {
   /*-- Layout Outer --*/
   flex: 0 1 auto;
   /*-- Layout Inner --*/
@@ -200,7 +200,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: flex-start;
 }
 
-.blc-CB-ContainerSub_WidgetInput-OI-_ {
+.dpbd-CB-ContainerSub_WidgetInput-OI-_ {
   /*-- Layout Outer --*/
   flex: 0 1 auto;
   /*-- Layout Inner --*/
@@ -214,7 +214,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB-Widget-O-_ {
+.dpbd-CB-Widget-O-_ {
   /*-- Layout Outer --*/
   flex: 0 0 auto;
   height: 3em;
@@ -227,8 +227,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Control Banner - Drop Area Widget
 ** ---------------------------------------------------------------- */
 
-.blc-CB-WidgetDrop-OI-_,
-.blc-CB-WidgetDrop-OI-_.blc-CB-WidgetDrop-OI-_.blc-CB-WidgetDrop-OI-_
+.dpbd-CB-WidgetDrop-OI-_,
+.dpbd-CB-WidgetDrop-OI-_.dpbd-CB-WidgetDrop-OI-_.dpbd-CB-WidgetDrop-OI-_
 {
   /*-- Layout Outer --*/
   position: relative;
@@ -241,7 +241,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WD-Droppable-OI-_ {
+.dpbd-CB_WD-Droppable-OI-_ {
   /*-- Layout Outer --*/
   position: absolute;
   top: auto;
@@ -252,8 +252,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0 0.25em;
 }
 
-.blc-CB_WD-p-OIT-_C,
-.blc-CB_WD-p-OIT-_C.blc-CB_WD-p-OIT-_C
+.dpbd-CB_WD-p-OIT-_C,
+.dpbd-CB_WD-p-OIT-_C.dpbd-CB_WD-p-OIT-_C
 {
   /*-- Layout Outer --*/
   margin: 0;
@@ -265,7 +265,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   line-height: 1em;
 }
 
-.blc-CB_WD-p-OIT-_C > svg {
+.dpbd-CB_WD-p-OIT-_C > svg {
   /*-- Layout Outer --*/
   height: 2em;
   width: auto;
@@ -274,8 +274,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WD-Card-O-_,
-.blc-CB_WD-Card-O-_.blc-CB_WD-Card-O-_.blc-CB_WD-Card-O-_
+.dpbd-CB_WD-Card-O-_,
+.dpbd-CB_WD-Card-O-_.dpbd-CB_WD-Card-O-_.dpbd-CB_WD-Card-O-_
 {
   /*-- Layout Outer --*/
   margin-top: -0.25em;
@@ -283,7 +283,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   min-height: 0;
 }
 
-.blc-CB_WD-HeldTitle-OT-_ {
+.dpbd-CB_WD-HeldTitle-OT-_ {
   /*-- Layout Outer --*/
   display: inline-block;
   width: calc(100% - 2em);
@@ -299,7 +299,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Control Banner - Input Widget
 ** ---------------------------------------------------------------- */
 
-.blc-CB-WidgetInput-O-_ {
+.dpbd-CB-WidgetInput-O-_ {
   /*-- Layout Outer --*/
   width: auto;
   min-width: 1.5em;
@@ -308,8 +308,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Label_p-OT-_,
-.blc-CB_WI-Label_p-OT-_.blc-CB_WI-Label_p-OT-_ {
+.dpbd-CB_WI-Label_p-OT-_,
+.dpbd-CB_WI-Label_p-OT-_.dpbd-CB_WI-Label_p-OT-_ {
   /*-- Layout Outer --*/
   display: block;
   min-height: 1.5em;
@@ -320,13 +320,13 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   line-height: 1em;
 }
 
-.blc-CB_WI-Input-O-_ {
+.dpbd-CB_WI-Input-O-_ {
   /*-- Layout Outer --*/
   display: block;
   width: 100%;
 }
 
-.blc-CB_WI-Input_Button-OV-_ {
+.dpbd-CB_WI-Input_Button-OV-_ {
   /*-- Layout Outer --*/
   padding: 0;
   min-height: 1.5em;
@@ -335,7 +335,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   fill: <<color button-foreground>>;
 }
 
-.blc-CB_WI-Input_Container_Checkbox-OTV-_ {
+.dpbd-CB_WI-Input_Container_Checkbox-OTV-_ {
   /*-- Layout Outer --*/
   height: 1.5em;
   /*-- Text --*/
@@ -349,15 +349,15 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border-radius: 2px;
 }
 
-.blc-CB_WI-Input_Container_Checkbox-OTV-_ > label > input[type="checkbox"] {
+.dpbd-CB_WI-Input_Container_Checkbox-OTV-_ > label > input[type="checkbox"] {
   height: 1em;
   width: 1em;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Popup-OIV-_C,
-.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C
+.dpbd-CB_WI-Popup-OIV-_C,
+.dpbd-CB_WI-Popup-OIV-_C.dpbd-CB_WI-Popup-OIV-_C
 {
   /*-- Layout Outer --*/
   display: flex;
@@ -369,16 +369,16 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   color: <<color sidebar-tab-foreground-selected>>;
 }
 
-.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > svg,
-.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > a
+.dpbd-CB_WI-Popup-OIV-_C.dpbd-CB_WI-Popup-OIV-_C > * > svg,
+.dpbd-CB_WI-Popup-OIV-_C.dpbd-CB_WI-Popup-OIV-_C > * > a
 {
   /*-- Visual --*/
   color: <<color sidebar-tab-foreground-selected>>;
   fill: <<color sidebar-tab-foreground-selected>>;
 }
 
-.blc-CB_WI_P-FlexC-O-_,
-.blcbd-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
+.dpbd-CB_WI_P-FlexC-O-_,
+.dpbd-CB_WI_P-FlexC-O-_.dpbd-CB_WI_P-FlexC-O-_
 {
   /*-- Layout Outer --*/
   display: initial;
@@ -388,7 +388,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0 0.25em;
 }
 
-.blc-CB_WI_P-FlexE-O-_ {
+.dpbd-CB_WI_P-FlexE-O-_ {
   /*-- Layout Outer --*/
   display: initial;
   flex: 1 0 4em;
@@ -397,8 +397,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0 0.25em;
 }
 
-.blc-CB_WI_P-Button-OV-_,
-.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_
+.dpbd-CB_WI_P-Button-OV-_,
+.dpbd-CB_WI_P-Button-OV-_.dpbd-CB_WI_P-Button-OV-_.dpbd-CB_WI_P-Button-OV-_
 {
   /*-- Layout Outer --*/
   padding-left: 0.25em;
@@ -408,7 +408,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   fill: <<color sidebar-tab-foreground-selected>>;
 }
 
-.blc-CB_WI_P-Child_TextArea-O-_ {
+.dpbd-CB_WI_P-Child_TextArea-O-_ {
   /*-- Layout Outer --*/
   width: 100%;
 }
@@ -423,7 +423,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== List
 ** ================================================================ */
 
-.blc-_-List-OI-_ {
+.dpbd-_-List-OI-_ {
   /*-- Layout Outer --*/
   position: relative;
   min-width: 15.5em;
@@ -448,7 +448,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-L-Container_Card-OI-_ {
+.dpbd-L-Container_Card-OI-_ {
   /*-- Layout Outer --*/
   flex: 1 1 auto;
   align-self: auto;
@@ -466,7 +466,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Title Bar
 ** ---------------------------------------------------------------- */
 
-.blc-L-TitleBar-OIV-_ {
+.dpbd-L-TitleBar-OIV-_ {
   /*-- Layout Outer --*/
   flex: 0 0 auto;
   align-self: auto;
@@ -481,12 +481,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-L_TB-Title-I-_ {
+.dpbd-L_TB-Title-I-_ {
   /*-- Layout Inner --*/
   padding: 0.25em 0 0.25em 0;
 }
 
-.blc-L_TB-Title_Collapsed-OZTM-_ {
+.dpbd-L_TB-Title_Collapsed-OZTM-_ {
   /*-- Layout Outer --*/
   position: absolute;
   top: 0;
@@ -503,7 +503,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   pointer-events: none;
 }
 
-.blc-L_TB-Title_h3-O-_ {
+.dpbd-L_TB-Title_h3-O-_ {
   /*-- Layout Outer --*/
   display: inline;
   margin: 0;
@@ -511,7 +511,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-L_TB-ColorPreview-OI-_ {
+.dpbd-L_TB-ColorPreview-OI-_ {
   /*-- Layout Outer --*/
   position: absolute;
   top: 0px;
@@ -522,7 +522,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0 0.5em;
 }
 
-.blc-L_TB-ColorPreview_Child-OV-_ {
+.dpbd-L_TB-ColorPreview_Child-OV-_ {
   /*-- Layout Outer --*/
   width: 100%;
   height: 100%;
@@ -532,8 +532,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-L_TB-DropArea_Left-OI-_,
-.blc-L_TB-DropArea_Left-OI-_.blc-L_TB-DropArea_Left-OI-_.blc-L_TB-DropArea_Left-OI-_
+.dpbd-L_TB-DropArea_Left-OI-_,
+.dpbd-L_TB-DropArea_Left-OI-_.dpbd-L_TB-DropArea_Left-OI-_.dpbd-L_TB-DropArea_Left-OI-_
 {
   /*-- Layout Outer --*/
   position: relative;
@@ -545,16 +545,16 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0.375em 0 0.125em 0.375em;
 }
 
-.blc-L_TB-Container_DropArea_Right-O-_,
-.blc-L_TB-Container_DropArea_Right-O-_.blc-L_TB-Container_DropArea_Right-O-_
+.dpbd-L_TB-Container_DropArea_Right-O-_,
+.dpbd-L_TB-Container_DropArea_Right-O-_.dpbd-L_TB-Container_DropArea_Right-O-_
 {
   /*-- Layout Outer --*/
   float: right;
   white-space: nowrap; /* Workaround for a display issue in Firefox. */
 }
 
-.blc-L_TB-DropArea_Right-OIT-_,
-.blc-L_TB-DropArea_Right-OIT-_.blc-L_TB-DropArea_Right-OIT-_.blc-L_TB-DropArea_Right-OIT-_
+.dpbd-L_TB-DropArea_Right-OIT-_,
+.dpbd-L_TB-DropArea_Right-OIT-_.dpbd-L_TB-DropArea_Right-OIT-_.dpbd-L_TB-DropArea_Right-OIT-_
 {
   /*-- Layout Outer --*/
   position: relative;
@@ -570,15 +570,15 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-L_TB-Container_ButtonCollapse-O-_,
-.blc-L_TB-Container_ButtonCollapse-O-_.blc-L_TB-Container_ButtonCollapse-O-_
+.dpbd-L_TB-Container_ButtonCollapse-O-_,
+.dpbd-L_TB-Container_ButtonCollapse-O-_.dpbd-L_TB-Container_ButtonCollapse-O-_
 {
   /*-- Layout Outer --*/
   float: right;
 }
 
-.blc-L_TB-ButtonCollapse-OIV_,
-.blc-L_TB-ButtonCollapse-OIV_.blc-L_TB-ButtonCollapse-OIV_
+.dpbd-L_TB-ButtonCollapse-OIV_,
+.dpbd-L_TB-ButtonCollapse-OIV_.dpbd-L_TB-ButtonCollapse-OIV_
 {
   /*-- Layout Outer --*/
   display: inline;
@@ -590,8 +590,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   fill: <<color tiddler-controls-foreground>>;
 }
 
-.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_,
-.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_.blc-L_TB-ButtonCollapse_ImgTransform-OZ-_
+.dpbd-L_TB-ButtonCollapse_ImgTransform-OZ-_,
+.dpbd-L_TB-ButtonCollapse_ImgTransform-OZ-_.dpbd-L_TB-ButtonCollapse_ImgTransform-OZ-_
 {
   /*-- Layout Outer --*/
   display: inline-block;
@@ -610,8 +610,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Card
 ** ================================================================ */
 
-.blc-_-Card-OV-_,
-.blc-_-Card-OV-_.blc-_-Card-OV-_.blc-_-Card-OV-_
+.dpbd-_-Card-OV-_,
+.dpbd-_-Card-OV-_.dpbd-_-Card-OV-_.dpbd-_-Card-OV-_
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */
@@ -624,7 +624,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-TiddlerControls-OIT-_ {
+.dpbd-C-TiddlerControls-OIT-_ {
   /*-- Layout Outer --*/
   margin: 0.15em 0 0 0;
   clear: right;
@@ -637,7 +637,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-TiddlerIcon-OIVT-_ {
+.dpbd-C-TiddlerIcon-OIVT-_ {
   /*-- Layout Outer --*/
   max-height: 1em;
   margin: 0.625em 0.125em 0 0;
@@ -653,14 +653,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-Container_IconInfo-O-_ {
+.dpbd-C-Container_IconInfo-O-_ {
   /*-- Layout Outer --*/
   position: absolute;
   bottom: 0;
   right: 0.25em;
 }
 
-.blc-C-IconInfo-OV-_ {
+.dpbd-C-IconInfo-OV-_ {
   /*-- Layout Outer --*/
   display: inline-block;
   /*-- Visual --*/
@@ -669,7 +669,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-TagPreview-OI-_ {
+.dpbd-C-TagPreview-OI-_ {
   /*-- Layout Outer --*/
   position: absolute;
   top: -1px;
@@ -686,7 +686,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: stretch;
 }
 
-.blc-C-TagPreview_Child-OVM-_ {
+.dpbd-C-TagPreview_Child-OVM-_ {
   /*-- Layout Outer --*/
   flex: 1 1 auto;
   align-self: auto;
@@ -699,7 +699,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* .   .   .   .   .   .   .   .    */
 
-.blc-C-ColorPreview-OI-_ {
+.dpbd-C-ColorPreview-OI-_ {
   /*-- Layout Outer --*/
   position: absolute;
   top: 0;
@@ -710,7 +710,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding-top: 0.375em;
 }
 
-.blc-C-ColorPreview_Child-OV-_ {
+.dpbd-C-ColorPreview_Child-OV-_ {
   /*-- Layout Outer --*/
   width: 100%;
   height: 100%;
@@ -720,21 +720,21 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-Popup_TagEditor-OIV-_CD {
+.dpbd-C-Popup_TagEditor-OIV-_CD {
   /*-- Layout Outer --*/
   max-width: 80%;
   /*-- Visual --*/
   background-color: white;
 }
 
-.blc-C-Popup_TagEditor-OIV-_CD > .tc-edit-tags {
+.dpbd-C-Popup_TagEditor-OIV-_CD > .tc-edit-tags {
   /*-- Visual --*/
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
 
-.blc-C-Popup_TagEditor-OIV-_CD .tc-block-dropdown {
+.dpbd-C-Popup_TagEditor-OIV-_CD .tc-block-dropdown {
   /*-- Layout Outer --*/
   min-width: 0;
   max-width: 120%;
@@ -745,12 +745,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-C-EditTitle-T-D > .tc-titlebar {
+.dpbd-C-EditTitle-T-D > .tc-titlebar {
   /*-- Text --*/
   font-size: 0.75em;
 }
 
-.blc-C-TextEditorToolbar-OT-D .tc-editor-toolbar {
+.dpbd-C-TextEditorToolbar-OT-D .tc-editor-toolbar {
   /*-- Layout Outer --*/
   margin-top: 0;
   /*-- Text --*/
@@ -769,14 +769,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Card Content and shorttext - View and Edit
 ** ---------------------------------------------------------------- */
 
-.blc-C-TextView-OIVM-_C {
+.dpbd-C-TextView-OIVM-_C {
   /*-- Text --*/
   line-height: inherit;
 }
 
-.blc-C-TextView-OIVM-_C > div,
-.blc-C-TextView-OIVM-_C > img,
-.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C.blc-C-TextView-OIVM-_C > p
+.dpbd-C-TextView-OIVM-_C > div,
+.dpbd-C-TextView-OIVM-_C > img,
+.dpbd-C-TextView-OIVM-_C.dpbd-C-TextView-OIVM-_C.dpbd-C-TextView-OIVM-_C.dpbd-C-TextView-OIVM-_C > p
 {
   /*-- Layout Outer --*/
   /* Additional specificity for "p" needed in sidebar. */
@@ -784,23 +784,23 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin-bottom: 0.5em;
 }
 
-.blc-C-TextView-OIVM-_C > ul,
-.blc-C-TextView-OIVM-_C > ol
+.dpbd-C-TextView-OIVM-_C > ul,
+.dpbd-C-TextView-OIVM-_C > ol
 {
   /*-- Layout Inner --*/
   padding-left: 1.25em;
 }
 
-.blc-_-ShorttextView-OM-C > img,
-.blc-_-ShorttextView-OM-C > svg
+.dpbd-_-ShorttextView-OM-C > img,
+.dpbd-_-ShorttextView-OM-C > svg
 {
   /*-- Layout Outer --*/
   height: 1em;
   width: auto;
 }
 
-.blc-C-TextView-OIVM-_C > img,
-.blc-_-ShorttextView-OM-C > img
+.dpbd-C-TextView-OIVM-_C > img,
+.dpbd-_-ShorttextView-OM-C > img
 {
   /*-- Miscellaneous --*/
   /* Dragging a tiddler with an image creates a
@@ -811,7 +811,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-_-MainView_Shorttext-OTV-S.tc-subtitle {
+.dpbd-_-MainView_Shorttext-OTV-S.tc-subtitle {
   /*-- Layout Outer --*/
   margin: 0 0 0.5em 0;
   /*-- Text --*/
@@ -822,7 +822,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* .   .   .   .   .   .   .   .    */
 
-.blc-_-MainEdit_Shorttext-I-_ {
+.dpbd-_-MainEdit_Shorttext-I-_ {
   /*-- Layout Inner --*/
   display: flex;
   flex-direction: row;
@@ -832,12 +832,12 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: flex-start;
 }
 
-.blc-_-MainEdit_Shorttext_Textarea-O-_ {
+.dpbd-_-MainEdit_Shorttext_Textarea-O-_ {
   /*-- Layout Outer --*/
   flex: 1 0 auto;
 }
 
-.blc-_-MainEdit_Shorttext_Button-O-_ {
+.dpbd-_-MainEdit_Shorttext_Button-O-_ {
   /*-- Layout Outer --*/
   flex: 0 0 auto;
   margin: 0.25em 0 0 0.25em;
@@ -849,8 +849,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Drop Area and Droppable Placeholders
 ** ---------------------------------------------------------------- */
 
-.blc-_-DropArea-IV-_,
-.blc-_-DropArea-IV-_.blc-_-DropArea-IV-_
+.dpbd-_-DropArea-IV-_,
+.dpbd-_-DropArea-IV-_.dpbd-_-DropArea-IV-_
 {
   /*-- Layout Inner --*/
   /* EXTENDS tc-edit-tags */
@@ -864,7 +864,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.tc-droppable.tc-dragover > .blc-DA-IndicatorThin-OV-c {
+.tc-droppable.tc-dragover > .dpbd-DA-IndicatorThin-OV-c {
   /*-- Layout Outer --*/
   display: block;
   box-sizing: border-box;
@@ -873,7 +873,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border: 0;
 }
 
-.tc-droppable.tc-dragover > .blc-DA-IndicatorThin-OV-c > .blc-DA-IndicatorThin_Child-OV-c {
+.tc-droppable.tc-dragover > .dpbd-DA-IndicatorThin-OV-c > .dpbd-DA-IndicatorThin_Child-OV-c {
   /*-- Layout Outer --*/
   display: block;
   box-sizing: content-box;
@@ -890,13 +890,13 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-DA-IndicatorBottom-OV-_D {
+.dpbd-DA-IndicatorBottom-OV-_D {
   /*-- Layout Outer --*/
   flex: 1 0 2.5em;
   position: relative;
 }
 
-.blc-DA-IndicatorBottom-OV-_D > .tc-droppable {
+.dpbd-DA-IndicatorBottom-OV-_D > .tc-droppable {
   /*-- Layout Outer --*/
   display: block;
   position: absolute;
@@ -904,19 +904,19 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   height: 100%;
 }
 
-.blc-DA-IndicatorBottom-OV-_D > .tc-droppable.tc-dragover {
+.dpbd-DA-IndicatorBottom-OV-_D > .tc-droppable.tc-dragover {
   /*-- Visual --*/
   border: 2px dashed <<color primary>>;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-DA-IndicatorList-OV-_D {
+.dpbd-DA-IndicatorList-OV-_D {
   /*-- Layout Outer --*/
   display: none;
 }
 
-.tc-droppable.tc-dragover > .blc-DA-IndicatorList-OV-_D {
+.tc-droppable.tc-dragover > .dpbd-DA-IndicatorList-OV-_D {
   /*-- Layout Outer --*/
   position: absolute;
   display: block;
@@ -934,8 +934,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- Search List
 ** ---------------------------------------------------------------- */
 
-.blc-SL-DropArea-IV-_,
-.blc-SL-DropArea-IV-_.blc-SL-DropArea-IV-_
+.dpbd-SL-DropArea-IV-_,
+.dpbd-SL-DropArea-IV-_.dpbd-SL-DropArea-IV-_
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-edit-tags */
@@ -952,14 +952,14 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border-style: dashed;
 }
 
-.blc-SL-Card-V-_,
-.blc-SL-Card-V-_.blc-SL-Card-V-_
+.dpbd-SL-Card-V-_,
+.dpbd-SL-Card-V-_.dpbd-SL-Card-V-_
 {
   /*-- Visual --*/
   border: 1px dashed <<color sidebar-tab-border-selected>>;
 }
 
-.blc-SL-Container_List-OI-_ {
+.dpbd-SL-Container_List-OI-_ {
   /*-- Layout Outer --*/
   /* "flex" set in style property on element */
   border-right: 0.25em dashed #ddd;
@@ -982,8 +982,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- TW Helpers
 ** ---------------------------------------------------------------- */
 
-.blc-_-FillColor_ControlsForeground-V-_,
-.blc-_-FillColor_ControlsForeground-V-_.blc-_-FillColor_ControlsForeground-V-_
+.dpbd-_-FillColor_ControlsForeground-V-_,
+.dpbd-_-FillColor_ControlsForeground-V-_.dpbd-_-FillColor_ControlsForeground-V-_
 {
   /*-- Visual --*/
   fill: <<color tiddler-controls-foreground>>;
@@ -994,7 +994,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ---- SideBar Reset
 ** ---------------------------------------------------------------- */
 
-.blc-SB-Container_Reset-OIV-_ {
+.dpbd-SB-Container_Reset-OIV-_ {
   /*-- Layout Outer --*/
   min-width: 100%;
   max-width: 100%;
@@ -1008,21 +1008,21 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   border-style: double dashed dashed dashed;
 }
 
-.blc-SB-Reset-VO-_ {
+.dpbd-SB-Reset-VO-_ {
   /*-- Visual --*/
   background-color: <<color tiddler-background>>;
   color: <<color foreground>>;
   fill: <<color foreground>>;
 }
 
-.blc-SB-Reset-VO-_.blc-SB-Reset-VO-_ a.tc-tiddlylink,
-.blc-SB-Reset-VO-_.blc-SB-Reset-VO-_ a.tc-tiddlylink:hover
+.dpbd-SB-Reset-VO-_.dpbd-SB-Reset-VO-_ a.tc-tiddlylink,
+.dpbd-SB-Reset-VO-_.dpbd-SB-Reset-VO-_ a.tc-tiddlylink:hover
 {
   /*-- Visual --*/
   color: <<color tiddler-link-foreground>>;
 }
 
-.tc-sidebar-header .tc-sidebar-lists .blc-SB-Reset-VO-_ p {
+.tc-sidebar-header .tc-sidebar-lists .dpbd-SB-Reset-VO-_ p {
   /*-- Layout Outer --*/
   margin-top: unset;
   margin-bottom: unset;
