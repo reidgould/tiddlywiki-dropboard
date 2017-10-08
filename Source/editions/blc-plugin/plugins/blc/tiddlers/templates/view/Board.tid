@@ -262,7 +262,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           emptyMessage="""
             <div class="tc-edit-tags blc-_-DropArea-IV-_" style="flex:1 1 auto;">
               <$droppable actions=<<action-Droppable-List>> >
-                <div class="blc-B-EmptyMessage-OM-_">
+                <div class="blc-B-EmptyMessage-OM-_" style="position:relative;">
                   Drag in the "New Tiddler" above, or any existing tiddler, to use it as a list.
                 </div>
               </$droppable>

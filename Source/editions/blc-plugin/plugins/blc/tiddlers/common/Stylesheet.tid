@@ -152,6 +152,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /*-- Layout Outer --*/
   position: absolute;
   width: 100%;
+  height: 100%;
   padding: 0.5em;
   /*-- miscellaneous --*/
   pointer-events: none;
