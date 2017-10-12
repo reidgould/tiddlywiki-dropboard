@@ -306,7 +306,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Label_p-OT-_ {
+.blc-CB_WI-Label_p-OT-_,
+ .blc-CB_WI-Label_p-OT-_.blc-CB_WI-Label_p-OT-_ {
   /*-- Layout Outer --*/
   display: block;
   min-height: 1.5em;
