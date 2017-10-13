@@ -324,7 +324,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   width: 100%;
 }
 
-.blc-CB_WI-Input_Button-O-_ {
+.blc-CB_WI-Input_Button-OV-_ {
   /*-- Layout Outer --*/
   padding: 0;
   min-height: 1.5em;
@@ -354,8 +354,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Popup-OI-_,
-.blc-CB_WI-Popup-OI-_.blc-CB_WI-Popup-OI-_
+.blc-CB_WI-Popup-OIV-_C,
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C
 {
   /*-- Layout Outer --*/
   display: flex;
@@ -367,8 +367,16 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   color: <<color sidebar-tab-foreground>>;
 }
 
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > svg,
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > a
+{
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground>>;
+  fill: <<color sidebar-tab-foreground>>;
+}
+
 .blc-CB_WI_P-FlexC-O-_,
-.blc-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
+.blcbd-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
 {
   /*-- Layout Outer --*/
   display: initial;
@@ -387,8 +395,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0 0.25em;
 }
 
-.blc-CB_WI_P-Button-O-_,
-.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_
+.blc-CB_WI_P-Button-OV-_,
+.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_
 {
   /*-- Layout Outer --*/
   padding-left: 0.25em;
@@ -402,15 +410,6 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /*-- Layout Outer --*/
   width: 100%;
 }
-
-.dpbd-CB_WI-Popup-OI-_.dpbd-CB_WI-Popup-OI-_ > * > svg,
-.dpbd-CB_WI-Popup-OI-_.dpbd-CB_WI-Popup-OI-_ > * > a
-{
-  /*-- Visual --*/
-  color: <<color sidebar-tab-foreground>>;
-  fill: <<color sidebar-tab-foreground>>;
-}
-
 
 /* -------/-------/-------/-------/-------/-------/-------/-------/ */
 
@@ -609,13 +608,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Card
 ** ================================================================ */
 
-<<<<<<< .mine
-.dpbd-_-Card-O-_,
-.dpbd-_-Card-O-_.dpbd-_-Card-O-_.dpbd-_-Card-O-_
-=======
-.blc-_-Card-O-_,
-.blc-_-Card-O-_.blc-_-Card-O-_
->>>>>>> .theirs
+.blc-_-Card-OV-_,
+.blc-_-Card-OV-_.blc-_-Card-OV-_.blc-_-Card-OV-_
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */

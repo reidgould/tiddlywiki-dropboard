@@ -9,10 +9,10 @@ title: $:/plugins/reidgould/blc/templates/edit/Card
   <$action-sendmessage $message="tm-save-tiddler"/>
 \end
 \define class-Card-Norm()
-  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-O-_
+  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-OV-_
 \end
 \define class-Card-SearchList()
-  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-O-_ blc-SL-Card-V-_
+  tc-tiddler-frame tc-tiddler-edit-frame blc-C-TextEditorToolbar-OT-D $(missingTiddlerClass)$ $(shadowTiddlerClass)$ $(systemTiddlerClass)$ blc-_-Card-OV-_ blc-SL-Card-V-_
 \end
 \define config-visibility-title()
 $:/plugins/reidgould/blc/config/EditorToolbarButtons/Visibility/$(currentTiddler)$

@@ -18,8 +18,8 @@ tags: $:/tags/Macro
 \end
 \define wikitext-CardView_internal(tagBackground)
   <$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
-      value="tc-tiddler-frame blc-_-Card-O-_ blc-SL-Card-V-_"
-      emptyValue="tc-tiddler-frame blc-_-Card-O-_" >
+      value="tc-tiddler-frame blc-_-Card-OV-_ blc-SL-Card-V-_"
+      emptyValue="tc-tiddler-frame blc-_-Card-OV-_" >
   <div class="blc-DA-IndicatorThin-OV-c">
     <div class="blc-DA-IndicatorThin_Child-OV-c"></div>
   </div>
