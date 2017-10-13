@@ -1,0 +1,109 @@
+name: TWello
+description: A pallete in the style of Trello.
+tags: $:/tags/Palette
+title: $:/palettes/TWello
+type: application/x-tiddler-dictionary
+
+alert-background: #ffa54a
+alert-border: #ffa54a
+alert-highlight: #881122
+alert-muted-foreground: #bb8a59
+background: #00436a
+blockquote-bar: <<colour muted-foreground>>
+button-background:
+button-foreground: <<color tab-foreground>>
+button-border:
+code-background: #f7f7f9
+code-border: #e1e1e8
+code-foreground: #5068af
+dirty-indicator: #ffa54a
+download-background: #34c734
+download-foreground: #ffffff
+dragger-background: <<colour foreground>>
+dragger-foreground: <<colour background>>
+dropdown-background: #ffffff
+dropdown-border: <<colour muted-foreground>>
+dropdown-tab-background-selected: #ffffff
+dropdown-tab-background: #ececec
+dropzone-background: rgba(0,200,0,0.7)
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-background: inherit
+external-link-foreground-hover: inherit
+external-link-foreground-visited: #0000aa
+external-link-foreground: #0000ee
+foreground: #ffffff
+message-background: #ecf2ff
+message-border: #cfd6e6
+message-foreground: #547599
+modal-backdrop: <<colour page-background>>
+modal-background: <<colour tiddler-background>>
+modal-border: #ffffff
+modal-footer-background: <<colour tiddler-background>>
+modal-footer-border: #dddddd
+modal-header-border: #eeeeee
+muted-foreground: #bbbbbb
+notification-background: #ffa54a
+notification-border: #ffa54a
+page-background: #0067a3
+pre-background: <<color background>>
+pre-border: #cccccc
+primary: #3c4b84
+sidebar-button-foreground: <<color tab-foreground>>
+sidebar-controls-foreground-hover: #34c734
+sidebar-controls-foreground: #aaaaaa
+sidebar-foreground-shadow: rgba(255,255,255, 0.8)
+sidebar-foreground: #acacac
+sidebar-muted-foreground-hover: #444444
+sidebar-muted-foreground: #c0c0c0
+sidebar-tab-background-selected: #e2e4e6
+sidebar-tab-background: <<color tab-background-selected>>
+sidebar-tab-border-selected: <<colour tab-border-selected>>
+sidebar-tab-border: <<colour tab-border>>
+sidebar-tab-divider: #e4e4e4
+sidebar-tab-foreground-selected:
+sidebar-tab-foreground: <<colour tab-foreground>>
+sidebar-tiddler-link-foreground-hover: #42538e
+sidebar-tiddler-link-foreground: #999999
+site-title-foreground: <<colour tiddler-title-foreground>>
+static-alert-foreground: #aaaaaa
+tab-background-selected: #e2e4e6
+tab-background: #d8d8d8
+tab-border-selected: #d8d8d8
+tab-border: <<color sidebar-tab-background-selected>>
+tab-divider: #d8d8d8
+tab-foreground-selected: <<colour tab-foreground>>
+tab-foreground: #666666
+table-border: #dddddd
+table-footer-background: #a8a8a8
+table-header-background: #f0f0f0
+tag-background: #ec6
+tag-foreground: #ffffff
+tiddler-background: #0079bf
+tiddler-border: transparent
+tiddler-controls-foreground-hover: #888888
+tiddler-controls-foreground-selected: #444444
+tiddler-controls-foreground: #cccccc
+tiddler-editor-background: <<color background>>
+tiddler-editor-border-image: #ffffff
+tiddler-editor-border: #cccccc
+tiddler-editor-fields-even: <<color tiddler-background>>
+tiddler-editor-fields-odd: <<color page-background>>
+tiddler-info-background: #99a6d0
+tiddler-info-border: #dddddd
+tiddler-info-tab-background: #dddddd
+tiddler-link-background: <<colour background>>
+tiddler-link-foreground: <<colour primary>>
+tiddler-subtitle-foreground: #c0c0c0
+tiddler-title-foreground: #ffffff
+toolbar-new-button:
+toolbar-options-button:
+toolbar-save-button:
+toolbar-info-button:
+toolbar-edit-button:
+toolbar-close-button:
+toolbar-delete-button:
+toolbar-cancel-button:
+toolbar-done-button:
+untagged-background: #999999
+very-muted-foreground: #888888

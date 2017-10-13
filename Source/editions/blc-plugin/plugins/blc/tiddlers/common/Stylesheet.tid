@@ -307,7 +307,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
 .blc-CB_WI-Label_p-OT-_,
- .blc-CB_WI-Label_p-OT-_.blc-CB_WI-Label_p-OT-_ {
+.blc-CB_WI-Label_p-OT-_.blc-CB_WI-Label_p-OT-_ {
   /*-- Layout Outer --*/
   display: block;
   min-height: 1.5em;
@@ -329,6 +329,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0;
   min-height: 1.5em;
   max-height: 1.5em;
+  /*-- Visual --*/
+  fill: <<color button-foreground>>;
 }
 
 .blc-CB_WI-Input_Container_Checkbox-OTV-_ {
@@ -361,6 +363,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: baseline;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground>>;
 }
 
 .blc-CB_WI_P-FlexC-O-_,
@@ -389,11 +393,22 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /*-- Layout Outer --*/
   padding-left: 0.25em;
   padding-right: 0.25em;
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground>>;
+  fill: <<color sidebar-tab-foreground>>;
 }
 
 .blc-CB_WI_P-Child_TextArea-O-_ {
   /*-- Layout Outer --*/
   width: 100%;
+}
+
+.dpbd-CB_WI-Popup-OI-_.dpbd-CB_WI-Popup-OI-_ > * > svg,
+.dpbd-CB_WI-Popup-OI-_.dpbd-CB_WI-Popup-OI-_ > * > a
+{
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground>>;
+  fill: <<color sidebar-tab-foreground>>;
 }
 
 
@@ -458,7 +473,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0.75em 0.5em 0.375em 0.5em;
   /*-- Visual --*/
   border-style: solid solid none solid;
-  border-color: <<color tab-divider>>;
+  border-color: <<color tab-border>>;
   border-width: 1px;
   background-color: <<color tab-background-selected>>;
 }
@@ -594,14 +609,21 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Card
 ** ================================================================ */
 
+<<<<<<< .mine
+.dpbd-_-Card-O-_,
+.dpbd-_-Card-O-_.dpbd-_-Card-O-_.dpbd-_-Card-O-_
+=======
 .blc-_-Card-O-_,
 .blc-_-Card-O-_.blc-_-Card-O-_
+>>>>>>> .theirs
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */
   min-height: 2.5em;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
+  /*-- Visual --*/
+  background-color: <<color dropdown-background>>;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
@@ -838,7 +860,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /* EXTENDS tc-edit-tags */
   padding: 1em 0.25em 1em 0.25em;
   /*-- Visual --*/
-  background: <<color page-background>>;
+  color: <<color sidebar-tab-foreground>>;
+  fill: <<color sidebar-tab-foreground>>;
+  border-color: <<color sidebar-tab-border>>;
+  background: <<color sidebar-tab-background-selected>>;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
@@ -924,7 +949,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   background: none;
   box-shadow: none;
   line-height: 1.25;
-  background: <<color tab-background-selected>>;
+  color: <<color sidebar-tab-foreground>>;
+  fill: <<color sidebar-tab-foreground>>;
+  border-color: <<color sidebar-tab-border>>;
+  background: <<color sidebar-tab-background-selected>>;
   border-style: dashed;
 }
 
@@ -932,7 +960,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-SL-Card-V-_.blc-SL-Card-V-_
 {
   /*-- Visual --*/
-  border: 1px dashed <<color tab-foreground>>;
+  border: 1px dashed <<color sidebar-tab-foreground>>;
 }
 
 .blc-SL-Container_List-OI-_ {
