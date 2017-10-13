@@ -364,15 +364,15 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding-left: 0.5em;
   padding-right: 0.5em;
   /*-- Visual --*/
-  color: <<color sidebar-tab-foreground>>;
+  color: <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > svg,
 .blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > a
 {
   /*-- Visual --*/
-  color: <<color sidebar-tab-foreground>>;
-  fill: <<color sidebar-tab-foreground>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-CB_WI_P-FlexC-O-_,
@@ -402,8 +402,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding-left: 0.25em;
   padding-right: 0.25em;
   /*-- Visual --*/
-  color: <<color sidebar-tab-foreground>>;
-  fill: <<color sidebar-tab-foreground>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-CB_WI_P-Child_TextArea-O-_ {
@@ -854,8 +854,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /* EXTENDS tc-edit-tags */
   padding: 1em 0.25em 1em 0.25em;
   /*-- Visual --*/
-  color: <<color sidebar-tab-foreground>>;
-  fill: <<color sidebar-tab-foreground>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
   border-color: <<color sidebar-tab-border>>;
   background: <<color sidebar-tab-background-selected>>;
 }
@@ -943,8 +943,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   background: none;
   box-shadow: none;
   line-height: 1.25;
-  color: <<color sidebar-tab-foreground>>;
-  fill: <<color sidebar-tab-foreground>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
   border-color: <<color sidebar-tab-border>>;
   background: <<color sidebar-tab-background-selected>>;
   border-style: dashed;

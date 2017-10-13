@@ -61,7 +61,7 @@ sidebar-tab-background: <<color tab-background-selected>>
 sidebar-tab-border-selected: <<colour tab-border-selected>>
 sidebar-tab-border: <<colour tab-border>>
 sidebar-tab-divider: #e4e4e4
-sidebar-tab-foreground-selected:
+sidebar-tab-foreground-selected: <<colour tab-foreground>>
 sidebar-tab-foreground: <<colour tab-foreground>>
 sidebar-tiddler-link-foreground-hover: #42538e
 sidebar-tiddler-link-foreground: #999999
