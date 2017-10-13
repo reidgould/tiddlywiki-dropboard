@@ -1,0 +1,12 @@
+title: 'Window' Button
+tags: [[Control Banner Widgets]]
+
+The button labeled "Window" opens the board in it's own window.
+
+This also closes the tiddler in the main story, and sets the height to fill the window.
+<br>
+If the Title Links setting is enabled, click on the board title to easily reopen the tiddler in the main story. Use the [['Height' Popup]] to restore the height to the desired value.
+
+To open the window without these other changes, use the standard tiddler button "open in new window".
+
+Actions performed in the window still effect the main document, including use of the [['Open In Main Story' Drop Area]].

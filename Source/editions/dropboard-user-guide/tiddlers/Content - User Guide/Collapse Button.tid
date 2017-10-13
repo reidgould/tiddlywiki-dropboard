@@ -1,0 +1,10 @@
+title: Collapse Button
+tags: [[List Features]]
+
+Click the <span class="dpbd-L_TB-ButtonCollapse_ImgTransform-OZ-_ _-_-img_inline-OV-_C">{{$:/core/images/fold-button}}</span> button to collapse a list. A collapsed list uses a thin view that does not display any cards in that list.
+
+A collapsed list still has it's $droppable area, so you can drop cards into it.
+
+A collapsed list's title bar is still draggable, so you can drop it onto other lists' [[<< And >> Drop Areas]].
+
+Click a collapsed list's <span class="dpbd-L_TB-ButtonCollapse_ImgTransform-OZ-_ _-_-img_inline-OV-_C">{{$:/core/images/unfold-button}}</span> button to restore it to it's normal view.

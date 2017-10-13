@@ -1,0 +1,4 @@
+title: 'Image' Checkbox
+tags: [[Control Banner Widgets]]
+
+The "Image" checkbox turns off the display of the image for all cards on the board which have a <a href="http://tiddlywiki.com/#ContentType" target="_blank" rel="noopener noreferrer">content type</a> that is an image.

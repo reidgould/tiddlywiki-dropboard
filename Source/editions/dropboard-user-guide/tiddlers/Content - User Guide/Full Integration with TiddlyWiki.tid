@@ -1,0 +1,12 @@
+title: Full Integration with TiddlyWiki
+tags: [[Tech Talk]]
+
+Dropboard gives you a view into standard TiddlyWiki data. It doesn't keep any [[proprietary data|Cleaning Up Temporary Data]], it only manipulates the built-in [['tags' and 'list' Fields]]. All data remains even if dropboard is uninstalled. If you already have tiddlers that use "tags" and "list" ([[such as a Table Of Contents|Table Of Contents Editor]]), it will show those existing tiddlers in board, list, card style.
+
+An optional [['shorttext' Field]] is useful for several purposes. Dropboard provides [[view and edit templates|'shorttext' Main Story Templates]] for "shorttext" that show in the <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">main story</a> so you can access this data outside of the board.
+
+You can put a board anywhere inside a tiddler's text by pasting the [[Board Template]], or start a new board by clicking the <$link to="New Board Button" class="_-_-Button_StyleLink-OVTM-_"><span class="_-_-img_inline-OV-_C">{{$:/plugins/reidgould/dpbd/images/Dropboard}}</span> button</$link> in the SideBar. Each [[List Template]] is a "<a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">story</a>" just like the main view.
+
+Dropboard has a light footprint, the plugin is under 100 kB in size. Much attention has been given to efficiency of listops, rendering, and CSS rules. The entire plugin is written [[without any original JavaScript|Made With WikiText]].
+
+Dropboard is [[theme friendly|Themes]], it takes its colors from the active palette, and scales with text size.

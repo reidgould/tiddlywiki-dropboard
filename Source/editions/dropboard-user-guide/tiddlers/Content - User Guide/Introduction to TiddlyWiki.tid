@@ -1,0 +1,13 @@
+title: Introduction to TiddlyWiki
+tags: [[Tech Talk]]
+
+See <a href="tiddlywiki.com" target="_blank" rel="noopener noreferrer">tiddlywiki.com</a> for full documentation.
+
+TiddlyWiki is an HTML5 single file application that saves user data inside of itself along with the source. Press the "save" button in the SideBar to download a new file with your changes, then use it to overwrite the old file (You can also use <a href="https://github.com/Jermolene/TiddlyDesktop/releases" target="_blank" rel="noopener noreferrer">TiddlyDesktop</a> to save the file in place like most software, or any of <a href="http://tiddlywiki.com/#GettingStarted" target="_blank" rel="noopener noreferrer">several solutions</a> to serve files for online collaboration).
+
+TiddlyWiki was chosen as the platform for Dropboard because:
+
+* Its plain HTML format is compatible with "3-way merge" algorithms used inside source control tools like Git. This makes TiddlyWiki an ideal option for issue tracking and documentation to be stored in the repository.
+* It provides the most capable <a href="http://tiddlywiki.com/#Filter%20Operators:%5B%5BIntroduction%20to%20filter%20notation%5D%5D%20%5B%5BFilter%20Operators%5D%5D" target="_blank" rel="noopener noreferrer">search and filter language</a> available to end users in a knowledge base or note taking productivity tool.
+* The established use of [['tags' and 'list' Fields]] together provides the only two way linking system available to end users in a knowledge base or note taking productivity tool.
+* Its open source nature and the fact that it is fully operational offline eliminates the <a href="https://en.wikipedia.org/wiki/Bus_factor" target="_blank" rel="noopener noreferrer">Bus Factor</a> of dependance on a web company to keep the app running and store your data.

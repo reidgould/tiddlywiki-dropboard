@@ -1,0 +1,12 @@
+title: 'Width' Popup
+tags: [[Control Banner Widgets]]
+
+The button labeled "Width" opens a popup to control the width of the lists on the board.
+
+Type a numeric value in the text field to set a specific width. The unit used is "em". 1em equals the width of the letter "m" in the current font.
+
+Select a value from the "Fit" dropdown to set the width such that the chosen number of lists exactly fit the width of the board.
+
+The "Is Max" checkbox controls whether the lists stretch to fill the board when there is extra horizontal space.
+
+The <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> button clears the value, and a default is used.

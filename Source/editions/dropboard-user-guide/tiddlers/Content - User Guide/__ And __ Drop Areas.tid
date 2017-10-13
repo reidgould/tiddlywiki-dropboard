@@ -1,0 +1,4 @@
+title: << And >> Drop Areas
+tags: [[List Features]]
+
+Drop [[any tiddler|Drop Any Link (Including Titles)]] onto the <span class="_-_-img_inline-OV-_C">{{$:/core/images/chevron-left}} and {{$:/core/images/chevron-right}}</span> drop areas to include it as a list in the board, or to change the order of lists.

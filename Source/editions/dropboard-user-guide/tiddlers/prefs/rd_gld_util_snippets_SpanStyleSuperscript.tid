@@ -1,0 +1,5 @@
+title: rd_gld/util/snippets/SpanStyleSuperscript
+tags: $:/tags/TextEditor/Snippet
+caption: Span - Style Superscript
+
+<span style="font-size: x-small;line-height: 1em;vertical-align: super;">____</span>

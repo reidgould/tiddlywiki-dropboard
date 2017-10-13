@@ -1,0 +1,6 @@
+title: Made With WikiText
+tags: [[Tech Talk]]
+
+Dropboard is written with no original JavaScript. It relies on TiddlyWiki's built-in <a href="http://tiddlywiki.com/#WikiText:WikiText%20Widgets%20%5B%5BWidgets%20in%20WikiText%5D%5D%20Macros%20%5B%5BMacros%20in%20WikiText%5D%5D%20%5B%5BMacro%20Definitions%20in%20WikiText%5D%5D%20%5B%5BMacro%20Calls%20in%20WikiText%5D%5D%20%5B%5BCore%20Macros%5D%5D" target="_blank" rel="noopener noreferrer">WikiText, Widgets, and Macros</a>, and the optional [[shortid Plugin]].
+
+This allows Dropboard to benefit from future improvements in the TiddlyWiki core, it makes the look and feel of Dropboard blend seamlessly with it's context, and it helps keep the file size small (which is of particular concern in TiddlyWiki).

@@ -1,0 +1,10 @@
+title: Any Tiddler can be a List or Card
+tags: Tips
+
+Any tiddler can be a list or a card.
+
+A useful workflow may be to move lists to become cards inside a "stash list" when you don't need them to be open.
+
+The [[List Content Info Icon]] shows when a card has content in it's "list" field.
+
+You can see an example of this in <$button class="_-_-Button_StyleLink-OVTM-_ main_link" actions=<<navigate_forceMain "Table Of Contents Editor">> >Table Of Contents Editor</$button>. The "Features" list has several cards that each have their own list. Now look at [[Table Of Contents Editor - Features]]. The "Features" tiddler is displayed as a board. Notice that the lists on this board that have cards are the same tiddlers that have the icon in the first board.

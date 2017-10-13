@@ -1,0 +1,18 @@
+title: My Task Board - Priority
+created:  30000101120000000
+modified: 30000101120000000
+tags: [[Example Boards]]
+list: [[Low Priority]] [[Medium Priority]] [[High Priority]]
+dpbd-listwidth-num: 4
+dpbd-widthismax: yes
+
+Dropboard is just a view into data. It can be helpful to have a second view of the same data.
+
+A second view can be used to organize cards as a matrix following [[The Eisenhower Method|https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method]],
+ or [[Matrix Management|https://en.wikipedia.org/wiki/Matrix_management]]. This board, "{{!!title}}" contains tiddlers that are already on [[My Task Board]]. Notice how moving a card on this board causes the color in that card's <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Tags Display">> >Tags Display</$button> on [[My Task Board]] to change.
+
+Dropboard can only operate on a single dimension of this matrix at once, but you could create a simple macro to display the titles in a table arranged by both dimensions.
+
+This board uses the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'Search' Popup">> >Search List</$button> to display tiddlers on [[My Task Board]] that still require triage. <br>The search filter is: `[title[My Task Board]tagging[]tagging[]]`
+
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />

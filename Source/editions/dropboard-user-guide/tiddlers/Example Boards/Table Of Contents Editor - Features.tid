@@ -1,0 +1,5 @@
+title: Table Of Contents Editor - Features
+
+<$tiddler tiddler="Features">
+  <$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
+</$tiddler>

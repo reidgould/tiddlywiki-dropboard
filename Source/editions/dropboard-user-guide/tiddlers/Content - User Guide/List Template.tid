@@ -1,0 +1,10 @@
+title: List Template
+tags: [[Tech Talk]]
+
+Each tiddler tagged with the name of the board is rendered using the List Template. It uses the $transclude widget in similar fashion to the [[Board Template]] but this is handled internally, you don't need to worry about list snippets.
+
+The list template is implemented with the same <a href="http://tiddlywiki.com/#NavigatorWidget:NavigatorWidget%20ListWidget" target="_blank" rel="noopener noreferrer">$navigator and $list</a> widgets that make the <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">main story</a>. These widgets enable the card's [[Edit, Save, Cancel, and Delete Buttons]], and manage the <a href="http://tiddlywiki.com/#DraftMechanism" target="_blank" rel="noopener noreferrer">draft</a> tiddler while the card's edit template is visible.
+
+[[Warning: Don't Double Edit]] — {{Warning: Don't Double Edit}}
+
+The [[Control Banner Drop Areas]] are a solution to a technical limitation in TiddlyWiki's $navigator widget needed for the 'Open In Main Story' Drop Area.

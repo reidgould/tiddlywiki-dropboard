@@ -1,0 +1,6 @@
+title: Drop 'Tag Pill' to Drop All Tagged
+tags: Tips
+
+You can [[drop any link|Drop Any Link (Including Titles)]] into a Dropboard area, but it is also possible to drop many links at once.
+
+The <a href="http://tiddlywiki.com/#ButtonWidget" target="_blank" rel="noopener noreferrer">$button</a> widget allows a filter to define multiple <a href="http://tiddlywiki.com/#actionTiddler%20Variable" target="_blank" rel="noopener noreferrer">actionTiddler</a> values on drop. The built-in <a href="http://tiddlywiki.com/#%24%3A%2Fcore%2Fui%2FTagTemplate" target="_blank" rel="noopener noreferrer">TagTemplate</a> creates a <a href="http://tiddlywiki.com/#tag-pill%20Macro" target="_blank" rel="noopener noreferrer">tag-pill</a> with all tagged tiddlers defined in it's filter. You can find a list of all current tag pills in the SideBar, in the "More" tab, in the "Tags" tab. Click on a pill to see a list of tiddlers it tags. Try dragging one of these tags onto a card in a list to see how all the listed tiddlers are inserted in correct position in the list.

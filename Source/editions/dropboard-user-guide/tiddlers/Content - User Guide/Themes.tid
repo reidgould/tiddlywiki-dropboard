@@ -1,0 +1,89 @@
+title: Themes
+tags: Features
+
+\define action-palette-Vanilla()
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/Vanilla" />
+\end
+\define action-palette-SolarFlare()
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/SolarFlare" />
+\end
+\define action-palette-Blue()
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/Blue" />
+\end
+\define action-palette-ContrastLight()
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/ContrastLight" />
+\end
+\define wikitext-palette(palette, fore, back)
+  /*-- Layout Outer --*/
+  flex: auto 0 1;
+  /*-- Layout Inner --*/
+  padding: 0 0.5em;
+  margin: 0.25em 0;
+  /*-- Visual --*/
+  color: {{$palette$##$fore$}};
+  background: {{$palette$##$back$}};
+  border-color: {{$palette$##$fore$}};
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+\end
+
+\define action-textSmall()
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" $field="text" $value="12px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" $field="text" $value="15px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" $field="text" $value="12px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" $field="text" $value="15px" />
+\end
+\define action-textDefault()
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" $field="text" $value="14px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" $field="text" $value="20px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" $field="text" $value="15px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" $field="text" $value="22px" />
+\end
+\define action-textLarge()
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" $field="text" $value="22px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" $field="text" $value="28px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" $field="text" $value="22px" />
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" $field="text" $value="28px" />
+\end
+
+<style scoped>
+.button_text_size {
+  margin: 0.25em 0;
+}
+</style>
+Dropboard is theme friendly. It takes its colors from the active palette, and scales with text size. Those settings can be found in the control panel, or you can try out the presets below.
+
+!! Palette
+
+<$wikify name="style-palette-Vanilla" text=<<wikitext-palette "$:/palettes/Vanilla" "foreground" "page-background">> mode="inline" output="html">
+<$button actions=<<action-palette-Vanilla>> style=<<style-palette-Vanilla>> >Vanilla</$button>
+</$wikify>
+
+<$wikify name="style-palette-SolarFlare" text=<<wikitext-palette "$:/palettes/SolarFlare" "foreground" "background">> mode="inline" output="html">
+<$button actions=<<action-palette-SolarFlare>> style=<<style-palette-SolarFlare>> >SolarFlare</$button>
+</$wikify>
+
+<$wikify name="style-palette-Blue" text=<<wikitext-palette "$:/palettes/Blue" "foreground" "page-background">> mode="inline" output="html">
+<$button actions=<<action-palette-Blue>> style=<<style-palette-Blue>> >Blue</$button>
+</$wikify>
+
+<$wikify name="style-palette-ContrastLight" text=<<wikitext-palette "$:/palettes/ContrastLight" "foreground" "background">> mode="inline" output="html">
+<$button actions=<<action-palette-ContrastLight>> style=<<style-palette-ContrastLight>> >ContrastLight</$button>
+</$wikify>
+
+!! Text Size
+
+<$button class="button_text_size" actions=<<action-textSmall>> style="font-size:12px;line-height:15px;" >Small</$button>
+
+<$button class="button_text_size" actions=<<action-textDefault>> style="font-size:15px;line-height:22px;" >Default</$button>
+
+<$button class="button_text_size" actions=<<action-textLarge>> style="font-size:22px;line-height:28px;" >Large</$button>
+
+---
+
+{{Drag n' Drop In Style}}
+
+---
+
+Drop areas (found in the [[control banner|Control Banner Drop Areas]], in the <$link to="<< And >> Drop Areas" class="_-_-Button_StyleLink-OVTM-_ _-_-img_inline-OV-_C">list title bar {{$:/core/images/chevron-left}} and {{$:/core/images/chevron-right}} areas</$link>, and in the area that contains the cards for each list) all use same background and border color. This is taken from the active [[palette's|Themes]] "sidebar-tab-background-selected" and "sidebar-tab-border-selected" fields. In the default palette, Vanilla, this matches the page background. The drop areas are also styled with the built-in "tc-edit-tags" class. When using the default "Snow White" theme, this gives them an inner drop shadow.

@@ -1,0 +1,4 @@
+title: Card Color and Icon Display
+tags: [[Card Features]]
+
+A card's "color" field is displayed as a thin vertical bar to the left of the first line of text. A card's "icon" field is displayed inline before the first line of text.

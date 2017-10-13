@@ -2,12 +2,86 @@ title: UserGuide/common/Stylesheet
 tags: $:/tags/Stylesheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline hardlinebreaks html commentinline commentblock
-<!--  This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
+<!-- This rule set prevents unwanted interpretation of wikitext syntax inside a stylesheet or macro definition tiddler. -->
 <!-- Style html tag not not needed when tiddler has $:/tags/Stylesheet tag. This is preferable because it allows us to see the text when the tiddler is open, and also prevents styles without the tag from applying just because the tiddler is open on the page. -->
 """
 
-.userguide_select {
-  width: calc(100% - 1.5em);
+.dpbd-SB-Container_Reset-OIV-_.dpbd-SB-Container_Reset-OIV-_.dpbd-SB-Container_Reset-OIV-_ > p {
+  /*-- Layout Outer --*/
+  margin: 0.25em 0em;
+}
+.dpbd-SB-Container_Reset-OIV-_ > h1 {
+  /*-- Layout Outer --*/
+  margin: 0.75em 0em 0.125em 0em;
+}
+.dpbd-SB-Container_Reset-OIV-_ > h2 {
+  /*-- Layout Outer --*/
+  margin: 0.5em 0em 0.125em 0em;
+}
+.dpbd-SB-Container_Reset-OIV-_ > h3,
+.dpbd-SB-Container_Reset-OIV-_ > h4,
+.dpbd-SB-Container_Reset-OIV-_ > h5,
+.dpbd-SB-Container_Reset-OIV-_ > h6
+{
+  /*-- Layout Outer --*/
+  margin: 0.25em 0em 0em 0em;
+}
+
+.dpbd-SB-Container_Reset-OIV-_ > ul,
+.dpbd-SB-Container_Reset-OIV-_ > ol
+{
+  /*-- Layout Outer --*/
+  margin: 0.25em 0em 0em 0em;
+  /*-- Layout Inner --*/
+  padding-left: 1.25em;
+}
+
+.ug-toc > ol {
+  /*-- Layout Outer --*/
+  margin: 0.25em 0em 0em 0em;
+}
+
+.ug_link::after {
+  /*-- Miscellaneous --*/
+  content: "‡";
+  /*-- Text --*/
+  font-size: x-small;
+  line-height: 1em;
+  vertical-align: super;
+}
+
+.main_link::after {
+  /*-- Miscellaneous --*/
+  content: "♦";
+  /*-- Text --*/
+  font-size: x-small;
+  line-height: 1em;
+  vertical-align: super;
+}
+
+/*====
+ *=========================*/
+
+.container_examples {
+  /*-- Layout Outer --*/
+  width: 100%;
+  /*-- Layout Inner --*/
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.25em -0.5em;
+}
+.item_examples {
+  /*-- Layout Outer --*/
+  flex: auto 0 1;
+  margin: 0.25em 0.5em;
+  /*-- Layout Inner --*/
+  padding: 0 0.5em;
+  /*-- Visual --*/
+  background: whitesmoke;
+  border-color: darkgray;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
 }
 
 """

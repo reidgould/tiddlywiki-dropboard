@@ -1,0 +1,5 @@
+title: UserGuide/snippets/ButtonNavigateMain
+tags: $:/tags/TextEditor/Snippet
+caption: Link - Navigate Main (Button)
+
+<$button class="main_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_forceMain "________">> >________</$button>

@@ -1,0 +1,35 @@
+title: Control Banner Drop Areas
+tags: Features
+list: [['New Tiddler' Widget]] [['Hold Tiddler' Drop Area]] [['Open In Main Story' Drop Area]] [['Remove from Board' Drop Area]]
+
+\define currentFilter()
+[[Control Banner Drop Areas]tagging[]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+!! Control Banner Drop Areas
+
+<ul>
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <li>
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </li>
+  </$set>
+  </$set>
+</$list>
+</ul>
+
+The control banner drop areas are a solution to a technical limitation in TiddlyWiki's <a href="http://tiddlywiki.com/#NavigatorWidget:NavigatorWidget%20ListWidget" target="_blank" rel="noopener noreferrer">$navigator</a> widget needed for the [['Open In Main Story' Drop Area]].
+
+Each of the [[lists on a board|List Template]] is implemented as a "<a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">story river</a>" just like the main story. Clicking a local link in TiddlyWiki sends a message up the widget tree, the $navigator catches it and performs the tasks to open tiddlers, manage drafts, etc. In order to open a tiddler in the main story, the message needs to escape the list's $navigator. At the time of creation, there is no [[built in way|Made With WikiText]] to break the message out of the list stories, so the chosen solution is to let the user drag the tiddler and generate the message outside of the stories.

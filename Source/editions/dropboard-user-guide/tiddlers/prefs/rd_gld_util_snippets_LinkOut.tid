@@ -1,0 +1,5 @@
+title: rd_gld/util/snippets/LinkOut
+tags: $:/tags/TextEditor/Snippet
+caption: Link - Outbound
+
+<a href="____" target="_blank" rel="noopener noreferrer">____</a>

@@ -1,0 +1,35 @@
+title: Features
+tags: [[User Guide Home]]
+list: Themes [[Control Banner Drop Areas]] [[Control Banner Widgets]] [[List Features]] [[Card Features]] [['shorttext' Main Story Templates]] [[New Board Button]]
+dpbd-displaytext: no
+dpbd-listwidth-em: 16
+dpbd-listwidth-num: 5
+dpbd-widthismax: yes
+
+\define currentFilter()
+[[Features]tagging[]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+!! Features
+
+<ul>
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <li>
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </li>
+  </$set>
+  </$set>
+</$list>
+</ul>

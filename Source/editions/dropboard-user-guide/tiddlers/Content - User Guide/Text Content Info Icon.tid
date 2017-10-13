@@ -1,0 +1,8 @@
+title: Text Content Info Icon
+tags: [[Card Features]]
+
+The <span class="_-_-img_inline-OV-_C">{{$:/core/images/import-button}}</span> icon displays at the bottom right of a card when the [['Text' Checkbox]] is unchecked, and the card has content in it's "text" field.
+
+This is useful when the [['shorttext' Field]] is in use. It helps distinguish which use "shorttext" for their primary content and which are summaries of a larger body of content.
+
+For an example of how this can improve the ability to edit the board, see: [[Table Of Contents Editor]]

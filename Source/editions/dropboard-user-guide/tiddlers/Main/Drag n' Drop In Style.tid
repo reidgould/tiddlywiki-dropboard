@@ -1,0 +1,55 @@
+title: Drag n' Drop In Style
+
+\define action-default()
+<$action-setfield $tiddler="$:/state/sidebar" $field="text" $value="yes" />
+<$action-setfield $tiddler="$:/theme" $field="text" $value="$:/themes/tiddlywiki/snowwhite" />
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/Vanilla" />
+\end
+\define action-twello()
+<$action-setfield $tiddler="$:/state/sidebar" $field="text" $value="no" />
+<$action-setfield $tiddler="$:/theme" $field="text" $value="$:/themes/tiddlywiki/tight" />
+<$action-setfield $tiddler="$:/palette" $field="text" $value="$:/palettes/TWello" />
+\end
+
+<style scoped>
+.container_twello {
+  /*-- Layout Outer --*/
+  display: inline-block;
+  /*-- Layout Inner --*/
+  padding: 0.25em 0.5em;
+  /*-- Visual --*/
+  color: {{$:/palettes/TWello##foreground}};
+  background: {{$:/palettes/TWello##tiddler-background}};
+  border-width: 0.5em 0.125em 0.125em 0.125em;
+  border-style: solid;
+  border-color: {{$:/palettes/TWello##page-background}};
+  /*-- Text --*/
+  font-family: inherit; /*input has OS specific font-family*/
+}
+.button_twello {
+  /*-- Visual --*/
+  color: {{$:/palettes/TWello##button-foreground}};
+  fill: {{$:/palettes/TWello##button-foreground}};
+}
+.container_default {
+  /*-- Layout Outer --*/
+  display: inline-block;
+  /*-- Layout Inner --*/
+  padding: 0.25em 0.5em;
+  /*-- Visual --*/
+  color: {{$:/palettes/Vanilla##foreground}};
+  background: {{$:/palettes/Vanilla##background}};
+  border-width: 0.5em  0.125em 0.125em 0.125em;
+  border-style: solid;
+  border-color: {{$:/palettes/Vanilla##page-background}};
+  /*-- Text --*/
+  font-family: inherit; /*input has OS specific font-family*/
+}
+.button_default {
+  /*-- Visual --*/
+  color: {{$:/palettes/Vanilla##button-foreground}};
+  fill: {{$:/palettes/Vanilla##button-foreground}};
+}
+</style>
+
+Want a more familiar feel? <div class="container_twello">Try out <$button class="button_twello" actions=<<action-twello>> >TWello Style</$button></div> or <div class="container_default">Return to <$button class="button_default" actions=<<action-default>> >Default Style</$button></div> Customize more <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Themes">> >here</$button>.

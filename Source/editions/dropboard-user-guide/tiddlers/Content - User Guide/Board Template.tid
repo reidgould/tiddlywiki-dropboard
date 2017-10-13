@@ -1,0 +1,27 @@
+title: Board Template
+tags: [[Tech Talk]]
+
+Any tiddler can be a board.  A board is rendered using the <a href="http://tiddlywiki.com/#TranscludeWidget" target="_blank" rel="noopener noreferrer">$transclude</a> widget.
+<br>
+The snippet is:
+
+```
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
+```
+
+The <$link to="New Board Button" class="_-_-Button_StyleLink-OVTM-_"><span class="_-_-img_inline-OV-_C">{{$:/plugins/reidgould/dpbd/images/Dropboard}}</span> button</$link> in the SideBar simply creates a new tiddler in the normal way with this snippet already inside. The snippet can also be inserted into an existing tiddler by clicking the <span class="_-_-img_inline-OV-_C">{{$:/core/images/stamp}}</span> button above the standard text editor and choosing it from the menu.
+
+The widget uses a tiddler from the plugin as a <a href="http://tiddlywiki.com/#TemplateTiddlers:TemplateTiddlers%20%5B%5BTransclusion%20with%20Templates%5D%5D" target="_blank" rel="noopener noreferrer">template</a>. The template contains the UI and logic, but the value of the <a href="http://tiddlywiki.com/#currentTiddler%20Variable" target="_blank" rel="noopener noreferrer">currentTiddler</a> variable is used to reference data like the [['tags' and 'list' Fields]] for display and manipulation.
+
+The board can be placed anywhere inside the tiddler's "text" field. It will always fill the width of the container that it is in. If you want the board to be smaller than the tiddler, you can use WikiText to add CSS around it such as:
+
+```
+@@width: 25em;
+@@float: right;
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
+@@
+```
+
+The template can be used to render a board different from the tiddler it is pasted into by using the <a href="http://tiddlywiki.com/#TiddlerWidget" target="_blank" rel="noopener noreferrer">$tiddler</a> widget. See the [[Table Of Contents Editor]] for an example.
+
+Each tiddler tagged with the name of the board is rendered using the [[List Template]].

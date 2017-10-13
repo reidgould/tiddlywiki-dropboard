@@ -1,0 +1,6 @@
+title: Tags Display
+tags: [[Card Features]]
+
+A card's "tags" field is displayed as a thin horizontal bar at the top of the card. The bar displays the color of each tag the card has, except for the tag of the current list. If a tag does not have a "color" field, it uses the default color found in the "tag-background" field of the active palette.
+
+Hover the mouse over a color to see a tooltip with that tag's name.

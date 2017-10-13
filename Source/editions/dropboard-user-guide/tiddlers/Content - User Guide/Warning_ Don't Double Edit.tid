@@ -1,0 +1,4 @@
+title: Warning: Don't Double Edit
+tags: Tips
+
+Don't edit tiddlers in both the list <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">story</a> and the main <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">story</a> simultaneously. This can lead to problems like lost drafts and tiddlers losing their place in the list.

@@ -1,0 +1,6 @@
+title: Warning: Board Removes Tags
+tags: Tips
+
+Dropboard removes tags during its normal operation of moving a card from one list to another. It removes not only the tag of the list the card was last in, but that of any list and the board on which the tiddler is dropped.
+
+For most use cases, this is not a problem. Don't use a tiddler as a list if other cards or lists already use it as a tag.

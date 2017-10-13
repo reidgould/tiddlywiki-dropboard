@@ -1,0 +1,5 @@
+title: UserGuide/snippets/ButtonNavigateUserGuide
+tags: $:/tags/TextEditor/Snippet
+caption: Link - Navigate User Guide (Button)
+
+<$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "________">> >________</$button>

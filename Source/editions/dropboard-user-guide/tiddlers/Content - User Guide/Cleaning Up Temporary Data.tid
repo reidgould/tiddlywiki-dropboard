@@ -1,0 +1,7 @@
+title: Cleaning Up Temporary Data
+tags: Tips
+
+If you uninstall Dropboard, you should remove any temporary data that may still remain.
+
+* Tiddlers that start with "$:/plugins/reidgould/dpbd/state/".
+* Fields that start with "dpbd-" (found on tiddlers that have been used as boards or lists).

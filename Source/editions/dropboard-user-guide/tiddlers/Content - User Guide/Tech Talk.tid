@@ -1,0 +1,31 @@
+title: Tech Talk
+tags: [[User Guide Home]]
+list: [[Introduction to TiddlyWiki]] [[Full Integration with TiddlyWiki]] [['tags' and 'list' Fields]] [['shorttext' Field]] [[shortid Plugin]] [[Board Template]] [[List Template]] [[Disallowed Drops]] [[Made With WikiText]]
+
+\define currentFilter()
+[[Tech Talk]tagging[]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+!! Tech Talk
+
+<ul>
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <li>
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </li>
+  </$set>
+  </$set>
+</$list>
+</ul>

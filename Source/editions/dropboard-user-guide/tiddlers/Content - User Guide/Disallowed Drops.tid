@@ -1,0 +1,13 @@
+title: Disallowed Drops
+tags: [[Tech Talk]]
+
+In several cases Dropboard will cancel a drop action and show a notification.
+
+Disallowed Drops are:
+
+* Drop a card onto itself.
+* Drop a list into itself.
+* Drop a list onto itself (the << drop area).
+* Drop any tiddler into the Search List.
+* Drop the Search List into a list.
+* Drop the Search List onto a card.

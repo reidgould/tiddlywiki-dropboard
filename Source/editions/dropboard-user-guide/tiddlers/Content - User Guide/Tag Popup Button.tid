@@ -1,0 +1,6 @@
+title: Tag Popup Button
+tags: [[Card Features]]
+
+The tag button in the top right corner of the card view template opens a popup with the same interface that is found in the standard edit template in the main story. This allows easy tagging without having to use the edit button on a card.
+
+Note that the [[tag pills|Drop 'Tag Pill' to Drop All Tagged]] in this interface are not draggable.
