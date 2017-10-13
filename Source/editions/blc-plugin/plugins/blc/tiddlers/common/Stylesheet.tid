@@ -472,7 +472,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0.75em 0.5em 0.375em 0.5em;
   /*-- Visual --*/
   border-style: solid solid none solid;
-  border-color: <<color tab-border>>;
+  border-color: <<color tab-border-selected>>;
   border-width: 1px;
   background-color: <<color tab-background-selected>>;
 }
@@ -856,7 +856,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /*-- Visual --*/
   color: <<color sidebar-tab-foreground-selected>>;
   fill: <<color sidebar-tab-foreground-selected>>;
-  border-color: <<color sidebar-tab-border>>;
+  border-color: <<color sidebar-tab-border-selected>>;
   background: <<color sidebar-tab-background-selected>>;
 }
 
@@ -945,7 +945,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   line-height: 1.25;
   color: <<color sidebar-tab-foreground-selected>>;
   fill: <<color sidebar-tab-foreground-selected>>;
-  border-color: <<color sidebar-tab-border>>;
+  border-color: <<color sidebar-tab-border-selected>>;
   background: <<color sidebar-tab-background-selected>>;
   border-style: dashed;
 }
@@ -954,7 +954,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-SL-Card-V-_.blc-SL-Card-V-_
 {
   /*-- Visual --*/
-  border: 1px dashed <<color sidebar-tab-foreground>>;
+  border: 1px dashed <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-SL-Container_List-OI-_ {
