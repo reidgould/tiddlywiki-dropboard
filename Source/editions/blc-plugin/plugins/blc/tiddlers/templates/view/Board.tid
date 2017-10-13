@@ -36,7 +36,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
     <div class="blc-CB-Container_WidgetDrop-OI-_">
       <div class="blc-CB-ContainerSub_WidgetDrop-OI-_">
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetDrop-OI-_ tc-edit-tags blc-_-DropArea-IV-_" title="Drop into either card or list position.">
-          <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-_-Card-O-_ blc-CB_WD-Card-O-_ tc-tiddler-frame">
+          <$draggable tiddler="$:/plugins/reidgould/blc/action/newTiddler" class="blc-_-Card-OV-_ blc-CB_WD-Card-O-_ tc-tiddler-frame">
             <p class="blc-CB_WD-p-OIT-_C">{{$:/core/images/new-button}}New Tiddler</p>
           </$draggable>
         </div>
@@ -49,7 +49,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <$list filter="[<tiddler-Holding>get[title]]" >
             <$tiddler tiddler={{{ [<tiddler-Holding>get[text]] }}} >
               <$vars currentHeldTiddler=<<currentTiddler>> val-HeldShorttext={{!!shorttext}} >
-                <$draggable tiddler=<<currentTiddler>> class="blc-_-Card-O-_ blc-CB_WD-Card-O-_ tc-tiddler-frame">
+                <$draggable tiddler=<<currentTiddler>> class="blc-_-Card-OV-_ blc-CB_WD-Card-O-_ tc-tiddler-frame">
                   <$button actions="""<$action-deletetiddler $tiddler=<<tiddler-Holding>> />""" class="tc-btn-invisible blc-_-FillColor_ControlsForeground-V-_ _-_-Position_TR-O-_">
                     {{$:/core/images/close-button}}
                   </$button>
@@ -85,13 +85,13 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       <div class="blc-CB-ContainerSub_WidgetInput-OI-_">
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="Filter (append to each)">
           <p class="blc-CB_WI-Label_p-OT-_">Filter</p>
-          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" popup=<<tiddler-popupUserFilter>> >{{$:/core/images/unfold-button}}</$button>
+          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" popup=<<tiddler-popupUserFilter>> >{{$:/core/images/unfold-button}}</$button>
           <$reveal type="popup" state=<<tiddler-popupUserFilter>> position="below" class="tc-popup-keep">
-            <div class="tc-drop-down blc-CB_WI-Popup-OI-_">
+            <div class="tc-drop-down blc-CB_WI-Popup-OIV-_C">
               <span class="blc-CB_WI_P-FlexE-O-_">
                 <$edit-text tiddler=<<tiddler-UserFilter-Stage>> tag="input" type="text" default="" placeholder="Use only + or - runs." class="blc-CB_WI_P-Child_TextArea-O-_" />
               </span>
-              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-O-_" actions="""
+              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-OV-_" actions="""
                   <$action-deletetiddler $tiddler=<<tiddler-UserFilter-Live>> />
                   <$action-createtiddler $basetitle=<<tiddler-UserFilter-Live>> text={{{ [<tiddler-UserFilter-Stage>get[text]] }}} />
                   """>
@@ -120,13 +120,13 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         </div>
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="Search List Filter.">
           <p class="blc-CB_WI-Label_p-OT-_">Search</p>
-          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" popup=<<tiddler-popupSearchList>> >{{$:/core/images/unfold-button}}</$button>
+          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" popup=<<tiddler-popupSearchList>> >{{$:/core/images/unfold-button}}</$button>
           <$reveal type="popup" state=<<tiddler-popupSearchList>> position="below" class="tc-popup-keep">
-            <div class="tc-drop-down blc-CB_WI-Popup-OI-_">
+            <div class="tc-drop-down blc-CB_WI-Popup-OIV-_C">
               <span class="blc-CB_WI_P-FlexE-O-_">
                 <$edit-text tiddler=<<tiddler-SearchListFilter-Stage>> tag="input" type="text" default="" placeholder="Excludes tiddlers on board." class="blc-CB_WI_P-Child_TextArea-O-_" />
               </span>
-              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-O-_" actions="""
+              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-OV-_" actions="""
                   <$action-deletetiddler $tiddler=<<tiddler-SearchListFilter-Live>> />
                   <$action-createtiddler $basetitle=<<tiddler-SearchListFilter-Live>> text={{{ [<tiddler-SearchListFilter-Stage>get[text]] }}} /> """>
                 Set
@@ -144,15 +144,15 @@ title: $:/plugins/reidgould/blc/templates/view/Board
       <div class="blc-CB-ContainerSub_WidgetInput-OI-_">
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="Board Height">
           <p class="blc-CB_WI-Label_p-OT-_">Height</p>
-          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" popup=<<tiddler-popupBoardHeight>> >{{$:/core/images/unfold-button}}</$button>
+          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" popup=<<tiddler-popupBoardHeight>> >{{$:/core/images/unfold-button}}</$button>
           <$reveal type="popup" state=<<tiddler-popupBoardHeight>> position="below" class="tc-popup-keep">
-            <div class="tc-drop-down blc-CB_WI-Popup-OI-_">
+            <div class="tc-drop-down blc-CB_WI-Popup-OIV-_C">
               <$set name="val-BoardHeight-current" value={{{ [<currentBoardTiddler>get[blc-boardheight]] }}} >
                 <span class="blc-CB_WI_P-FlexE-O-_">
                   <$edit-text tiddler=<<tiddler-BoardHeight-Stage>> tag="input" type="text" default="" placeholder=<<val-BoardHeight-current>> class="blc-CB_WI_P-Child_TextArea-O-_" />
                 </span>
               </$set>
-              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-O-_" actions="""
+              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-OV-_" actions="""
                   <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-boardheight" $value={{{ [<tiddler-BoardHeight-Stage>get[text]addsuffix[vh]] }}} />
                   <$action-deletetiddler $tiddler=<<tiddler-BoardHeight-Stage>> />
                   """>
@@ -169,15 +169,15 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         </div>
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="List Width">
           <p class="blc-CB_WI-Label_p-OT-_">Width</p>
-          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" popup=<<tiddler-popupListWidth>> >{{$:/core/images/unfold-button}}</$button>
+          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" popup=<<tiddler-popupListWidth>> >{{$:/core/images/unfold-button}}</$button>
           <$reveal type="popup" state=<<tiddler-popupListWidth>> position="below" class="tc-popup-keep">
-            <div class="tc-drop-down blc-CB_WI-Popup-OI-_">
+            <div class="tc-drop-down blc-CB_WI-Popup-OIV-_C">
               <$set name="val-ListWidth-current" value={{{ [<currentBoardTiddler>get[blc-listwidth-em]] }}} >
                 <span class="blc-CB_WI_P-FlexE-O-_">
                   <$edit-text tiddler=<<tiddler-ListWidth-Stage>> tag="input" type="text" default="" placeholder=<<val-ListWidth-current>> class="blc-CB_WI_P-Child_TextArea-O-_" />
                 </span>
               </$set>
-              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-O-_" actions="""
+              <$button class="blc-CB_WI_P-FlexC-O-_ blc-CB_WI_P-Button-OV-_" actions="""
                   <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-em" $value={{{ [<tiddler-ListWidth-Stage>get[text]] }}} />
                   <$action-deletetiddler $tiddler=<<tiddler-ListWidth-Stage>> />
                   """>
@@ -210,7 +210,7 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         </div>
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="Open In New Window">
           <p class="blc-CB_WI-Label_p-OT-_">Window</p>
-          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
+          <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" actions="""
               <$action-sendmessage $message="tm-open-window" $param=<<storyTiddler>> width="9999" height="9999" windowTiddler=<<storyTiddler>> />
               <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-boardheight" $value="100%" />
               <$action-sendmessage $message="tm-close-tiddler" $param=<<storyTiddler>> />

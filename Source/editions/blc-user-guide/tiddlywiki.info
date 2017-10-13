@@ -12,7 +12,9 @@
   ],
   "themes": [
     "tiddlywiki/vanilla",
-    "tiddlywiki/snowwhite"
+    "tiddlywiki/snowwhite",
+    "tiddlywiki/tight",
+    "tiddlywiki/seamless"
   ],
   "languages": [
   ],

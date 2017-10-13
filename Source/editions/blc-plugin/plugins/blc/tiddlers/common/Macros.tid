@@ -94,12 +94,12 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
   </$tiddler>
 \end
 \define wikitext-SideBar-Button-Delete()
-  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" actions="""<$action-deletetiddler $tiddler=<<tiddler-SideBar>> />""" >
     <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span>
   </$button>
 \end
 \define wikitext-SideBar-Button-Create()
-  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
+  <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-OV-_" actions="""
       <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
       <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-em" />
       <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-num" $value="1" />

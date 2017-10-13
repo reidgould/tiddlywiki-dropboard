@@ -252,7 +252,9 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0 0.25em;
 }
 
-.blc-CB_WD-p-OIT-_C {
+.blc-CB_WD-p-OIT-_C,
+.blc-CB_WD-p-OIT-_C.blc-CB_WD-p-OIT-_C
+{
   /*-- Layout Outer --*/
   margin: 0;
   max-height: 2.125em;
@@ -306,7 +308,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Label_p-OT-_ {
+.blc-CB_WI-Label_p-OT-_,
+.blc-CB_WI-Label_p-OT-_.blc-CB_WI-Label_p-OT-_ {
   /*-- Layout Outer --*/
   display: block;
   min-height: 1.5em;
@@ -323,11 +326,13 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   width: 100%;
 }
 
-.blc-CB_WI-Input_Button-O-_ {
+.blc-CB_WI-Input_Button-OV-_ {
   /*-- Layout Outer --*/
   padding: 0;
   min-height: 1.5em;
   max-height: 1.5em;
+  /*-- Visual --*/
+  fill: <<color button-foreground>>;
 }
 
 .blc-CB_WI-Input_Container_Checkbox-OTV-_ {
@@ -351,8 +356,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
-.blc-CB_WI-Popup-OI-_,
-.blc-CB_WI-Popup-OI-_.blc-CB_WI-Popup-OI-_
+.blc-CB_WI-Popup-OIV-_C,
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C
 {
   /*-- Layout Outer --*/
   display: flex;
@@ -360,10 +365,20 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   align-items: baseline;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground-selected>>;
+}
+
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > svg,
+.blc-CB_WI-Popup-OIV-_C.blc-CB_WI-Popup-OIV-_C > * > a
+{
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-CB_WI_P-FlexC-O-_,
-.blc-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
+.blcbd-CB_WI_P-FlexC-O-_.blc-CB_WI_P-FlexC-O-_
 {
   /*-- Layout Outer --*/
   display: initial;
@@ -382,19 +397,21 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   margin: 0 0.25em;
 }
 
-.blc-CB_WI_P-Button-O-_,
-.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_.blc-CB_WI_P-Button-O-_
+.blc-CB_WI_P-Button-OV-_,
+.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_.blc-CB_WI_P-Button-OV-_
 {
   /*-- Layout Outer --*/
   padding-left: 0.25em;
   padding-right: 0.25em;
+  /*-- Visual --*/
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
 }
 
 .blc-CB_WI_P-Child_TextArea-O-_ {
   /*-- Layout Outer --*/
   width: 100%;
 }
-
 
 /* -------/-------/-------/-------/-------/-------/-------/-------/ */
 
@@ -457,7 +474,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0.75em 0.5em 0.375em 0.5em;
   /*-- Visual --*/
   border-style: solid solid none solid;
-  border-color: <<color tab-divider>>;
+  border-color: <<color tab-border-selected>>;
   border-width: 1px;
   background-color: <<color tab-background-selected>>;
 }
@@ -593,14 +610,16 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Card
 ** ================================================================ */
 
-.blc-_-Card-O-_,
-.blc-_-Card-O-_.blc-_-Card-O-_
+.blc-_-Card-OV-_,
+.blc-_-Card-OV-_.blc-_-Card-OV-_.blc-_-Card-OV-_
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */
   min-height: 2.5em;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
+  /*-- Visual --*/
+  background-color: <<color dropdown-background>>;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
@@ -837,7 +856,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   /* EXTENDS tc-edit-tags */
   padding: 1em 0.25em 1em 0.25em;
   /*-- Visual --*/
-  background: <<color page-background>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
+  border-color: <<color sidebar-tab-border-selected>>;
+  background: <<color sidebar-tab-background-selected>>;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
@@ -923,7 +945,10 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   background: none;
   box-shadow: none;
   line-height: 1.25;
-  background: <<color tab-background-selected>>;
+  color: <<color sidebar-tab-foreground-selected>>;
+  fill: <<color sidebar-tab-foreground-selected>>;
+  border-color: <<color sidebar-tab-border-selected>>;
+  background: <<color sidebar-tab-background-selected>>;
   border-style: dashed;
 }
 
@@ -931,7 +956,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-SL-Card-V-_.blc-SL-Card-V-_
 {
   /*-- Visual --*/
-  border: 1px dashed <<color tab-foreground>>;
+  border: 1px dashed <<color sidebar-tab-border-selected>>;
 }
 
 .blc-SL-Container_List-OI-_ {

@@ -1,0 +1,109 @@
+name: TWello
+description: A pallete in the style of Trello.
+tags: $:/tags/Palette
+title: $:/palettes/TWello
+type: application/x-tiddler-dictionary
+
+alert-background: #f2b577
+alert-border: #ff952b
+alert-highlight: <<color sidebar-controls-foreground-hover>>
+alert-muted-foreground: <<color foreground>>
+background: #00436a
+blockquote-bar: <<color muted-foreground>>
+button-background:
+button-foreground: <<color tab-foreground-selected>>
+button-border:
+code-background: <<color message-background>>
+code-border: <<color message-border>>
+code-foreground: <<color message-foreground>>
+dirty-indicator: <<color alert-border>>
+download-background: <<color sidebar-controls-foreground-hover>>
+download-foreground: <<color foreground>>
+dragger-background: <<color foreground>>
+dragger-foreground: <<color background>>
+dropdown-background: #ffffff
+dropdown-border: <<color muted-foreground>>
+dropdown-tab-background-selected: <<color dropdown-background>>
+dropdown-tab-background: <<color muted-foreground>>
+dropzone-background: <<color download-background>>
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-background: inherit
+external-link-foreground-hover: inherit
+external-link-foreground-visited: #0000aa
+external-link-foreground: #0000ee
+foreground: #ffffff
+message-background: #99a6d0
+message-border: #cfd6e6
+message-foreground: <<color primary>>
+modal-backdrop: <<color page-background>>
+modal-background: <<color tiddler-background>>
+modal-border: <<color foreground>>
+modal-footer-background: <<color tiddler-background>>
+modal-footer-border: <<color muted-foreground>>
+modal-header-border: <<color muted-foreground>>
+muted-foreground: #e2e4e6
+notification-background: <<color alert-background>>
+notification-border: <<color alert-border>>
+page-background: #0067a3
+pre-background: <<color background>>
+pre-border: <<color muted-foreground>>
+primary: #3c4b84
+sidebar-button-foreground: <<color sidebar-tab-foreground>>
+sidebar-controls-foreground-hover: #34c734
+sidebar-controls-foreground: <<color muted-foreground>>
+sidebar-foreground-shadow: transparent
+sidebar-foreground: <<color very-muted-foreground>>
+sidebar-muted-foreground-hover: <<color sidebar-controls-foreground-hover>>
+sidebar-muted-foreground: <<color sidebar-foreground>>
+sidebar-tab-background-selected: <<color tab-background-selected>>
+sidebar-tab-background: <<color tiddler-background>>
+sidebar-tab-border-selected: <<color tab-border-selected>>
+sidebar-tab-border: <<color tab-border>>
+sidebar-tab-divider: <<color tiddler-background>>
+sidebar-tab-foreground-selected: <<color tab-foreground-selected>>
+sidebar-tab-foreground: <<color tab-foreground>>
+sidebar-tiddler-link-foreground-hover: <<color tiddler-link-foreground>>
+sidebar-tiddler-link-foreground: <<color muted-foreground>>
+site-title-foreground: <<color tiddler-title-foreground>>
+static-alert-foreground: <<color sidebar-controls-foreground-hover>>
+tab-background-selected: #e2e4e6
+tab-background: <<color page-background>>
+tab-border-selected: <<color tab-background-selected>>
+tab-border: <<color tab-background>>
+tab-divider: <<color page-background>>
+tab-foreground-selected: #666666
+tab-foreground: #ffffff
+table-border: <<color muted-foreground>>
+table-footer-background: <<color message-background>>
+table-header-background: <<color background>>
+tag-background: <<color background>>
+tag-foreground: <<color foreground>>
+tiddler-background: #0079bf
+tiddler-border: transparent
+tiddler-controls-foreground-hover: <<color sidebar-controls-foreground-hover>>
+tiddler-controls-foreground-selected: <<color tab-foreground>>
+tiddler-controls-foreground: <<color very-muted-foreground>>
+tiddler-editor-background: <<color background>>
+tiddler-editor-border-image: #ffffff
+tiddler-editor-border: <<color very-muted-foreground>>
+tiddler-editor-fields-even: <<color tiddler-background>>
+tiddler-editor-fields-odd: <<color page-background>>
+tiddler-info-background: <<color message-background>>
+tiddler-info-border: <<color message-border>>
+tiddler-info-tab-background: <<color tab-background-selected>>
+tiddler-link-background: <<color background>>
+tiddler-link-foreground: <<color primary>>
+tiddler-subtitle-foreground: <<color background>>
+tiddler-title-foreground: <<color foreground>>
+toolbar-new-button:
+toolbar-options-button:
+toolbar-save-button:
+toolbar-info-button:
+toolbar-edit-button:
+toolbar-close-button:
+toolbar-delete-button:
+toolbar-cancel-button:
+toolbar-done-button:
+untagged-background: <<color message-background>>
+very-muted-foreground: #849ebb

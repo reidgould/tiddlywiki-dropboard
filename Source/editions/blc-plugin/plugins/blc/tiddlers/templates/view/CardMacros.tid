@@ -14,12 +14,9 @@ tags: $:/tags/Macro
 \end
 
 \define wikitext-CardView(palette-tagBackground)
-  <$macrocall $name="wikitext-CardView_internal" tagBackground={{$palette-tagBackground$##tag-background}} />
-\end
-\define wikitext-CardView_internal(tagBackground)
   <$set name="class-Card" filter="[<currentListTiddler>field:title<tiddler-SearchListFilter-Live>]"
-      value="tc-tiddler-frame blc-_-Card-O-_ blc-SL-Card-V-_"
-      emptyValue="tc-tiddler-frame blc-_-Card-O-_" >
+      value="tc-tiddler-frame blc-_-Card-OV-_ blc-SL-Card-V-_"
+      emptyValue="tc-tiddler-frame blc-_-Card-OV-_" >
   <div class="blc-DA-IndicatorThin-OV-c">
     <div class="blc-DA-IndicatorThin_Child-OV-c"></div>
   </div>
@@ -42,11 +39,13 @@ tags: $:/tags/Macro
     </$reveal>
     <div class="blc-C-TagPreview-OI-_">
       <$list filter="[<currentTiddler>tags[]] -[<currentListTiddler>] +[sort[title]]">
-        <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue="""$tagBackground$""" >
-          <$set name="field-shorttextOrTitle" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
-            <div class="blc-C-TagPreview_Child-OVM-_" style=<<style-TagColor>> title=<<field-shorttextOrTitle>> ></div>
+        <$wikify name="val-TagColor-Default" text={{$palette-tagBackground$##tag-background}} mode="inline" output="html">
+          <$set name="val-TagColor" filter="[<currentTiddler>has[color]]" value={{!!color}} emptyValue=<<val-TagColor-Default>> >
+            <$set name="field-shorttextOrTitle" filter="[<currentTiddler>get[shorttext]]" emptyValue=<<currentTiddler>> >
+              <div class="blc-C-TagPreview_Child-OVM-_" style=<<style-TagColor>> title=<<field-shorttextOrTitle>> ></div>
+            </$set>
           </$set>
-        </$set>
+        </$wikify>
       </$list>
     </div>
     <div class="blc-C-ColorPreview-OI-_">
