@@ -77,7 +77,7 @@ tab-foreground: #666666
 table-border: <<color muted-foreground>>
 table-footer-background: <<color message-background>>
 table-header-background: <<color background>>
-tag-background: #00436a
+tag-background: <<color background>>
 tag-foreground: <<color foreground>>
 tiddler-background: #0079bf
 tiddler-border: transparent
