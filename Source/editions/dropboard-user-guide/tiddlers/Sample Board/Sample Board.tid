@@ -1,0 +1,7 @@
+title: Sample Board
+tags:
+created:  30000101120000000
+modified: 30000101120000000
+list: tid-20170831194954 tid-20170831194915 tid-20170831194804
+
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />

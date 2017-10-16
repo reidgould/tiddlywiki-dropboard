@@ -1,0 +1,9 @@
+title: $:/plugins/reidgould/dpbd/templates/view/shorttext
+tags: $:/tags/ViewTemplate
+list-before: $:/core/ui/ViewTemplate/body
+
+<$list filter="[<currentTiddler>has[shorttext]]" >
+  <h3 class="tc-subtitle dpbd-_-MainView_Shorttext-OTV-S dpbd-_-ShorttextView-OM-C">
+    <$transclude field="shorttext" mode="inline" class="" />
+  </h3>
+</$list>

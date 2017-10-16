@@ -1,0 +1,12 @@
+title: download-dpbd-plugin-button
+
+\define filename()
+tiddlywiki-dropboard-$(pluginVersion)$.tid
+\end
+
+<$set name="pluginVersion" value={{$:/plugins/reidgould/dpbd!!version}} >
+<$button class="tc-btn-big-green">
+<$action-sendmessage $message="tm-download-file" $param="$:/core/templates/exporters/TidFile" exportFilter="$:/plugins/reidgould/dpbd" filename=<<filename>> />
+<<filename>> {{$:/core/images/save-button}}
+</$button>
+</$set>

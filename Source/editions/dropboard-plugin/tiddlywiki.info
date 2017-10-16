@@ -1,0 +1,33 @@
+{
+  "description": "An empty TiddlyWiki containing \"Dropboard\", a TiddlyWiki plugin for kanban like organization in the style of Trello using boards, lists, and cards.",
+  "plugins": [
+    "dropboard"
+  ],
+  "includeWikis": [
+  ],
+  "themes": [
+    "tiddlywiki/vanilla",
+    "tiddlywiki/snowwhite"
+  ],
+  "languages": [
+  ],
+  "build": {
+    "dpbd-plugin": [
+      "--rendertiddler", "$:/plugins/reidgould/dpbd", "tiddlywiki-dropboard.tid", "text/plain", "$:/core/templates/exporters/TidFile", "exportFilter", "[<currentTiddler>]"
+    ],
+    "empty-with-dpbd": [
+      "--rendertiddler","$:/core/save/all","TiddlyWiki_With_Dropboard.html","text/plain"
+    ],
+    "empty-with-dpbd-downloadButton": [
+      "--rendertiddler","download-empty-with-dpbd","TiddlyWiki_With_Dropboard.html","text/plain"
+    ],
+    "meta": [
+      "--savetiddler","$:/plugins/reidgould/dpbd/readme","ReadMe.md",
+      "--savetiddler","$:/plugins/reidgould/dpbd/license","license.txt"
+    ]
+  },
+  "config": {
+    "default-tiddler-location": "./newTiddlers",
+    "retain-original-tiddler-path": false
+  }
+}

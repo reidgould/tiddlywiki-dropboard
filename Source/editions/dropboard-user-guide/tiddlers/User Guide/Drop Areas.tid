@@ -1,0 +1,9 @@
+title: Drop Areas
+tags: [[Dropboard User Guide]]
+
+In the controls above the board, there are several drop areas:
+
+* Drag the "New Tiddler" into any list to create a tiddler tagged with that list.
+* Drag a card from a list into the "Hold Tiddler" area so you can scroll to a position in a list that is not visible on screen, then drag the card back from the hold area to the desired position.
+* Clicking a wiki link in a card will try to navigate inside the Dropboard list view. Drag a card or a wiki link to the "Open in Main Story" to navigate there.
+* Drag a card to the "Remove from Board" area to remove tags of all lists on the board.

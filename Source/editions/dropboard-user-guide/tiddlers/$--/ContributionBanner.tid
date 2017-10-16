@@ -1,0 +1,8 @@
+list-after: $:/core/ui/EditTemplate/title
+tags: $:/tags/EditTemplate
+title: $:/ContributionBanner
+
+<div class="tc-improvement-banner">
+<span style="display:inline-block;width:46px;"></span>
+{{$:/core/images/star-filled}} Have an idea to improve Dropboard? Contribute on <a href={{$:/plugins/reidgould/dpbd!!source}} class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">GitHub</a>.
+</div>

@@ -1,0 +1,18 @@
+{
+  "author": "Reid Gould <reidgould@gmail.com>",
+  "author-name": "Reid Gould",
+  "author-email": "reidgould@gmail.com",
+  "author-web": "https://www.reidgould.com",
+  "source": "https://github.com/reidgould/tiddlywiki-dropboard",
+  "userguide": "http://reidgould.github.io/tiddlywiki-dropboard",
+  "dependents": "",
+  "description": "Dropboard - kanban like organization in the style of Trello using boards, lists, and cards.",
+  "name": "Dropboard",
+  "plugin-type": "plugin",
+  "tags": "",
+  "title": "$:/plugins/reidgould/dpbd",
+  "type": "application/json",
+  "version": "0.2.0",
+  "core-version": ">=5.0.0",
+  "list": "readme license"
+}

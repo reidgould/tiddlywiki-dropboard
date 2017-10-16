@@ -1,0 +1,6 @@
+ title: Get Dropboard
+
+* Get a brand new empty TiddlyWiki with Dropboard installed:<br>{{download-empty-with-dpbd-button}}<br>
+* Get Tid files that you can save. Import both into your wiki:<br>{{download-dpbd-plugin-button}} &amp; {{download-shortid-plugin-button}}<br>
+* Drag both these links into your wiki: [[$:/plugins/reidgould/dpbd]] &amp; [[$:/plugins/reidgould/shortid]]
+* Clone the <a href={{$:/plugins/reidgould/dpbd!!source}} target="_blank" rel="noopener noreferrer">repository</a>, `npm install` dependencies, and use `npm run` to execute the build scripts listed in "package.json".
