@@ -11,7 +11,7 @@ alert-muted-foreground: <<color foreground>>
 background: #00436a
 blockquote-bar: <<color muted-foreground>>
 button-background:
-button-foreground: <<color tab-foreground>>
+button-foreground: <<color tab-foreground-selected>>
 button-border:
 code-background: <<color message-background>>
 code-border: <<color message-border>>
@@ -23,8 +23,8 @@ dragger-background: <<color foreground>>
 dragger-foreground: <<color background>>
 dropdown-background: #ffffff
 dropdown-border: <<color muted-foreground>>
-dropdown-tab-background-selected: <<color tab-background-selected>>
-dropdown-tab-background: <<color tab-background>>
+dropdown-tab-background-selected: <<color dropdown-background>>
+dropdown-tab-background: <<color muted-foreground>>
 dropzone-background: <<color download-background>>
 external-link-background-hover: inherit
 external-link-background-visited: inherit
@@ -57,7 +57,7 @@ sidebar-foreground: <<color very-muted-foreground>>
 sidebar-muted-foreground-hover: <<color sidebar-controls-foreground-hover>>
 sidebar-muted-foreground: <<color sidebar-foreground>>
 sidebar-tab-background-selected: <<color tab-background-selected>>
-sidebar-tab-background: <<color tab-background>>
+sidebar-tab-background: <<color tiddler-background>>
 sidebar-tab-border-selected: <<color tab-border-selected>>
 sidebar-tab-border: <<color tab-border>>
 sidebar-tab-divider: <<color tiddler-background>>
@@ -67,13 +67,13 @@ sidebar-tiddler-link-foreground-hover: <<color tiddler-link-foreground>>
 sidebar-tiddler-link-foreground: <<color muted-foreground>>
 site-title-foreground: <<color tiddler-title-foreground>>
 static-alert-foreground: <<color sidebar-controls-foreground-hover>>
-tab-background-selected: <<color tab-background>>
-tab-background: #e2e4e6
-tab-border-selected: <<color tab-background>>
+tab-background-selected: #e2e4e6
+tab-background: <<color page-background>>
+tab-border-selected: <<color tab-background-selected>>
 tab-border: <<color tab-background>>
 tab-divider: <<color page-background>>
-tab-foreground-selected: <<color tab-foreground>>
-tab-foreground: #666666
+tab-foreground-selected: #666666
+tab-foreground: #ffffff
 table-border: <<color muted-foreground>>
 table-footer-background: <<color message-background>>
 table-header-background: <<color background>>
@@ -83,7 +83,7 @@ tiddler-background: #0079bf
 tiddler-border: transparent
 tiddler-controls-foreground-hover: <<color sidebar-controls-foreground-hover>>
 tiddler-controls-foreground-selected: <<color tab-foreground>>
-tiddler-controls-foreground: <<color muted-foreground>>
+tiddler-controls-foreground: <<color very-muted-foreground>>
 tiddler-editor-background: <<color background>>
 tiddler-editor-border-image: #ffffff
 tiddler-editor-border: <<color very-muted-foreground>>
@@ -91,7 +91,7 @@ tiddler-editor-fields-even: <<color tiddler-background>>
 tiddler-editor-fields-odd: <<color page-background>>
 tiddler-info-background: <<color message-background>>
 tiddler-info-border: <<color message-border>>
-tiddler-info-tab-background: <<color tab-background>>
+tiddler-info-tab-background: <<color tab-background-selected>>
 tiddler-link-background: <<color background>>
 tiddler-link-foreground: <<color primary>>
 tiddler-subtitle-foreground: <<color background>>
@@ -106,4 +106,4 @@ toolbar-delete-button:
 toolbar-cancel-button:
 toolbar-done-button:
 untagged-background: <<color message-background>>
-very-muted-foreground: #989fa7
+very-muted-foreground: #849ebb

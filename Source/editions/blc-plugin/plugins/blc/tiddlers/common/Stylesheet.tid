@@ -956,7 +956,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 .blc-SL-Card-V-_.blc-SL-Card-V-_
 {
   /*-- Visual --*/
-  border: 1px dashed <<color sidebar-tab-foreground-selected>>;
+  border: 1px dashed <<color sidebar-tab-border-selected>>;
 }
 
 .blc-SL-Container_List-OI-_ {
