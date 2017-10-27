@@ -207,7 +207,6 @@ title: $:/plugins/reidgould/blc/templates/view/Board
           <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
               <$action-sendmessage $message="tm-open-window" param=<<currentBoardTiddler>> width="9999" height="9999"  />
               <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
-              <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" $value="16" />
               <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
               """ >
             <span class="_-_-img_inline-OV-_C">{{$:/core/images/open-window}}</span>
