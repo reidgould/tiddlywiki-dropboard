@@ -1013,7 +1013,8 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
 /* ==== Other - General Use
 ** ================================================================ */
 
-._-_-Button_StyleLink-OVTM-_ {
+._-_-Button_StyleLink-OVTM-_,
+._-_-Button_StyleLink-OVTM-_._-_-Button_StyleLink-OVTM-_ {
   /*-- Layout Inner --*/
   padding: 0;
   /*-- Visual --*/
