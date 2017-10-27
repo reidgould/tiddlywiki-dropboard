@@ -61,7 +61,7 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SearchListFilter/Live
 \end
 
 \define filter-SearchList()
-$(filter-SearchListText)$ -[$(currentBoardTiddler)$] -[$(currentBoardTiddler)$tagging[]] -[$(currentBoardTiddler)$tagging[]tagging[]] +[remove<list-TiddlersWithDrafts>] +[remove<list-TiddlersWithDraftsMain>] +[is[tiddler]]
+$(filter-SearchListText)$ -[[$(currentBoardTiddler)$]] -[[$(currentBoardTiddler)$]tagging[]] -[[$(currentBoardTiddler)$]tagging[]tagging[]] +[remove<list-TiddlersWithDrafts>] +[remove<list-TiddlersWithDraftsMain>] +[is[tiddler]]
 \end
 
 \define tiddler-UserFilter-Stage()
