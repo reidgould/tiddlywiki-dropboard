@@ -101,8 +101,8 @@ $:/plugins/reidgould/blc/state/$(currentBoardTiddler)$/SideBar
 \define wikitext-SideBar-Button-Create()
   <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
       <$action-createtiddler $basetitle=<<tiddler-SideBar>> tags="$:/tags/SideBar" caption=<<currentBoardTiddler>> text=<<wikitext-SideBar-Content>> />
-      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="listwidth-em" />
-      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="listwidth-num" $value="1" />
+      <$action-deletefield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-em" />
+      <$action-setfield $tiddler=<<currentBoardTiddler>> $field="blc-listwidth-num" $value="1" />
       <$action-sendmessage $message="tm-close-tiddler" $param=<<currentBoardTiddler>> />
       <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value=<<tiddler-SideBar>> />
       """ >
