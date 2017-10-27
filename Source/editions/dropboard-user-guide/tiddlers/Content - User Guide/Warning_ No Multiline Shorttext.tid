@@ -1,0 +1,4 @@
+title: Warning: No Multiline Shorttext
+tags: Tips
+
+Avoid using multiple lines in the [['shorttext' Field]]. Tiddlers with newline characters in "shorttext" create invalid ".tid" files, which are commonly used for export.

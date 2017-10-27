@@ -1,0 +1,8 @@
+title: 'SideBar' Button
+tags: [[Control Banner Widgets]]
+
+The button labeled "SideBar" creates a tab that contains the board in the sidebar.
+
+This also closes the tiddler in the main story, and sets the list width to fit 1.
+
+While the tab exists, the button will change to display an <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> icon. Press it again to delete the tab.

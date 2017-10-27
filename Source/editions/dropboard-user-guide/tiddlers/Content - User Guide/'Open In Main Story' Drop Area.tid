@@ -1,0 +1,8 @@
+title: 'Open In Main Story' Drop Area
+tags: [[Control Banner Drop Areas]]
+
+You may need to open a card in the standard TiddlyWiki view, in the main story. Also, clicking a local TiddlyWiki link in a card does not work (it would not make sense to tag the link and add it to the dropboard list).
+
+Drop a card or a local TiddlyWiki link in a card onto the "Open in Main Story" drop area to navigate to the dropped tiddler in the main story.
+
+The [[Control Banner Drop Areas]] are a solution to a technical limitation in TiddlyWiki's $navigator widget needed for the "Open In Main Story" drop area.

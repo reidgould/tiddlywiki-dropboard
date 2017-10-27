@@ -1,0 +1,8 @@
+title: 'New Tiddler' Widget
+tags: [[Control Banner Drop Areas]]
+
+Drop the "New Tiddler" widget onto any list or card to create a new list or card in the chosen position. Dropboard [[generates an ID|shortid Plugin]] in the "title" field for tiddlers created this way, but this is only for [[convenience|'shorttext' Field]] and you can change it to a meaningful name.
+
+The widget defines a special name for its <a href="http://tiddlywiki.com/#actionTiddler%20Variable" target="_blank" rel="noopener noreferrer">actionTiddler</a>. Dropboard checks for this and performs different actions to create the new tiddler.
+
+You can [[Drop Any Link (Including Titles)]] into a board and drop cards outside of a board, but dropping the "New Tiddler" widget outside of the board creates a reference to a missing tiddler.

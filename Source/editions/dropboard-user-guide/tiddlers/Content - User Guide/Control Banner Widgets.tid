@@ -1,0 +1,31 @@
+title: Control Banner Widgets
+tags: Features
+list: [['Filter' Popup]] [['Text' Checkbox]] [['Image' Checkbox]] [['Search' Popup]] [['Height' Popup]] [['Width' Popup]] [['Window' Button]] [['SideBar' Button]]
+
+\define currentFilter()
+[[Control Banner Widgets]tagging[]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+!! Control Banner Widgets
+
+<ul>
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <li>
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </li>
+  </$set>
+  </$set>
+</$list>
+</ul>

@@ -1,0 +1,18 @@
+title: Table Of Contents Editor
+tags: [[Example Boards]]
+
+Dropboard can be a useful tool even if it is not how the data is intended to be viewed.
+
+This board is used to edit the tiddlers in the user guide to change the way they appear in the table of contents seen in <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "User Guide Home">> >User Guide Home</$button>. Drag and drop to arrange the lists and cards on the board, and notice how the table of contents in the SideBar updates. This is possible because of Dropboard's <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Full Integration with TiddlyWiki">> >Full Integration with TiddlyWiki</$button>.
+
+The built-in <a href="http://tiddlywiki.com/#Table-of-Contents%20Macros" target="_blank" rel="noopener noreferrer">table of contents macros</a> generate the display by following the relationships defined by the built-in <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'tags' and 'list' Fields">> >'tags' and 'list' fields</$button> on the tiddlers that hold your content. On the board's control banner, check the [['Text' Checkbox]] to display the tiddlers' content and see that they are in fact the same tiddlers that display when you navigate the guide in the SideBar or <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">main story</a>. Uncheck the box again so the board is convenient to edit.
+
+The built-in <a href="http://tiddlywiki.com/#Table-of-Contents%20Macros" target="_blank" rel="noopener noreferrer">table of contents macros</a> require a root tag. Note that the board below is not displaying data from this tiddler, "{{!!title}}", but from the tiddler that is the root tag "User Guide Home". This is accomplished using the <a href="http://tiddlywiki.com/#TiddlerWidget" target="_blank" rel="noopener noreferrer">$tiddler</a> widget.
+
+The built-in <a href="http://tiddlywiki.com/#Table-of-Contents%20Macros" target="_blank" rel="noopener noreferrer">table of contents macros</a> display the titles of the tiddlers. This board is a case where the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'shorttext' Field">> >'shorttext' field</$button> is not useful and use of an <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "shortid Plugin">> >ID in the title</$button> is not acceptable because it would display in the table of contents. These features are included because they are useful in an example like [[My Task Board]], but Dropboard works perfectly fine if you choose not to use them.
+
+Use the board [[Table Of Contents Editor - Features]] to edit at a different depth in the table of contents tree. This works because <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Any Tiddler can be a List or Card">> >Any Tiddler can be a List or Card</$button>
+
+<$tiddler tiddler="User Guide Home">
+  <$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
+</$tiddler>

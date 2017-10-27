@@ -1,0 +1,4 @@
+title: Warning: Don't Drop Selected Text
+tags: Tips
+
+If you drop selected text directly onto the board, it may appear to create a card with a title that matches that text. But edit the tiddler and look at the "title" field, it actually contains HTML. This is inappropriate content for "title", and many TiddlyWiki features will not work if you try to use the selected text to reference the new tiddler.

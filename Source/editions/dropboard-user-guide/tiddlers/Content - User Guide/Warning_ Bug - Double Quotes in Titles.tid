@@ -1,0 +1,8 @@
+title: Warning: Bug - Double Quotes in Titles
+tags: Tips
+
+Dropboard currently has a bug when handling tiddlers with double quotes in the "title" field.
+
+When a tiddler is dropped onto a list or card with quotes the dropped tiddler will receive the tag, but is added at the bottom of the list.
+
+When a tiddler with quotes is dropped onto a list or card, it receives the tag, but is not added to the list.

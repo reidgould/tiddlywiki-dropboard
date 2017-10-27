@@ -1,19 +1,50 @@
 title: Dropboard User Guide
 tags: $:/tags/SideBar
 list-after: $:/core/ui/SideBar/More
-list: [[How It Works]] [[Drop Areas]] [[More]]
-home: How It Works
+home: User Guide Home
 
-<$linkcatcher to="Dropboard User Guide Current">
-<$select tiddler="Dropboard User Guide Current" class="userguide_select">
-  <$list filter='[tag[Dropboard User Guide]]'>
+\define home_button()
+<$button class="ug_home _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "$(val-home)$">> >{{$:/core/images/home-button}}</$button>
+\end
+
+<style scoped>
+.ug_droparea {
+  fill: <<color sidebar-tiddler-link-foreground>>;
+  padding: 0.25em 0.5em 0.125em 0.5em;
+  background-color: <<color sidebar-tab-background-selected>>;
+}
+.ug_select {
+  width: calc(100% - 5em);
+}
+.ug_home.ug_home {
+  fill: <<color sidebar-tiddler-link-foreground>>;
+}
+</style>
+
+<$select tiddler="Dropboard User Guide Current" class="ug_select">
+  <$tiddler tiddler={{Dropboard User Guide!!home}}>
     <option>
       <$view field='title'/>
     </option>
+  </$tiddler>
+  <$list filter='[tag[User Guide Home]]'>
+    <optgroup label={{!!title}} >
+    <$list filter='[<currentTiddler>tagging[]]'>
+      <option>
+        <$view field='title'/>
+      </option>
+    </$list>
+    </optgroup>
   </$list>
 </$select>
-<$link to={{Dropboard User Guide!!home}} ><span class="_-_-img_inline-OV-_C">{{$:/core/images/home-button}}</span></$link>
-<span class="dpbd-SB-Container_Reset-OIV-_ dpbd-SB-Reset-VO-_" >
-<$transclude tiddler={{Dropboard User Guide Current}} mode="block" />
-</span>
+<$droppable tag="span" actions="""<$action-navigate $to=<<actionTiddler>> $scroll="yes" />""">
+  <span class="_-_-img_inline-OV-_C tc-edit-tags ug_droparea" title="Drop link here to open in main story">{{$:/core/images/export-button}}</span>
+</$droppable>
+<$vars val-home={{Dropboard User Guide!!home}} >
+  <<home_button>>
+</$vars>
+<$linkcatcher to="Dropboard User Guide Current">
+  <span class="dpbd-SB-Container_Reset-OIV-_ dpbd-SB-Reset-VO-_" >
+    <$transclude tiddler={{Dropboard User Guide Current}} mode="block" />
+  </span>
 </$linkcatcher>

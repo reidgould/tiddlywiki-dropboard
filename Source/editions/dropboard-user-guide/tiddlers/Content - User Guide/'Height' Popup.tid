@@ -1,0 +1,10 @@
+title: 'Height' Popup
+tags: [[Control Banner Widgets]]
+
+The button labeled "Height" opens a popup to control the total height of the board.
+
+Type a numeric value in the text field to set a specific board height. The unit used is "vh". 100vh equals the height of the browser viewport.
+
+When the [['Window' Button]] is used, the board height is set differently. Use the "Height" popup to change it back to the desired value.
+
+The <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> button clears the value and a default is used.

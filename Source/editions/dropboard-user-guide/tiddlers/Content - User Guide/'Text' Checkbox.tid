@@ -1,0 +1,8 @@
+title: 'Text' Checkbox
+tags: [[Control Banner Widgets]]
+
+The "Text" checkbox turns off the display of the main "text" field for all cards on the board. If a card has content in "text", the [[Text Content Info Icon]] will appear.
+
+This is useful when the [['shorttext' Field]] is in use. It helps distinguish which use "shorttext" for their primary content and which are summaries of a larger body of content.
+
+For an example of how this can improve the ability to edit the board, see: [[Table Of Contents Editor]]

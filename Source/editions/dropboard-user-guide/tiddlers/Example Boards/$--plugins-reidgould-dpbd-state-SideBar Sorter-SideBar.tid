@@ -1,0 +1,9 @@
+title: $:/plugins/reidgould/dpbd/state/SideBar Sorter/SideBar
+tags: $:/tags/SideBar
+caption: SideBar Sorter
+
+  <$tiddler tiddler="SideBar Sorter">
+  <span class="dpbd-SB-Container_Reset-OIV-_ dpbd-SB-Reset-VO-_">
+  <$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />
+  </span>
+  </$tiddler>

@@ -1,0 +1,12 @@
+title: 'Search' Popup
+tags: [[Control Banner Widgets]]
+
+The button labeled "Search" opens a popup in which you can type a filter that is used to display tiddlers from outside of the board for import.
+
+The tiddlers display as cards in a special "Search List" to the left of the other lists on the board outside the horizontal scroll area. The Search List does not display tiddlers that are already on the board. The Search List is not effected by use of the  [['Filter' Popup]].
+
+The cards in this temporary list can be dropped onto a list on the board, but cards cannot be dropped onto the Search List. If you decide you don't want a card on your board, use the [['Remove from Board' Drop Area]] and it will reappear in the Search List.
+
+See the [[My Task Board - Priority]] example for a use case where the Search List is used to find task cards that still require triage.
+
+The <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> button removes the filter and hides the Search List.

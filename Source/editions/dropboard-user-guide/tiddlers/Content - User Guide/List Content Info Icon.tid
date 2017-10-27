@@ -1,0 +1,8 @@
+title: List Content Info Icon
+tags: [[Card Features]]
+
+The <span class="_-_-img_inline-OV-_C">{{$:/core/images/storyview-classic}}</span> icon displays at the bottom right of a card when it has content in it's "list" field.
+<br>
+This is useful because [[Any Tiddler can be a List or Card]].
+<br>
+For an example, see: [[Table Of Contents Editor]]

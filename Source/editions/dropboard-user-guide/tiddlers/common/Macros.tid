@@ -1,0 +1,22 @@
+title: UserGuide/common/Macros
+tags: $:/tags/Macro
+
+\define navigate_userGuide(link)
+<$set name="val-nav_current" filter={{{[[Dropboard User Guide Current]get[text]]}}}>
+<$set name="action_nav" filter="[<val-nav_current>] -[[$link$]]"
+    value="""<$action-setfield $tiddler="Dropboard User Guide Current" $field="text" $value="$link$" />"""
+    emptyValue="""<$action-sendmessage $message="tm-notify" $param="UserGuide/notifications/AlreadyOpenInSideBar" />""" >
+  <<action_nav>>
+  <$action-setfield $tiddler="$:/state/tab/sidebar--1835078512" $field="text" $value="Dropboard User Guide" />
+</$set>
+</$set>
+\end
+\define navigate_forceMain(link)
+<$vars tiddler-Before="">
+<$set name="action_nav" filter="[list[$:/StoryList]field:title[$link$]]"
+    value="""<$action-sendmessage $message="tm-notify" $param="UserGuide/notifications/AlreadyOpenInMain" />"""
+    emptyValue="""<$action-listops $tiddler="$:/StoryList" $subfilter="+[insertbefore:tiddler-Before[$link$]]"/>""" >
+  <<action_nav>>
+</$set>
+</$vars>
+\end

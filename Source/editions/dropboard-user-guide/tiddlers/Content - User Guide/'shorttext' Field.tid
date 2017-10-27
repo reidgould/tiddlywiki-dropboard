@@ -1,0 +1,23 @@
+title: 'shorttext' Field
+tags: [[Tech Talk]]
+
+"shorttext" is an optional field similar to the built-in field "<a href="http://tiddlywiki.com/#TiddlerFields" target="_blank" rel="noopener noreferrer">caption</a>". It displays in the card templates, and in the [['shorttext' Main Story Templates]].
+
+---
+
+When "shorttext" is present, a card displays it instead of "title". This combined with the feature that [[generates an ID|shortid Plugin]] when you drag in the [['New Tiddler' Widget]], creates a solution that is useful both when manipulating tiddlers with large heavy content (such as in <$button class="main_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_forceMain "Table Of Contents Editor">> >Table Of Contents Editor</$button>) and when writing tiddlers that have short discrete content (such as in <$button class="main_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_forceMain "My Task Board">> >My Task Board</$button>
+).
+
+When working with many heavy tiddlers having proper titles, you can uncheck the [['Text' Checkbox]] to work without seeing full styling and media content that may be present in the main body of a wiki entry, and only see the "title" or use "shorttext" to see a short summary.
+
+When working with tiddlers containing short discrete content, stopping to give titles to each is disruptive to workflow and the titles are likely repeat most of the words in the content. The "shorttext" and ID combo allows the user to create cards one after the other, each containing just a few words or up to a paragraph of text in a continuous workflow.
+
+---
+
+Using "shorttext" instead of "title" allows for duplication in cases such as having two "To Do" lists in different boards.
+
+Using an ID in the "title" field keeps "list" fields short, and listops fast. Long titles with special characters make listops slow and error prone.
+
+"shorttext" displays inline elements like emphasis, color, links, and images (with height of 1em to fit on a single line of text) but does not display block elements like headings, lists, and tables.
+
+[[Warning: No Multiline Shorttext]] - {{Warning: No Multiline Shorttext}}

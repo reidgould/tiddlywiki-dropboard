@@ -1,0 +1,12 @@
+title: SideBar Sorter
+created:  30000101120000000
+modified: 30000101120000000
+tags: [[Example Boards]]
+list: [[color - Cyber Grape]] [[color - Han Blue]] [[color - Desire]] [[color - Inchworm]] [[color - Icterine]]
+dpbd-boardheight: calc(100vh - 400px)
+dpbd-listwidth-em: 12
+dpbd-listwidth-num: 1
+
+Putting a board in the SideBar can be an easy way to sort tiddlers from the <a href="http://tiddlywiki.com/#Story%20River" target="_blank" rel="noopener noreferrer">main story</a> into tags. If this board doesn't have a tab in the SideBar already, click the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'SideBar' Button">> >'SideBar' Button</$button> to make it. This board has all its lists <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Collapse Button">> >collapsed</$button>, but notice that you can still <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Drop Any Link (Including Titles)">> >drop links</$button> from outside the board and drop them into collapsed lists. Combined with the [[Title Links|$:/core/ui/ControlPanel/Settings/TitleLinks]] setting found in the Control Panel, you can apply tags to tiddlers in the main story without even opening the edit view.
+
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />

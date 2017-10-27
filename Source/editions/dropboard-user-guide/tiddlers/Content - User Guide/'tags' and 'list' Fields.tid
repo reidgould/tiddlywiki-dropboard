@@ -1,0 +1,10 @@
+title: 'tags' and 'list' Fields
+tags: [[Tech Talk]]
+
+In Dropboard, boards, lists, and cards are all just plain tiddlers. The board is defined by the "currentTiddler" variable when the [[Board Template]] is rendered. Lists and cards are defined by the built-in "tags" and "list" fields. Any tiddler that is tagged with the name of the board is viewed as a list, and any tiddler tagged with the name of a list is viewed as a card.
+
+The "tags" field determines what shows up, the "list" field <a href="http://tiddlywiki.com/#Order%20of%20Tagged%20Tiddlers" target="_blank" rel="noopener noreferrer">determines the order</a>. This creates a two way linking system where both tiddlers are aware of the other. This is used for many built-in purposes including the table of contents macros, the "list draggable" macros, and the dropdown list of a tag pill.
+
+If a tiddler is missing from the "list" field, it gets sorted after all those that are present. If a tiddler is in the "list" field but is not tagged, it does not display. The "list" gets overwritten every drop operation, and the untagged tiddler will not be included in the new list. If you use "tags" and "list" in your own wiki in an asymmetrical way like this, you should not use Dropboard on that data.
+
+If you use "list-before" and "list-after" fields, they will effect order only while that tiddler is not included in "list", but once the tiddler is included in "list" they will not have effect and may become out of sync from the order in "list".

@@ -1,0 +1,31 @@
+title: Tips
+tags: [[User Guide Home]]
+list: [[Any Tiddler can be a List or Card]] [[Drop Any Link (Including Titles)]] [[Drop 'Tag Pill' to Drop All Tagged]] [[Hold Shift for Horizontal Scroll]] [[Cleaning Up Temporary Data]] [[Warning: No Multiline Shorttext]] [[Warning: Don't Double Edit]] [[Warning: Board Removes Tags]] [[Warning: Don't Drop Selected Text]] [[Warning: Bug - Double Quotes in Titles]]
+
+\define currentFilter()
+[[Tips]tagging[]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+!! Tips
+
+<ul>
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <li>
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </li>
+  </$set>
+  </$set>
+</$list>
+</ul>

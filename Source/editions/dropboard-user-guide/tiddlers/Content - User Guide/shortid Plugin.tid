@@ -1,0 +1,10 @@
+title: shortid Plugin
+tags: [[Tech Talk]]
+
+"<a href="https://github.com/reidgould/tiddlywiki-shortid-plugin" target="_blank" rel="noopener noreferrer">shortid Plugin</a>" is the <a href="https://github.com/dylang/shortid" target="_blank" rel="noopener noreferrer">shortid</a> package bundled using <a href="webpack.js.org" target="_blank" rel="noopener noreferrer">webpack</a> and exposed in TiddlyWiki as a $tw.utils function and as a macro. The entire plugin including util function, macro, license, and attribution is 9 kB.
+
+Dropboard uses this plugin to generate and ID for the "title" field when the [['New Tiddler' Widget]] is dropped onto a card or list. Combined with the [['shorttext' Field]], a very smooth workflow can be accomplished.
+
+The actual ID that is generated for a new tiddler is not important. You are free to change the "title" field to something more meaningful.
+
+Use of "shortid Plugin" is optional. Dropboard works without it even being installed, but be aware that the [['New Tiddler' Widget]] has bugs related to correct placement of the new tiddler when "shortid Plugin" is absent.

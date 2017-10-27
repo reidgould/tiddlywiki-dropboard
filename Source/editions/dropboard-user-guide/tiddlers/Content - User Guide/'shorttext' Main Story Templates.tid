@@ -1,0 +1,12 @@
+title: 'shorttext' Main Story Templates
+tags: Features
+
+If you choose to use the [['shorttext' Field]], you can still see and access this data outside of Dropboard.
+
+A template is provided that displays 'shorttext' in both the standard view and edit templates. The 'shorttext' main story template displays above the main "text" field.
+
+In the edit template, you can click the <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> button to remove the field.
+
+You can manually disable the "shorttext" main story templates by overriding them with blank tiddlers, and override [[$:/config/EditTemplateFields/Visibility/shorttext]] to have the value "show". You can re-enable them by deleting the copies.
+
+If you uninstall Dropboard, you can still find 'shorttext' in the standard edit template, in the area under the "text" editor that lists all other fields.

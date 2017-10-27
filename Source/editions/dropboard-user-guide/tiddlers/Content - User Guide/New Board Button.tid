@@ -1,0 +1,6 @@
+title: New Board Button
+tags: Features
+
+To create a brand new board, press the <span class="_-_-img_inline-OV-_C">{{$:/plugins/reidgould/dpbd/images/Dropboard}}</span> button in the SideBar.
+
+The button simply creates a new tiddler in the normal way with the [[Board Template]] already inside. The template can also be used to put a board anywhere inside an existing tiddler's "text" field.

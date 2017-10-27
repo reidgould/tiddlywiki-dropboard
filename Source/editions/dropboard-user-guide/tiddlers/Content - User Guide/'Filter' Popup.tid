@@ -1,0 +1,28 @@
+title: 'Filter' Popup
+tags: [[Control Banner Widgets]]
+
+The button labeled "Filter" opens a popup in which you can type any number of <a href="http://tiddlywiki.com/#Introduction%20to%20filter%20notation" target="_blank" rel="noopener noreferrer">filter runs</a>. This value is appended to the filter string used to display the cards in each list.
+
+Try pasting in these filters on the [[My Task Board]] example.
+
+* Show only cards tagged with priority: <br> `+[search:tags[Priority]]`
+* Don't show cards that are images: <br> `-[is[image]]`
+* Show only cards with "shorttext" and sort alphabetically: <br> `+[has[shorttext]] +[sort[shorttext]]`
+
+The filter popup does not change the data in the original list. Press the <span class="_-_-img_inline-OV-_C">{{$:/core/images/close-button}}</span> button in the popup to remove the filter and see the cards displayed in their actual order.
+<br>
+While a filter is active, drop events are still processed using the original unfiltered list. When you remove the filter, the new card will be above the card you dropped it onto.
+
+---
+
+Only runs that start with the `+` or `-` modifiers are useful. Runs without modifiers append new tiddlers to the list, which can have confusing results. For example, on [[My Task Board]], paste in the filter:
+<br>
+`[[My Task Board]tagging[]tagging[]]`
+<br>
+and see how it makes all the cards on the board appear in every list.
+
+Filter steps that create new lists are not useful. Using the + modifier with a constructor step causes the input list to be ignored. Paste in the filter:
+<br>
+`+[['Filter' Popup]]`
+<br>
+to see how it causes only this tiddler to be displayed in all lists.

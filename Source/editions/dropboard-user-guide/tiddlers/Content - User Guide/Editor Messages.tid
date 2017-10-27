@@ -1,0 +1,10 @@
+title: Editor Messages
+tags: [[Card Features]]
+
+The card edit template displays the same editor messages as does the main edit template, and one new message from Dropboard.
+
+The checkbox "Update tags and list fields" is displayed when the title has changed.
+<br>
+The warning "Avoid using characters `| [ ] { }` in title" is displayed when those characters are found in the "title" field.
+
+[[The new warning|Warning: No Multiline Shorttext]] "Avoid multiple lines in shorttext" is displayed when newline characters ( `\n` ) are found in the "shorttext" field.

@@ -1,0 +1,25 @@
+title: My Task Board
+created:  30000101120000000
+modified: 30000101120000000
+tags: [[Example Boards]]
+list: tid/Hy1mXvb6W tid/HJqVQvZpb tid/HkXrQPb6Z tid/BkPLQPbab tid/H14_mPZ6W
+dpbd-boardheight: 70vh
+dpbd-displayimages: yes
+dpbd-displaytext: yes
+dpbd-listwidth-em: 18
+
+Dropboard has <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Full Integration with TiddlyWiki">> >full integration with TiddlyWiki</$button>. It gives you a view into standard TiddlyWiki data using the built-in <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'tags' and 'list' Fields">> >"tags" and "list" fields</$button>.
+
+The board below is using data from this tiddler, "{{!!title}}". You will notice that some of it's lists are <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Collapse Button">> >collapsed</$button>. When you click the edit button on a card, the edit template puts the cursor focus on a field between the title and text areas called <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'shorttext' Field">> >'shorttext'</$button>. It's useful, but completely optional.
+
+You can <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Drop Any Link (Including Titles)">> >drop any tiddler link</$button> onto a card, the empty area in a list, the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "<< And >> Drop Areas">> ><< And >> Drop Areas</$button> in a list title bar, and the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "Control Banner Drop Areas">> >Control Banner Drop Areas</$button>. You can drop the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'New Tiddler' Widget">> >New Tiddler</$button> widget onto the board or list to create a tiddler in place. An <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "shortid Plugin">> >ID</$button> is generated for the title, but you may replace it.
+
+When a list gets long, the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'Hold Tiddler' Drop Area">> >'Hold Tiddler' Drop Area</$button> helps you move cards. You can <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'Text' Checkbox">> >hide the 'text' field</$button> to keep card length short. You can <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'Filter' Popup">> >filter</$button> cards on the board (try pasting in `+[search:tags[Priority]]`)
+
+To see a board in full screen, use the <$button class="ug_link _-_-Button_StyleLink-OVTM-_" actions=<<navigate_userGuide "'Window' Button">> >window button</$button>.
+<br>
+Also see the related example [[My Task Board - Priority]].
+<br>
+Create a new board by clicking the <$link to="New Board Button" class="_-_-Button_StyleLink-OVTM-_"><span class="_-_-img_inline-OV-_C">{{$:/plugins/reidgould/dpbd/images/Dropboard}}</span> button</$link> in the SideBar.
+
+<$transclude tiddler="$:/plugins/reidgould/dpbd/templates/view/Board" mode="inline" />

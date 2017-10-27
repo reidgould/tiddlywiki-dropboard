@@ -1,0 +1,6 @@
+title: Edit, Save, Cancel, and Delete Buttons
+tags: [[Card Features]]
+
+The edit, save, cancel, and delete buttons in the top right corner of each card work just like the standard buttons on tiddlers in the main story.
+
+The [[List Template]] is implemented with $navigator and $list widgets which take advantage of TiddlyWiki's <a href="http://tiddlywiki.com/#DraftMechanism" target="_blank" rel="noopener noreferrer">draft mechanism</a>.

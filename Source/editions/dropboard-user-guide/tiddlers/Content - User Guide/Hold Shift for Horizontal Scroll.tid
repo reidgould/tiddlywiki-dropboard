@@ -1,0 +1,8 @@
+title: Hold Shift for Horizontal Scroll
+tags: Tips
+
+When the width of all the lists together exceed the width of the board, a horizontal scrollbar appears at the bottom. A convenient way to navigate a wide board is to hold shift while scrolling the mouse wheel to cause horizontal scrolling.
+
+In Chrome shift scroll works by default.
+
+In Firefox shift scroll is used to navigate back and forward in page history. Plugins like [[Shift + Scroll|https://addons.mozilla.org/en-US/firefox/addon/shift-scroll/]] work on wikis that are hosted on the internet, but not wikis opened from local files.

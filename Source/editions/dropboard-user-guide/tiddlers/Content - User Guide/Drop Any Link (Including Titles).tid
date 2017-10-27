@@ -1,0 +1,12 @@
+title: Drop Any Link (Including Titles)
+tags: Tips
+
+Dropboard's drop areas are implemented with the <a href="http://tiddlywiki.com/#DraggableWidget:DraggableWidget%20DroppableWidget" target="_blank" rel="noopener noreferrer">$draggable and $droppable</a> widgets.
+
+Links in TiddlyWiki automatically create a $draggable widget, therefore any link even outside the board is compatible and able to be dropped directly onto any drop area. Conversely, Dropboard cards are also implemented with $draggable, so cards can be dropped into $droppable areas outside the board, such as the list in the "Open" tab in the SideBar.
+
+Combined with the [[Title Links|$:/core/ui/ControlPanel/Settings/TitleLinks]] setting found in the Control Panel, you can move existing tiddlers into and out of the board in many useful ways. See the [[SideBar Sorter]] for an example.
+
+The [['New Tiddler' Widget]] is an exception, it only works when dropped onto a board.
+
+[[Warning: Board Removes Tags]] — Don't use a tiddler as a list if other cards or lists already use it as a tag.

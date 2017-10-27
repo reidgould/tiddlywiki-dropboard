@@ -1,0 +1,28 @@
+title: Example Boards
+list: [[My Task Board]] [[My Task Board - Priority]] [[Table Of Contents Editor]] [[SideBar Sorter]]
+
+\define currentFilter()
+[tag[Example Boards]]
+\end
+\define currentCaption()
+(<$transclude field="caption" mode="inline" class="" />)
+\end
+\define current_shorttext()
+<br><$transclude field="shorttext" mode="inline" class="" />
+\end
+
+<div class="container_examples">
+<$list filter=<<currentFilter>> >
+  <$set name="captionDisplay" filter="[<currentTiddler>has[caption]]" value=<<currentCaption>> emptyValue="">
+  <$set name="shorttextDisplay" filter="[<currentTiddler>has[shorttext]]" value=<<current_shorttext>> emptyValue="">
+  <span class="item_examples">
+    <$link to=<<currentTiddler>> >
+      <$transclude field="title" mode="inline" class="" />
+    </$link>
+    <<captionDisplay>>
+    <<shorttextDisplay>>
+  </span>
+  </$set>
+  </$set>
+</$list>
+</div>
