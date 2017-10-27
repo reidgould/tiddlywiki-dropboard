@@ -1019,6 +1019,7 @@ title: $:/plugins/reidgould/blc/common/Stylesheet
   padding: 0;
   /*-- Visual --*/
   color: <<color primary>>;
+  fill: <<color primary>>;
   border: none;
   background: none;
   /*-- Text --*/
