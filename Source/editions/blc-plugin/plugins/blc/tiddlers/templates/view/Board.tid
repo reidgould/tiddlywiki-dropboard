@@ -23,6 +23,12 @@ title: $:/plugins/reidgould/blc/templates/view/Board
             </h2>
           </$list>
         </$link>
+        <$list filter="[<windowTiddler>] -[<currentBoardTiddler>] -[[]]" variable="">
+          in
+          <$link to=<<windowTiddler>> >
+            <<windowTiddler>>
+          </$link>
+        </$list>
       </$set>
     </div>
   </$list>
@@ -205,9 +211,9 @@ title: $:/plugins/reidgould/blc/templates/view/Board
         <div class="blc-CB-Widget-O-_ blc-CB-WidgetInput-O-_" title="Open In New Window">
           <p class="blc-CB_WI-Label_p-OT-_">Window</p>
           <$button class="blc-CB_WI-Input-O-_ blc-CB_WI-Input_Button-O-_" actions="""
-              <$action-sendmessage $message="tm-open-window" param=<<currentBoardTiddler>> width="9999" height="9999"  />
+              <$action-sendmessage $message="tm-open-window" $param=<<storyTiddler>> width="9999" height="9999" windowTiddler=<<storyTiddler>> />
               <$action-setfield $tiddler=<<currentBoardTiddler>> $field="boardheight" $value="100%" />
-              <$action-sendmessage $message="tm-close-tiddler" param=<<currentBoardTiddler>> />
+              <$action-sendmessage $message="tm-close-tiddler" $param=<<storyTiddler>> />
               """ >
             <span class="_-_-img_inline-OV-_C">{{$:/core/images/open-window}}</span>
           </$button>
