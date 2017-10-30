@@ -10,6 +10,10 @@ Created by <a href={{$:/plugins/reidgould/dpbd!!author-web}} target="_blank" rel
 
 {{$:/ContributionBanner}}
 
-!!! Four ways to get Dropboard:
+!!! Four ways to get Dropboard
 
 {{Get Dropboard}}
+
+!!! What's Next
+
+Dropboard has been made completely by myself on my own time, and it's taken quite a lot of it! I completed this project as a key part of my portfolio as I transition my career into Software Engineering. I would like to complete another major version with the features listed in the [[Roadmap]]. Unfortunately this is all the time I can spend on this project without pay. If you want to make it possible for me to create the next version of this plugin you can support me at <a href="https://www.patreon.com/reidgould" target="_blank" rel="noopener noreferrer"><span style="display: inline-block;vertical-align: bottom;max-height: 22px;max-width: 100px;overflow: hidden;">{{patreon_wide.png}}</span>.com/reidgould</a>.

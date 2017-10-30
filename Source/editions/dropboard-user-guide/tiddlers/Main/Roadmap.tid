@@ -1,0 +1,27 @@
+created: 20171030172339915
+modified: 20171030175726423
+tags:
+title: Roadmap
+
+For the next major release of Dropboard:
+
+Primary goals:
+
+* Import from Trello.
+* Mobile compatibility.
+* Swimlanes.
+* New design of list drop areas.
+* Improve Control Banner widgets (better clarity, icons, sticky mode)
+* Make dropboard templates extensible in the same fashion as main TiddlyWiki interface.
+* Utilities to help clean up broken lists.
+
+Secondary goals:
+
+* Automatic scroll during drag.
+* Allow user to set prefix for titles.
+* Simple issue tracking / task management helpers for team contexts.
+* Allow any field to work in the same way as the tag preview or info icons.
+* Info Icon visual clash with control buttons when card is one line tall.
+* Hide board and display message in draft preview.
+
+Also see the issues list on <a href={{$:/plugins/reidgould/dpbd!!source}} target="_blank" rel="noopener noreferrer">GitHub</a>.
