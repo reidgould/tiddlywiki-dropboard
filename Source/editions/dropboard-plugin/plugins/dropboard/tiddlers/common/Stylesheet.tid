@@ -615,11 +615,18 @@ title: $:/plugins/reidgould/dpbd/common/Stylesheet
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */
+  max-width: 100%; /* Restrict width when using fixed-fluid layout (tc-tiddler-frame sets width). */
   min-height: 2.5em;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
   /*-- Visual --*/
   background-color: <<color dropdown-background>>;
+}
+
+.dpbd-_-Droppable_Card-O-_, /* The droppable widget does not seem to apply its class attribute to the element, so we use the following rule. */
+.dpbd-L-Container_Card-OI-_ > .tc-droppable {
+  /*-- Layout Outer --*/
+  flex: 0 0 auto;
 }
 
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */

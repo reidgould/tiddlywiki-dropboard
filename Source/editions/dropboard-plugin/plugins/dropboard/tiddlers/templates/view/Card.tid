@@ -1,7 +1,7 @@
 title: $:/plugins/reidgould/dpbd/templates/view/Card
 
 <$set name="currentCardTiddler" value=<<currentTiddler>> >
-  <$droppable actions=<<action-Droppable-Card>> >
+  <$droppable class="dpbd-_-Droppable_Card-O-_" actions=<<action-Droppable-Card>> >
     <$macrocall $name="wikitext-CardView" palette-tagBackground={{$:/palette}} />
   </$droppable>
 </$set>
