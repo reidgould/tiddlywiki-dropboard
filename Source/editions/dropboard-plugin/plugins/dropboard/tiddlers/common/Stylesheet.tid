@@ -622,6 +622,12 @@ title: $:/plugins/reidgould/dpbd/common/Stylesheet
   background-color: <<color dropdown-background>>;
 }
 
+.dpbd-_-Droppable_Card-O-_, /* The droppable widget does not seem to apply its class attribute to the element, so we use the following rule. */
+.dpbd-L-Container_Card-OI-_ > .tc-droppable {
+  /*-- Layout Outer --*/
+  flex: 0 0 auto;
+}
+
 /* . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  */
 
 .dpbd-C-TiddlerControls-OIT-_ {
