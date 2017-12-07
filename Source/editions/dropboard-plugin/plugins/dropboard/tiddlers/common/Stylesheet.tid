@@ -615,6 +615,7 @@ title: $:/plugins/reidgould/dpbd/common/Stylesheet
 {
   /*-- Layout Outer --*/
   /* EXTENDS tc-tiddler-frame */
+  max-width: 100%; /* Restrict width when using fixed-fluid layout (tc-tiddler-frame sets width). */
   min-height: 2.5em;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
