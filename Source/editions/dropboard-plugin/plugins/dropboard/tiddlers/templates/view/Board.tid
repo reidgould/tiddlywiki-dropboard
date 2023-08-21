@@ -244,7 +244,7 @@ title: $:/plugins/reidgould/dpbd/templates/view/Board
   <$set name="list-ListWidth-Dec-SL" filter="[[1.001]] [enlist<table-ListWidth-Dec>]" >
   <$set name="table-ListWidth-Dec" filter="[field:title<tiddler-SearchListFilter-Live>]"
       value=<<list-ListWidth-Dec-SL>>
-      emptyValue=<<table-ListWidth-Dec >
+      emptyValue=<<table-ListWidth-Dec>> >
   <!-- Set final values from table lookup. -->
   <$set name="val-ListWidth-Pct" value={{{ [enlist<table-ListWidth-Pct>nth<val-ListWidth-Num>] }}} >
   <$set name="val-ListWidth-Dec" value={{{ [enlist<table-ListWidth-Dec>nth<val-ListWidth-Num>] }}} >
